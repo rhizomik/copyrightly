@@ -2,7 +2,7 @@
 
 Decentralized Application (ÐApp) for Copyright Management of Social Media
 
-[![Build Status](https://travis-ci.org/rhizomik/copyrightly.svg?branch=master)](https://travis-ci.org/rhizomik/copyrightly)
+[![CI and CD](https://github.com/rhizomik/copyrightly/actions/workflows/cicd.yml/badge.svg)](https://github.com/rhizomik/copyrightly/actions/workflows/cicd.yml)
 
 # Project Description
 
@@ -15,17 +15,15 @@ Authorship claims are accompanied by default reuse conditions modelled using sem
 # Team
 
 * [Roberto García](https://rhizomik.net/~roberto)
-* [Ana Cediel]()
+* [Ana Cediel](http://www.dret.udl.cat/ca/pla-formatiu/professorat/detall/index.html?enc=MjA4MjQyMTQ=)
 * [Rosa Gil](https://www.researchgate.net/profile/Rosa-Gil-3)
 * [Mercè Teixidó](https://www.researchgate.net/profile/Merce-Teixido)
-
-From Universitat de Lleida, Spain
 
 <a href="https://www.udl.cat" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_Universitat_de_Lleida.svg/1280px-Logo_Universitat_de_Lleida.svg.png" height="60px" alt="Universitat de Lleida"/></a>
 
 # Contact
 
-copyrightly @ rhizomik.net
+<pre>copyrightly@rhizomik.net</pre>
 
 # Support
 
