@@ -6,8 +6,8 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class AlertsService {
 
-  private alertsSource = new Subject<Alert>();
-  public alerts$ = this.alertsSource.asObservable();
+  alertsSource = new Subject<Alert>();
+  alerts$ = this.alertsSource.asObservable();
 
   constructor(private modalService: NgbModal) { }
 

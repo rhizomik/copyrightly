@@ -9,8 +9,8 @@ import { Alert } from './alert';
 })
 export class AlertsComponent implements OnInit {
 
-  private ALERT_TIMEOUT = 7000;
   alerts: Alert[] = [];
+  private alertTimeout = 7000;
 
   constructor(private alertsService: AlertsService,
               private ngZone: NgZone) { }
@@ -23,7 +23,7 @@ export class AlertsComponent implements OnInit {
             this.ngZone.run(() => {
               this.close(alert);
             });
-          }, this.ALERT_TIMEOUT);
+          }, this.alertTimeout);
         });
         this.ngZone.run(() => {
           this.alerts.push(alert);

@@ -1,9 +1,9 @@
 export class Alert {
 
-  private readonly typeEnum: AlertType;
-  private readonly ALERT_CLASS: string[] = ['danger', 'info', 'success', 'warning'];
-  message: string;
+  message = '';
   timerId = 0;
+  private readonly typeEnum: AlertType;
+  private readonly alertClasses: string[] = ['danger', 'info', 'success', 'warning'];
 
   constructor(type: AlertType, message: string) {
     this.typeEnum = type;
@@ -11,7 +11,7 @@ export class Alert {
   }
 
   get type(): string {
-    return this.ALERT_CLASS[this.typeEnum];
+    return this.alertClasses[this.typeEnum];
   }
 }
 
