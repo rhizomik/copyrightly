@@ -14,12 +14,12 @@ Authorship claims are accompanied by default reuse conditions modelled using sem
 
 # Team
 
+<a href="https://www.udl.cat" target="_blank"><img src="https://copyrightly.rhizomik.net/assets/UdL.svg" height="60px" alt="Universitat de Lleida"/></a>
+
 * [Roberto García](https://rhizomik.net/~roberto)
 * [Ana Cediel](http://www.dret.udl.cat/ca/pla-formatiu/professorat/detall/index.html?enc=MjA4MjQyMTQ=)
 * [Rosa Gil](https://www.researchgate.net/profile/Rosa-Gil-3)
 * [Mercè Teixidó](https://www.researchgate.net/profile/Merce-Teixido)
-
-<a href="https://www.udl.cat" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_Universitat_de_Lleida.svg/1280px-Logo_Universitat_de_Lleida.svg.png" height="60px" alt="Universitat de Lleida"/></a>
 
 # Contact
 
