@@ -2,36 +2,33 @@
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
-const { SpecReporter, StacktraceOption } = require('jasmine-spec-reporter');
-
-/**
- * @type { import("protractor").Config }
- */
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    './src/**/*.e2e-spec.ts'
+    './**/*.feature'
   ],
   capabilities: {
-    browserName: 'chrome'
+    'browserName': 'chrome',
+    chromeOptions: {
+      args: ['--headless', '--disable-gpu', '--window-size=1024x768']
+    }
   },
+  SELENIUM_PROMISE_MANAGER: true,
   directConnect: true,
-  SELENIUM_PROMISE_MANAGER: false,
   baseUrl: 'http://localhost:4200/',
-  framework: 'jasmine',
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 30000,
-    print: function() {}
+  framework: 'custom',
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+  cucumberOpts: {
+    require: [
+      './**/*.steps.ts',
+      './src/steps/hooks.js'
+    ],
+    format: 'json:./protractor-cucumber-report.json',
+    tags: '~@disabled'
   },
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')
     });
-    jasmine.getEnv().addReporter(new SpecReporter({
-      spec: {
-        displayStacktrace: StacktraceOption.PRETTY
-      }
-    }));
   }
 };

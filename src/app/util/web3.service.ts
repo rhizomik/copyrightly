@@ -17,11 +17,11 @@ export class Web3Service {
   public networkId = new ReplaySubject<any>(1);
 
   constructor(private ngZone: NgZone) {
-    // if (window.ethereum) {
-    //   this.web3 = new Web3(window.ethereum);
-    // } else if (window.web3) {
-    //   this.web3 = new Web3(window.web3.currentProvider);
-    // } else {
+    if (window.ethereum) {
+      this.web3 = new Web3(window.ethereum);
+    } else if (window.web3) {
+      this.web3 = new Web3(window.web3.currentProvider);
+    } else {
       if (TRUFFLE_CONFIG) { // Use local network defined by Truffle config
         if (this.useWebSockets) {
           const localNode = 'ws://' + TRUFFLE_CONFIG.networks.development.host + ':' +
@@ -35,7 +35,7 @@ export class Web3Service {
           this.web3 = new Web3(new Web3.providers.HttpProvider(localNode));
         }
       }
-    // }
+    }
     this.web3.eth.net.getId()
       .then((networkId: number) => {
         this.networkId.next(networkId);
