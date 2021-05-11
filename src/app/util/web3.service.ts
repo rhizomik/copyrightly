@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import Web3 from 'web3';
+import { environment } from '../../environments/environment';
+import WalletConnectProvider from '@walletconnect/web3-provider';
 
 declare let require: any;
 declare let window: any;
@@ -21,28 +23,35 @@ export class Web3Service {
       this.web3 = new Web3(window.ethereum);
     } else if (window.web3) {
       this.web3 = new Web3(window.web3.currentProvider);
-    } else {
-      if (TRUFFLE_CONFIG) { // Use local network defined by Truffle config
-        if (this.useWebSockets) {
-          const localNode = 'ws://' + TRUFFLE_CONFIG.networks.development.host + ':' +
-            TRUFFLE_CONFIG.networks.development.port;
-          console.log('Using Web3 for local node: ' + localNode);
-          this.web3 = new Web3(new Web3.providers.WebsocketProvider(localNode));
-        } else {
-          const localNode = 'http://' + TRUFFLE_CONFIG.networks.development.host + ':' +
-            TRUFFLE_CONFIG.networks.development.port;
-          console.log('Using Web3 for local node: ' + localNode);
-          this.web3 = new Web3(new Web3.providers.HttpProvider(localNode));
-        }
+    } else if (!environment.production && TRUFFLE_CONFIG) { // Use local network defined by Truffle config in dev mode
+      if (this.useWebSockets) {
+        const localNode = 'ws://' + TRUFFLE_CONFIG.networks.development.host + ':' +
+          TRUFFLE_CONFIG.networks.development.port;
+        console.log('Using Web3 for local node: ' + localNode);
+        this.web3 = new Web3(new Web3.providers.WebsocketProvider(localNode));
+      } else {
+        const localNode = 'http://' + TRUFFLE_CONFIG.networks.development.host + ':' +
+          TRUFFLE_CONFIG.networks.development.port;
+        console.log('Using Web3 for local node: ' + localNode);
+        this.web3 = new Web3(new Web3.providers.HttpProvider(localNode));
       }
-    }
-    this.web3.eth.net.getId()
-      .then((networkId: number) => {
-        this.networkId.next(networkId);
-      })
-      .catch( () => { // No Web3 provider available
-        console.error('No Web3 provider available');
+    } else {
+      const provider: any = new WalletConnectProvider({ infuraId: environment.infuraToken });
+      provider.enable().then(() => {
+        this.web3 = new Web3(provider);
       });
+    }
+    if (this.web3) {
+      this.web3.eth.net.getId()
+        .then((networkId: number) => {
+          this.networkId.next(networkId);
+        })
+        .catch((reason: string) => {
+          console.error('No Web3 provider available, ' + reason);
+        });
+    } else {
+      console.error('No Web3 provider available');
+    }
   }
 
   public getNetworkName(): Observable<string> {
