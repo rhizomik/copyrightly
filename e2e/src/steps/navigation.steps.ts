@@ -7,7 +7,7 @@ import { MainContentPage } from '../pages/main-content.page';
 const navBar = new NavigationBar();
 const mainContent = new MainContentPage();
 
-Given(/^I'm on the home page and authenticated$/, async () => {
+Given(/^I'm on the home page$/, async () => {
   await browser.get('http://localhost:4200');
 });
 

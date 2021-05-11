@@ -20,6 +20,10 @@ Then(/^I see modal with text "([^"]*)" and close it$/, async (fragment: string) 
   await modal.closeModal();
 });
 
+Then(/^I see modal with title "([^"]*)"$/, async (fragment: string) => {
+  expect(await modal.getModalHeader()).to.contain(fragment);
+});
+
 Then(/^I see modal with text "([^"]*)"$/, async (fragment: string) => {
   expect(await modal.getModalBody()).to.contain(fragment);
 });

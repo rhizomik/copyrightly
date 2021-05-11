@@ -5,12 +5,12 @@ import { browser, by, element, ExpectedConditions } from 'protractor';
 
 const registerForm = new RegisterFormPage();
 
-When(/^I fill the register form with title "([^"]*)" and content file "([^"]*)"$/,
+When(/^I fill the register form with title "([^"]*)" and file "([^"]*)"$/,
   async (title: string, path: string) => {
   await registerForm.fillFileRegisterForm(title, path);
 });
 
-When(/^I fill the register form with title "([^"]*)" and content hash "([^"]*)"$/,
+When(/^I fill the register form with title "([^"]*)" and hash "([^"]*)"$/,
   async (title: string, hash: string) => {
     await registerForm.fillHashRegisterForm(title, hash);
 });
@@ -19,6 +19,11 @@ When(/^I uncheck the "([^"]*)" option$/,
   async (id: string) => {
     await registerForm.uncheck(id);
 });
+
+When(/^I check the "([^"]*)" option$/,
+  async (id: string) => {
+    await registerForm.check(id);
+  });
 
 Then(/^I see validation feedback for hash input with text '([^']*)'$/,
   async (text: string) => {

@@ -1,10 +1,10 @@
-Feature: Search Manifestation
-  In order to check authorship claims on content
+Feature: Search Claim
+  In order to check authorship claims on content or data
   As a user
-  I want to search if a piece of content is registered using its hash
+  I want to search if a piece of content or data is registered using its hash
 
   Scenario: Search a piece of content previously registered
-    Given I'm on the home page and authenticated
+    Given I'm on the home page
     When I click submenu option "Search" in menu "Authorship"
     And I fill the search form with content hash "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button

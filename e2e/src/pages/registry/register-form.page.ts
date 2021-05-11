@@ -38,7 +38,17 @@ export class RegisterFormPage {
 
   async uncheck(id: string) {
     const checkbox = this.form.element(by.id(id));
-    await checkbox.click();
-    await browser.waitForAngular();
+    if (await checkbox.isSelected()) {
+      await checkbox.click();
+      await browser.waitForAngular();
+    }
+  }
+
+  async check(id: string) {
+    const checkbox = this.form.element(by.id(id));
+    if (!await checkbox.isSelected()) {
+      await checkbox.click();
+      await browser.waitForAngular();
+    }
   }
 }

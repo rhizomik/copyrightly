@@ -13,6 +13,5 @@ When(/^I fill the search form with content hash "([^"]*)"$/,
 
 Then(/^I see a result with "([^"]*)" "([^"]*)"$/,
   async (attribute: string, value: string) => {
-  expect(await results.getResultsCount()).to.equal(1);
   expect(await results.getResultAttributeValue(attribute)).to.include(value);
 });
