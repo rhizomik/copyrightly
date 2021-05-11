@@ -1,53 +1,27 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { filter, takeUntil } from 'rxjs/operators';
-import { Web3Service } from '../util/web3.service';
-import { AuthenticationService } from './authentication.service';
-import { Observable, Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter, flatMap, map, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
 
   public isCollapsed = true;
-  public account = '';
-  public accountsNames: string[] = [];
-  public accounts: string[] = [];
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isAuthenticatedRoute = false;
 
-  constructor(private web3Service: Web3Service,
-              private authenticationService: AuthenticationService) {}
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.isCollapsed = true;
-    this.authenticationService.getAccounts()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(accounts =>  this.accounts = accounts );
-    this.authenticationService.getSelectedAccount()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .pipe(filter(account => account !== ''))
-      .subscribe(account =>  this.account = account );
-    this.authenticationService.getAccountsNames()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(accountsNames =>  this.accountsNames = accountsNames );
-  }
-
-  refreshAccounts() {
-    this.authenticationService.refreshAccounts();
-  }
-
-  onChange(selectedAccount: string) {
-    this.authenticationService.setSelectedAccount(selectedAccount);
-  }
-
-  getCurrentNetwork(): Observable<string> {
-    return this.web3Service.getNetworkName();
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute.snapshot.firstChild?.data))
+      .subscribe(data => this.isAuthenticatedRoute = data?.isAuthenticated);
   }
 }

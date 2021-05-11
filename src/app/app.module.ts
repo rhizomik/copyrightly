@@ -10,12 +10,13 @@ import { Angulartics2Module } from 'angulartics2';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
+import { AuthenticationNavbarComponent } from './navbar/authentication-navbar.component';
 import { ManifestationsModule } from './manifestations/manifestations.module';
 import { AlertsModule } from './alerts/alerts.module';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, AboutComponent
+    AppComponent, NavbarComponent, AboutComponent, AuthenticationNavbarComponent
   ],
   imports: [
     BrowserModule,
