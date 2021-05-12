@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Manifestations
+    network: goerli
+    source:
+      address: "0xac1c43fCffD39748FC2E7Bee1785c25bD71F7931"
+      abi: Manifestations
+      startBlock: 4746275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ManifestEvent
+        - AddedEvidence
+      abis:
+        - name: Manifestations
+          file: ./src/assets/contracts/Manifestations.json
+      eventHandlers:
+        - event: ManifestEvent(string,string,indexed address)
+          handler: handleManifestEvent
+        - event: AddedEvidence(uint8)
+          handler: handleAddedEvidence
+      file: ./graphprotocol/src/mapping.ts

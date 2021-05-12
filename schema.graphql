@@ -1,0 +1,23 @@
+type _Schema_
+  @fulltext(
+    name: "manifestationTitleSearch",
+    algorithm: rank,
+    language: simple,
+    include: [
+      {
+        entity: "Manifestation",
+        fields: [
+          { name: "title" },
+        ]
+      }
+    ]
+  )
+
+type Manifestation @entity {
+  id: ID! # hash
+  authors: [Bytes]!
+  title: String!
+  creationTime: BigInt!
+  expiryTime: BigInt!
+  evidenceCount: Int!
+}
