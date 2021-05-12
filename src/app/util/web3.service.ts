@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import Web3 from 'web3';
 import { environment } from '../../environments/environment';
 import WalletConnectProvider from '@walletconnect/web3-provider';
@@ -21,36 +21,18 @@ export class Web3Service {
   constructor(private ngZone: NgZone) {
     if (window.ethereum) {
       this.web3 = new Web3(window.ethereum);
+      this.monitorNetworkId();
     } else if (window.web3) {
       this.web3 = new Web3(window.web3.currentProvider);
-    } else if (!environment.production && TRUFFLE_CONFIG) { // Use local network defined by Truffle config in dev mode
-      if (this.useWebSockets) {
-        const localNode = 'ws://' + TRUFFLE_CONFIG.networks.development.host + ':' +
-          TRUFFLE_CONFIG.networks.development.port;
-        console.log('Using Web3 for local node: ' + localNode);
-        this.web3 = new Web3(new Web3.providers.WebsocketProvider(localNode));
-      } else {
-        const localNode = 'http://' + TRUFFLE_CONFIG.networks.development.host + ':' +
-          TRUFFLE_CONFIG.networks.development.port;
-        console.log('Using Web3 for local node: ' + localNode);
-        this.web3 = new Web3(new Web3.providers.HttpProvider(localNode));
-      }
+      this.monitorNetworkId();
     } else {
-      const provider: any = new WalletConnectProvider({ infuraId: environment.infuraToken });
-      provider.enable().then(() => {
-        this.web3 = new Web3(provider);
-      });
-    }
-    if (this.web3) {
-      this.web3.eth.net.getId()
-        .then((networkId: number) => {
-          this.networkId.next(networkId);
-        })
-        .catch((reason: string) => {
-          console.error('No Web3 provider available, ' + reason);
+      this.isLocalNetworkAvailable().pipe(filter(isAvailable => !isAvailable)).subscribe(() => {
+        const provider: any = new WalletConnectProvider({ infuraId: environment.infuraToken });
+        provider.enable().then(() => {
+          this.web3 = new Web3(provider);
+          this.monitorNetworkId();
         });
-    } else {
-      console.error('No Web3 provider available');
+      });
     }
   }
 
@@ -117,6 +99,49 @@ export class Web3Service {
         });
       });
       return { unsubscribe: () => {} };
+    });
+  }
+
+  private monitorNetworkId() {
+    if (this.web3) {
+      this.web3.eth.net.getId()
+        .then((networkId: number) => {
+          this.networkId.next(networkId);
+        })
+        .catch((reason: string) => {
+          console.error('No Web3 provider available, ' + reason);
+        });
+    } else {
+      console.error('No Web3 provider available');
+    }
+  }
+
+  private isLocalNetworkAvailable(): Observable<boolean> {
+    return new Observable((observer) => {
+      if (!environment.production && TRUFFLE_CONFIG) { // Use local network defined by Truffle config in dev mode
+        const localNode = (this.useWebSockets ? 'ws://' : 'http://') + TRUFFLE_CONFIG.networks.development.host + ':' +
+          TRUFFLE_CONFIG.networks.development.port;
+        console.log('Using Web3 for local node: ' + localNode);
+        if (this.useWebSockets) {
+          this.web3 = new Web3(new Web3.providers.WebsocketProvider(localNode));
+        } else {
+          this.web3 = new Web3(new Web3.providers.HttpProvider(localNode));
+        }
+        this.web3.eth.net.getId()
+          .then((networkId: number) => {
+            this.networkId.next(networkId);
+            observer.next(true);
+            observer.complete();
+          })
+          .catch((reason: string) => {
+            console.error('No local Web3 provider available, ' + reason);
+            observer.next(false);
+            observer.complete();
+          });
+      } else {
+        observer.next(false);
+        observer.complete();
+      }
     });
   }
 }
