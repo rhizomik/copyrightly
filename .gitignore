@@ -48,3 +48,7 @@ testem.log
 .DS_Store
 Thumbs.db
 .env
+
+# GraphProtocol
+/graphprotocol/generated
+/graphprotocol/build
