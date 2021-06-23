@@ -20,7 +20,8 @@
     "e2e-report": "node e2e/generate-html-report.js",
     "webdriver-update": "webdriver-manager update",
     "debug:migrate": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle migrate",
-    "debug:soltest": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle test"
+    "debug:soltest": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle test",
+    "sol2uml": "sol2uml ./contracts -i Migrations.sol"
   },
   "private": true,
   "dependencies": {
@@ -83,6 +84,7 @@
     "openzeppelin-solidity": "^2.2.0",
     "protractor": "~ 7.0.0",
     "protractor-cucumber-framework": "^8.0.4",
+    "sol2uml": "^1.1.25",
     "solhint": "^3.3.3",
     "truffle": "~5.2.6",
     "truffle-flattener": "^1.5.0",
