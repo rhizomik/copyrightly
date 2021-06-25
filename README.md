@@ -12,6 +12,10 @@ To do so, content on social media platforms is linked by creators to on-chain au
 
 Authorship claims are accompanied by default reuse conditions modelled using semantic technologies and based on a copyright ontology. They provide the necessary and unambiguous building blocks that also make the terms machine-actionable. Reusers can negotiate these terms and, after acceptance, on-chain transactions are generated to keep track of the agreed terms.
 
+# Development Status
+
+CopyrightLY's development is documented in the project's [Wiki](https://github.com/rhizomik/copyrightly/wiki).
+
 # Team
 
 <a href="https://www.udl.cat" target="_blank"><img src="https://copyrightly.rhizomik.net/assets/UdL.svg" height="60px" alt="Universitat de Lleida"/></a>
