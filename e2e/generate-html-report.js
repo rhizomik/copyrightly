@@ -5,7 +5,7 @@ const reporter = require('cucumber-html-reporter');
 const options = {
     theme: 'bootstrap',
     jsonFile: 'e2e/protractor-cucumber-report.json',
-    output: 'e2e/protractor-cucumber_report.html',
+    output: 'e2e/report/protractor-cucumber_report.html',
     reportSuiteAsScenarios: true,
     launchReport: true
   };
