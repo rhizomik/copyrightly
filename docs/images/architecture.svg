@@ -187,7 +187,7 @@
           <use xl:href="#path"/>
         </clipPath>
         <g clip-path="url(#clip_path)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image3.png" width="96" height="96" opacity="1" transform="translate(210 -11.61469) scale(1.0416667)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image3.png" width="96" height="96" opacity="1" transform="translate(210 -11.61469) scale(1.0416667)"/>
         </g>
       </g>
       <g id="Graphic_76">
@@ -196,7 +196,7 @@
           <use xl:href="#path_2"/>
         </clipPath>
         <g clip-path="url(#clip_path_2)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image4.png" width="96" height="96" opacity="1" transform="translate(54.73761 181.69334) scale(1.0416667)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image4.png" width="96" height="96" opacity="1" transform="translate(54.73761 181.69334) scale(1.0416667)"/>
         </g>
       </g>
       <g id="Graphic_77">
@@ -214,7 +214,7 @@
           <use xl:href="#path_3"/>
         </clipPath>
         <g clip-path="url(#clip_path_3)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image6.png" width="96" height="54.24" opacity="1" transform="matrix(1.3279301 0 0 1.3220543 -205.03015 478.6459)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image6.png" width="96" height="54.24" opacity="1" transform="matrix(1.3279301 0 0 1.3220543 -205.03015 478.6459)"/>
         </g>
       </g>
       <g id="Graphic_82">
@@ -305,7 +305,7 @@
           <use xl:href="#path_4"/>
         </clipPath>
         <g clip-path="url(#clip_path_4)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image5.png" width="96" height="54.24" opacity="1" transform="matrix(1.0416667 0 0 1.0370575 -191.2895 427.9375)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image5.png" width="96" height="54.24" opacity="1" transform="matrix(1.0416667 0 0 1.0370575 -191.2895 427.9375)"/>
         </g>
       </g>
       <g id="Graphic_100">
@@ -462,7 +462,7 @@
           <use xl:href="#path_5"/>
         </clipPath>
         <g clip-path="url(#clip_path_5)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image7.png" width="96" height="32.64" transform="matrix(1.4727488 0 0 1.4705882 35.376574 691.7436)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image7.png" width="96" height="32.64" transform="matrix(1.4727488 0 0 1.4705882 35.376574 691.7436)"/>
         </g>
       </g>
       <g id="Graphic_127">
@@ -471,7 +471,7 @@
           <use xl:href="#path_6"/>
         </clipPath>
         <g clip-path="url(#clip_path_6)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image2.png" width="96" height="54.24" opacity="1" transform="matrix(.7291667 0 0 .7259403 792.5629 21)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image2.png" width="96" height="54.24" opacity="1" transform="matrix(.7291667 0 0 .7259403 792.5629 21)"/>
         </g>
       </g>
       <g id="Graphic_126">
@@ -480,7 +480,7 @@
           <use xl:href="#path_7"/>
         </clipPath>
         <g clip-path="url(#clip_path_7)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image6.png" width="96" height="54.24" opacity="1" transform="matrix(.8793822 0 0 .8754912 785.3525 94.00594)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image6.png" width="96" height="54.24" opacity="1" transform="matrix(.8793822 0 0 .8754912 785.3525 94.00594)"/>
         </g>
       </g>
       <g id="Graphic_125">
@@ -489,7 +489,7 @@
           <use xl:href="#path_8"/>
         </clipPath>
         <g clip-path="url(#clip_path_8)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image5.png" width="96" height="54.24" opacity="1" transform="matrix(.6898128 0 0 .6867605 794.4518 60.42582)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image5.png" width="96" height="54.24" opacity="1" transform="matrix(.6898128 0 0 .6867605 794.4518 60.42582)"/>
         </g>
       </g>
       <g id="Graphic_130">
@@ -516,7 +516,7 @@
           <use xl:href="#path_9"/>
         </clipPath>
         <g clip-path="url(#clip_path_9)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image8.png" width="96" height="96.48" opacity="1" transform="matrix(.5729167 0 0 .57196656 731 24.31519)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image8.png" width="96" height="96.48" opacity="1" transform="matrix(.5729167 0 0 .57196656 731 24.31519)"/>
         </g>
       </g>
       <g id="Graphic_134"/>
@@ -527,7 +527,7 @@
           <use xl:href="#path_10"/>
         </clipPath>
         <g clip-path="url(#clip_path_10)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image4.png" width="96" height="96" opacity="1" transform="translate(715.91134 381) scale(.5)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image4.png" width="96" height="96" opacity="1" transform="translate(715.91134 381) scale(.5)"/>
         </g>
       </g>
       <g id="Graphic_141">
@@ -536,7 +536,7 @@
           <use xl:href="#path_11"/>
         </clipPath>
         <g clip-path="url(#clip_path_11)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/docs/image2.png" width="96" height="54.24" opacity="1" transform="matrix(1.1223958 0 0 1.1174295 -195.6645 367.32813)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/docs/images/image2.png" width="96" height="54.24" opacity="1" transform="matrix(1.1223958 0 0 1.1174295 -195.6645 367.32813)"/>
         </g>
       </g>
     </g>
