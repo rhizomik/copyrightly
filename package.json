@@ -21,7 +21,7 @@
     "webdriver-update": "webdriver-manager update",
     "debug:migrate": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle migrate",
     "debug:soltest": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle test",
-    "sol2uml": "sol2uml ./contracts -i Migrations.sol"
+    "sol2uml": "sol2uml ./contracts -i Migrations.sol -o docs/images/smartcontracts.svg"
   },
   "private": true,
   "dependencies": {
