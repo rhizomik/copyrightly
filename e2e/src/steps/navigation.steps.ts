@@ -11,6 +11,10 @@ Given(/^I'm on the home page$/, async () => {
   await browser.get('http://localhost:4200');
 });
 
+Given(/^I go to "([^"]*)"$/, async (url: string) => {
+  await browser.get(url);
+});
+
 When(/^I go to the home page$/, async () => {
   await navBar.goToHome();
 });

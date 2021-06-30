@@ -22,6 +22,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   addingUploadableEvidence = false;
   addingYouTubeEvidence = false;
   navigationSubscription: Subscription | undefined;
+  notFound = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -37,7 +38,12 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
       this.manifestationsContractService.getManifestation(params.get('id'))))
     .subscribe((manifestation: Manifestation) => {
       this.manifestation = manifestation;
-      this.loadEvidence();
+      if (manifestation.title) {
+        this.loadEvidence();
+      } else {
+        this.notFound = true;
+        this.alertsService.error('Manifestation Not Found: ' + manifestation.hash);
+      }
     });
   }
 
