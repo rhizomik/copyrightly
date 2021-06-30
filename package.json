@@ -15,6 +15,7 @@
     "soltest": "truffle test test/*.js",
     "ngtest": "ng test --watch=false",
     "e2e": "ng e2e",
+    "e2e-feature": "protractor e2e/protractor.conf.js --specs ",
     "e2e-local": "npm-run-all e2e-quick e2e-report --continue-on-error",
     "e2e-quick": "ng e2e --dev-server-target= --webdriver-update false",
     "e2e-report": "node e2e/generate-html-report.js",
