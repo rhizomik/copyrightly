@@ -1,4 +1,6 @@
-pragma solidity >=0.4.21 <0.6.0;
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+pragma solidity ^0.8.6;
 
 /// @title Contract for copyright authorship complaints registration
 /// @author Roberto García (http://rhizomik.net/~roberto/)
@@ -17,7 +19,7 @@ contract Complaints {
     event ComplaintEvent(address indexed complainer, string complaintHash, string indexed manifestationHashed);
     event RevokeComplaintEvent(address indexed complainer, string complaintHash, string indexed manifestationHashed);
 
-    constructor(address _manifestations) public {
+    constructor(address _manifestations) {
         owner = msg.sender;
         manifestations = _manifestations;
     }

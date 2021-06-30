@@ -1,12 +1,15 @@
-pragma solidity >=0.4.21 <0.6.0;
+// SPDX-License-Identifier: GPL-3.0-or-later
 
-import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+pragma solidity ^0.8.6;
+
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
+import "openzeppelin-solidity/contracts/security/Pausable.sol";
 import "./ExpirableLib.sol";
 import "./Evidencable.sol";
 
 /// @title Contract for copyright authorship registration through creations manifestations
 /// @author Roberto García (http://rhizomik.net/~roberto/)
-contract Manifestations is Pausable, Evidencable {
+contract Manifestations is Ownable, Pausable, Evidencable {
 
     using ExpirableLib for ExpirableLib.TimeAndExpiry;
 
@@ -22,7 +25,7 @@ contract Manifestations is Pausable, Evidencable {
     event ManifestEvent(string hash, string title, address indexed manifester);
     event AddedEvidence(uint8 evidenceCount);
 
-    constructor(uint32 _timeToExpiry) public {
+    constructor(uint32 _timeToExpiry) {
         timeToExpiry = _timeToExpiry;
     }
 
@@ -86,8 +89,16 @@ contract Manifestations is Pausable, Evidencable {
 
     /// @notice Adds an evidence if there is already a manifestation for `hash`.
     /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
-    function addEvidence(string memory hash) public {
+    function addEvidence(string memory hash) public override {
         require(bytes(manifestations[hash].title).length > 0, "The manifestation evidenced should exist");
         super.addEvidence(hash);
+    }
+
+    function pause() public onlyOwner {
+        super._pause();
+    }
+
+    function unpause() public onlyOwner {
+        super._unpause();
     }
 }

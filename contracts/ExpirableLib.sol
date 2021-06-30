@@ -1,6 +1,8 @@
-pragma solidity >=0.4.21 <0.6.0;
+// SPDX-License-Identifier: GPL-3.0-or-later
 
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+pragma solidity ^0.8.6;
+
+import "openzeppelin-solidity/contracts/utils/math/SafeMath.sol";
 
 
 /// @title Library to implement expirable items
@@ -17,7 +19,7 @@ library ExpirableLib {
     /// @dev This method checks if there is a expiry time and if it is expired.
     /// @param self TimeAndExpiry struct
     function isExpired(TimeAndExpiry storage self) internal view returns(bool) {
-        return (self.expiryTime > 0 && self.expiryTime < now);
+        return (self.expiryTime > 0 && self.expiryTime < block.timestamp); // solhint-disable-line not-rely-on-time
     }
 
     /// @notice Set expiry time for `self` TimeAndExpiry struct to now plus `duration`.
@@ -25,7 +27,7 @@ library ExpirableLib {
     /// @param self TimeAndExpiry struct
     /// @param duration Time from current time till expiry
     function setExpiry(TimeAndExpiry storage self, uint256 duration) internal {
-        self.creationTime = now;
-        self.expiryTime = now.add(duration);
+        self.creationTime = block.timestamp;                              // solhint-disable-line not-rely-on-time
+        self.expiryTime = block.timestamp.add(duration);                  // solhint-disable-line not-rely-on-time
     }
 }

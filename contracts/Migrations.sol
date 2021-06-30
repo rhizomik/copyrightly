@@ -1,8 +1,10 @@
-pragma solidity >=0.4.22 <0.9.0;
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.6;
 
 contract Migrations {
   address public owner = msg.sender;
-  uint public last_completed_migration;
+  uint public last_completed_migration; // solhint-disable-line var-name-mixedcase
 
   modifier restricted() {
     require(msg.sender == owner, "This function is restricted to the contract's owner");
