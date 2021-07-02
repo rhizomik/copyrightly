@@ -83,7 +83,7 @@
     "karma-jasmine-html-reporter": "^1.6.0",
     "npm-run-all": "^4.1.5",
     "openzeppelin-solidity": "^4.1.0",
-    "protractor": "~ 7.0.0",
+    "protractor": "~7.0.0",
     "protractor-cucumber-framework": "^8.0.4",
     "sol2uml": "^1.1.25",
     "solhint": "^3.3.4",

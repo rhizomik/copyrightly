@@ -24,4 +24,12 @@ export class MainContentPage {
   getButtonWithText(text: string): ElementFinder {
     return this.mainContainer.element(by.partialButtonText(text));
   }
+
+  isEnabledButtonWithText(text: string): promise.Promise<boolean> {
+    return this.mainContainer.element(by.buttonText(text)).isEnabled();
+  }
+
+  existsButtonWithText(text: string): promise.Promise<boolean> {
+    return this.mainContainer.element(by.partialButtonText(text)).isPresent();
+  }
 }

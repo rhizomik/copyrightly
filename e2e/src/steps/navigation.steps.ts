@@ -1,6 +1,6 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
-import { browser, ExpectedConditions, promise } from 'protractor';
+import { browser, by, ExpectedConditions, promise } from 'protractor';
 import { NavigationBar } from '../pages/navbar.page';
 import { MainContentPage } from '../pages/main-content.page';
 
@@ -13,6 +13,7 @@ Given(/^I'm on the home page$/, async () => {
 
 Given(/^I go to "([^"]*)"$/, async (url: string) => {
   await browser.get(url);
+  await browser.refresh();
 });
 
 When(/^I go to the home page$/, async () => {
@@ -34,13 +35,16 @@ When(/^I click the "([^"]*)" button$/, async (text: string) => {
 });
 
 Then(/^The "([^"]*)" button is disabled$/, async (text: string) => {
-  const button = mainContent.getButtonWithText(text);
-  expect(button.isEnabled(), 'Button with text "' + text + '" should be disabled')
+  expect(await mainContent.isEnabledButtonWithText(text), 'Button with text "' + text + '" should be disabled')
     .to.equal(false);
 });
 
-Then(/^The "([^"]*)" button is enabled/, async (text: string) => {
-  const button = mainContent.getButtonWithText(text);
-  expect(button.isEnabled(), 'Button with text "' + text + '" should be enabled')
+Then(/^The "([^"]*)" button is enabled$/, async (text: string) => {
+  expect(await mainContent.isEnabledButtonWithText(text), 'Button with text "' + text + '" should be enabled')
     .to.equal(true);
+});
+
+Then(/^There is no "([^"]*)" button/, async (text: string) => {
+  expect(await mainContent.existsButtonWithText(text), 'Button with text "' + text + '" should not be present')
+    .to.equal(false);
 });
