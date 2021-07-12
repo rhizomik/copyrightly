@@ -1,9 +1,9 @@
 
-<p *ngIf="!all">You have registered { manifestationEvents?.length, plural,
+<p *ngIf="own">You have registered { manifestationEvents?.length, plural,
   =1 { 1 manifestation }
   other { {{manifestationEvents?.length}} manifestations} }
 </p>
-<p *ngIf="all">There { manifestationEvents?.length, plural,
+<p *ngIf="!own">There { manifestationEvents?.length, plural,
   =1 { is 1 manifestation }
   other { are {{manifestationEvents?.length}} manifestations} } registered
 </p>
