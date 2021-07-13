@@ -55,3 +55,7 @@
     </app-uploadevidence-details>
   </div>
 </div>
+
+<div *ngIf="notFound" class="text-center">
+  <button class="btn btn-info" (click)="back()">Back</button>
+</div>
