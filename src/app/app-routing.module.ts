@@ -6,11 +6,12 @@ import { ManifestationsSearchComponent } from './manifestations/search/manifesta
 import { ManifestationsListComponent } from './manifestations/list/manifestations-list.component';
 import { ManifestationDetailsComponent } from './manifestations/details/manifestation-details.component';
 import { CreatorDetailsComponent } from './creators/details/creator-details.component';
+import { CreatorsSearchComponent } from './creators/search/creators-search.component';
 
 const routes: Routes = [
-  { path: 'manifestations/:id', component: ManifestationDetailsComponent,
-    data: { isAuthenticated: true }, runGuardsAndResolvers: 'always' },
+  { path: 'manifestations/:id', component: ManifestationDetailsComponent, data: {isAuthenticated: true}, runGuardsAndResolvers: 'always' },
   { path: 'creators/:id', component: CreatorDetailsComponent, data: { isAuthenticated: true } },
+  { path: 'creators', component: CreatorsSearchComponent, data: { isAuthenticated: true } },
   { path: 'register', component: ManifestSingleComponent, data: { isAuthenticated: true } },
   { path: 'search', component: ManifestationsSearchComponent, data: { isAuthenticated: true } },
   { path: 'list', component: ManifestationsListComponent, data: { isAuthenticated: true } },

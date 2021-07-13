@@ -27,9 +27,10 @@
       </li>
       <li class="nav-item dropdown" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="ComplaintsDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Complaints</a>
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Reuse</a>
         <div class="dropdown-menu" aria-labelledby="ComplaintsDropdown" ngbDropdownMenu>
-          <a class="dropdown-item">Work in progress...</a>
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/creators']"><span class="fas fa-search"></span> Search Creator</a>
         </div>
       </li>
     </ul>

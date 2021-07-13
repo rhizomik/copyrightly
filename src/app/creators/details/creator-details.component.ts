@@ -9,7 +9,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class CreatorDetailsComponent implements OnInit, OnDestroy {
 
   creatorAccount = '';
-  notFound = false;
 
   constructor(private route: ActivatedRoute) {}
 
