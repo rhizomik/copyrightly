@@ -4,6 +4,6 @@ import { expect } from 'chai';
 
 const results = new ResultsPage();
 
-Then('I see {int} result', async (count: number) => {
+Then('I see {int} results', async (count: number) => {
   await expect(await results.getResultsCount()).to.equal(count);
 });
