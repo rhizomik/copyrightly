@@ -6,7 +6,10 @@ Feature: List Own Claims
   Scenario: List own claims when I have one
     Given I'm on the home page
     When I click submenu option "List Own" in menu "Authorship"
-    Then I see 2 result
-    And I see a result with "Title" "Te Hoho Rock"
-    And I see a result with "Title" "Smiling Sphinx Rock"
-    And I see a result with "Registerer" "0x6273...Ef57"
+    Then I see 2 results
+    And I see result number 1 with
+      | Title      | Te Hoho Rock        |
+      | Creator    | 0x6273...Ef57       |
+    And I see result number 2 with
+      | Title      | Smiling Sphinx Rock |
+      | Creator    | 0x6273...Ef57       |
