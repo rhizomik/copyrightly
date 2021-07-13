@@ -11,10 +11,10 @@ Feature: List Creator Claims
     Then I see 2 results
     And I see result number 1 with
       | Title      | Te Hoho Rock        |
-      | Registerer | 0x6273...Ef57       |
+      | Creator    | 0x6273...Ef57       |
     And I see result number 2 with
       | Title      | Smiling Sphinx Rock |
-      | Registerer | 0x6273...Ef57       |
+      | Creator    | 0x6273...Ef57       |
 
   Scenario: List claims for a creator without any
     Given I'm on the home page

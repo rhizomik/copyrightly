@@ -17,7 +17,7 @@
         {{event?.what?.hash}}</a>
     </div>
     <div class="col-md-2 p-1 mb-1">
-      <h6 class="card-subtitle text-muted">Registerer</h6>
+      <h6 class="card-subtitle text-muted">Creator</h6>
       <a class="card-text" title="{{event?.who}}" [routerLink]="['/creators', event?.who]">
         {{event?.who | slice:0:6}}...{{event?.who | slice:-4}}
       </a>
