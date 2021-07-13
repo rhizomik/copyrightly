@@ -1,16 +1,16 @@
-import { element, by, browser, ElementFinder } from 'protractor';
+import { element, by, ElementFinder } from 'protractor';
 
 export class SearchFormPage {
 
   private form: ElementFinder;
-  private hash: ElementFinder;
+  private input: ElementFinder;
 
   constructor() {
     this.form = element(by.id('search-form'));
-    this.hash = this.form.element(by.id('inputHash'));
+    this.input = this.form.element(by.id('input'));
   }
 
-  async fillSearchForm(hash: string) {
-    await this.hash.sendKeys(hash);
+  async fillSearchForm(content: string) {
+    await this.input.sendKeys(content);
   }
 }

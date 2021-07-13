@@ -22,8 +22,8 @@ export class ManifestationsSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void { }
 
-  getManifestation(hash: string) {
-    this.manifestationsContractService.getManifestation(hash).pipe(takeUntil(this.ngUnsubscribe))
+  getManifestation() {
+    this.manifestationsContractService.getManifestation(this.manifestation.hash).pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((manifestation: Manifestation) => {
         this.manifestation = manifestation;
         if (!this.manifestation.title) {

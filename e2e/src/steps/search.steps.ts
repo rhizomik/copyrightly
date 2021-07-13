@@ -6,8 +6,7 @@ import { expect } from 'chai';
 const searchForm = new SearchFormPage();
 const results = new ResultsPage();
 
-When(/^I fill the search form with content hash "([^"]*)"$/,
-  async (hash: string) => {
+When(/^I fill the search form with content "([^"]*)"$/, async (hash: string) => {
   await searchForm.fillSearchForm(hash);
 });
 

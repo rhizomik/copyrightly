@@ -6,8 +6,8 @@
 
     <!-- User identifier input -->
     <div class="form-group" [class.was-validated]="inputCreatorId.dirty || inputCreatorId.touched">
-      <label class="control-label" for="inputCreatorId">Creator Identifier*</label>
-      <input id="inputCreatorId" name="inputCreatorId" type="text" class="form-control" required
+      <label class="control-label" for="input">Creator Identifier*</label>
+      <input id="input" name="inputCreatorId" type="text" class="form-control" required
              pattern="0x[a-fA-F0-9]{40}"
              [(ngModel)]="account" #inputCreatorId="ngModel" placeholder="0x0123456789ABCDEF0123456789ABCDEF01234567">
       <div class="invalid-feedback">An Ethereum account is expected, starting with "0x" and followed by 40 hexadecimal symbols (0-9 or A-F)</div>

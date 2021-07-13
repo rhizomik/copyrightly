@@ -2,14 +2,14 @@
 <p class="lead">Look for previously registered creations by content hash</p>
 
 <form id="search-form" *ngIf="!manifestation.title"
-      (ngSubmit)="getManifestation(inputHash.value)" #getManifestationForm="ngForm">
+      (ngSubmit)="getManifestation()" #getManifestationForm="ngForm">
   <fieldset>
 
     <!-- Content hash input -->
     <div class="form-group" [class.was-validated]="inputHash.dirty || inputHash.touched">
-      <label class="control-label" for="inputHash">Hash*</label>
-      <input id="inputHash" name="inputHash" type="text" class="form-control" required
-             (ngModel)="manifestation.hash" #inputHash="ngModel" placeholder="Content Hash">
+      <label class="control-label" for="input">Hash*</label>
+      <input id="input" name="inputHash" type="text" class="form-control" required
+             [(ngModel)]="manifestation.hash" #inputHash="ngModel" placeholder="Content Hash">
       <div class="invalid-feedback">A content hash is required</div>
     </div>
 
