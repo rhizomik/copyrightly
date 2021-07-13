@@ -10,7 +10,6 @@ import { Alert } from './alert';
 export class AlertsComponent implements OnInit {
 
   alerts: Alert[] = [];
-  private alertTimeout = 7000;
 
   constructor(private alertsService: AlertsService,
               private ngZone: NgZone) { }
@@ -18,13 +17,15 @@ export class AlertsComponent implements OnInit {
   ngOnInit(): void {
     this.alertsService.alerts$.subscribe(
       alert => {
-        this.ngZone.runOutsideAngular(() => {
-          alert.timerId = window.setTimeout(() => {
-            this.ngZone.run(() => {
-              this.close(alert);
-            });
-          }, this.alertTimeout);
-        });
+        if (alert.timeout) {
+          this.ngZone.runOutsideAngular(() => {
+            alert.timerId = window.setTimeout(() => {
+              this.ngZone.run(() => {
+                this.close(alert);
+              });
+            }, alert.timeout);
+          });
+        }
         this.ngZone.run(() => {
           this.alerts.push(alert);
         });
