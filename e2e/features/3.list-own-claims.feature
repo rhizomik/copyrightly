@@ -5,7 +5,8 @@ Feature: List Own Claims
 
   Scenario: List own claims when I have one
     Given I'm on the home page
-    When I click submenu option "List Own" in menu "Authorship"
+    And I click submenu option "Register" in menu "Authorship"
+    When I click current user account
     Then I see 2 results
     And I see result number 1 with
       | Title      | Te Hoho Rock        |

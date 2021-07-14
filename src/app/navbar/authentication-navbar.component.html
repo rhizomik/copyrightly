@@ -8,10 +8,11 @@
         </div>
         <input *ngIf="accounts.length == 0"  id="no-account" name="no-account" type="text" readonly
                class="form-control" value="Offline">
-        <input *ngIf="accounts.length == 1"  id="account" name="account" type="text" readonly
-               title="{{accounts[0]}}" class="form-control" [ngModel]="accountsNames[0]">
-        <select *ngIf="accounts.length > 1" id="accounts" name="accounts" class="custom-select" title="{{account}}"
-                [(ngModel)]="account" (ngModelChange)="onChange($event)">
+        <input *ngIf="accounts.length >= 1"  id="account" name="account" type="text" class="form-control"
+               readonly #account (focus)="account.blur()"
+               title="{{accountId}}" [ngModel]="accountName" (click)="currentUserProfile()">
+        <select *ngIf="accounts.length > 1" id="accounts" name="accounts" class="custom-select" title="{{accountId}}"
+                [(ngModel)]="accountId" (ngModelChange)="onChange($event)">
           <option *ngFor="let account of accounts; let i = index" [ngValue]="account" title="{{account}}">
             {{accountsNames[i]}}</option>
         </select>
