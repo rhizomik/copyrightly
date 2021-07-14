@@ -10,13 +10,14 @@
           {{manifestation?.hash}}</a>
       </div>
       <div class="col-md-2 p-1 mb-1">
-        <h6 class="card-subtitle text-muted">Authors</h6>
-        <p class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}">
+        <h6 class="card-subtitle text-muted">Creator</h6>
+        <a class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}"
+           [routerLink]="['/creators', author]">
           {{author | slice:0:6}}...{{author | slice:-4}}
-        </p>
+        </a>
       </div>
       <div class="col-md-3 p-1 mb-1">
-        <h6 class="card-subtitle text-muted">When</h6>
+        <h6 class="card-subtitle text-muted">Registered</h6>
         <p class="card-text">{{manifestation?.when | date:'medium'}}</p>
       </div>
       <div class="col-md-1 p-1 mb-1">
@@ -49,9 +50,13 @@
     </div>
   </div>
 
-  <div *ngIf="!addingEvidence()">
+  <div id="list" *ngIf="!addingEvidence()">
     <app-uploadevidence-details *ngFor="let evidence of uploadEvidenceEvents; let i = index"
       [evidenceEvent]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
   </div>
+</div>
+
+<div *ngIf="notFound" class="text-center">
+  <button class="btn btn-info" (click)="back()">Back</button>
 </div>

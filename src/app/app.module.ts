@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { AuthenticationNavbarComponent } from './navbar/authentication-navbar.component';
 import { ManifestationsModule } from './manifestations/manifestations.module';
 import { AlertsModule } from './alerts/alerts.module';
+import { CreatorsModule } from './creators/creators.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AlertsModule } from './alerts/alerts.module';
     AlertsModule,
     Angulartics2Module.forRoot(),
     ManifestationsModule,
+    CreatorsModule,
     NgbCollapseModule,
     NgbDropdownModule,
     NgbAlertModule

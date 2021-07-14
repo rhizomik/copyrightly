@@ -24,14 +24,18 @@ When(/^I click menu option "([^"]*)"$/, async (option: string) => {
   await navBar.goToMenuOption(option);
 });
 
-When(/^I click submenu option "([^"]*)" in menu "([^"]*)"$/,
-  async (option: string, menu: string) => {
+When(/^I click submenu option "([^"]*)" in menu "([^"]*)"$/, async (option: string, menu: string) => {
   await navBar.goToMenuOption(menu);
   await navBar.goToMenuOption(option);
 });
 
+When(/^I click current user account$/, async () => {
+  await navBar.clickCurrentAccount();
+});
+
 When(/^I click the "([^"]*)" button$/, async (text: string) => {
   await mainContent.clickButtonWithText(text);
+  browser.waitForAngular();
 });
 
 Then(/^The "([^"]*)" button is disabled$/, async (text: string) => {

@@ -18,22 +18,19 @@
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Authorship</a>
         <div class="dropdown-menu" aria-labelledby="ManifestationsDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/list']"><span class="fas fa-list"></span> List Own</a>
-          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/list-all']"><span class="fas fa-list"></span> List All</a>
+             [routerLink]="['/list']"><span class="fas fa-list"></span> List All</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/register']"><span class="fas fa-gavel"></span> Register</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/search']"><span class="fas fa-search"></span> Search</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item">More coming...</a>
         </div>
       </li>
       <li class="nav-item dropdown" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="ComplaintsDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Complaints</a>
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Reuse</a>
         <div class="dropdown-menu" aria-labelledby="ComplaintsDropdown" ngbDropdownMenu>
-          <a class="dropdown-item">Work in progress...</a>
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/creators']"><span class="fas fa-search"></span> Search Creator</a>
         </div>
       </li>
     </ul>

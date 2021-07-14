@@ -2,14 +2,14 @@
 <p class="lead">Look for previously registered creations by content hash</p>
 
 <form id="search-form" *ngIf="!manifestation.title"
-      (ngSubmit)="getManifestation(inputHash.value)" #getManifestationForm="ngForm">
+      (ngSubmit)="getManifestation()" #getManifestationForm="ngForm">
   <fieldset>
 
     <!-- Content hash input -->
     <div class="form-group" [class.was-validated]="inputHash.dirty || inputHash.touched">
-      <label class="control-label" for="inputHash">Hash*</label>
-      <input id="inputHash" name="inputHash" type="text" class="form-control" required
-             (ngModel)="manifestation.hash" #inputHash="ngModel" placeholder="Content Hash">
+      <label class="control-label" for="input">Hash*</label>
+      <input id="input" name="inputHash" type="text" class="form-control" required
+             [(ngModel)]="manifestation.hash" #inputHash="ngModel" placeholder="Content Hash">
       <div class="invalid-feedback">A content hash is required</div>
     </div>
 
@@ -22,7 +22,7 @@
   </fieldset>
 </form>
 
-<div *ngIf="manifestation.title">
+<div id="list" *ngIf="manifestation.title">
 
   <p class="col-md-12 p-0">Search result:</p>
 
@@ -35,13 +35,13 @@
           {{manifestation?.hash}}</a>
       </div>
       <div class="col-md-2 p-1 mb-1">
-        <h6 class="card-subtitle text-muted">Authors</h6>
+        <h6 class="card-subtitle text-muted">Creator</h6>
         <p class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}">
           {{author | slice:0:6}}...{{author | slice:-4}}
         </p>
       </div>
       <div class="col-md-4 p-1 mb-1">
-        <h6 class="card-subtitle text-muted">When</h6>
+        <h6 class="card-subtitle text-muted">Registered</h6>
         <p class="card-text">{{manifestation?.when | date:'medium'}}</p>
       </div>
     </div>

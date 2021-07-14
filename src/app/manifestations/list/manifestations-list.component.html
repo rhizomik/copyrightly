@@ -1,12 +1,13 @@
-
-<p *ngIf="!all">You have registered { manifestationEvents?.length, plural,
+<p *ngIf="own">You have registered { manifestationEvents?.length, plural,
   =1 { 1 manifestation }
   other { {{manifestationEvents?.length}} manifestations} }
 </p>
-<p *ngIf="all">There { manifestationEvents?.length, plural,
+<p *ngIf="!own">There { manifestationEvents?.length, plural,
   =1 { is 1 manifestation }
   other { are {{manifestationEvents?.length}} manifestations} } registered
 </p>
+
+<div id="list" *ngIf="manifestationEvents">
 
 <div class="card mb-4" *ngFor="let event of manifestationEvents">
   <div class="card-block row m-1">
@@ -17,10 +18,10 @@
         {{event?.what?.hash}}</a>
     </div>
     <div class="col-md-2 p-1 mb-1">
-      <h6 class="card-subtitle text-muted">Registerer</h6>
-      <p class="card-text" title="{{event?.who}}">
+      <h6 class="card-subtitle text-muted">Creator</h6>
+      <a class="card-text" title="{{event?.who}}" [routerLink]="['/creators', event?.who]">
         {{event?.who | slice:0:6}}...{{event?.who | slice:-4}}
-      </p>
+      </a>
     </div>
     <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Registered</h6>
@@ -30,4 +31,6 @@
   <div class="card-footer">
     <a [routerLink]="['/manifestations', event?.what?.hash]" class="btn btn-info">Details</a>
   </div>
+</div>
+
 </div>

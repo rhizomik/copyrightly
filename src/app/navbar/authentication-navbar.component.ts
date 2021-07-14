@@ -3,6 +3,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { Web3Service } from '../util/web3.service';
 import { AuthenticationService } from './authentication.service';
 import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication-navbar',
@@ -11,12 +12,14 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthenticationNavbarComponent implements OnInit, OnDestroy {
 
-  public account = '';
+  public accountId = '';
+  public accountName = '';
   public accountsNames: string[] = [];
   public accounts: string[] = [];
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
-  constructor(private web3Service: Web3Service,
+  constructor(private router: Router,
+              private web3Service: Web3Service,
               private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
@@ -26,10 +29,16 @@ export class AuthenticationNavbarComponent implements OnInit, OnDestroy {
     this.authenticationService.getSelectedAccount()
       .pipe(takeUntil(this.ngUnsubscribe))
       .pipe(filter(account => account !== ''))
-      .subscribe(account =>  this.account = account );
+      .subscribe(account =>  {
+        this.accountId = account;
+        this.accountName = this.accountsNames[this.accounts.indexOf(this.accountId)];
+      });
     this.authenticationService.getAccountsNames()
       .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(accountsNames =>  this.accountsNames = accountsNames );
+      .subscribe(accountsNames =>  {
+        this.accountsNames = accountsNames;
+        this.accountName = this.accountsNames[this.accounts.indexOf(this.accountId)];
+      });
   }
 
   refreshAccounts() {
@@ -47,5 +56,9 @@ export class AuthenticationNavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  currentUserProfile() {
+    this.router.navigate(['/creators', this.accountId]);
   }
 }

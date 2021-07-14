@@ -11,20 +11,20 @@ export class AlertsService {
 
   constructor(private modalService: NgbModal) { }
 
-  error(message: string): void {
-    this.alertsSource.next(new Alert(AlertType.danger, message));
+  error(message: string, timeout?: number): void {
+    this.alertsSource.next(new Alert(AlertType.danger, message, timeout));
   }
 
-  info(message: string): void {
-    this.alertsSource.next(new Alert(AlertType.info, message));
+  info(message: string, timeout?: number): void {
+    this.alertsSource.next(new Alert(AlertType.info, message, timeout));
   }
 
-  success(message: string): void {
-    this.alertsSource.next(new Alert(AlertType.success, message));
+  success(message: string, timeout?: number): void {
+    this.alertsSource.next(new Alert(AlertType.success, message, timeout));
   }
 
-  warning(message: string): void {
-    this.alertsSource.next(new Alert(AlertType.warning, message));
+  warning(message: string, timeout?: number): void {
+    this.alertsSource.next(new Alert(AlertType.warning, message, timeout));
   }
 
   modal(content: any, data: any): void {

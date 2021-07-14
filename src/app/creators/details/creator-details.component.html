@@ -1,0 +1,13 @@
+<div *ngIf="creatorAccount">
+  <h3>Creator Identity</h3>
+
+  <p>Account: <a href="https://goerli.etherscan.io/address/{{creatorAccount}}" target="_blank">{{creatorAccount}}</a></p>
+
+  <h4>Creator's Authorship Claims</h4>
+
+  <app-manifestations-list [manifester]="creatorAccount"></app-manifestations-list>
+</div>
+
+<div *ngIf="!creatorAccount" class="text-center">
+  <button class="btn btn-info" (click)="back()">Back</button>
+</div>

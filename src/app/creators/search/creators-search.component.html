@@ -1,0 +1,23 @@
+<h4><span class="fa fa-search"></span> Creator Search</h4>
+<p class="lead">Look for a creator using her or his identifier (account)</p>
+
+<form id="search-form" (ngSubmit)="getCreator()" #getCreatorForm="ngForm">
+  <fieldset>
+
+    <!-- User identifier input -->
+    <div class="form-group" [class.was-validated]="inputCreatorId.dirty || inputCreatorId.touched">
+      <label class="control-label" for="input">Creator Identifier*</label>
+      <input id="input" name="inputCreatorId" type="text" class="form-control" required
+             pattern="0x[a-fA-F0-9]{40}"
+             [(ngModel)]="account" #inputCreatorId="ngModel" placeholder="0x0123456789ABCDEF0123456789ABCDEF01234567">
+      <div class="invalid-feedback">An Ethereum account is expected, starting with "0x" and followed by 40 hexadecimal symbols (0-9 or A-F)</div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn btn-success pull-right"
+              [disabled]="!getCreatorForm.form.valid">Search</button>
+    </div>
+
+  </fieldset>
+</form>
