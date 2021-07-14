@@ -1,4 +1,3 @@
-
 <p *ngIf="own">You have registered { manifestationEvents?.length, plural,
   =1 { 1 manifestation }
   other { {{manifestationEvents?.length}} manifestations} }
@@ -7,6 +6,8 @@
   =1 { is 1 manifestation }
   other { are {{manifestationEvents?.length}} manifestations} } registered
 </p>
+
+<div id="list" *ngIf="manifestationEvents">
 
 <div class="card mb-4" *ngFor="let event of manifestationEvents">
   <div class="card-block row m-1">
@@ -30,4 +31,6 @@
   <div class="card-footer">
     <a [routerLink]="['/manifestations', event?.what?.hash]" class="btn btn-info">Details</a>
   </div>
+</div>
+
 </div>

@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div *ngIf="!addingEvidence()">
+  <div id="list" *ngIf="!addingEvidence()">
     <app-uploadevidence-details *ngFor="let evidence of uploadEvidenceEvents; let i = index"
       [evidenceEvent]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
