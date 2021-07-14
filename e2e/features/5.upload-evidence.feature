@@ -3,7 +3,7 @@ Feature: Upload Evidence
   As a creator
   I want to upload content or data and associate it to the claim
 
-  @slow
+  @disabled
   Scenario: Upload evidence for a previously registered authorship claim
     Given I'm on the home page
     And I click submenu option "Search" in menu "Authorship"
@@ -20,7 +20,7 @@ Feature: Upload Evidence
     And I see modal with text "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I see modal with text "QmU82NhCoFCwvRCQucjkQzg1PVeWsx8hLioLnexZXJ6DiM"
 
-  @slow
+  @disabled
   Scenario: Try to upload previously registered evidence
     Given I'm on the home page
     And I click submenu option "Search" in menu "Authorship"
