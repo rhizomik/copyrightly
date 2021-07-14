@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AlertsService } from '../../alerts/alerts.service';
@@ -13,10 +13,10 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './manifestations-list.component.html',
   styleUrls: ['./manifestations-list.component.css']
 })
-export class ManifestationsListComponent implements OnInit, OnDestroy {
+export class ManifestationsListComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() manifester = '';
-  public manifestationEvents: ManifestEvent[] = [];
+  public manifestationEvents: ManifestEvent[] | null = null;
   public own = false;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -27,19 +27,27 @@ export class ManifestationsListComponent implements OnInit, OnDestroy {
               private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.manifestationsContractService.listManifestEvents(this.manifester)
-      .subscribe((events: ManifestEvent[]) => {
-            this.manifestationEvents = events;
-          }, error => this.alertsService.error(error));
     this.authenticationService.getSelectedAccount()
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(account => {
         this.own = this.manifester === account;
       }, error => this.alertsService.error(error));
+    this.loadManifestations();
+  }
+
+  ngOnChanges() {
+    this.loadManifestations();
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  private loadManifestations() {
+    this.manifestationsContractService.listManifestEvents(this.manifester)
+      .subscribe((events: ManifestEvent[]) => {
+        this.manifestationEvents = events;
+      }, error => this.alertsService.error(error));
   }
 }
