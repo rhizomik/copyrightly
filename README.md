@@ -1,22 +1,28 @@
 # Rhizomik CopyrightLY
 
-Decentralized Application (ÐApp) for Copyright Management of Social Media
+### Decentralised Application (ÐApp) for Copyright Management of Social Media
 
-[![CI and CD](https://github.com/rhizomik/copyrightly/actions/workflows/cicd.yml/badge.svg)](https://github.com/rhizomik/copyrightly/actions/workflows/cicd.yml)
+## Description
 
-# Project Description
+CopyrightLY is a decentralised application that leverages blockchain and semantic web technologies to facilitate copyright management, for instance:
 
-CopyrightLY is a decentralised application that leverages blockchain and semantic web technologies to facilitate copyright management of social media. It is integrated into existing social media platforms and allows content creators to explore ways to exploit their media beyond those made possible by those platforms. It also provides potential reusers ways of checking authorship of the content they are willing to reuse and the conditions under which it is available.
+* Integrated into existing **social media** platforms, it allows content creators to explore ways to **monetise** their media beyond those made possible by those platforms.
+* Provides potential **reusers** ways of checking the **authorship** of content they are willing to reuse, and the **conditions** under which it is available.
+* Settles a **consensus-based** layer of **authorship** claims to **anchor** copyright transactions like decentralised content markets or Non-Fungible Tokens (**NFTs**).
 
-To do so, content on social media platforms is linked by creators to on-chain authorship claims tied to their identities. Additional evidence can be provided combining off-chain data and on-chain transactions to sustain those claims. Thus, they can be used in case of a copyright complaint, even as evidence in court. This approach also discourages false claims, which cannot be retracted once on-chain.
+## Implementation
 
-Authorship claims are accompanied by default reuse conditions modelled using semantic technologies and based on a copyright ontology. They provide the necessary and unambiguous building blocks that also make the terms machine-actionable. Reusers can negotiate these terms and, after acceptance, on-chain transactions are generated to keep track of the agreed terms.
+To do so, creators link content on social media platforms to **on-chain authorship claims** tied to their identities. They can also provide additional **evidence** combining off-chain data and on-chain transactions to sustain those claims. These can be used in case of a copyright **complaint**, even as evidence in court. This approach also discourages false claims, which cannot be retracted once on-chain.
 
-# Development Status
+Authorship claims are accompanied by default **reuse terms** modelled using semantic technologies and based on the [Copyright Ontology](https://rhizomik.net/ontologies/copyrightonto), which provides the building blocks to make the terms **machine-actionable**. Reusers can **negotiate** these terms and, after acceptance, on-chain transactions are generated to keep track of the **agreements**.
+
+### Development Status
 
 CopyrightLY's development is documented in the project's [Wiki](https://github.com/rhizomik/copyrightly/wiki).
 
-# Team
+[![CI and CD](https://github.com/rhizomik/copyrightly/actions/workflows/cicd.yml/badge.svg)](https://github.com/rhizomik/copyrightly/actions/workflows/cicd.yml)
+
+## Team
 
 <a href="https://www.udl.cat" target="_blank"><img src="https://copyrightly.rhizomik.net/assets/UdL.svg" height="60px" alt="Universitat de Lleida"/></a>
 
@@ -25,11 +31,11 @@ CopyrightLY's development is documented in the project's [Wiki](https://github.c
 * [Rosa Gil](https://www.researchgate.net/profile/Rosa-Gil-3)
 * [Mercè Teixidó](https://www.researchgate.net/profile/Merce-Teixido)
 
-# Contact
+### Contact
 
 <pre>copyrightly@rhizomik.net</pre>
 
-# Support
+## Support
 
 Supported by project ONTOCHAIN, which has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 957338
 
