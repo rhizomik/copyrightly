@@ -23,14 +23,14 @@ import { CreatorsModule } from './creators/creators.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
-    AlertsModule,
-    Angulartics2Module.forRoot(),
-    ManifestationsModule,
-    CreatorsModule,
     NgbCollapseModule,
     NgbDropdownModule,
-    NgbAlertModule
+    NgbAlertModule,
+    Angulartics2Module.forRoot(),
+    AppRoutingModule,
+    AlertsModule,
+    ManifestationsModule,
+    CreatorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

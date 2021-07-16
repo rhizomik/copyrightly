@@ -13,6 +13,7 @@ import { ManifestEventComponent } from './manifest-event.component';
 import { EvidenceModule } from '../evidence/evidence.module';
 import { AuthenticationService } from '../navbar/authentication.service';
 import { AppRoutingModule } from '../app-routing.module';
+import { ApolloModule } from '../apollo/apollo.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AppRoutingModule } from '../app-routing.module';
     AppRoutingModule,
     UtilModule,
     AlertsModule,
-    EvidenceModule
+    EvidenceModule,
+    ApolloModule
   ],
   exports: [
     ManifestSingleComponent,
