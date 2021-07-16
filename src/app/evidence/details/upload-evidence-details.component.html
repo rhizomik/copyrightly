@@ -9,13 +9,14 @@
     </div>
     <div class="col-md-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">By</h6>
-      <p class="card-text" title="{{evidenceEvent?.who}}">
+      <a class="card-text" title="{{evidenceEvent?.who}}" [routerLink]="['/creators', evidenceEvent?.who]">
         {{evidenceEvent?.who | slice:0:6}}...{{evidenceEvent?.who | slice:-4}}
-      </p>
+      </a>
     </div>
     <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">When</h6>
-      <p class="card-text">{{evidenceEvent?.when | date:'medium'}}</p>
+      <a class="card-text" href="https://goerli.etherscan.io/tx/{{evidenceEvent?.where}}" target="_blank">
+        {{evidenceEvent?.when | date:'medium'}}</a>
     </div>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">For Manifestation</h6>

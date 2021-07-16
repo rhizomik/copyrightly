@@ -25,7 +25,8 @@
     </div>
     <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Registered</h6>
-      <p class="card-text">{{event?.when | date:'medium'}}</p>
+      <a class="card-text" href="https://goerli.etherscan.io/tx/{{event?.where}}" target="_blank">
+        {{event?.when | date:'medium'}}</a>
     </div>
   </div>
   <div class="card-footer">
