@@ -5,7 +5,7 @@ export class ManifestEvent extends Event {
   what = new Manifestation();
 
   constructor(event: any) {
-    super({ type: event.event, who: event.returnValues.manifester });
+    super({ type: event.event, who: event.returnValues.manifester, where: event.transactionHash });
     this.what = new Manifestation({
       authors: [event.returnValues.manifester],
       hash: event.returnValues.hash,

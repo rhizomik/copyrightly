@@ -3,6 +3,7 @@ export class Event {
   who: string | undefined;
   what: any;
   when: Date | undefined;
+  where: string | undefined;
 
   constructor(values: Record<string, unknown> = {}) {
     Object.assign(this, values);
