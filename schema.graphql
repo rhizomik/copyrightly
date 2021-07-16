@@ -20,4 +20,13 @@ type Manifestation @entity {
   creationTime: BigInt!
   expiryTime: BigInt!
   evidenceCount: Int!
+  transaction: Bytes!
+}
+
+type UploadEvidence @entity {
+  id: ID! # hash
+  registry: Bytes!
+  evidenced: String!
+  evidencer: Bytes!
+  transaction: Bytes!
 }

@@ -25,3 +25,23 @@ dataSources:
         - event: AddedEvidence(uint8)
           handler: handleAddedEvidence
       file: ./graphprotocol/src/mapping.ts
+  - kind: ethereum/contract
+    name: UploadEvidence
+    network: goerli
+    source:
+      address: "0xab3f62ea71735b557c79877a343e7f1689868e23"
+      abi: UploadEvidence
+      startBlock: 4746276
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UploadEvidenceEvent
+      abis:
+        - name: UploadEvidence
+          file: ./src/assets/contracts/UploadEvidence.json
+      eventHandlers:
+        - event: UploadEvidenceEvent(indexed address,indexed bytes32,string,string,indexed address)
+          handler: handleUploadEvidenceEvent
+      file: ./graphprotocol/src/mapping.ts

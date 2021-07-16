@@ -25,10 +25,10 @@
     "sol2uml": "sol2uml ./contracts -i Migrations.sol -o docs/images/smartcontracts.svg",
     "graph-codegen": "graph codegen -o ./graphprotocol/generated/",
     "graph-build": "graph build -o ./graphprotocol/build/",
-    "graph-deploy": "graph deploy -o ./graphprotocol/build/ --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ rogargon/copyrightly",
-    "create-local": "graph create -o ./graphprotocol/build/ --node http://localhost:8020/ rogargon/copyrightly",
-    "remove-local": "graph remove -o ./graphprotocol/build/ --node http://localhost:8020/ rogargon/copyrightly",
-    "deploy-local": "graph deploy -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 rogargon/copyrightly"
+    "graph-deploy": "graph deploy -o ./graphprotocol/build/ --studio copyrightly",
+    "create-local": "graph create -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
+    "remove-local": "graph remove -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
+    "deploy-local": "graph deploy -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly"
   },
   "private": true,
   "dependencies": {
