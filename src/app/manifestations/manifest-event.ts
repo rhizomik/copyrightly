@@ -8,7 +8,7 @@ export class ManifestEvent extends Event {
     super({ type: event.event, who: event.returnValues.manifester, where: event.transactionHash });
     this.what = new Manifestation({
       authors: [event.returnValues.manifester],
-      hash: event.returnValues.hash,
+      id: event.returnValues.hash,
       title: event.returnValues.title
     });
   }

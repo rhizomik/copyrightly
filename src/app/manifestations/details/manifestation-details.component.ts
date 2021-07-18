@@ -9,6 +9,7 @@ import { Manifestation } from '../manifestation';
 import { UploadEvidenceEvent } from '../../evidence/upload-evidence-event';
 import { UploadEvidenceContractService } from '../../evidence/upload-evidence-contract.service';
 import { Location } from '@angular/common';
+import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -30,19 +31,21 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private web3Service: Web3Service,
               private manifestationsContractService: ManifestationsContractService,
               private uploadEvidencesContractService: UploadEvidenceContractService,
-              private alertsService: AlertsService) {}
+              private alertsService: AlertsService,
+              private manifestationDetailsQuery: ManifestationDetailsQueryService) {}
 
   ngOnInit(): void {
     this.route.paramMap
     .pipe(switchMap((params: ParamMap) =>
-      this.manifestationsContractService.getManifestation(params.get('id'))))
-    .subscribe((manifestation: Manifestation) => {
-      this.manifestation = manifestation;
-      if (manifestation.title) {
+      this.manifestationDetailsQuery.fetch({ manifestationId: params.get('id') })
+    ))
+    .subscribe(({data}) => {
+      this.manifestation = new Manifestation(({...data.manifestation}));
+      if (this.manifestation.title) {
         this.notFound = false;
         this.loadEvidence();
       } else {
-        this.alertsService.error('Manifestation not found: ' + manifestation.hash, 0);
+        this.alertsService.error('Manifestation not found: ' + this.manifestation.id, 0);
       }
     });
   }
@@ -52,7 +55,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   loadEvidence(): void {
-    this.uploadEvidencesContractService.listManifestationEvidences(this.manifestation.hash)
+    this.uploadEvidencesContractService.listManifestationEvidences(this.manifestation.id)
     .subscribe((evidences: UploadEvidenceEvent[]) => {
       this.uploadEvidenceEvents = evidences;
     }, error => this.alertsService.error(error));

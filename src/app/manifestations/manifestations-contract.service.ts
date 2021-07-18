@@ -31,40 +31,10 @@ export class ManifestationsContractService {
     });
   }
 
-  public getManifestation(hash: string | null): Observable<Manifestation> {
-    return new Observable((observer) => {
-      this.deployedContract.subscribe(contract => {
-        contract.methods.getManifestation(hash).call()
-        .then((result: string[]) => {
-          this.ngZone.run(() => {
-            if (result) {
-              observer.next(new Manifestation(
-                {
-                  hash, title: result[0], authors: result[1],
-                  when: result[2], expiry: result[3]
-                }));
-            } else {
-              observer.next(new Manifestation());
-            }
-            observer.complete();
-          });
-        })
-        .catch((error: string) => {
-          console.error(error);
-          this.ngZone.run(() => {
-            observer.error(new Error('Error retrieving manifestation, see logs for details'));
-            observer.complete();
-          });
-        });
-      }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
-      return { unsubscribe: () => {} };
-    });
-  }
-
   public manifest(manifestation: Manifestation, account: string): Observable<string | ManifestEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.manifestAuthorship(manifestation.hash, manifestation.title)
+        contract.methods.manifestAuthorship(manifestation.id, manifestation.title)
         .send({from: account, gas: 150000})
         .on('transactionHash', (hash: string) =>
           this.ngZone.run(() => observer.next(hash)))
@@ -82,59 +52,6 @@ export class ManifestationsContractService {
         .on('error', (error: string) => {
           this.ngZone.run(() => {
             observer.error(new Error('Error registering creation, see log for details'));
-            observer.complete();
-          });
-        });
-      }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
-      return { unsubscribe: () => {} };
-    });
-  }
-
-  public listManifestEvents(account: string|undefined): Observable<ManifestEvent[]> {
-    return new Observable((observer) => {
-      this.deployedContract.subscribe(contract => {
-        const options: any = {filter: {manifester: account}, fromBlock: 0};
-        if (!account) {
-          delete options.filter;
-        }
-        contract.getPastEvents('ManifestEvent', options)
-        .then((events: any[]) => {
-          observer.next(events.map((event: any) => {
-            const manifestEvent = new ManifestEvent(event);
-            this.web3Service.getBlockDate(event.blockNumber)
-            .subscribe(date =>
-              this.ngZone.run(() => manifestEvent.when = date)
-            );
-            return manifestEvent;
-          }));
-          observer.complete();
-        })
-        .catch((error: string) => {
-          console.log(error);
-          this.ngZone.run(() => {
-            observer.error(new Error('Error listening to contract events, see log for details'));
-            observer.complete();
-          });
-        });
-      }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
-      return { unsubscribe: () => {} };
-    });
-  }
-
-  public getEvidenceCount(hash: string): Observable<number> {
-    return new Observable((observer) => {
-      this.deployedContract.subscribe(contract => {
-        contract.methods.getEvidenceCount(hash).call()
-        .then((result: number) => {
-          this.ngZone.run(() => {
-            observer.next(result);
-            observer.complete();
-          });
-        })
-        .catch((error: string) => {
-          console.error(error);
-          this.ngZone.run(() => {
-            observer.error(new Error('Error retrieving evidence count, see logs for details'));
             observer.complete();
           });
         });
