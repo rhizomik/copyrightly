@@ -10,16 +10,14 @@ import { InMemoryCache } from '@apollo/client/core';
   providers: [
     {
       provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink) => {
-        return {
+      useFactory: (httpLink: HttpLink) => ({
           cache: new InMemoryCache(),
           link: httpLink.create({
             uri: 'https://api.studio.thegraph.com/query/1303/copyrightly/0.0.2',
           }),
-        };
-      },
+        }),
       deps: [HttpLink],
     },
   ],
 })
-export class ApolloModule {}
+export class QueryModule {}

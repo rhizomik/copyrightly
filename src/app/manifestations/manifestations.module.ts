@@ -13,7 +13,7 @@ import { ManifestEventComponent } from './manifest-event.component';
 import { EvidenceModule } from '../evidence/evidence.module';
 import { AuthenticationService } from '../navbar/authentication.service';
 import { AppRoutingModule } from '../app-routing.module';
-import { ApolloModule } from '../apollo/apollo.module';
+import { QueryModule } from '../query/query.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { ApolloModule } from '../apollo/apollo.module';
     UtilModule,
     AlertsModule,
     EvidenceModule,
-    ApolloModule
+    QueryModule
   ],
   exports: [
     ManifestSingleComponent,
