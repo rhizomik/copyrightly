@@ -26,6 +26,7 @@ export function handleUploadEvidenceEvent(event: UploadEvidenceEvent): void {
   uploadEvidence.registry = event.params.registry;
   uploadEvidence.evidenced = event.params.evidencedHash;
   uploadEvidence.evidencer = event.params.evidencer;
+  uploadEvidence.set('creationTime', Value.fromBigInt(event.block.timestamp));
   uploadEvidence.set('transaction', Value.fromBytes(event.transaction.hash));
   uploadEvidence.save();
   let manifestation = Manifestation.load(event.params.evidencedHash);

@@ -28,5 +28,6 @@ type UploadEvidence @entity {
   registry: Bytes!
   evidenced: String!
   evidencer: Bytes!
+  creationTime: BigInt!
   transaction: Bytes!
 }

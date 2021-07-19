@@ -13,7 +13,7 @@ import { InMemoryCache } from '@apollo/client/core';
       useFactory: (httpLink: HttpLink) => ({
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'https://api.studio.thegraph.com/query/1303/copyrightly/0.0.2',
+            uri: 'https://api.studio.thegraph.com/query/1303/copyrightly/0.0.4',
           }),
         }),
       deps: [HttpLink],
