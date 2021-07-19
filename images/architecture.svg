@@ -74,7 +74,7 @@
     </font-face>
   </defs>
   <metadata> Produced by OmniGraffle 7.8.1
-    <dc:date>2021-06-25 16:54:53 +0000</dc:date>
+    <dc:date>2021-07-19 09:29:27 +0000</dc:date>
   </metadata>
   <g id="Lienzo_1" fill-opacity="1" stroke-dasharray="none" stroke="none" stroke-opacity="1" fill="none">
     <title>Lienzo 1</title>
@@ -127,12 +127,12 @@
         <line x1="609.74605" y1="255.13345" x2="609.6904" y2="212.06527" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_50">
-        <path d="M 456 565.30556 C 456 565.30556 537.96314 570.15795 590.44444 534.02906 C 616.01556 516.4255 628.7287 493.1261 635.0431 473.86056" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
+        <path d="M 456 565.30556 C 456 565.30556 458.4761 588.216 502 609.5 C 520.4969 618.5453 542.711 625.4893 562.14205 630.4843" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
       </g>
       <g id="Graphic_55">
-        <rect x="557.77524" y="518.2489" width="77" height="23" fill="white"/>
-        <text transform="translate(557.77524 523.6089)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="10" font-weight="400" fill="black" x="1.735" y="10">Smart Contracts </tspan>
+        <rect x="508.9064" y="607.434" width="31" height="23" fill="white"/>
+        <text transform="translate(508.9064 612.794)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="10" font-weight="400" fill="black" x=".405" y="10">Events</tspan>
         </text>
       </g>
       <g id="Line_63">
@@ -370,36 +370,37 @@
         <line x1="192.92862" y1="504.15735" x2="233.44618" y2="499.29057" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_104">
-        <rect x="541.05924" y="303.5542" width="138.94076" height="47.963855" fill="white"/>
-        <rect x="541.05924" y="303.5542" width="138.94076" height="47.963855" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(546.05924 319.34015)" fill="black">
+        <rect x="541.05924" y="303.5542" width="138.94076" height="120.94578" fill="white"/>
+        <rect x="541.05924" y="303.5542" width="138.94076" height="120.94578" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(546.05924 355.8311)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="36.33038" y="13">Frontend</tspan>
         </text>
       </g>
       <g id="Graphic_105">
-        <rect x="540.0296" y="371.8887" width="138.94076" height="47.963855" fill="white"/>
-        <rect x="540.0296" y="371.8887" width="138.94076" height="47.963855" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(545.0296 387.6746)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="36.72238" y="13">Backend</tspan>
+        <rect x="541.05924" y="669.5" width="138.94076" height="47.963855" fill="white"/>
+        <text transform="translate(546.05924 685.2859)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="3.157379" y="13">The Graph Network</tspan>
         </text>
       </g>
       <g id="Graphic_57">
-        <ellipse cx="641.2467" cy="437.77905" rx="29.2467133999708" ry="26.7500427438757" fill="white"/>
-        <ellipse cx="641.2467" cy="437.77905" rx="29.2467133999708" ry="26.7500427438757" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(617.8493 430.09705)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="13.289833" y="12">API</tspan>
+        <ellipse cx="609.6291" cy="588.25" rx="29.2467133999708" ry="26.7500427438758" fill="white"/>
+        <ellipse cx="609.6291" cy="588.25" rx="29.2467133999708" ry="26.7500427438758" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(586.2318 572.886)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x=".8803333" y="12">GraphQL</tspan>
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" y="12"> </tspan>
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="13.289833" y="27.364">API</tspan>
         </text>
       </g>
       <g id="Line_106">
-        <line x1="712.9786" y1="543.28225" x2="662.26105" y2="468.687" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="728.0494" y1="588.25" x2="648.7758" y2="588.25" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_107">
         <line x1="464.5936" y1="81.71012" x2="566.26535" y2="139.86274" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_108">
-        <path d="M 694 551.4692 L 797.8429 551.4692 C 802.8135 551.4692 806.8429 555.4986 806.8429 560.4692 L 806.8429 623 C 806.8429 627.9706 802.8135 632 797.8429 632 L 694 632 C 689.0294 632 685 627.9706 685 623 L 685 560.4692 C 685 555.4986 689.0294 551.4692 694 551.4692 Z" fill="white"/>
-        <path d="M 694 551.4692 L 797.8429 551.4692 C 802.8135 551.4692 806.8429 555.4986 806.8429 560.4692 L 806.8429 623 C 806.8429 627.9706 802.8135 632 797.8429 632 L 694 632 C 689.0294 632 685 627.9706 685 623 L 685 560.4692 C 685 555.4986 689.0294 551.4692 694 551.4692 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(690 556.4692)" fill="#666">
+        <path d="M 746.9494 547.9846 L 850.7923 547.9846 C 855.7629 547.9846 859.7923 552.01403 859.7923 556.9846 L 859.7923 619.5154 C 859.7923 624.486 855.7629 628.5154 850.7923 628.5154 L 746.9494 628.5154 C 741.9789 628.5154 737.9494 624.486 737.9494 619.5154 L 737.9494 556.9846 C 737.9494 552.01403 741.9789 547.9846 746.9494 547.9846 Z" fill="white"/>
+        <path d="M 746.9494 547.9846 L 850.7923 547.9846 C 855.7629 547.9846 859.7923 552.01403 859.7923 556.9846 L 859.7923 619.5154 C 859.7923 624.486 855.7629 628.5154 850.7923 628.5154 L 746.9494 628.5154 C 741.9789 628.5154 737.9494 624.486 737.9494 619.5154 L 737.9494 556.9846 C 737.9494 552.01403 741.9789 547.9846 746.9494 547.9846 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(742.9494 552.9846)" fill="#666">
           <tspan font-family="Helvetica Neue" font-size="14" font-weight="700" fill="#666" x="35.10889" y="14">Third Parity</tspan>
           <tspan font-family="Helvetica Neue" font-size="14" font-weight="700" fill="#666" x="77.62689" y="31.406097">Apps</tspan>
         </text>
@@ -448,11 +449,11 @@
         </text>
       </g>
       <g id="Line_118">
-        <line x1="772.6866" y1="542.7828" x2="812.2646" y2="470.397" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="809.2391" y1="538.29115" x2="822.6325" y2="473.7558" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_119">
-        <rect x="674.56545" y="496.2188" width="31" height="23" fill="white"/>
-        <text transform="translate(674.56545 501.5788)" fill="black">
+        <rect x="636.50435" y="518.29725" width="31" height="23" fill="white"/>
+        <text transform="translate(636.50435 523.65725)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="10" font-weight="400" fill="black" x=".405" y="10">Events</tspan>
         </text>
       </g>
@@ -537,6 +538,15 @@
         </clipPath>
         <g clip-path="url(#clip_path_11)">
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image2.png" width="96" height="54.24" opacity="1" transform="matrix(1.1223958 0 0 1.1174295 -195.6645 367.32813)"/>
+        </g>
+      </g>
+      <g id="Graphic_142">
+        <rect x="571.75034" y="602.9331" width="75.75758" height="75" id="path_12"/>
+        <clipPath id="clip_path_12">
+          <use xl:href="#path_12"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_12)">
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image12.png" width="200" height="198" transform="translate(571.75034 602.9331) scale(.3787879)"/>
         </g>
       </g>
     </g>
