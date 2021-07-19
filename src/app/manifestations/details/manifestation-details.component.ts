@@ -10,6 +10,8 @@ import { UploadEvidenceEvent } from '../../evidence/upload-evidence-event';
 import { UploadEvidenceContractService } from '../../evidence/upload-evidence-contract.service';
 import { Location } from '@angular/common';
 import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
+import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
+import { UploadEvidence } from '../../evidence/uploadEvidence';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -19,7 +21,7 @@ import { ManifestationDetailsQueryService } from '../../query/manifestation-deta
 export class ManifestationDetailsComponent implements OnInit, OnDestroy {
 
   manifestation: Manifestation = new Manifestation();
-  uploadEvidenceEvents: UploadEvidenceEvent[] = [];
+  uploadEvidence: UploadEvidence[] = [];
   addingUploadableEvidence = false;
   addingYouTubeEvidence = false;
   navigationSubscription: Subscription | undefined;
@@ -29,10 +31,9 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private router: Router,
               private location: Location,
               private web3Service: Web3Service,
-              private manifestationsContractService: ManifestationsContractService,
-              private uploadEvidencesContractService: UploadEvidenceContractService,
               private alertsService: AlertsService,
-              private manifestationDetailsQuery: ManifestationDetailsQueryService) {}
+              private manifestationDetailsQuery: ManifestationDetailsQueryService,
+              private uploadEvidenceListQuery: UploadEvidenceListQueryService) {}
 
   ngOnInit(): void {
     this.route.paramMap
@@ -47,7 +48,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
       } else {
         this.alertsService.error('Manifestation not found: ' + this.manifestation.id, 0);
       }
-    });
+    }, error => this.alertsService.error(error));
   }
 
   addingEvidence(): boolean {
@@ -55,9 +56,9 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   loadEvidence(): void {
-    this.uploadEvidencesContractService.listManifestationEvidences(this.manifestation.id)
-    .subscribe((evidences: UploadEvidenceEvent[]) => {
-      this.uploadEvidenceEvents = evidences;
+    this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.id })
+    .subscribe(({data}) => {
+      this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
     }, error => this.alertsService.error(error));
 
     // Reload evidence if page reloaded

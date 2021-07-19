@@ -4,24 +4,24 @@
     <h5 class="card-title col-md-12 p-1">Uploadable Evidence {{evidenceIndex}}</h5>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Uploaded Content</h6>
-      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{evidenceEvent?.what?.evidenceHash}}" target="_blank">
-        {{evidenceEvent?.what?.evidenceHash}}</a>
+      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{evidence?.id}}" target="_blank">
+        {{evidence?.id}}</a>
     </div>
     <div class="col-md-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">By</h6>
-      <a class="card-text" title="{{evidenceEvent?.who}}" [routerLink]="['/creators', evidenceEvent?.who]">
-        {{evidenceEvent?.who | slice:0:6}}...{{evidenceEvent?.who | slice:-4}}
+      <a class="card-text" title="{{evidence?.evidencer}}" [routerLink]="['/creators', evidence?.evidencer]">
+        {{evidence?.evidencer | slice:0:6}}...{{evidence?.evidencer | slice:-4}}
       </a>
     </div>
     <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">When</h6>
-      <a class="card-text" href="https://goerli.etherscan.io/tx/{{evidenceEvent?.where}}" target="_blank">
-        {{evidenceEvent?.when | date:'medium'}}</a>
+      <a class="card-text" href="https://goerli.etherscan.io/tx/{{evidence?.transaction}}" target="_blank">
+        {{evidence?.creationTime | date:'medium'}}</a>
     </div>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">For Manifestation</h6>
-      <a class="card-text" [routerLink]="['/manifestations', evidenceEvent?.what?.evidencedHash]">
-        {{evidenceEvent?.what?.evidencedHash}}</a>
+      <a class="card-text" [routerLink]="['/manifestations', evidence?.evidenced]">
+        {{evidence?.evidenced}}</a>
     </div>
   </div>
   <div class="card-footer">

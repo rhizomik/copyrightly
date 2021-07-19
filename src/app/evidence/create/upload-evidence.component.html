@@ -15,7 +15,7 @@
     <div class="form-group" [class.was-validated]="inputEvidenced.dirty || inputEvidenced.touched">
       <label class="control-label" for="inputEvidenced">Manifestation*</label>
       <input id="inputEvidenced" name="inputEvidenced" type="text" class="form-control" disabled
-             [ngModel]="uploadEvidence.evidencedHash" #inputEvidenced="ngModel">
+             [ngModel]="uploadEvidence.id" #inputEvidenced="ngModel">
     </div>
 
     <!-- CLY stake input -->
@@ -42,7 +42,7 @@
       </div>
       <label class="control-label" for="inputHash">Evidence Content*</label>
       <input id="inputHash" name="inputHash" type="text" class="form-control"
-             readonly required appUploadExistence [(ngModel)]="uploadEvidence.evidenceHash"
+             readonly required appUploadExistence [(ngModel)]="uploadEvidence.id"
              #inputHash="ngModel" placeholder="Loaded content hash">
       <input id="inputFile" name="inputFile" type="file" class="form-control"
              (change)="loadFile(inputFile)" #inputFile>

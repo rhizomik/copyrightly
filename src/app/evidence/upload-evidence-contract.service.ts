@@ -59,7 +59,7 @@ export class UploadEvidenceContractService {
   public addEvidence(evidence: UploadEvidence, account: string): Observable<string | UploadEvidenceEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.addEvidence(this.manifestationsAddress, evidence.evidencedHash, evidence.evidenceHash)
+        contract.methods.addEvidence(this.manifestationsAddress, evidence.evidenced, evidence.id)
         .send({from: account, gas: 150000})
         .on('transactionHash', (hash: string) =>
           this.ngZone.run(() => observer.next(hash) ))
@@ -80,35 +80,6 @@ export class UploadEvidenceContractService {
             observer.error(new Error('Error registering evidence, see log for details'));
             observer.complete();
           });
-        });
-      }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
-      return { unsubscribe: () => {} };
-    });
-  }
-
-  public listManifestationEvidences(manifestationHash: string): Observable<UploadEvidenceEvent[]> {
-    return new Observable((observer) => {
-      this.deployedContract.subscribe(contract => {
-        contract.getPastEvents('UploadEvidenceEvent',
-          {filter: {evidencedIdHash: this.web3Service.web3.utils.soliditySha3(manifestationHash)}, fromBlock: 0},
-          (error: string, events: []) => {
-            if (error) {
-              console.log(error);
-              this.ngZone.run(() => {
-                observer.error(new Error('Error listing manifestation\'s evidence, see log for details'));
-                observer.complete();
-              });
-            } else {
-              observer.next(events.map((event: any) => {
-                const evidenceEvent = new UploadEvidenceEvent(event);
-                this.web3Service.getBlockDate(event.blockNumber)
-                .subscribe(date =>
-                  this.ngZone.run(() => evidenceEvent.when = date)
-                );
-                return evidenceEvent;
-              }));
-              observer.complete();
-            }
         });
       }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
       return { unsubscribe: () => {} };

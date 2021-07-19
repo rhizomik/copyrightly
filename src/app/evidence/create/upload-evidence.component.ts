@@ -8,7 +8,6 @@ import { NgForm } from '@angular/forms';
 import { UploadEvidenceEventComponent } from '../upload-evidence-event.component';
 import { UploadEvidence } from '../uploadEvidence';
 import { Manifestation } from '../../manifestations/manifestation';
-import { ManifestEventComponent } from '../../manifestations/manifest-event.component';
 
 @Component({
   selector: 'app-upload-evidence',
@@ -33,7 +32,7 @@ export class UploadEvidenceComponent implements OnInit {
               private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.uploadEvidence.evidencedHash = this.manifestation.hash;
+    this.uploadEvidence.id = this.manifestation.id;
     this.authenticationService.getSelectedAccount()
       .subscribe(account => this.account = account );
   }
@@ -43,13 +42,13 @@ export class UploadEvidenceComponent implements OnInit {
       this.status = 'Uploading...';
       this.ipfsService.uploadFile(event.files[0], this.uploadToIpfs).subscribe((hash: string) => {
         this.status = 'Register';
-        this.uploadEvidence.evidenceHash = hash;
+        this.uploadEvidence.id = hash;
       }, error => {
         this.status = 'Register';
         this.alertsService.error(error);
       });
     } else {
-      this.uploadEvidence.evidenceHash = '';
+      this.uploadEvidence.id = '';
     }
   }
 

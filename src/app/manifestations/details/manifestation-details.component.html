@@ -42,7 +42,7 @@
                        (cancel)="addingUploadableEvidence = false" (done)="addingUploadableEvidence = false">
   </app-upload-evidence>
 
-  <div *ngIf="uploadEvidenceEvents?.length == 0
+  <div *ngIf="uploadEvidence?.length == 0
               && !addingEvidence()" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No evidence yet</h5>
@@ -52,8 +52,8 @@
   </div>
 
   <div id="list" *ngIf="!addingEvidence()">
-    <app-uploadevidence-details *ngFor="let evidence of uploadEvidenceEvents; let i = index"
-      [evidenceEvent]="evidence" [evidenceIndex]="i+1">
+    <app-uploadevidence-details *ngFor="let evidence of uploadEvidence; let i = index"
+      [evidence]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
   </div>
 </div>
