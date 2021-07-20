@@ -14,19 +14,18 @@
     <h4 class="card-title col-md-12 p-1">{{event?.what?.title}}</h4>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Hash</h6>
-      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{event?.what?.hash}}" target="_blank">
-        {{event?.what?.hash}}</a>
+      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{event?.what?.hash}}"
+         target="_blank">{{event?.what?.hash}}</a>
     </div>
     <div class="col-md-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Creator</h6>
-      <a class="card-text" title="{{event?.who}}" [routerLink]="['/creators', event?.who]">
-        {{event?.who | slice:0:6}}...{{event?.who | slice:-4}}
-      </a>
+      <a class="card-text" title="{{event?.who}}" [routerLink]="['/creators', event?.who]"
+      >{{event?.who | slice:0:6}}...{{event?.who | slice:-4}}</a>
     </div>
     <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Registered</h6>
-      <a class="card-text" href="https://goerli.etherscan.io/tx/{{event?.where}}" target="_blank">
-        {{event?.when | date:'medium'}}</a>
+      <a class="card-text" href="https://goerli.etherscan.io/tx/{{event?.where}}"
+         target="_blank">{{event?.when | date:'medium'}}</a>
     </div>
   </div>
   <div class="card-footer">

@@ -10,7 +10,7 @@
     "solhint": "solhint ./contracts/**/*.sol",
     "nglint": "ng lint",
     "network": "ganache-cli -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat'",
-    "migrate": "truffle migrate",
+    "migrate": "truffle migrate --reset",
     "test": "npm-run-all -p -c soltest ngtest",
     "soltest": "truffle test test/*.js",
     "ngtest": "ng test --watch=false",
