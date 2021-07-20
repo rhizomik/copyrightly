@@ -28,7 +28,8 @@
     "graph-deploy": "graph deploy -o ./graphprotocol/build/ --studio copyrightly",
     "create-local": "graph create -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
     "remove-local": "graph remove -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
-    "deploy-local": "graph deploy -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly"
+    "deploy-local": "graph deploy -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly",
+    "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml"
   },
   "private": true,
   "dependencies": {
@@ -95,6 +96,7 @@
     "protractor-cucumber-framework": "^8.0.4",
     "sol2uml": "^1.1.25",
     "solhint": "^3.3.4",
+    "spectaql": "^0.5.0",
     "truffle": "~5.3.12",
     "truffle-flattener": "^1.5.0",
     "ts-node": "~8.3.0",

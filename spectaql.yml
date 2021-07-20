@@ -1,0 +1,10 @@
+spectaql:
+  logoFile: src/assets/copyrightly.svg
+
+info:
+  title: CopyrightLY's GraphQL API Reference
+  description: Documentation for [CopyrightLY](https://copyrightly.rhizomik.net)'s GraphQL API
+
+introspection:
+  url: https://api.studio.thegraph.com/query/1303/copyrightly/0.0.4
+
