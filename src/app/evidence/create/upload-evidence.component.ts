@@ -32,7 +32,7 @@ export class UploadEvidenceComponent implements OnInit {
               private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.uploadEvidence.id = this.manifestation.id;
+    this.uploadEvidence.evidenced = this.manifestation.id;
     this.authenticationService.getSelectedAccount()
       .subscribe(account => this.account = account );
   }

@@ -54,7 +54,7 @@ export class UploadEvidenceEventComponent {
   details(): void {
     this.activeModal.dismiss();
     if (this.data) {
-      this.router.navigate(['/manifestations', this.data.what.id]);
+      this.router.navigate(['/manifestations', this.data.what.evidenced]);
     }
   }
 }
