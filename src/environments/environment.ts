@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  thegraph: 'http://localhost:8000/subgraphs/name/copyrightly',
   infuraToken: '${INFURA_TOKEN}'
 };
 

@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [BrowserModule, HttpClientModule],
@@ -13,7 +14,7 @@ import { InMemoryCache } from '@apollo/client/core';
       useFactory: (httpLink: HttpLink) => ({
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'https://api.studio.thegraph.com/query/1303/copyrightly/0.0.4',
+            uri: environment.thegraph,
           }),
         }),
       deps: [HttpLink],
