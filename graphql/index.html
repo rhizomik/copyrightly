@@ -1,0 +1,2280 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CopyrightLY&#x27;s GraphQL API Reference</title>
+    <link rel="stylesheet" href="stylesheets/spectaql.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="javascripts/spectaql.min.js"></script>
+  </head>
+  <body id="spectacle">
+    <div id="page" class="drawer-layout drawer-slide-right-large">
+      <div id="sidebar">
+        <button id="close-button" class="close-button" aria-label="Close menu" type="button" data-drawer-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="logo">
+          <img src="images/logo.svg" title="CopyrightLY&#x27;s GraphQL API Reference" /> </div>
+        <nav id="nav" role="navigation">
+          <h5>Introduction</h5>
+          <a href="#introduction">Welcome</a>
+          <h5>Operations</h5>
+          <a href="#operation-_meta-Queries"> _meta </a>
+          <a href="#operation-manifestation-Queries"> manifestation </a>
+          <a href="#operation-manifestations-Queries"> manifestations </a>
+          <a href="#operation-manifestationtitlesearch-Queries"> manifestationTitleSearch </a>
+          <a href="#operation-uploadevidence-Queries"> uploadEvidence </a>
+          <a href="#operation-uploadevidences-Queries"> uploadEvidences </a>
+          <h5>Types</h5>
+          <a href="#definition-BigDecimal"> BigDecimal </a>
+          <a href="#definition-BigInt"> BigInt </a>
+          <a href="#definition-Block_height"> Block_height </a>
+          <a href="#definition-Boolean"> Boolean </a>
+          <a href="#definition-Bytes"> Bytes </a>
+          <a href="#definition-ID"> ID </a>
+          <a href="#definition-Int"> Int </a>
+          <a href="#definition-Manifestation"> Manifestation </a>
+          <a href="#definition-Manifestation_filter"> Manifestation_filter </a>
+          <a href="#definition-Manifestation_orderBy"> Manifestation_orderBy </a>
+          <a href="#definition-OrderDirection"> OrderDirection </a>
+          <a href="#definition-String"> String </a>
+          <a href="#definition-Subscription"> Subscription </a>
+          <a href="#definition-UploadEvidence"> UploadEvidence </a>
+          <a href="#definition-UploadEvidence_filter"> UploadEvidence_filter </a>
+          <a href="#definition-UploadEvidence_orderBy"> UploadEvidence_orderBy </a>
+          <a href="#definition-_Block_"> _Block_ </a>
+          <a href="#definition-_Meta_"> _Meta_ </a>
+          <a href="#definition-_SubgraphErrorPolicy_"> _SubgraphErrorPolicy_ </a>
+        </nav>
+      </div>
+      <div id="docs" class="row collapse expanded drawer" data-drawer>
+        <button class="floating-menu-icon" type="button" data-drawer-slide="right">
+          <span class="hamburger"></span>
+        </button>
+        <div class="example-box doc-content"></div>
+        <article id="content">
+          <h1 class="doc-title">CopyrightLY&#x27;s GraphQL API Reference</h1>
+          <div id="introduction" data-traverse-target="introduction">
+            <div class="doc-row">
+              <div class="doc-copy">
+                <p>Documentation for
+                  <a href="https://copyrightly.rhizomik.net">CopyrightLY</a>&#39;s GraphQL API</p>
+              </div>
+              <div class="doc-examples">
+                <section> </section>
+              </div>
+            </div>
+          </div>
+          <h1>Queries</h1>
+          <span id="path-_meta"></span>
+          <div id="operation-_meta-Queries" class="operation panel" data-traverse-target="operation-_meta-Queries">
+            <h2 class="operation-name "> <code>_meta</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description operation-description"> Access to subgraph metadata </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns a
+                  <a href="#definition-_Meta_"><code>_Meta_</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> _meta<span class="hljs-tag">(<span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  _meta(block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">block <span class="hljs-tag">{
+      <span class="hljs-type">..._Block_Fragment</span>
+    }</span></span>
+    <span class="hljs-symbol">deployment</span>
+    <span class="hljs-symbol">hasIndexingErrors</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{<span class="hljs-attr">"block"</span>: Block_height}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"_meta"</span>: {
+      <span class="hljs-attr">"block"</span>: _Block_,
+      <span class="hljs-attr">"deployment"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"hasIndexingErrors"</span>: <span class="hljs-literal">false</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-manifestation"></span>
+          <div id="operation-manifestation-Queries" class="operation panel" data-traverse-target="operation-manifestation-Queries">
+            <h2 class="operation-name "> <code>manifestation</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns a
+                  <a href="#definition-Manifestation"><code>Manifestation</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>id</code> -
+                        <a href="#definition-ID"><code>ID!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> manifestation<span class="hljs-tag">(<span class="hljs-code">$id</span>: ID!, <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  manifestation(id: <span class="hljs-code">$id</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">authors</span>
+    <span class="hljs-symbol">title</span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">expiryTime</span>
+    <span class="hljs-symbol">evidenceCount</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{<span class="hljs-attr">"id"</span>: ID, <span class="hljs-attr">"block"</span>: Block_height}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"manifestation"</span>: {
+      <span class="hljs-attr">"id"</span>: ID,
+      <span class="hljs-attr">"authors"</span>: [Bytes],
+      <span class="hljs-attr">"title"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"creationTime"</span>: BigInt,
+      <span class="hljs-attr">"expiryTime"</span>: BigInt,
+      <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">123</span>,
+      <span class="hljs-attr">"transaction"</span>: Bytes
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-manifestationtitlesearch"></span>
+          <div id="operation-manifestationtitlesearch-Queries" class="operation panel" data-traverse-target="operation-manifestationtitlesearch-Queries">
+            <h2 class="operation-name "> <code>manifestationTitleSearch</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns
+                  <a href="#definition-Manifestation"><code>[Manifestation!]!</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>text</code> -
+                        <a href="#definition-String"><code>String!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>first</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>100</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>skip</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>0</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> manifestationTitleSearch<span class="hljs-tag">(<span class="hljs-code">$text</span>:<span class="hljs-type"> String!</span>, <span class="hljs-code">$first</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$skip</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  manifestationTitleSearch(text: <span class="hljs-code">$text</span>, first: <span class="hljs-code">$first</span>, skip: <span class="hljs-code">$skip</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">authors</span>
+    <span class="hljs-symbol">title</span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">expiryTime</span>
+    <span class="hljs-symbol">evidenceCount</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"text"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"first"</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">"skip"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"block"</span>: Block_height
+}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"manifestationTitleSearch"</span>: [
+      {
+        <span class="hljs-attr">"id"</span>: ID,
+        <span class="hljs-attr">"authors"</span>: [Bytes],
+        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"abc123"</span>,
+        <span class="hljs-attr">"creationTime"</span>: BigInt,
+        <span class="hljs-attr">"expiryTime"</span>: BigInt,
+        <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">987</span>,
+        <span class="hljs-attr">"transaction"</span>: Bytes
+      }
+    ]
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-manifestations"></span>
+          <div id="operation-manifestations-Queries" class="operation panel" data-traverse-target="operation-manifestations-Queries">
+            <h2 class="operation-name "> <code>manifestations</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns
+                  <a href="#definition-Manifestation"><code>[Manifestation!]!</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>skip</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>0</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>first</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>100</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>orderBy</code> -
+                        <a href="#definition-Manifestation_orderBy"><code>Manifestation_orderBy</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>orderDirection</code> -
+                        <a href="#definition-OrderDirection"><code>OrderDirection</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>where</code> -
+                        <a href="#definition-Manifestation_filter"><code>Manifestation_filter</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> manifestations<span class="hljs-tag">(<span class="hljs-code">$skip</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$first</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$orderBy</span>:<span class="hljs-type"> Manifestation_orderBy,</span> <span class="hljs-code">$orderDirection</span>:<span class="hljs-type"> OrderDirection,</span> <span class="hljs-code">$where</span>:<span class="hljs-type"> Manifestation_filter,</span> <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  manifestations(skip: <span class="hljs-code">$skip</span>, first: <span class="hljs-code">$first</span>, orderBy: <span class="hljs-code">$orderBy</span>, orderDirection: <span class="hljs-code">$orderDirection</span>, where: <span class="hljs-code">$where</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">authors</span>
+    <span class="hljs-symbol">title</span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">expiryTime</span>
+    <span class="hljs-symbol">evidenceCount</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"skip"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"first"</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">"orderBy"</span>: Manifestation_orderBy,
+  <span class="hljs-attr">"orderDirection"</span>: OrderDirection,
+  <span class="hljs-attr">"where"</span>: Manifestation_filter,
+  <span class="hljs-attr">"block"</span>: Block_height
+}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"manifestations"</span>: [
+      {
+        <span class="hljs-attr">"id"</span>: ID,
+        <span class="hljs-attr">"authors"</span>: [Bytes],
+        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"xyz789"</span>,
+        <span class="hljs-attr">"creationTime"</span>: BigInt,
+        <span class="hljs-attr">"expiryTime"</span>: BigInt,
+        <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">123</span>,
+        <span class="hljs-attr">"transaction"</span>: Bytes
+      }
+    ]
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-uploadevidence"></span>
+          <div id="operation-uploadevidence-Queries" class="operation panel" data-traverse-target="operation-uploadevidence-Queries">
+            <h2 class="operation-name "> <code>uploadEvidence</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns an
+                  <a href="#definition-UploadEvidence"><code>UploadEvidence</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>id</code> -
+                        <a href="#definition-ID"><code>ID!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> uploadEvidence<span class="hljs-tag">(<span class="hljs-code">$id</span>: ID!, <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  uploadEvidence(id: <span class="hljs-code">$id</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">registry</span>
+    <span class="hljs-symbol">evidenced</span>
+    <span class="hljs-symbol">evidencer</span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{<span class="hljs-attr">"id"</span>: ID, <span class="hljs-attr">"block"</span>: Block_height}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"uploadEvidence"</span>: {
+      <span class="hljs-attr">"id"</span>: ID,
+      <span class="hljs-attr">"registry"</span>: Bytes,
+      <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
+      <span class="hljs-attr">"evidencer"</span>: Bytes,
+      <span class="hljs-attr">"creationTime"</span>: BigInt,
+      <span class="hljs-attr">"transaction"</span>: Bytes
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-uploadevidences"></span>
+          <div id="operation-uploadevidences-Queries" class="operation panel" data-traverse-target="operation-uploadevidences-Queries">
+            <h2 class="operation-name "> <code>uploadEvidences</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns
+                  <a href="#definition-UploadEvidence"><code>[UploadEvidence!]!</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>skip</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>0</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>first</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>100</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>orderBy</code> -
+                        <a href="#definition-UploadEvidence_orderBy"><code>UploadEvidence_orderBy</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>orderDirection</code> -
+                        <a href="#definition-OrderDirection"><code>OrderDirection</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>where</code> -
+                        <a href="#definition-UploadEvidence_filter"><code>UploadEvidence_filter</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> uploadEvidences<span class="hljs-tag">(<span class="hljs-code">$skip</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$first</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$orderBy</span>:<span class="hljs-type"> UploadEvidence_orderBy,</span> <span class="hljs-code">$orderDirection</span>:<span class="hljs-type"> OrderDirection,</span> <span class="hljs-code">$where</span>:<span class="hljs-type"> UploadEvidence_filter,</span> <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  uploadEvidences(skip: <span class="hljs-code">$skip</span>, first: <span class="hljs-code">$first</span>, orderBy: <span class="hljs-code">$orderBy</span>, orderDirection: <span class="hljs-code">$orderDirection</span>, where: <span class="hljs-code">$where</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">registry</span>
+    <span class="hljs-symbol">evidenced</span>
+    <span class="hljs-symbol">evidencer</span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"skip"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"first"</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">"orderBy"</span>: UploadEvidence_orderBy,
+  <span class="hljs-attr">"orderDirection"</span>: OrderDirection,
+  <span class="hljs-attr">"where"</span>: UploadEvidence_filter,
+  <span class="hljs-attr">"block"</span>: Block_height
+}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"uploadEvidences"</span>: [
+      {
+        <span class="hljs-attr">"id"</span>: ID,
+        <span class="hljs-attr">"registry"</span>: Bytes,
+        <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
+        <span class="hljs-attr">"evidencer"</span>: Bytes,
+        <span class="hljs-attr">"creationTime"</span>: BigInt,
+        <span class="hljs-attr">"transaction"</span>: Bytes
+      }
+    ]
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="tag-types"></span>
+          <h1>Types</h1>
+          <div id="definition-BigDecimal" class="definition panel" data-traverse-target="definition-BigDecimal">
+            <h2 class="panel-title">
+              <a name="/definitions/BigDecimal"></a>
+              <p><code>BigDecimal</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">object</span>
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-BigInt" class="definition panel" data-traverse-target="definition-BigInt">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/BigInt"></a>
+              <p><code>BigInt</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">object</span>
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Block_height" class="definition panel" data-traverse-target="definition-Block_height">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Block_height"></a>
+              <p><code>Block_height</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Input Field</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>hash</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>number</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{<span class="hljs-attr">"hash"</span>: Bytes, <span class="hljs-attr">"number"</span>: <span class="hljs-number">987</span>}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Boolean" class="definition panel" data-traverse-target="definition-Boolean">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Boolean"></a>
+              <p><code>Boolean</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-literal">false</span></span>
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Bytes" class="definition panel" data-traverse-target="definition-Bytes">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Bytes"></a>
+              <p><code>Bytes</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">object</span>
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ID" class="definition panel" data-traverse-target="definition-ID">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/ID"></a>
+              <p><code>ID</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">object</span>
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Int" class="definition panel" data-traverse-target="definition-Int">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Int"></a>
+              <p><code>Int</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">987</span>
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Manifestation" class="definition panel" data-traverse-target="definition-Manifestation">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Manifestation"></a>
+              <p><code>Manifestation</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Field Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td data-property-name="id"> <code>id</code> -
+                        <a href="#definition-ID"><code>ID!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="authors"> <code>authors</code> -
+                        <a href="#definition-Bytes"><code>[Bytes]!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="title"> <code>title</code> -
+                        <a href="#definition-String"><code>String!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="creationTime"> <code>creationTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="expiryTime"> <code>expiryTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="evidenceCount"> <code>evidenceCount</code> -
+                        <a href="#definition-Int"><code>Int!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="transaction"> <code>transaction</code> -
+                        <a href="#definition-Bytes"><code>Bytes!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"id"</span>: ID,
+  <span class="hljs-attr">"authors"</span>: [Bytes],
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"creationTime"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime"</span>: BigInt,
+  <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-attr">"transaction"</span>: Bytes
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Manifestation_filter" class="definition panel" data-traverse-target="definition-Manifestation_filter">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Manifestation_filter"></a>
+              <p><code>Manifestation_filter</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Input Field</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>id</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_not</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_gt</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_lt</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_gte</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_lte</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_in</code> -
+                        <a href="#definition-ID"><code>[ID!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_not_in</code> -
+                        <a href="#definition-ID"><code>[ID!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>authors</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>authors_not</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>authors_contains</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>authors_not_contains</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_not</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_gt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_lt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_gte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_lte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_not_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_not_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_not_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>title_not_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_not</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_gt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_lt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_gte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_lte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_not_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_not</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_gt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_lt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_gte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_lte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>expiryTime_not_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_not</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_gt</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_lt</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_gte</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_lte</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_in</code> -
+                        <a href="#definition-Int"><code>[Int!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenceCount_not_in</code> -
+                        <a href="#definition-Int"><code>[Int!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"id"</span>: ID,
+  <span class="hljs-attr">"id_not"</span>: ID,
+  <span class="hljs-attr">"id_gt"</span>: ID,
+  <span class="hljs-attr">"id_lt"</span>: ID,
+  <span class="hljs-attr">"id_gte"</span>: ID,
+  <span class="hljs-attr">"id_lte"</span>: ID,
+  <span class="hljs-attr">"id_in"</span>: [ID],
+  <span class="hljs-attr">"id_not_in"</span>: [ID],
+  <span class="hljs-attr">"authors"</span>: [Bytes],
+  <span class="hljs-attr">"authors_not"</span>: [Bytes],
+  <span class="hljs-attr">"authors_contains"</span>: [Bytes],
+  <span class="hljs-attr">"authors_not_contains"</span>: [Bytes],
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_not"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_gt"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"title_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"title_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"creationTime"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_not"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_gt"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_lt"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_gte"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_lte"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_in"</span>: [BigInt],
+  <span class="hljs-attr">"creationTime_not_in"</span>: [BigInt],
+  <span class="hljs-attr">"expiryTime"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime_not"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime_gt"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime_lt"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime_gte"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime_lte"</span>: BigInt,
+  <span class="hljs-attr">"expiryTime_in"</span>: [BigInt],
+  <span class="hljs-attr">"expiryTime_not_in"</span>: [BigInt],
+  <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"evidenceCount_not"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-attr">"evidenceCount_gt"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-attr">"evidenceCount_lt"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-attr">"evidenceCount_gte"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"evidenceCount_lte"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"evidenceCount_in"</span>: [<span class="hljs-number">123</span>],
+  <span class="hljs-attr">"evidenceCount_not_in"</span>: [<span class="hljs-number">123</span>],
+  <span class="hljs-attr">"transaction"</span>: Bytes,
+  <span class="hljs-attr">"transaction_not"</span>: Bytes,
+  <span class="hljs-attr">"transaction_in"</span>: [Bytes],
+  <span class="hljs-attr">"transaction_not_in"</span>: [Bytes],
+  <span class="hljs-attr">"transaction_contains"</span>: Bytes,
+  <span class="hljs-attr">"transaction_not_contains"</span>: Bytes
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Manifestation_orderBy" class="definition panel" data-traverse-target="definition-Manifestation_orderBy">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Manifestation_orderBy"></a>
+              <p><code>Manifestation_orderBy</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Enum Value</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>id</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>authors</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>title</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>creationTime</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>expiryTime</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>evidenceCount</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>transaction</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-OrderDirection" class="definition panel" data-traverse-target="definition-OrderDirection">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/OrderDirection"></a>
+              <p><code>OrderDirection</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Enum Value</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>asc</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>desc</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-String" class="definition panel" data-traverse-target="definition-String">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/String"></a>
+              <p><code>String</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+            </div>
+          </div>
+          <div id="definition-Subscription" class="definition panel" data-traverse-target="definition-Subscription">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/Subscription"></a>
+              <p><code>Subscription</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Field Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td data-property-name="manifestation"> <code>manifestation</code> -
+                        <a href="#definition-Manifestation"><code>Manifestation</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>id</code> -
+                              <a href="#definition-ID"><code>ID!</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                            <p>
+                              <p>The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted.</p>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="manifestations"> <code>manifestations</code> -
+                        <a href="#definition-Manifestation"><code>[Manifestation!]!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>skip</code> -
+                              <a href="#definition-Int"><code>Int</code></a> default = <code>0</code></p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>first</code> -
+                              <a href="#definition-Int"><code>Int</code></a> default = <code>100</code></p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>orderBy</code> -
+                              <a href="#definition-Manifestation_orderBy"><code>Manifestation_orderBy</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>orderDirection</code> -
+                              <a href="#definition-OrderDirection"><code>OrderDirection</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>where</code> -
+                              <a href="#definition-Manifestation_filter"><code>Manifestation_filter</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                            <p>
+                              <p>The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted.</p>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="uploadEvidence"> <code>uploadEvidence</code> -
+                        <a href="#definition-UploadEvidence"><code>UploadEvidence</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>id</code> -
+                              <a href="#definition-ID"><code>ID!</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                            <p>
+                              <p>The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted.</p>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="uploadEvidences"> <code>uploadEvidences</code> -
+                        <a href="#definition-UploadEvidence"><code>[UploadEvidence!]!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>skip</code> -
+                              <a href="#definition-Int"><code>Int</code></a> default = <code>0</code></p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>first</code> -
+                              <a href="#definition-Int"><code>Int</code></a> default = <code>100</code></p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>orderBy</code> -
+                              <a href="#definition-UploadEvidence_orderBy"><code>UploadEvidence_orderBy</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>orderDirection</code> -
+                              <a href="#definition-OrderDirection"><code>OrderDirection</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>where</code> -
+                              <a href="#definition-UploadEvidence_filter"><code>UploadEvidence_filter</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                            <p>
+                              <p>The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted.</p>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="_meta"> <code>_meta</code> -
+                        <a href="#definition-_Meta_"><code>_Meta_</code></a>
+                      </td>
+                      <td> Access to subgraph metadata </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"manifestation"</span>: Manifestation,
+  <span class="hljs-attr">"manifestations"</span>: [Manifestation],
+  <span class="hljs-attr">"uploadEvidence"</span>: UploadEvidence,
+  <span class="hljs-attr">"uploadEvidences"</span>: [UploadEvidence],
+  <span class="hljs-attr">"_meta"</span>: _Meta_
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-UploadEvidence" class="definition panel" data-traverse-target="definition-UploadEvidence">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/UploadEvidence"></a>
+              <p><code>UploadEvidence</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Field Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td data-property-name="id"> <code>id</code> -
+                        <a href="#definition-ID"><code>ID!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="registry"> <code>registry</code> -
+                        <a href="#definition-Bytes"><code>Bytes!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="evidenced"> <code>evidenced</code> -
+                        <a href="#definition-String"><code>String!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="evidencer"> <code>evidencer</code> -
+                        <a href="#definition-Bytes"><code>Bytes!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="creationTime"> <code>creationTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="transaction"> <code>transaction</code> -
+                        <a href="#definition-Bytes"><code>Bytes!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"id"</span>: ID,
+  <span class="hljs-attr">"registry"</span>: Bytes,
+  <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidencer"</span>: Bytes,
+  <span class="hljs-attr">"creationTime"</span>: BigInt,
+  <span class="hljs-attr">"transaction"</span>: Bytes
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-UploadEvidence_filter" class="definition panel" data-traverse-target="definition-UploadEvidence_filter">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/UploadEvidence_filter"></a>
+              <p><code>UploadEvidence_filter</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Input Field</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>id</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_not</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_gt</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_lt</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_gte</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_lte</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_in</code> -
+                        <a href="#definition-ID"><code>[ID!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_not_in</code> -
+                        <a href="#definition-ID"><code>[ID!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>registry</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>registry_not</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>registry_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>registry_not_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>registry_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>registry_not_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_not</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_gt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_lt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_gte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_lte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_not_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_not_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_not_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidenced_not_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidencer</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidencer_not</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidencer_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidencer_not_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidencer_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>evidencer_not_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_not</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_gt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_lt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_gte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_lte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_not_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"id"</span>: ID,
+  <span class="hljs-attr">"id_not"</span>: ID,
+  <span class="hljs-attr">"id_gt"</span>: ID,
+  <span class="hljs-attr">"id_lt"</span>: ID,
+  <span class="hljs-attr">"id_gte"</span>: ID,
+  <span class="hljs-attr">"id_lte"</span>: ID,
+  <span class="hljs-attr">"id_in"</span>: [ID],
+  <span class="hljs-attr">"id_not_in"</span>: [ID],
+  <span class="hljs-attr">"registry"</span>: Bytes,
+  <span class="hljs-attr">"registry_not"</span>: Bytes,
+  <span class="hljs-attr">"registry_in"</span>: [Bytes],
+  <span class="hljs-attr">"registry_not_in"</span>: [Bytes],
+  <span class="hljs-attr">"registry_contains"</span>: Bytes,
+  <span class="hljs-attr">"registry_not_contains"</span>: Bytes,
+  <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_not"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_gt"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_lte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"evidenced_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"evidenced_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidencer"</span>: Bytes,
+  <span class="hljs-attr">"evidencer_not"</span>: Bytes,
+  <span class="hljs-attr">"evidencer_in"</span>: [Bytes],
+  <span class="hljs-attr">"evidencer_not_in"</span>: [Bytes],
+  <span class="hljs-attr">"evidencer_contains"</span>: Bytes,
+  <span class="hljs-attr">"evidencer_not_contains"</span>: Bytes,
+  <span class="hljs-attr">"creationTime"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_not"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_gt"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_lt"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_gte"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_lte"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_in"</span>: [BigInt],
+  <span class="hljs-attr">"creationTime_not_in"</span>: [BigInt],
+  <span class="hljs-attr">"transaction"</span>: Bytes,
+  <span class="hljs-attr">"transaction_not"</span>: Bytes,
+  <span class="hljs-attr">"transaction_in"</span>: [Bytes],
+  <span class="hljs-attr">"transaction_not_in"</span>: [Bytes],
+  <span class="hljs-attr">"transaction_contains"</span>: Bytes,
+  <span class="hljs-attr">"transaction_not_contains"</span>: Bytes
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-UploadEvidence_orderBy" class="definition panel" data-traverse-target="definition-UploadEvidence_orderBy">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/UploadEvidence_orderBy"></a>
+              <p><code>UploadEvidence_orderBy</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Enum Value</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>id</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>registry</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>evidenced</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>evidencer</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>creationTime</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>transaction</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-_Block_" class="definition panel" data-traverse-target="definition-_Block_">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/_Block_"></a>
+              <p><code>_Block_</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Field Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td data-property-name="hash"> <code>hash</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> The hash of the block </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="number"> <code>number</code> -
+                        <a href="#definition-Int"><code>Int!</code></a>
+                      </td>
+                      <td> The block number </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{<span class="hljs-attr">"hash"</span>: Bytes, <span class="hljs-attr">"number"</span>: <span class="hljs-number">987</span>}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-_Meta_" class="definition panel" data-traverse-target="definition-_Meta_">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/_Meta_"></a>
+              <p><code>_Meta_</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>The type for the top-level _meta field</p>
+                </section>
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Field Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td data-property-name="block"> <code>block</code> -
+                        <a href="#definition-_Block_"><code>_Block_!</code></a>
+                      </td>
+                      <td> Information about a specific subgraph block. The hash of the block will be null if the _meta field has a block constraint that asks for a block number. It will be filled if the _meta field has no block constraint and therefore asks for the latest block </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="deployment"> <code>deployment</code> -
+                        <a href="#definition-String"><code>String!</code></a>
+                      </td>
+                      <td> The deployment ID </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="hasIndexingErrors"> <code>hasIndexingErrors</code> -
+                        <a href="#definition-Boolean"><code>Boolean!</code></a>
+                      </td>
+                      <td> If <code>true</code>, the subgraph encountered indexing errors at some past block </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"block"</span>: _Block_,
+  <span class="hljs-attr">"deployment"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"hasIndexingErrors"</span>: <span class="hljs-literal">false</span>
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-_SubgraphErrorPolicy_" class="definition panel" data-traverse-target="definition-_SubgraphErrorPolicy_">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/_SubgraphErrorPolicy_"></a>
+              <p><code>_SubgraphErrorPolicy_</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Enum Value</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>allow</code></p>
+                      </td>
+                      <td> Data will be returned even if the subgraph has indexing errors </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>deny</code></p>
+                      </td>
+                      <td> If the subgraph has indexing errors, data will be omitted. The default. </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div class="doc-row no-margin">
+            <div class="doc-copy doc-separator">
+              <a class="powered-by" href="https://github.com/anvilco/spectaql">Documentation by
+                <span>Anvil SpectaQL</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
