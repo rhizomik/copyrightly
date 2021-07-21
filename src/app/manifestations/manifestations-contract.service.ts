@@ -31,6 +31,36 @@ export class ManifestationsContractService {
     });
   }
 
+  public getManifestation(hash: string | null): Observable<Manifestation> {
+    return new Observable((observer) => {
+      this.deployedContract.subscribe(contract => {
+        contract.methods.getManifestation(hash).call()
+        .then((result: string[]) => {
+          this.ngZone.run(() => {
+            if (result) {
+              observer.next(new Manifestation(
+                {
+                  id: hash, title: result[0], authors: result[1],
+                  creationTime: result[2], expiryTime: result[3]
+                }));
+            } else {
+              observer.next(new Manifestation());
+            }
+            observer.complete();
+          });
+        })
+        .catch((error: string) => {
+          console.error(error);
+          this.ngZone.run(() => {
+            observer.error(new Error('Error retrieving manifestation, see logs for details'));
+            observer.complete();
+          });
+        });
+      }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
+      return { unsubscribe: () => {} };
+    });
+  }
+
   public manifest(manifestation: Manifestation, account: string): Observable<string | ManifestEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
@@ -52,6 +82,28 @@ export class ManifestationsContractService {
         .on('error', (error: string) => {
           this.ngZone.run(() => {
             observer.error(new Error('Error registering creation, see log for details'));
+            observer.complete();
+          });
+        });
+      }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
+      return { unsubscribe: () => {} };
+    });
+  }
+
+  public getEvidenceCount(hash: string): Observable<number> {
+    return new Observable((observer) => {
+      this.deployedContract.subscribe(contract => {
+        contract.methods.getEvidenceCount(hash).call()
+        .then((result: number) => {
+          this.ngZone.run(() => {
+            observer.next(result);
+            observer.complete();
+          });
+        })
+        .catch((error: string) => {
+          console.error(error);
+          this.ngZone.run(() => {
+            observer.error(new Error('Error retrieving evidence count, see logs for details'));
             observer.complete();
           });
         });
