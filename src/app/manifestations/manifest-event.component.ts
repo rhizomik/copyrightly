@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ManifestEvent } from './manifest-event';
 import { Router } from '@angular/router';
+import { ManifestationsContractService } from './manifestations-contract.service';
+import { Manifestation } from './manifestation';
 
 @Component({
   selector: 'app-manifestation-modal-content',
@@ -40,16 +42,25 @@ import { Router } from '@angular/router';
   `,
   styles: ['.modal-body { font-size: smaller; }']
 })
-export class ManifestEventComponent {
-  @Input() data: ManifestEvent | undefined;
+export class ManifestEventComponent implements OnInit {
+  @Input() data: ManifestEvent = new ManifestEvent({});
 
   constructor(public activeModal: NgbActiveModal,
-              private router: Router) {}
+              private router: Router,
+              private manifestationsContractService: ManifestationsContractService) {}
+
+  ngOnInit(): void {
+    this.manifestationsContractService.getManifestation(this.data.what.id)
+      .subscribe((manifestation: Manifestation) => {
+        this.data.what = manifestation;
+        this.data.what.transaction = this.data.where;
+    });
+  }
 
   details(): void {
     this.activeModal.dismiss();
     if (this.data) {
-      this.router.navigate(['/manifestations', this.data.what.id]);
+      this.router.navigate(['/manifestations', this.data.what.id], { state: this.data.what });
     }
   }
 }

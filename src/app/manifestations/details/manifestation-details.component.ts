@@ -1,13 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Web3Service } from '../../util/web3.service';
-import { ManifestationsContractService } from '../manifestations-contract.service';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Manifestation } from '../manifestation';
-import { UploadEvidenceEvent } from '../../evidence/upload-evidence-event';
-import { UploadEvidenceContractService } from '../../evidence/upload-evidence-contract.service';
 import { Location } from '@angular/common';
 import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
@@ -24,7 +20,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   uploadEvidence: UploadEvidence[] = [];
   addingUploadableEvidence = false;
   addingYouTubeEvidence = false;
-  navigationSubscription: Subscription | undefined;
+  navigationSubscription: Subscription = new Subscription();
   notFound = true;
 
   constructor(private route: ActivatedRoute,
@@ -33,22 +29,36 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private web3Service: Web3Service,
               private alertsService: AlertsService,
               private manifestationDetailsQuery: ManifestationDetailsQueryService,
-              private uploadEvidenceListQuery: UploadEvidenceListQueryService) {}
+              private uploadEvidenceListQuery: UploadEvidenceListQueryService) {
+    // Use passed Manifestation if available
+    this.manifestation = this.router.getCurrentNavigation()?.extras.state as Manifestation;
+  }
 
   ngOnInit(): void {
-    this.route.paramMap
-    .pipe(switchMap((params: ParamMap) =>
-      this.manifestationDetailsQuery.fetch({ manifestationId: params.get('id') })
-    ))
-    .subscribe(({data}) => {
-      this.manifestation = new Manifestation(({...data.manifestation}));
-      if (this.manifestation.title) {
-        this.notFound = false;
-        this.loadEvidence();
-      } else {
-        this.alertsService.error('Manifestation not found: ' + this.manifestation.id, 0);
+    this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
+    // Reload manifestation and evidence if page reloaded
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
       }
-    }, error => this.alertsService.error(error));
+    });
+  }
+
+  loadManifestation(manifestationId: string | null) {
+    this.manifestationDetailsQuery.fetch({ manifestationId })
+      .subscribe(({data}) => {
+        const manifestation = new Manifestation(({...data.manifestation}));
+        if (manifestation.title) {
+          this.manifestation = manifestation;
+          this.notFound = false;
+          this.loadEvidence();
+        } else if (this.manifestation?.title) {
+          this.notFound = false;
+          this.loadEvidence();
+        } else {
+          this.alertsService.error('Manifestation not found: ' + manifestationId, 0);
+        }
+      }, error => this.alertsService.error(error));
   }
 
   addingEvidence(): boolean {
@@ -60,14 +70,6 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     .subscribe(({data}) => {
       this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
     }, error => this.alertsService.error(error));
-
-    // Reload evidence if page reloaded
-    this.navigationSubscription = this.router.events.subscribe((e: any) => {
-      if (e instanceof NavigationEnd && this.navigationSubscription) {
-        this.navigationSubscription.unsubscribe();
-        this.loadEvidence();
-      }
-    });
   }
 
   back() {
@@ -75,8 +77,6 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.navigationSubscription) {
-      this.navigationSubscription.unsubscribe();
-    }
+    this.navigationSubscription.unsubscribe();
   }
 }
