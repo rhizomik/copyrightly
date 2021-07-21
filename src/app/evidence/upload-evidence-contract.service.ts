@@ -69,6 +69,7 @@ export class UploadEvidenceContractService {
           .subscribe(date => {
             this.ngZone.run(() => {
               evidenceEvent.when = date;
+              evidenceEvent.what.creationTime = date;
               if (!this.watching) { observer.next(evidenceEvent); } // If not watching, show event
               observer.complete();
             });

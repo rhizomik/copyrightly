@@ -74,6 +74,7 @@ export class ManifestationsContractService {
           .subscribe(date => {
             this.ngZone.run(() => {
               manifestEvent.when = date;
+              manifestEvent.what.creationTime = date;
               if (!this.watching) { observer.next(manifestEvent); } // If not watching, show event
               observer.complete();
             });
