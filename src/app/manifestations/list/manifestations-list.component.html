@@ -1,7 +1,15 @@
-<p>There { manifestations?.length, plural,
-  =1 { is 1 manifestation }
-  other { are {{manifestations?.length}} manifestations} } registered
-</p>
+<div class="row mb-3">
+  <div class="col">
+    There { manifestations?.length, plural,
+    =1 { is 1 manifestation }
+    other { are {{manifestations?.length}} manifestations} } registered
+  </div>
+  <div class="col-1 fa-pull-right">
+    <button id="refresh-manifestations" class="btn-sm btn-outline-dark fa-pull-right" (click)="refreshList()">
+      <span class="fas fa-sync-alt"></span>
+    </button>
+  </div>
+</div>
 
 <div id="list" *ngIf="manifestations">
 

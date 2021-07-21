@@ -1,11 +1,12 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Web3Service } from '../../util/web3.service';
 import { AuthenticationService } from '../../navbar/authentication.service';
 import { ActivatedRoute } from '@angular/router';
-import { ManifestationsListQueryService } from '../../query/manifestations-list.query.service';
+import { Subscription } from 'rxjs';
+import { QueryRef } from 'apollo-angular';
+import { ManifestationsListQueryService, ManifestationsListResponse } from '../../query/manifestations-list.query.service';
 import { Manifestation } from '../manifestation';
 
 @Component({
@@ -17,7 +18,8 @@ export class ManifestationsListComponent implements OnInit, OnDestroy, OnChanges
 
   @Input() manifester = '';
   public manifestations: Manifestation[] | null = null;
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  private watchQuery: QueryRef<ManifestationsListResponse> | undefined;
+  private watchSubscription: Subscription = new Subscription();
 
   constructor(private route: ActivatedRoute,
               private web3Service: Web3Service,
@@ -26,24 +28,32 @@ export class ManifestationsListComponent implements OnInit, OnDestroy, OnChanges
               private manifestationsListQuery: ManifestationsListQueryService) {}
 
   ngOnInit(): void {
-    this.loadManifestations();
+    this.watchSubscription = this.loadManifestations();
   }
 
   ngOnChanges() {
-    this.loadManifestations();
+    this.watchSubscription = this.loadManifestations();
   }
 
   ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.watchSubscription.unsubscribe();
   }
 
-  private loadManifestations() {
+  refreshList() {
     const filterAuthors = [];
     if (this.manifester) {
       filterAuthors.push(this.manifester);
     }
-    this.manifestationsListQuery.watch({ authors: filterAuthors }).valueChanges
+    this.watchQuery?.refetch({ authors: filterAuthors });
+  }
+
+  private loadManifestations(): Subscription {
+    const filterAuthors = [];
+    if (this.manifester) {
+      filterAuthors.push(this.manifester);
+    }
+    this.watchQuery = this.manifestationsListQuery.watch({ authors: filterAuthors });
+    return this.watchQuery.valueChanges
       .pipe( map(response => this.manifestations = response.data.manifestations.map(
         (manifestation: Manifestation ) => new Manifestation({...manifestation}))))
       .subscribe((manifestations: Manifestation[]) => {
