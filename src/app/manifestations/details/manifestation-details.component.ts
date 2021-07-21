@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Web3Service } from '../../util/web3.service';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Manifestation } from '../manifestation';
@@ -20,7 +19,6 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   uploadEvidence: UploadEvidence[] = [];
   addingUploadableEvidence = false;
   addingYouTubeEvidence = false;
-  navigationSubscription: Subscription = new Subscription();
   notFound = true;
 
   constructor(private route: ActivatedRoute,
@@ -30,18 +28,12 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private alertsService: AlertsService,
               private manifestationDetailsQuery: ManifestationDetailsQueryService,
               private uploadEvidenceListQuery: UploadEvidenceListQueryService) {
-    // Use passed Manifestation if available
+    // Use received Manifestation if available, otherwise, fetch it
     this.manifestation = this.router.getCurrentNavigation()?.extras.state as Manifestation;
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
-    // Reload manifestation and evidence if page reloaded
-    this.navigationSubscription = this.router.events.subscribe((e: any) => {
-      if (e instanceof NavigationEnd) {
-        this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
-      }
-    });
   }
 
   loadManifestation(manifestationId: string | null) {
@@ -76,7 +68,10 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  ngOnDestroy(): void {
-    this.navigationSubscription.unsubscribe();
+  ngOnDestroy(): void {}
+
+  addedUploadEvidence(evidence: UploadEvidence) {
+    this.uploadEvidence.push(evidence);
+    this.manifestation.evidenceCount++;
   }
 }

@@ -38,12 +38,12 @@
   <button *ngIf="!addingEvidence()" type="button" disabled class="btn btn-success mb-4 ml-2"
           (click)="addingYouTubeEvidence = true">Add YouTube Evidence</button>
 
-  <app-upload-evidence *ngIf="addingUploadableEvidence" [manifestation]="manifestation"
-                       (cancel)="addingUploadableEvidence = false" (done)="addingUploadableEvidence = false">
+  <app-upload-evidence [hidden]="!addingUploadableEvidence" [manifestation]="manifestation"
+                       (cancel)="addingUploadableEvidence = false" (done)="addingUploadableEvidence = false"
+                       (evidence)="addedUploadEvidence($event.what)">
   </app-upload-evidence>
 
-  <div *ngIf="uploadEvidence?.length == 0
-              && !addingEvidence()" class="card mb-4">
+  <div *ngIf="uploadEvidence?.length == 0 && !addingEvidence()" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No evidence yet</h5>
       <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten if no

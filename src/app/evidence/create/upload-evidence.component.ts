@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { UploadEvidenceEventComponent } from '../upload-evidence-event.component';
 import { UploadEvidence } from '../uploadEvidence';
 import { Manifestation } from '../../manifestations/manifestation';
+import { UploadEvidenceEvent } from '../upload-evidence-event';
 
 @Component({
   selector: 'app-upload-evidence',
@@ -18,6 +19,7 @@ export class UploadEvidenceComponent implements OnInit {
   @Input() manifestation = new Manifestation();
   @Output() cancel: EventEmitter<void> = new EventEmitter();
   @Output() done: EventEmitter<void> = new EventEmitter();
+  @Output() evidence: EventEmitter<UploadEvidenceEvent> = new EventEmitter();
 
   account = '';
   uploadEvidence = new UploadEvidence();
@@ -59,14 +61,16 @@ export class UploadEvidenceComponent implements OnInit {
           console.log('Transaction hash: ' + result);
           this.alertsService.info('Evidence submitted, you will be alerted when confirmed.<br>' +
             'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
-          form.reset();
           this.done.emit();
         } else {
           console.log(result);
+          this.evidence.emit(result);
           this.alertsService.modal(UploadEvidenceEventComponent, result);
+          this.uploadEvidence.id = '';
         }
       }, error => {
         this.alertsService.error(error);
+        this.cancel.emit();
       });
   }
 
