@@ -13,7 +13,6 @@ Given(/^I'm on the home page$/, async () => {
 
 Given(/^I go to "([^"]*)"$/, async (url: string) => {
   await browser.get(url);
-  await browser.refresh();
 });
 
 When(/^I go to the home page$/, async () => {
