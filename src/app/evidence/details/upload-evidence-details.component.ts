@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UploadEvidenceEvent } from '../upload-evidence-event';
+import { UploadEvidence } from '../uploadEvidence';
 
 @Component({
   selector: 'app-uploadevidence-details',
@@ -7,7 +7,7 @@ import { UploadEvidenceEvent } from '../upload-evidence-event';
   styleUrls: ['./upload-evidence-details.component.css']
 })
 export class UploadEvidenceDetailsComponent {
-  @Input() evidenceEvent: UploadEvidenceEvent | undefined;
+  @Input() evidence: UploadEvidence | undefined;
   @Input() evidenceIndex = 0;
 
   stake = 1.5;

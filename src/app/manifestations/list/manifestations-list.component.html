@@ -1,35 +1,40 @@
-<p *ngIf="own">You have registered { manifestationEvents?.length, plural,
-  =1 { 1 manifestation }
-  other { {{manifestationEvents?.length}} manifestations} }
-</p>
-<p *ngIf="!own">There { manifestationEvents?.length, plural,
-  =1 { is 1 manifestation }
-  other { are {{manifestationEvents?.length}} manifestations} } registered
-</p>
+<div class="row mb-3">
+  <div class="col">
+    There { manifestations?.length, plural,
+    =1 { is 1 manifestation }
+    other { are {{manifestations?.length}} manifestations} } registered
+  </div>
+  <div class="col-1 fa-pull-right">
+    <button id="refresh-manifestations" class="btn-sm btn-outline-dark fa-pull-right" (click)="refreshList()">
+      <span class="fas fa-sync-alt"></span>
+    </button>
+  </div>
+</div>
 
-<div id="list" *ngIf="manifestationEvents">
+<div id="list" *ngIf="manifestations">
 
-<div class="card mb-4" *ngFor="let event of manifestationEvents">
+<div class="card mb-4" *ngFor="let manifestation of manifestations">
   <div class="card-block row m-1">
-    <h4 class="card-title col-md-12 p-1">{{event?.what?.title}}</h4>
+    <h4 class="card-title col-md-12 p-1">{{manifestation?.title}}</h4>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Hash</h6>
-      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{event?.what?.hash}}"
-         target="_blank">{{event?.what?.hash}}</a>
+      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.id}}"
+         target="_blank">{{manifestation?.id}}</a>
     </div>
     <div class="col-md-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Creator</h6>
-      <a class="card-text" title="{{event?.who}}" [routerLink]="['/creators', event?.who]"
-      >{{event?.who | slice:0:6}}...{{event?.who | slice:-4}}</a>
+      <a class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}"
+         [routerLink]="['/creators', author]"
+      >{{author | slice:0:6}}...{{author | slice:-4}}</a>
     </div>
     <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Registered</h6>
-      <a class="card-text" href="https://goerli.etherscan.io/tx/{{event?.where}}"
-         target="_blank">{{event?.when | date:'medium'}}</a>
+      <a class="card-text" href="https://goerli.etherscan.io/tx/{{manifestation?.transaction}}"
+         target="_blank">{{manifestation?.creationTime | date:'medium'}}</a>
     </div>
   </div>
   <div class="card-footer">
-    <a [routerLink]="['/manifestations', event?.what?.hash]" class="btn btn-info">Details</a>
+    <a [routerLink]="['/manifestations', manifestation?.id]" class="btn btn-info">Details</a>
   </div>
 </div>
 

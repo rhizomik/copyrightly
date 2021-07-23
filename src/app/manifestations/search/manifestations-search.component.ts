@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Web3Service } from '../../util/web3.service';
-import { ManifestationsContractService } from '../manifestations-contract.service';
 import { Manifestation } from '../manifestation';
-import { takeUntil } from 'rxjs/operators';
+import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 
 @Component({
   selector: 'app-manifestations-search',
@@ -14,18 +12,17 @@ import { takeUntil } from 'rxjs/operators';
 export class ManifestationsSearchComponent implements OnInit, OnDestroy {
 
   public manifestation = new Manifestation();
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private web3Service: Web3Service,
-              private manifestationsContractService: ManifestationsContractService,
+              private manifestationDetailsQuery: ManifestationDetailsQueryService,
               private alertsService: AlertsService) {}
 
   ngOnInit(): void { }
 
   getManifestation() {
-    this.manifestationsContractService.getManifestation(this.manifestation.hash).pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((manifestation: Manifestation) => {
-        this.manifestation = manifestation;
+    this.manifestationDetailsQuery.fetch({ manifestationId: this.manifestation.id })
+      .subscribe(({data}) => {
+        this.manifestation = new Manifestation(({...data.manifestation}));
         if (!this.manifestation.title) {
           this.alertsService.info('Content hash not found, unregistered');
         }
@@ -34,8 +31,5 @@ export class ManifestationsSearchComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() {}
 }

@@ -1,0 +1,47 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Manifestations
+    network: mainnet
+    source:
+      address: "0xDd65C920a296f5Feeca6e92F86fCd641FE41D5c6"
+      abi: Manifestations
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ManifestEvent
+        - AddedEvidence
+      abis:
+        - name: Manifestations
+          file: Manifestations/src/assets/contracts/Manifestations.json
+      eventHandlers:
+        - event: ManifestEvent(string,string,indexed address)
+          handler: handleManifestEvent
+        - event: AddedEvidence(uint8)
+          handler: handleAddedEvidence
+      file: Manifestations/Manifestations.wasm
+  - kind: ethereum/contract
+    name: UploadEvidence
+    network: mainnet
+    source:
+      address: "0xBC168Cb4cbBBc85Dd949dC15104Bbc5fF4f1445d"
+      abi: UploadEvidence
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UploadEvidenceEvent
+      abis:
+        - name: UploadEvidence
+          file: UploadEvidence/src/assets/contracts/UploadEvidence.json
+      eventHandlers:
+        - event: UploadEvidenceEvent(indexed address,indexed bytes32,string,string,indexed address)
+          handler: handleUploadEvidenceEvent
+      file: Manifestations/Manifestations.wasm

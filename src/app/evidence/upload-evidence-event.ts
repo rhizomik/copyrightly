@@ -8,8 +8,12 @@ export class UploadEvidenceEvent extends Event {
     super({ type: event.event, who: event.returnValues.evidencer, where: event.transactionHash });
 
     this.what = new UploadEvidence({
-      evidencedHash: event.returnValues.evidencedHash,
-      evidenceHash: event.returnValues.evidenceHash
+      id: event.returnValues.evidenceHash,
+      registry: event.returnValues.registry,
+      evidenced: event.returnValues.evidencedHash,
+      evidencer: event.returnValues.evidencer,
+      creationTime: event.when,
+      transaction: event.transactionHash
     });
   }
 }

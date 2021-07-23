@@ -18,13 +18,13 @@ import { UploadEvidenceEvent } from './upload-evidence-event';
           <h5 class="card-title col-md-12 p-1">Uploadable Evidence</h5>
           <div class="col-md-12 p-1 mb-1">
             <h6 class="card-subtitle text-muted">Uploaded Content</h6>
-            <a class="card-text" href="https://ipfs.infura.io/ipfs/{{data?.what?.evidenceHash}}" target="_blank">
-              {{data?.what?.evidenceHash}}</a>
+            <a class="card-text" href="https://ipfs.infura.io/ipfs/{{data?.what?.id}}" target="_blank">
+              {{data?.what?.id}}</a>
           </div>
           <div class="col-md-12 p-1 mb-1">
             <h6 class="card-subtitle text-muted">For Manifestation</h6>
-            <a class="card-text" [routerLink]="['/manifestations', data?.what?.evidencedHash]">
-              {{data?.what?.evidencedHash}}</a>
+            <a class="card-text" [routerLink]="['/manifestations', data?.what?.evidenced]">
+              {{data?.what?.evidenced}}</a>
           </div>
           <div class="col-md-6 p-1 mb-1">
             <h6 class="card-subtitle text-muted">By</h6>
@@ -54,7 +54,7 @@ export class UploadEvidenceEventComponent {
   details(): void {
     this.activeModal.dismiss();
     if (this.data) {
-      this.router.navigate(['/manifestations', this.data.what.evidencedHash]);
+      this.router.navigate(['/manifestations', this.data.what.evidenced]);
     }
   }
 }

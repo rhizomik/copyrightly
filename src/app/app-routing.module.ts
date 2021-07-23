@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'list', component: ManifestationsListComponent, data: {isAuthenticated: true} },
   { path: 'about', component: AboutComponent , data: {isAuthenticated: false} },
   { path: '', redirectTo: '/about', pathMatch: 'full' },
+  { path: '**', redirectTo: '/about', pathMatch: 'full' },
 ];
 
 @NgModule({

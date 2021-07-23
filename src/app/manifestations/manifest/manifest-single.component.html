@@ -31,7 +31,7 @@
       <label class="control-label" for="inputHash">Content*</label>
       <input id="inputHash" name="inputHash" type="text" class="form-control"
              readonly required appManifestUnregistered
-             [(ngModel)]="manifestation.hash" #inputHash="ngModel" placeholder="Loaded content hash">
+             [(ngModel)]="manifestation.id" #inputHash="ngModel" placeholder="Loaded content hash">
       <input id="inputFile" name="inputFile" type="file" class="form-control"
              (change)="loadFile(inputFile)" #inputFile>
       <div class="invalid-feedback">A content hash is required, load a file to generate it</div>
@@ -46,7 +46,7 @@
       <button id="manifest" type="submit" class="btn btn-success pull-right"
               [disabled]="!manifestForm.form.valid || !inputHash.value">{{status}}</button>
       <button id="inspect" type="button" class="btn btn-info pull-right ml-2"
-              [routerLink]="['/manifestations', manifestation.hash]"
+              [routerLink]="['/manifestations', manifestation.id]"
               [hidden]="!inputHash.errors?.manifestUnregistered">Inspect</button>
     </div>
 

@@ -9,7 +9,7 @@
     <div class="form-group" [class.was-validated]="inputHash.dirty || inputHash.touched">
       <label class="control-label" for="input">Hash*</label>
       <input id="input" name="inputHash" type="text" class="form-control" required
-             [(ngModel)]="manifestation.hash" #inputHash="ngModel" placeholder="Content Hash">
+             [(ngModel)]="manifestation.id" #inputHash="ngModel" placeholder="Content Hash">
       <div class="invalid-feedback">A content hash is required</div>
     </div>
 
@@ -31,8 +31,8 @@
       <h5 class="card-title col-md-12 p-1">{{manifestation?.title}}</h5>
       <div class="col-md-6 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Hash</h6>
-        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}" target="_blank">
-          {{manifestation?.hash}}</a>
+        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.id}}" target="_blank">
+          {{manifestation?.id}}</a>
       </div>
       <div class="col-md-2 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Creator</h6>
@@ -42,12 +42,12 @@
       </div>
       <div class="col-md-4 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Registered</h6>
-        <p class="card-text">{{manifestation?.when | date:'medium'}}</p>
+        <p class="card-text">{{manifestation?.creationTime | date:'medium'}}</p>
       </div>
     </div>
     <div class="card-footer">
       <button id="details" type="button" class="btn btn-primary"
-              [routerLink]="['/manifestations', manifestation?.hash]">Details</button>
+              [routerLink]="['/manifestations', manifestation?.id]">Details</button>
       <button id="back" type="button" class="btn btn-secondary ml-2"
               (click)="manifestation.title = ''">Back</button>
     </div>

@@ -27,7 +27,7 @@ export class ManifestUnregisteredDirective implements AsyncValidator {
             this.manifestationsContractService.getEvidenceCount(control.value)
             .subscribe(evidenceCount => {
               this.ngZone.run(() => {
-                if (evidenceCount > 0 || manifestation.expiry >= new Date()) {
+                if (evidenceCount > 0 || manifestation.expiryTime >= new Date()) {
                   observer.next({manifestUnregistered: {title: manifestation.title}});
                   observer.complete();
                 } else {

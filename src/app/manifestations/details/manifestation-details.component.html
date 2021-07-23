@@ -6,8 +6,8 @@
       <h5 class="card-title col-md-12 p-1">{{manifestation?.title}}</h5>
       <div class="col-md-6 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Hash</h6>
-        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}" target="_blank">
-          {{manifestation?.hash}}</a>
+        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.id}}" target="_blank">
+          {{manifestation?.id}}</a>
       </div>
       <div class="col-md-2 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Creator</h6>
@@ -18,11 +18,12 @@
       </div>
       <div class="col-md-3 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Registered</h6>
-        <p class="card-text">{{manifestation?.when | date:'medium'}}</p>
+        <a class="card-text" href="https://goerli.etherscan.io/tx/{{manifestation?.transaction}}" target="_blank">
+          {{manifestation?.creationTime | date:'medium'}}</a>
       </div>
       <div class="col-md-1 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Evidence</h6>
-        <p class="card-text">{{uploadEvidenceEvents?.length}}</p>
+        <p class="card-text">{{manifestation?.evidenceCount}}</p>
       </div>
     </div>
   </div>
@@ -37,22 +38,22 @@
   <button *ngIf="!addingEvidence()" type="button" disabled class="btn btn-success mb-4 ml-2"
           (click)="addingYouTubeEvidence = true">Add YouTube Evidence</button>
 
-  <app-upload-evidence *ngIf="addingUploadableEvidence" [manifestation]="manifestation"
-                       (cancel)="addingUploadableEvidence = false" (done)="addingUploadableEvidence = false">
+  <app-upload-evidence [hidden]="!addingUploadableEvidence" [manifestation]="manifestation"
+                       (cancel)="addingUploadableEvidence = false" (done)="addingUploadableEvidence = false"
+                       (evidence)="addedUploadEvidence($event.what)">
   </app-upload-evidence>
 
-  <div *ngIf="uploadEvidenceEvents?.length == 0
-              && !addingEvidence()" class="card mb-4">
+  <div *ngIf="uploadEvidence?.length == 0 && !addingEvidence()" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No evidence yet</h5>
       <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten if no
-        evidence is provided before {{manifestation?.expiry | date:'medium'}}</p>
+        evidence is provided before {{manifestation?.expiryTime | date:'medium'}}</p>
     </div>
   </div>
 
   <div id="list" *ngIf="!addingEvidence()">
-    <app-uploadevidence-details *ngFor="let evidence of uploadEvidenceEvents; let i = index"
-      [evidenceEvent]="evidence" [evidenceIndex]="i+1">
+    <app-uploadevidence-details *ngFor="let evidence of uploadEvidence; let i = index"
+      [evidence]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
   </div>
 </div>

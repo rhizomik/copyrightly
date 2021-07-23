@@ -35,6 +35,15 @@ jobs:
           while ! nc -z localhost 8545; do sleep 5; done
           npm run soltest
           npm run migrate
+          cd test
+          chmod +x ./setup.sh
+          ./setup.sh
+          cd ..
+          npm run graph-local > /dev/null &
+          sleep 60
+          npm run create-local
+          npm run config-local
+          npm run deploy-local
           npm run e2e
           npm run build -- --prod
       - name: Deploy report page
