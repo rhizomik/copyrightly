@@ -9,13 +9,13 @@ import { CreatorDetailsComponent } from './creators/details/creator-details.comp
 import { CreatorsSearchComponent } from './creators/search/creators-search.component';
 
 const routes: Routes = [
-  { path: 'manifestations/:id', component: ManifestationDetailsComponent, data: {isAuthenticated: true}, runGuardsAndResolvers: 'always' },
-  { path: 'creators/:id', component: CreatorDetailsComponent, data: {isAuthenticated: true}, runGuardsAndResolvers: 'always' },
-  { path: 'creators', component: CreatorsSearchComponent, data: {isAuthenticated: true} },
-  { path: 'register', component: ManifestSingleComponent, data: {isAuthenticated: true} },
-  { path: 'search', component: ManifestationsSearchComponent, data: {isAuthenticated: true} },
-  { path: 'list', component: ManifestationsListComponent, data: {isAuthenticated: true} },
-  { path: 'about', component: AboutComponent , data: {isAuthenticated: false} },
+  { path: 'manifestations/:id', component: ManifestationDetailsComponent, runGuardsAndResolvers: 'always' },
+  { path: 'creators/:id', component: CreatorDetailsComponent, runGuardsAndResolvers: 'always' },
+  { path: 'creators', component: CreatorsSearchComponent },
+  { path: 'register', component: ManifestSingleComponent },
+  { path: 'search', component: ManifestationsSearchComponent },
+  { path: 'list', component: ManifestationsListComponent },
+  { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: '**', redirectTo: '/about', pathMatch: 'full' },
 ];

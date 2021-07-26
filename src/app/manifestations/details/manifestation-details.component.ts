@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Web3Service } from '../../util/web3.service';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Manifestation } from '../manifestation';
 import { Location } from '@angular/common';
@@ -19,12 +18,12 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   uploadEvidence: UploadEvidence[] = [];
   addingUploadableEvidence = false;
   addingYouTubeEvidence = false;
+  hidUploadEvidence = false;
   notFound = true;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private location: Location,
-              private web3Service: Web3Service,
               private alertsService: AlertsService,
               private manifestationDetailsQuery: ManifestationDetailsQueryService,
               private uploadEvidenceListQuery: UploadEvidenceListQueryService) {
@@ -71,6 +70,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   addedUploadEvidence(evidence: UploadEvidence) {
+    this.addingUploadableEvidence = false;
+    this.hidUploadEvidence = false;
     this.uploadEvidence.push(evidence);
     this.manifestation.evidenceCount++;
   }

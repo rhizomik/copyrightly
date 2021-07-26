@@ -102,7 +102,7 @@ export class Web3Service {
     });
   }
 
-  private monitorNetworkId() {
+  public monitorNetworkId() {
     if (this.web3) {
       this.web3.eth.net.getId()
         .then((networkId: number) => {
