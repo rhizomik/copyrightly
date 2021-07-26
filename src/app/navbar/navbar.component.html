@@ -20,9 +20,9 @@
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/list']"><span class="fas fa-list"></span> List All</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/register']"><span class="fas fa-gavel"></span> Register</a>
-          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/search']"><span class="fas fa-search"></span> Search</a>
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/register']" [class.disabled]="!isLoggedIn"><span class="fas fa-gavel"></span> Register</a>
         </div>
       </li>
       <li class="nav-item dropdown" ngbDropdown>
@@ -34,6 +34,9 @@
         </div>
       </li>
     </ul>
-    <app-authentication-navbar *ngIf="isAuthenticatedRoute"></app-authentication-navbar>
+    <app-authentication-navbar-loggedout *ngIf="!isLoggedIn" (login)="isLoggedIn = true">
+    </app-authentication-navbar-loggedout>
+    <app-authentication-navbar-loggedin *ngIf="isLoggedIn">
+    </app-authentication-navbar-loggedin>
   </div>
 </nav>

@@ -6,16 +6,17 @@ import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-authentication-navbar',
-  templateUrl: './authentication-navbar.component.html',
+  selector: 'app-authentication-navbar-loggedin',
+  templateUrl: './authentication-navbar-loggedin.component.html',
   styleUrls: ['./authentication-navbar.component.css']
 })
-export class AuthenticationNavbarComponent implements OnInit, OnDestroy {
+export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy {
 
   public accountId = '';
   public accountName = '';
   public accountsNames: string[] = [];
   public accounts: string[] = [];
+  public currentNetwork = '';
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private router: Router,
@@ -23,6 +24,8 @@ export class AuthenticationNavbarComponent implements OnInit, OnDestroy {
               private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
+    this.getCurrentNetwork()
+      .subscribe((networkId: string) => this.currentNetwork = networkId);
     this.authenticationService.getAccounts()
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(accounts =>  this.accounts = accounts );
@@ -42,6 +45,7 @@ export class AuthenticationNavbarComponent implements OnInit, OnDestroy {
   }
 
   refreshAccounts() {
+    this.web3Service.monitorNetworkId();
     this.authenticationService.refreshAccounts();
   }
 

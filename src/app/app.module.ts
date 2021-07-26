@@ -10,14 +10,15 @@ import { Angulartics2Module } from 'angulartics2';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
-import { AuthenticationNavbarComponent } from './navbar/authentication-navbar.component';
+import { AuthenticationNavbarLoggedOutComponent } from './navbar/authentication-navbar-loggedout.component';
+import { AuthenticationNavbarLoggedInComponent } from './navbar/authentication-navbar-loggedin.component';
 import { ManifestationsModule } from './manifestations/manifestations.module';
 import { AlertsModule } from './alerts/alerts.module';
 import { CreatorsModule } from './creators/creators.module';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, AboutComponent, AuthenticationNavbarComponent
+    AppComponent, NavbarComponent, AboutComponent, AuthenticationNavbarLoggedOutComponent, AuthenticationNavbarLoggedInComponent
   ],
   imports: [
     BrowserModule,

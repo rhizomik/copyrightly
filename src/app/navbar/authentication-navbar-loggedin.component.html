@@ -4,10 +4,10 @@
       <div class="input-group input-group-sm">
         <div class="input-group-prepend">
           <span class="input-group-text" id="network-name">
-            <span class="fab fa-ethereum"></span>{{getCurrentNetwork() | async}}</span>
+            <span class="fab fa-ethereum"></span>{{currentNetwork}}</span>
         </div>
-        <input *ngIf="accounts.length == 0"  id="no-account" name="no-account" type="text" readonly
-               class="form-control" value="Offline">
+        <input *ngIf="accounts.length == 0"  id="connecting" name="connecting" type="text" readonly
+               class="form-control" value="Connecting...">
         <input *ngIf="accounts.length >= 1"  id="account" name="account" type="text" class="form-control"
                readonly #account (focus)="account.blur()"
                title="{{accountId}}" [ngModel]="accountName" (click)="currentUserProfile()">
@@ -17,8 +17,8 @@
             {{accountsNames[i]}}</option>
         </select>
         <div class="input-group-append" >
-          <button id="refresh-accounts" class="btn btn-dark" (click)="refreshAccounts()">
-            <span class="fas fa-sync-alt"></span>
+          <button id="refresh-accounts" class="btn btn-dark" #refresh_accounts
+                  (focus)="refresh_accounts.blur()"  (click)="refreshAccounts()"><span class="fas fa-sync-alt"></span>
           </button>
         </div>
       </div>
