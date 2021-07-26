@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertsService } from '../../alerts/alerts.service';
-import { Web3Service } from '../../util/web3.service';
 import { Manifestation } from '../manifestation';
 import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 
@@ -13,8 +12,7 @@ export class ManifestationsSearchComponent implements OnInit, OnDestroy {
 
   public manifestation = new Manifestation();
 
-  constructor(private web3Service: Web3Service,
-              private manifestationDetailsQuery: ManifestationDetailsQueryService,
+  constructor(private manifestationDetailsQuery: ManifestationDetailsQueryService,
               private alertsService: AlertsService) {}
 
   ngOnInit(): void { }

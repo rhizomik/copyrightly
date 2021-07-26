@@ -38,8 +38,8 @@
   <button *ngIf="!addingEvidence()" type="button" disabled class="btn btn-success mb-4 ml-2"
           (click)="addingYouTubeEvidence = true">Add YouTube Evidence</button>
 
-  <app-upload-evidence [hidden]="!addingUploadableEvidence" [manifestation]="manifestation"
-                       (cancel)="addingUploadableEvidence = false" (done)="addingUploadableEvidence = false"
+  <app-upload-evidence *ngIf="addingUploadableEvidence" [manifestation]="manifestation" [hidden]="hidUploadEvidence"
+                       (cancel)="addingUploadableEvidence = false" (done)="hidUploadEvidence = true"
                        (evidence)="addedUploadEvidence($event.what)">
   </app-upload-evidence>
 

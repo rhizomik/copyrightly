@@ -1,8 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AlertsService } from '../../alerts/alerts.service';
-import { Web3Service } from '../../util/web3.service';
-import { AuthenticationService } from '../../navbar/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { QueryRef } from 'apollo-angular';
@@ -22,9 +20,7 @@ export class ManifestationsListComponent implements OnInit, OnDestroy, OnChanges
   private watchSubscription: Subscription = new Subscription();
 
   constructor(private route: ActivatedRoute,
-              private web3Service: Web3Service,
               private alertsService: AlertsService,
-              private authenticationService: AuthenticationService,
               private manifestationsListQuery: ManifestationsListQueryService) {}
 
   ngOnInit(): void {
