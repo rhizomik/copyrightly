@@ -5,7 +5,7 @@ Feature: List Own Claims
 
   Scenario: List own claims when I have one
     Given I'm on the home page
-    And I click submenu option "Register" in menu "Authorship"
+    And I click connect account
     When I click current user account
     Then I see 2 results
     And I see result number 1 with

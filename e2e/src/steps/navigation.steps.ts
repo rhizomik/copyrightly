@@ -28,8 +28,34 @@ When(/^I click submenu option "([^"]*)" in menu "([^"]*)"$/, async (option: stri
   await navBar.goToMenuOption(option);
 });
 
+Then(/^The submenu option "([^"]*)" in menu "([^"]*)" is enabled "([^"]*)"$/, async (option: string, menu: string, enabled: string) => {
+  await navBar.goToMenuOption(menu);
+  const menuClass = await navBar.getMenuOptionClass(option);
+  if (enabled === 'true') {
+    expect(menuClass).to.not.contain('disabled');
+  } else {
+    expect(menuClass).to.contain('disabled');
+  }
+});
+
+When(/^I click connect account$/, async () => {
+  await navBar.clickConnectAccount();
+});
+
+When(/^I'm not connected$/, async () => {
+  await navBar.isNoAccountPresent();
+});
+
+When(/^I'm connected$/, async () => {
+  await navBar.isAccountPresent();
+});
+
 When(/^I click current user account$/, async () => {
   await navBar.clickCurrentAccount();
+});
+
+Then(/^The logged in account is "([^"]*)"$/, async (account: string) => {
+  expect(await navBar.getCurrentAccount()).to.equal(account);
 });
 
 When(/^I click the "([^"]*)" button$/, async (text: string) => {

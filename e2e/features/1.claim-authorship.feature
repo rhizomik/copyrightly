@@ -5,6 +5,7 @@ Feature: Claim Authorship
 
   Scenario: Register a piece of content or data not previously registered
     Given I'm on the home page
+    And I click connect account
     When I click submenu option "Register" in menu "Authorship"
     And I uncheck the "upload" option
     And I fill the register form with title "Te Hoho Rock" and file "Te Hoho Rock.jpg"
@@ -16,6 +17,7 @@ Feature: Claim Authorship
 
   Scenario: Register a piece of content previously registered
     Given I'm on the home page
+    And I click connect account
     When I click submenu option "Register" in menu "Authorship"
     And I uncheck the "upload" option
     And I fill the register form with title "My Te Hoho Rock" and file "Te Hoho Rock.jpg"
@@ -26,6 +28,7 @@ Feature: Claim Authorship
   @slow
   Scenario: Register a piece of content not previously registered and upload to IPFS
     Given I'm on the home page
+    And I click connect account
     When I click submenu option "Register" in menu "Authorship"
     And I check the "upload" option
     And I fill the register form with title "Smiling Sphinx Rock" and file "Smiling Sphinx Rock.jpg"
@@ -38,6 +41,7 @@ Feature: Claim Authorship
   @slow
   Scenario: Register a piece of content previously registered and upload to IPFS
     Given I'm on the home page
+    And I click connect account
     When I click submenu option "Register" in menu "Authorship"
     And I check the "upload" option
     And I fill the register form with title "My Smiling Sphinx Rock" and file "Smiling Sphinx Rock.jpg"

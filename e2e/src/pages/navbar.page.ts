@@ -4,6 +4,7 @@ export class NavigationBar {
   private navbar: ElementFinder;
   private accounts: ElementFinder;
   private account: ElementFinder;
+  private noAccount: ElementFinder;
   private refreshButton: ElementFinder;
   private home: ElementFinder;
 
@@ -11,6 +12,7 @@ export class NavigationBar {
     this.navbar = element(by.id('navbar'));
     this.accounts = element(by.id('accounts'));
     this.account = element(by.id('account'));
+    this.noAccount = element(by.id('no-account'));
     this.refreshButton = element(by.id('refresh-accounts'));
     this.home = element(by.className('navbar-brand'));
   }
@@ -21,16 +23,20 @@ export class NavigationBar {
 
   async goToMenuOption(option: string) {
     await this.navbar.element(by.partialLinkText(option)).click();
-    browser.waitForAngular();
+    // browser.waitForAngular();
+  }
+
+  async getMenuOptionClass(option: string): Promise<string> {
+    return this.navbar.element(by.partialLinkText(option)).getAttribute('class');
+  }
+
+  async getCurrentAccount(): Promise<string> {
+    return this.account.getAttribute('title');
   }
 
   async refreshAccounts() {
     browser.wait(ExpectedConditions.presenceOf(this.refreshButton));
     await this.refreshButton.click();
-  }
-
-  async getSelectedAccount(): Promise<string> {
-    return this.accounts.getText();
   }
 
   async setSelectedAccount(account: string) {
@@ -39,5 +45,17 @@ export class NavigationBar {
 
   async clickCurrentAccount() {
     await this.account.click();
+  }
+
+  async clickConnectAccount() {
+    await this.noAccount.click();
+  }
+
+  async isAccountPresent() {
+    browser.wait(ExpectedConditions.presenceOf(this.account));
+  }
+
+  async isNoAccountPresent() {
+    browser.wait(ExpectedConditions.presenceOf(this.noAccount));
   }
 }
