@@ -104,5 +104,7 @@ module.exports = {
 
   db: {
     enabled: false
-  }
+  },
+
+  plugins: ["solidity-coverage"]
 };
