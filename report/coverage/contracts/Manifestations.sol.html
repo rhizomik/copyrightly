@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Manifestations.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> Manifestations.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>20/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>21/21</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: GPL-3.0-or-later
+&nbsp;
+pragma solidity ^0.8.6;
+&nbsp;
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
+import "openzeppelin-solidity/contracts/security/Pausable.sol";
+import "./ExpirableLib.sol";
+import "./Evidencable.sol";
+&nbsp;
+/// @title Contract for copyright authorship registration through creations manifestations
+/// @author Roberto García (http://rhizomik.net/~roberto/)
+contract Manifestations is Ownable, Pausable, Evidencable {
+&nbsp;
+    using ExpirableLib for ExpirableLib.TimeAndExpiry;
+&nbsp;
+    struct Manifestation {
+        string title;
+        address[] authors;
+        ExpirableLib.TimeAndExpiry time;
+    }
+&nbsp;
+    uint32 public timeToExpiry;
+    mapping(string =&gt; Manifestation) private manifestations;
+&nbsp;
+    event ManifestEvent(string hash, string title, address indexed manifester);
+    event AddedEvidence(uint8 evidenceCount);
+&nbsp;
+    constructor(uint32 _timeToExpiry) {
+        timeToExpiry = _timeToExpiry;
+    }
+&nbsp;
+    /// @dev Modifier implementing the common logic for single and joint authorship.
+    /// Checks title and that hash not registered or expired. Then stores title and sets expiry.
+    /// Finally, emits ManifestEvent
+    /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
+    /// @param title The title of the manifestation
+    modifier registerIfAvailable(string memory hash, string memory title) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(bytes(title).length &gt; 0, "A title is required");
+        require(manifestations[hash].authors.length == 0 ||
+                (manifestations[hash].time.isExpired() &amp;&amp; isUnevidenced(hash)),
+            "Already registered and not expired or with evidence");
+        _;
+        manifestations[hash].title = title;
+        manifestations[hash].time.setExpiry(timeToExpiry);
+        emit ManifestEvent(hash, title, msg.sender);
+    }
+&nbsp;
+    /// @notice Register single authorship for `msg.sender` of the manifestation with title `title`
+    /// and hash `hash`. Requires hash not previously registered or expired.
+    /// @dev To be used when there is just one author, which is considered to be the message sender
+    /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
+    /// @param title The title of the manifestation
+    function manifestAuthorship(string memory hash, string memory title)
+    public registerIfAvailable(hash, title) whenNotPaused() {
+        address[] memory authors = new address[](1);
+        authors[0] = msg.sender;
+        manifestations[hash].authors = authors;
+    }
+&nbsp;
+    /// @notice Register joint authorship for `msg.sender` plus additional authors
+    /// `additionalAuthors` of the manifestation with title `title` and hash `hash`.
+    /// Requires hash not previously registered or expired and at most 64 authors,
+    /// including the one registering.
+    /// @dev To be used when there are multiple authors
+    /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
+    /// @param title The title of the manifestation
+    /// @param additionalAuthors The additional authors,
+    /// including the one registering that becomes the first author
+    function manifestJointAuthorship(string memory hash, string memory title, address[] memory additionalAuthors)
+    public registerIfAvailable(hash, title) whenNotPaused() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(additionalAuthors.length &lt; 64, "Joint authorship limited to 64 authors");
+        address[] memory authors = new address[](additionalAuthors.length + 1);
+        authors[0] = msg.sender;
+        for (uint8 i = 0; i &lt; additionalAuthors.length; i++)
+            authors[i+1] = additionalAuthors[i];
+        manifestations[hash].authors = authors;
+    }
+&nbsp;
+    /// @notice Retrieve the title and authors of the manifestation with content hash `hash`.
+    /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
+    /// @return The title and authors of the manifestation
+    function getManifestation(string memory hash) public view
+    returns (string memory, address[] memory, uint256, uint256) {
+        return (manifestations[hash].title,
+                manifestations[hash].authors,
+                manifestations[hash].time.creationTime,
+                manifestations[hash].time.expiryTime);
+    }
+&nbsp;
+    /// @notice Adds an evidence if there is already a manifestation for `hash`.
+    /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
+    function addEvidence(string memory hash) public override {
+        require(bytes(manifestations[hash].title).length &gt; 0, "The manifestation evidenced should exist");
+        super.addEvidence(hash);
+    }
+&nbsp;
+    function pause() public onlyOwner {
+        super._pause();
+    }
+&nbsp;
+    function unpause() public onlyOwner {
+        super._unpause();
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 28 2021 22:26:02 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
