@@ -48,7 +48,7 @@
     "@apollo/client": "^3.3.21",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
-    "@walletconnect/web3-provider": "^1.4.1",
+    "@walletconnect/web3-provider": "^1.5.2",
     "angulartics2": "^10.0.0",
     "apollo-angular": "^2.6.0",
     "bootstrap-css-only": "^4.4.1",
