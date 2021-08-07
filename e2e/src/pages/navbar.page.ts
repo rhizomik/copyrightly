@@ -5,6 +5,7 @@ export class NavigationBar {
   private accounts: ElementFinder;
   private account: ElementFinder;
   private noAccount: ElementFinder;
+  private logout: ElementFinder;
   private refreshButton: ElementFinder;
   private home: ElementFinder;
 
@@ -13,6 +14,7 @@ export class NavigationBar {
     this.accounts = element(by.id('accounts'));
     this.account = element(by.id('account'));
     this.noAccount = element(by.id('no-account'));
+    this.logout = element(by.id('logout'));
     this.refreshButton = element(by.id('refresh-accounts'));
     this.home = element(by.className('navbar-brand'));
   }
@@ -49,6 +51,10 @@ export class NavigationBar {
 
   async clickConnectAccount() {
     await this.noAccount.click();
+  }
+
+  async clickDisconnectAccount() {
+    await this.logout.click();
   }
 
   async isAccountPresent() {
