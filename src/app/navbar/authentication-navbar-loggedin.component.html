@@ -17,8 +17,13 @@
             {{accountsNames[i]}}</option>
         </select>
         <div class="input-group-append" >
-          <button id="refresh-accounts" class="btn btn-dark" #refresh_accounts
+          <button id="refresh-accounts" class="btn btn-secondary" #refresh_accounts
                   (focus)="refresh_accounts.blur()"  (click)="refreshAccounts()"><span class="fas fa-sync-alt"></span>
+          </button>
+        </div>
+        <div class="input-group-append" >
+          <button id="logout" class="btn btn-dark" #logout
+                  (focus)="logout.blur()"  (click)="disconnect()"><span class="fas fa-sign-out-alt"></span>
           </button>
         </div>
       </div>

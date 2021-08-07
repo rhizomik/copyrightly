@@ -36,7 +36,7 @@
     </ul>
     <app-authentication-navbar-loggedout *ngIf="!isLoggedIn" (login)="isLoggedIn = true">
     </app-authentication-navbar-loggedout>
-    <app-authentication-navbar-loggedin *ngIf="isLoggedIn">
+    <app-authentication-navbar-loggedin *ngIf="isLoggedIn" (logout)="isLoggedIn = false">
     </app-authentication-navbar-loggedin>
   </div>
 </nav>

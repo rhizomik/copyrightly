@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Web3Service } from '../util/web3.service';
 import { AuthenticationService } from './authentication.service';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./authentication-navbar.component.css']
 })
 export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy {
+
+  @Output() logout: EventEmitter<void> = new EventEmitter();
 
   public accountId = '';
   public accountName = '';
@@ -57,12 +59,17 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
     return this.web3Service.getNetworkName();
   }
 
+  currentUserProfile() {
+    this.router.navigate(['/creators', this.accountId]);
+  }
+
+  disconnect() {
+    this.web3Service.disconnect();
+    this.logout.emit();
+  }
+
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  currentUserProfile() {
-    this.router.navigate(['/creators', this.accountId]);
   }
 }
