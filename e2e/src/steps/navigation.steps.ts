@@ -42,6 +42,10 @@ When(/^I click connect account$/, async () => {
   await navBar.clickConnectAccount();
 });
 
+When(/^I click disconnect account$/, async () => {
+  await navBar.clickDisconnectAccount();
+});
+
 When(/^I'm not connected$/, async () => {
   await navBar.isNoAccountPresent();
 });
