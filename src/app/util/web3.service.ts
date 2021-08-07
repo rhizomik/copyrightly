@@ -116,6 +116,12 @@ export class Web3Service {
     }
   }
 
+  public disconnect() {
+    if (this.web3.currentProvider && this.web3.currentProvider.disconnect) {
+      this.web3.currentProvider.disconnect();
+    }
+  }
+
   private isLocalNetworkAvailable(): Observable<boolean> {
     return new Observable((observer) => {
       if (!environment.production && TRUFFLE_CONFIG) { // Use local network defined by Truffle config in dev mode
