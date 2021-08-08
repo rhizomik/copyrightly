@@ -46,6 +46,7 @@ jobs:
           npm run deploy-local
           npm run webdriver-update
           npm run e2e
+          npm run e2e-report
           npm run build -- --prod
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
