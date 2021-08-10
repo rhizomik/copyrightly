@@ -21,6 +21,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   hidUploadEvidence = false;
   notFound = true;
 
+  staked = 0;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private location: Location,

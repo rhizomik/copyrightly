@@ -10,7 +10,5 @@ export class UploadEvidenceDetailsComponent {
   @Input() evidence: UploadEvidence | undefined;
   @Input() evidenceIndex = 0;
 
-  stake = 1.5;
-
   constructor() {}
 }
