@@ -370,6 +370,7 @@ contract BancorFormula is IBancorFormula {
     if (maxExpArray[lo] >= _x) return lo;
 
     require(false);
+    return(0);
   }
 
   /**
