@@ -77,7 +77,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 
     emit CurvePurchase(totalSupply(), poolBalance, amount, price);
 
-    require(price <= maxPrice, "Current price exceeds maximum specified");
+    require(price <= maxPrice, "Current price exceeds maximum provided");
 
     uint256 refund = maxPrice.sub(price);
     if (refund > 0) {
@@ -116,11 +116,11 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   }
 
   function setGasPrice(uint256 _gasPrice) public onlyOwner {
-    require(_gasPrice > 0);
+    require(_gasPrice > 0, "Maximum gas price should be bigger than 0");
     gasPrice = _gasPrice;
   }
 
-  function setReserveRation(uint32 _reserveRatio) public onlyOwner mustBeInPPM(_reserveRatio) {
+  function setReserveRatio(uint32 _reserveRatio) public onlyOwner mustBeInPPM(_reserveRatio) {
     reserveRatio = _reserveRatio;
   }
 
