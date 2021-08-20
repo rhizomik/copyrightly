@@ -117,5 +117,7 @@ contract('Complaints - Register complaints', function (accounts) {
   it("shouldn't allow retrieving an unexisting complaint", async () => {
     await expectRevert(complaints.getComplaintHash(HASH2, {from: COMPLAINER}),
       'No active complaint for manifestation hash');
+    await expectRevert(complaints.getComplainer(HASH2, {from: COMPLAINER}),
+      'No active complaint for manifestation hash');
   });
 });
