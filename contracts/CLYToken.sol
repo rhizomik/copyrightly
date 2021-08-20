@@ -96,7 +96,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   }
 
   function burn(uint256 amount, address stakable, string memory manifestation) public
-  validGasPrice() validBurn(manifestation, amount) whenNotPaused() returns (uint256) {
+  validGasPrice() validBurn(stakable, manifestation, amount) whenNotPaused() returns (uint256) {
     require(amount > 0, "Must specify a non-zero amount of CLY");
 
     uint256 price = saleTargetAmount(totalSupply(), poolBalance, reserveRatio, amount);
@@ -142,7 +142,8 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     _;
   }
 
-  modifier validBurn(string memory manifestation, uint256 amount) {
+  modifier validBurn(address stakable, string memory manifestation, uint256 amount) {
+    Stakable(stakable).isStakable(manifestation);
     require(stakes[manifestation].individualStakes[msg.sender] >= amount, "Holder hasn't enough CLY to unstake");
     _;
   }
