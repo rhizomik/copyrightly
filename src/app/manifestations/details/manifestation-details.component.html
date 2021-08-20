@@ -26,6 +26,19 @@
         <p class="card-text">{{manifestation?.evidenceCount}}</p>
       </div>
     </div>
+    <div class="card-footer">
+      <div class="form-group row m-1">
+        <div class="input-group input-group-sm">
+          <input id="inputStaked" name="inputStaked" type="number" class="form-control" readonly
+                 aria-describedby="cly-units" [ngModel]="staked" #inputStaked="ngModel">
+          <div class="input-group-append">
+          <span class="input-group-text" id="cly-append">
+            <span class="fas fa-copyright logo-icon"></span>LY Staked</span>
+          </div>
+          <button type="button" disabled class="btn btn-sm btn-success ml-2">Add Stake</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <button class="btn btn-secondary mb-4" (click)="back()">Back</button>

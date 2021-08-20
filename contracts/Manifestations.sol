@@ -6,10 +6,11 @@ import "openzeppelin-solidity/contracts/access/Ownable.sol";
 import "openzeppelin-solidity/contracts/security/Pausable.sol";
 import "./ExpirableLib.sol";
 import "./Evidencable.sol";
+import "./Stakable.sol";
 
 /// @title Contract for copyright authorship registration through creations manifestations
 /// @author Roberto García (http://rhizomik.net/~roberto/)
-contract Manifestations is Ownable, Pausable, Evidencable {
+contract Manifestations is Ownable, Pausable, Evidencable, Stakable {
 
     using ExpirableLib for ExpirableLib.TimeAndExpiry;
 
@@ -92,6 +93,12 @@ contract Manifestations is Ownable, Pausable, Evidencable {
     function addEvidence(string memory hash) public override {
         require(bytes(manifestations[hash].title).length > 0, "The manifestation evidenced should exist");
         super.addEvidence(hash);
+    }
+
+    /// @notice Checks if a manifestation for `hash` exists and thus can get stake.
+    /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
+    function isStakable(string memory hash) public override {
+        require(bytes(manifestations[hash].title).length > 0, "The manifestation should exist to accept stake");
     }
 
     function pause() public onlyOwner {
