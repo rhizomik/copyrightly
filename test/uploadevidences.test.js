@@ -1,5 +1,6 @@
 const Evidence = artifacts.require("UploadEvidence");
 const Manifestations = artifacts.require("Manifestations");
+const chai = require('chai');
 
 contract("UploadEvidence - Manifestations accumulate evidence", function (accounts) {
 
@@ -56,6 +57,8 @@ contract("UploadEvidence - Manifestations accumulate evidence", function (accoun
         "the hash of the evidence should be the registered one");
     assert.equal(evidencer, MANIFESTER,
         "the account providing the evidence should be the same than the manifester");
+
+    chai.expect(await evidence.getEvidenceExistence(EVIDENCE_HASH1)).to.be.true;
   });
 
   it("should add multiple evidence for the same manifestation", async () => {

@@ -1,3 +1,6 @@
+const { expectRevert, expectEvent } = require('@openzeppelin/test-helpers');
+const chai = require('chai');
+
 const Manifestations = artifacts.require('Manifestations');
 const Complaints = artifacts.require("./Complaints.sol");
 
@@ -41,6 +44,8 @@ contract('Complaints - Register complaints', function (accounts) {
         'unexpected complaint hash');
     assert.equal(complainer, COMPLAINER,
         'unexpected complainer');
+    chai.expect(await complaints.getComplainer(HASH1)).to.be.equal(COMPLAINER,
+      'The registered complainer should be who made the complaint');
   });
 
   it("shouldn't register a complaint if already one for manifestation", async () => {
@@ -105,20 +110,12 @@ contract('Complaints - Register complaints', function (accounts) {
   });
 
   it("shouldn't allow retrieving a revoked complaint", async () => {
-
-    try {
-      await complaints.getComplaintHash(HASH1, {from: COMPLAINER});
-    } catch(e) {
-      assert(e.message, "Error: VM Exception while processing transaction: revert");
-    }
+    await expectRevert(complaints.getComplaintHash(HASH1, {from: COMPLAINER}),
+      'No active complaint for manifestation hash');
   });
 
   it("shouldn't allow retrieving an unexisting complaint", async () => {
-
-    try {
-      await complaints.getComplaintHash(HASH2, {from: COMPLAINER});
-    } catch(e) {
-      assert(e.message, "Error: VM Exception while processing transaction: revert");
-    }
+    await expectRevert(complaints.getComplaintHash(HASH2, {from: COMPLAINER}),
+      'No active complaint for manifestation hash');
   });
 });
