@@ -46,7 +46,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     mapping(address => uint256) individualStakes;
   }
 
-  mapping(string => Stake) private stakes;
+  mapping(string => Stake) public stakes;
 
   event Minted(address buyer, uint256 amount, uint256 payed, address stakable, string manifestation);
   event Burned(address seller, uint256 amount, uint256 earned, address stakable, string manifestation);
@@ -113,6 +113,10 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     emit Burned(msg.sender, amount, price, stakable, manifestation);
 
     return price;
+  }
+
+  function getIndividualStake(string memory manifestation, address staker) public view returns (uint256) {
+    return stakes[manifestation].individualStakes[staker];
   }
 
   function setGasPrice(uint256 _gasPrice) public onlyOwner {
