@@ -41,6 +41,14 @@
     </div>
   </div>
 
+  <div *ngIf="staked == 0" class="card mb-4">
+    <div class="card-block row m-1">
+      <h5 class="card-title col-md-12 p-1">No stake on this manifestation yet</h5>
+      <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten if no
+        CLY is staked on it before {{manifestation?.expiryTime | date:'medium'}}</p>
+    </div>
+  </div>
+
   <button class="btn btn-secondary mb-4" (click)="back()">Back</button>
 
   <h3>Authorship Evidence</h3>
@@ -59,8 +67,6 @@
   <div *ngIf="uploadEvidence?.length == 0 && !addingEvidence()" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No evidence yet</h5>
-      <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten if no
-        evidence is provided before {{manifestation?.expiryTime | date:'medium'}}</p>
     </div>
   </div>
 
