@@ -97,7 +97,7 @@ contract Manifestations is Ownable, Pausable, Evidencable, Stakable {
 
     /// @notice Checks if a manifestation for `hash` exists and thus can get stake.
     /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
-    function isStakable(string memory hash) public override {
+    function isStakable(string memory hash) public view override {
         require(bytes(manifestations[hash].title).length > 0, "The manifestation should exist to accept stake");
     }
 
