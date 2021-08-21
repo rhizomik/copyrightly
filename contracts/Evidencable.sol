@@ -42,7 +42,7 @@ contract Evidencable is Ownable {
     /// @notice Check if the evidencable `hash` has no evidence yet.
     /// @dev Used to check if the corresponding item evidence count is 0.
     /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
-    function isUnevidenced(string memory hash) internal view returns(bool) {
+    function isUnevidenced(string memory hash) public view returns(bool) {
         return (evidenceCounts[hash] == 0);
     }
 }

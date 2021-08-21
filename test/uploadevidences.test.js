@@ -26,6 +26,7 @@ contract("UploadEvidence - Manifestations accumulate evidence", function (accoun
 
   it("should add evidence if registered evidence provider", async () => {
     await manifestations.manifestAuthorship(HASH1, TITLE1, {from: MANIFESTER});
+    chai.expect(await manifestations.isUnevidenced(HASH1)).to.be.true;
     let eventEmitted = false;
     const indexedEvidenceHash = web3.utils.soliditySha3(HASH1);
     await evidence.UploadEvidenceEvent({
@@ -58,6 +59,7 @@ contract("UploadEvidence - Manifestations accumulate evidence", function (accoun
     assert.equal(evidencer, MANIFESTER,
         "the account providing the evidence should be the same than the manifester");
 
+    chai.expect(await manifestations.isUnevidenced(HASH1)).to.be.false;
     chai.expect(await evidence.getEvidenceExistence(EVIDENCE_HASH1)).to.be.true;
   });
 

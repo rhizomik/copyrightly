@@ -41,12 +41,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   */
   uint256 public gasPrice; // maximum gas price for Bancor transactions
 
-  struct Stake {
-    uint256 staked;
-    mapping(address => uint256) individualStakes;
-  }
-
-  mapping(string => Stake) public stakes;
+  mapping(string => mapping(address => uint256)) public individualStakes;
 
   event Minted(address buyer, uint256 amount, uint256 payed, address stakable, string manifestation);
   event Burned(address seller, uint256 amount, uint256 earned, address stakable, string manifestation);
@@ -87,8 +82,8 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     poolBalance = poolBalance.add(price);
     _mint(msg.sender, amount);
 
-    stakes[manifestation].individualStakes[msg.sender] += amount;
-    stakes[manifestation].staked += amount;
+    individualStakes[manifestation][msg.sender] += amount;
+    Stakable(stakable).addStake(amount, manifestation);
 
     emit Minted(msg.sender, amount, price, stakable, manifestation);
 
@@ -107,8 +102,8 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 
     poolBalance = poolBalance.sub(price);
     _burn(msg.sender, amount);
-    stakes[manifestation].individualStakes[msg.sender] -= amount;
-    stakes[manifestation].staked -= amount;
+    individualStakes[manifestation][msg.sender] -= amount;
+    Stakable(stakable).removeStake(amount, manifestation);
 
     emit Burned(msg.sender, amount, price, stakable, manifestation);
 
@@ -116,7 +111,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   }
 
   function getIndividualStake(string memory manifestation, address staker) public view returns (uint256) {
-    return stakes[manifestation].individualStakes[staker];
+    return individualStakes[manifestation][staker];
   }
 
   function setGasPrice(uint256 _gasPrice) public onlyOwner {
@@ -148,7 +143,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 
   modifier validBurn(address stakable, string memory manifestation, uint256 amount) {
     Stakable(stakable).isStakable(manifestation);
-    require(stakes[manifestation].individualStakes[msg.sender] >= amount, "Holder hasn't enough CLY to unstake");
+    require(individualStakes[manifestation][msg.sender] >= amount, "Holder hasn't enough CLY to unstake");
     _;
   }
 }

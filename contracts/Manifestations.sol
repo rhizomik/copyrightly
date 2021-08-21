@@ -24,7 +24,6 @@ contract Manifestations is Ownable, Pausable, Evidencable, Stakable {
     mapping(string => Manifestation) private manifestations;
 
     event ManifestEvent(string hash, string title, address indexed manifester);
-    event AddedEvidence(uint8 evidenceCount);
 
     constructor(uint32 _timeToExpiry) {
         timeToExpiry = _timeToExpiry;
@@ -38,8 +37,8 @@ contract Manifestations is Ownable, Pausable, Evidencable, Stakable {
     modifier registerIfAvailable(string memory hash, string memory title) {
         require(bytes(title).length > 0, "A title is required");
         require(manifestations[hash].authors.length == 0 ||
-                (manifestations[hash].time.isExpired() && isUnevidenced(hash)),
-            "Already registered and not expired or with evidence");
+                (manifestations[hash].time.isExpired() && !isStaked(hash)),
+            "Already registered and not expired or with stake");
         _;
         manifestations[hash].title = title;
         manifestations[hash].time.setExpiry(timeToExpiry);
@@ -97,7 +96,7 @@ contract Manifestations is Ownable, Pausable, Evidencable, Stakable {
 
     /// @notice Checks if a manifestation for `hash` exists and thus can get stake.
     /// @param hash Hash of the manifestation content, for instance IPFS Base58 Hash
-    function isStakable(string memory hash) public override {
+    function isStakable(string memory hash) public view override {
         require(bytes(manifestations[hash].title).length > 0, "The manifestation should exist to accept stake");
     }
 

@@ -15,15 +15,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - ManifestEvent
-        - AddedEvidence
       abis:
         - name: Manifestations
           file: ./src/assets/contracts/Manifestations.json
       eventHandlers:
         - event: ManifestEvent(string,string,indexed address)
           handler: handleManifestEvent
-        - event: AddedEvidence(uint8)
-          handler: handleAddedEvidence
       file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: UploadEvidence

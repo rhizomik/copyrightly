@@ -5,7 +5,6 @@ chai.use(require('chai-bn')(BN));
 const CLYToken = artifacts.require('CLYToken');
 const Manifestations = artifacts.require("Manifestations");
 
-const CLY = new BN(10).pow(new BN(16));
 const RESERVE_RATIO = 500000; // 1/2 in ppm, corresponds to curve y = m * x
 const INITIAL_SLOPE = 1;      // Initial curve slope m when pool balance = 0
 const MAX_GASPRICE = web3.utils.toWei('100', 'gwei');
@@ -14,13 +13,13 @@ const TITLE1 = "A nice picture";
 const MANIFESTATION_HASH2 = "QmQA1NCwGCGJTKcLDt4t4rXfdgaR5NwSEUvZ1KoairnVPU";
 const TITLE2 = "Another nice picture";
 const UNMANIFESTED_HASH = "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnpBDg";
+let CLY;
 
 contract('CLY Token - Burning', function (accounts) {
   const OWNER = accounts[0];
   const MANIFESTER = accounts[1];
   const STAKER1 = accounts[2];
   const STAKER2 = accounts[3];
-  const amount = new BN(1).mul(CLY);
   const maxPrice = web3.utils.toWei('1', 'ether');
 
   let clytoken, manifestations;
@@ -30,6 +29,9 @@ contract('CLY Token - Burning', function (accounts) {
     await manifestations.manifestAuthorship(MANIFESTATION_HASH1, TITLE1, {from: MANIFESTER});
     await manifestations.manifestAuthorship(MANIFESTATION_HASH2, TITLE2, {from: MANIFESTER});
     clytoken = await CLYToken.new(RESERVE_RATIO, INITIAL_SLOPE, MAX_GASPRICE, {from: OWNER});
+    CLY = new BN(10).pow(new BN(await clytoken.decimals()));
+    const amount = new BN(1).mul(CLY);
+    await manifestations.setToken(clytoken.address, { from: OWNER });
     await clytoken.mint(amount, maxPrice, manifestations.address, MANIFESTATION_HASH1,
       {value: maxPrice, from: STAKER1});
     await clytoken.mint(amount, maxPrice, manifestations.address, MANIFESTATION_HASH1,
@@ -41,6 +43,7 @@ contract('CLY Token - Burning', function (accounts) {
   });
 
   it("should burn own stake on manifestation", async () => {
+    const amount = new BN(1).mul(CLY);
     const tracker = await balance.tracker(STAKER1, 'wei');
     let currentBalance = await tracker.get();
 
@@ -58,6 +61,7 @@ contract('CLY Token - Burning', function (accounts) {
   });
 
   it("shouldn't burn more than staked by the user", async () => {
+    const amount = new BN(1).mul(CLY);
     const tracker = await balance.tracker(STAKER1, 'wei');
     let currentBalance = await tracker.get();
 
@@ -85,11 +89,13 @@ contract('CLY Token - Burning', function (accounts) {
   });
 
   it("shouldn't burn stake if non-existing manifestation", async () => {
+    const amount = new BN(1).mul(CLY);
     await expectRevert(clytoken.burn(amount, manifestations.address, UNMANIFESTED_HASH, {from: STAKER1}),
       'The manifestation should exist to accept stake');
   });
 
   it("shouldn't burn if stake is not own", async () => {
+    const amount = new BN(1).mul(CLY);
     await expectRevert(clytoken.burn(amount, manifestations.address, MANIFESTATION_HASH1, {from: STAKER1}),
       'Holder hasn\'t enough CLY to unstake');
 
@@ -120,6 +126,7 @@ contract('CLY Token - Burning', function (accounts) {
   });
 
   it("should burn tokens again after unpause", async () => {
+    const amount = new BN(1).mul(CLY);
     await clytoken.unpause({from: OWNER});
 
     const tracker = await balance.tracker(STAKER1, 'wei');

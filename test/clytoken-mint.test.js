@@ -29,6 +29,7 @@ contract('CLY Token - Minting', function (accounts) {
     await manifestations.manifestAuthorship(MANIFESTATION_HASH2, TITLE2, {from: MANIFESTER});
     clytoken = await CLYToken.new(RESERVE_RATIO, INITIAL_SLOPE, MAX_GASPRICE, {from: OWNER});
     CLY = new BN(10).pow(new BN(await clytoken.decimals()));
+    await manifestations.setToken(clytoken.address, { from: OWNER });
   });
 
   it("should mint when there is not pool balance yet using default slope", async () => {
@@ -88,7 +89,7 @@ contract('CLY Token - Minting', function (accounts) {
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(payed, 'ether').toString());
 
-    chai.expect(await clytoken.stakes(MANIFESTATION_HASH1)).to.be.bignumber.equal(accumulatedSupply);
+    chai.expect(await manifestations.staked(MANIFESTATION_HASH1)).to.be.bignumber.equal(accumulatedSupply);
     chai.expect(await clytoken.getIndividualStake(MANIFESTATION_HASH1, STAKER2)).to.be.bignumber.equal(amount);
     chai.expect(await clytoken.totalSupply()).to.be.bignumber.equal(accumulatedSupply);
   });
@@ -112,8 +113,8 @@ contract('CLY Token - Minting', function (accounts) {
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(payed, 'ether').toString());
 
-    chai.expect(await clytoken.stakes(MANIFESTATION_HASH1)).to.be.bignumber.equal(new BN(3).mul(CLY));
-    chai.expect(await clytoken.stakes(MANIFESTATION_HASH2)).to.be.bignumber.equal(amount);
+    chai.expect(await manifestations.staked(MANIFESTATION_HASH1)).to.be.bignumber.equal(new BN(3).mul(CLY));
+    chai.expect(await manifestations.staked(MANIFESTATION_HASH2)).to.be.bignumber.equal(amount);
     chai.expect(await clytoken.getIndividualStake(MANIFESTATION_HASH2, STAKER2)).to.be.bignumber.equal(amount);
     chai.expect(await clytoken.getIndividualStake(MANIFESTATION_HASH2, STAKER1)).to.be.bignumber.equal(new BN(0));
     chai.expect(await clytoken.totalSupply()).to.be.bignumber.equal(accumulatedSupply);
