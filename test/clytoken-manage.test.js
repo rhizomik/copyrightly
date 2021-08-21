@@ -24,6 +24,7 @@ contract('CLY Token - Minting', function (accounts) {
     await manifestations.manifestAuthorship(MANIFESTATION_HASH, TITLE, {from: MANIFESTER});
     clytoken = await CLYToken.new(RESERVE_RATIO, INITIAL_SLOPE, MAX_GASPRICE, {from: OWNER});
     CLY = new BN(10).pow(new BN(await clytoken.decimals()));
+    await manifestations.setToken(clytoken.address, { from: OWNER });
   });
 
   it("shouldn't mint tokens if paused", async () => {
