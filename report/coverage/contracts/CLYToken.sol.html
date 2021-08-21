@@ -192,12 +192,7 @@
 147
 148
 149
-150
-151
-152
-153
-154
-155</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+150</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -249,49 +244,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">24×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">27×</span>
-<span class="cline-any cline-yes">25×</span>
-<span class="cline-any cline-yes">23×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
 <span class="cline-any cline-yes">18×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">22×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">22×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19×</span>
-<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-yes">18×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19×</span>
-<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19×</span>
-<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,13 +326,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-yes">6×</span>
-<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">43×</span>
-<span class="cline-any cline-yes">43×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -394,12 +384,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   */
   uint256 public gasPrice; // maximum gas price for Bancor transactions
 &nbsp;
-  struct Stake {
-    uint256 staked;
-    mapping(address =&gt; uint256) individualStakes;
-  }
-&nbsp;
-  mapping(string =&gt; Stake) public stakes;
+  mapping(string =&gt; mapping(address =&gt; uint256)) public individualStakes;
 &nbsp;
   event Minted(address buyer, uint256 amount, uint256 payed, address stakable, string manifestation);
   event Burned(address seller, uint256 amount, uint256 earned, address stakable, string manifestation);
@@ -440,8 +425,8 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     poolBalance = poolBalance.add(price);
     _mint(msg.sender, amount);
 &nbsp;
-    stakes[manifestation].individualStakes[msg.sender] += amount;
-    stakes[manifestation].staked += amount;
+    individualStakes[manifestation][msg.sender] += amount;
+    Stakable(stakable).addStake(amount, manifestation);
 &nbsp;
     emit Minted(msg.sender, amount, price, stakable, manifestation);
 &nbsp;
@@ -460,8 +445,8 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 &nbsp;
     poolBalance = poolBalance.sub(price);
     _burn(msg.sender, amount);
-    stakes[manifestation].individualStakes[msg.sender] -= amount;
-    stakes[manifestation].staked -= amount;
+    individualStakes[manifestation][msg.sender] -= amount;
+    Stakable(stakable).removeStake(amount, manifestation);
 &nbsp;
     emit Burned(msg.sender, amount, price, stakable, manifestation);
 &nbsp;
@@ -469,7 +454,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   }
 &nbsp;
   function getIndividualStake(string memory manifestation, address staker) public view returns (uint256) {
-    return stakes[manifestation].individualStakes[staker];
+    return individualStakes[manifestation][staker];
   }
 &nbsp;
   function setGasPrice(uint256 _gasPrice) public onlyOwner {
@@ -501,7 +486,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 &nbsp;
   modifier validBurn(address stakable, string memory manifestation, uint256 amount) {
     Stakable(stakable).isStakable(manifestation);
-    require(stakes[manifestation].individualStakes[msg.sender] &gt;= amount, "Holder hasn't enough CLY to unstake");
+    require(individualStakes[manifestation][msg.sender] &gt;= amount, "Holder hasn't enough CLY to unstake");
     _;
   }
 }
@@ -511,7 +496,7 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 20 2021 16:19:42 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Aug 21 2021 17:00:59 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
