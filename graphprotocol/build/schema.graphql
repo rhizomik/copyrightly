@@ -22,6 +22,7 @@ type UploadEvidence @entity {
 type Account @entity {
   id: ID! # address
   staked: BigInt!
+  token: ERC20Token!
   stakes: [Stake!]! @derivedFrom(field: "staker")
 }
 
@@ -31,4 +32,32 @@ type Stake @entity {
   stakable: Bytes! # stakable contract
   item: Manifestation! # stakable - hash
   staked: BigInt!
+  token: ERC20Token!
+}
+
+type ERC20Token @entity {
+  id: ID!
+  name: String
+  symbol: String
+  decimals: Int!
+  supply: BigInt!
+  balance: BigInt!
+  holders: [Account!] @derivedFrom(field: "token")
+  price: BigInt!
+  pricePoints: [PricePoint!] @deriveProm(field: "token")
+}
+
+type PricePoint @entity {
+  id: ID!
+  token: ERC20Token!
+  supply: BigInt!
+  balance: BigInt!
+  amount: BigInt!
+  price: BigInt!
+  type: TransactionType!
+}
+
+enum TransactionType {
+  Purchase
+  Sale
 }

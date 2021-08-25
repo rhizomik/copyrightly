@@ -230,6 +230,15 @@ export class Account extends Entity {
     this.set("staked", Value.fromBigInt(value));
   }
 
+  get token(): ERC20Token {
+    let value = ERC20Token.load(this.get("token").toString());
+    return value;
+  }
+
+  set token(value: ERC20Token) {
+    this.set("token", Value.fromString(value.id));
+  }
+
   get stakes(): Array<string> {
     let value = this.get("stakes");
     return value.toStringArray();
@@ -297,6 +306,15 @@ export class Stake extends Entity {
     this.set("staked", Value.fromBigInt(value));
   }
 
+  get token(): ERC20Token {
+    let value = ERC20Token.load(this.get("token").toString());
+    return value;
+  }
+
+  set token(value: ERC20Token) {
+    this.set("token", Value.fromString(value.id));
+  }
+
   get stakable(): Address {
     let value = Address.fromHexString(this.get("stakable"));
     return value;
@@ -304,5 +322,218 @@ export class Stake extends Entity {
 
   set stakable(value: Address) {
     this.set("stakable", Value.fromAddress(value));
+  }
+}
+
+export class ERC20Token extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save ERC20Token entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save ERC20Token entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("ERC20Token", id.toString(), this);
+  }
+
+  static load(id: string): ERC20Token | null {
+    return store.get("ERC20Token", id) as ERC20Token | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get name(): string | null {
+    let value = this.get("name");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set name(value: string | null) {
+    if (value === null) {
+      this.unset("name");
+    } else {
+      this.set("name", Value.fromString(value as string));
+    }
+  }
+
+  get symbol(): string | null {
+    let value = this.get("symbol");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set symbol(value: string | null) {
+    if (value === null) {
+      this.unset("symbol");
+    } else {
+      this.set("symbol", Value.fromString(value as string));
+    }
+  }
+
+  get decimals(): i32 {
+    let value = this.get("decimals");
+    return value.toI32();
+  }
+
+  set decimals(value: i32) {
+    this.set("decimals", Value.fromI32(value));
+  }
+
+  get supply(): BigInt {
+    let value = this.get("supply");
+    return value.toBigInt();
+  }
+
+  set supply(value: BigInt) {
+    this.set("supply", Value.fromBigInt(value));
+  }
+
+  get balance(): BigInt {
+    let value = this.get("balance");
+    return value.toBigInt();
+  }
+
+  set balance(value: BigInt) {
+    this.set("balance", Value.fromBigInt(value));
+  }
+
+  get holders(): Array<string> {
+    let value = this.get("holders");
+    return value.toStringArray();
+  }
+
+  set holders(value: Array<string>) {
+    this.set("holders", Value.fromStringArray(value));
+  }
+
+  get price(): BigInt {
+    let value = this.get("price");
+    return value.toBigInt();
+  }
+
+  set price(value: BigInt) {
+    this.set("price", Value.fromBigInt(value));
+  }
+
+  get pricePoints(): Array<string> {
+    let value = this.get("pricePoints");
+    return value.toStringArray();
+  }
+
+  set pricePoints(value: Array<string>) {
+    this.set("pricePoints", Value.fromStringArray(value));
+  }
+}
+
+export class PricePoint extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save PricePoint entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save PricePoint entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("PricePoint", id.toString(), this);
+  }
+
+  static load(id: string): PricePoint | null {
+    return store.get("PricePoint", id) as PricePoint | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get token(): ERC20Token {
+    let value = ERC20Token.load(this.get("token").toString());
+    return value;
+  }
+
+  set token(value: ERC20Token) {
+    this.set("token", Value.fromString(value.id));
+  }
+
+  get supply(): BigInt {
+    let value = this.get("supply");
+    return value.toBigInt();
+  }
+
+  set supply(value: BigInt) {
+    this.set("supply", Value.fromBigInt(value));
+  }
+
+  get balance(): BigInt {
+    let value = this.get("balance");
+    return value.toBigInt();
+  }
+
+  set balance(value: BigInt) {
+    this.set("balance", Value.fromBigInt(value));
+  }
+
+  get amount(): BigInt {
+    let value = this.get("amount");
+    return value.toBigInt();
+  }
+
+  set amount(value: BigInt) {
+    this.set("amount", Value.fromBigInt(value));
+  }
+
+  get price(): BigInt {
+    let value = this.get("price");
+    return value.toBigInt();
+  }
+
+  set price(value: BigInt) {
+    this.set("price", Value.fromBigInt(value));
+  }
+
+  get type(): string {
+    let value = this.get("type");
+    return value.toString();
+  }
+
+  set type(value: string) {
+    this.set("type", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("type", Value.fromBigInt(value));
   }
 }

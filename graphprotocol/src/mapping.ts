@@ -1,7 +1,7 @@
 import { Manifestations, ManifestEvent } from '../generated/Manifestations/Manifestations';
 import { UploadEvidenceEvent } from '../generated/UploadEvidence/UploadEvidence';
 import { CLYToken, Minted, Burned, CurvePurchase, CurveSale } from '../generated/CLYToken/CLYToken';
-import { Manifestation, UploadEvidence, Stake, Account } from '../generated/schema';
+import { Manifestation, UploadEvidence, Stake, Account, ERC20Token, PricePoint } from '../generated/schema';
 import { Bytes, Value, BigInt, Address } from '@graphprotocol/graph-ts';
 
 
@@ -39,6 +39,7 @@ export function handleMintedEvent(event: Minted): void {
   let account = Account.load(event.params.buyer.toHexString());
   if (!account) {
     account = new Account(event.params.buyer.toHexString());
+    account.token = getERC20Token(event.address);
     account.staked = BigInt.fromString('0');
   }
   let stake = Stake.load(event.params.buyer.toHexString() + '-' + event.params.stakable.toHexString() + '-' + event.params.item);
@@ -52,6 +53,7 @@ export function handleMintedEvent(event: Minted): void {
     stake.staked = BigInt.fromString('0');
     stake.stakable = event.params.stakable;
     stake.staker = account as Account;
+    stake.token = getERC20Token(event.address);
   }
   stake.staked = stake.staked.plus(event.params.amount);
   account.staked = account.staked.plus(event.params.amount);
@@ -72,5 +74,52 @@ export function handleBurnedEvent(event: Burned): void {
   }
 }
 
-export function handleCurvePurchaseEvent(event: CurvePurchase): void {}
-export function handleCurveSaleEvent(event: CurveSale): void {}
+export function handleCurvePurchaseEvent(event: CurvePurchase): void {
+  let erc20 = getERC20Token(event.address);
+  let pricePoint = new PricePoint(event.block.hash.toHexString() + '-' +
+    event.transaction.hash.toHexString() + '-' + event.logIndex.toHexString());
+  pricePoint.token = erc20;
+  pricePoint.supply = event.params.supply;
+  pricePoint.balance = event.params.balance;
+  pricePoint.amount = event.params.amount;
+  pricePoint.price = event.params.price;
+  pricePoint.type = 'Purchase';
+  pricePoint.save();
+  let clytoken = CLYToken.bind(event.address);
+  erc20.supply = clytoken.totalSupply();
+  erc20.balance = clytoken.poolBalance();
+  erc20.price = event.params.price;
+  erc20.save();
+}
+
+export function handleCurveSaleEvent(event: CurveSale): void {
+  let erc20 = getERC20Token(event.address);
+  let pricePoint = new PricePoint(event.block.hash.toHexString() + '-' +
+    event.transaction.hash.toHexString() + '-' + event.logIndex.toHexString());
+  pricePoint.token = erc20;
+  pricePoint.supply = event.params.supply;
+  pricePoint.balance = event.params.balance;
+  pricePoint.amount = event.params.amount;
+  pricePoint.price = event.params.price;
+  pricePoint.type = 'Sale';
+  pricePoint.save();
+  let clytoken = CLYToken.bind(event.address);
+  erc20.supply = clytoken.totalSupply();
+  erc20.balance = clytoken.poolBalance();
+  erc20.price = event.params.price;
+  erc20.save();
+}
+
+function getERC20Token(address: Address): ERC20Token {
+  let erc20 = ERC20Token.load(address.toHexString());
+  if (!erc20) {
+    erc20 = new ERC20Token(address.toHexString());
+    erc20.name = 'CopyrightLY Token';
+    erc20.symbol = 'CLY';
+    let clytoken = CLYToken.bind(address);
+    erc20.decimals = clytoken.decimals();
+    erc20.supply = clytoken.totalSupply();
+    erc20.balance = clytoken.poolBalance();
+  }
+  return erc20 as ERC20Token;
+}
