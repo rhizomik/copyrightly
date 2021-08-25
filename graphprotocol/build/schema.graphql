@@ -42,9 +42,9 @@ type ERC20Token @entity {
   decimals: Int!
   supply: BigInt!
   balance: BigInt!
-  holders: [Account!] @derivedFrom(field: "token")
+  holders: [Account!]! @derivedFrom(field: "token")
   price: BigInt!
-  pricePoints: [PricePoint!] @deriveProm(field: "token")
+  pricePoints: [PricePoint!]! @derivedFrom(field: "token")
 }
 
 type PricePoint @entity {
