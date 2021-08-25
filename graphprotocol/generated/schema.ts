@@ -212,6 +212,10 @@ export class Account extends Entity {
     return store.get("Account", id) as Account | null;
   }
 
+  static remove(id: string): void {
+    store.remove("Account", id);
+  }
+
   get id(): string {
     let value = this.get("id");
     return value.toString();
@@ -268,6 +272,10 @@ export class Stake extends Entity {
 
   static load(id: string): Stake | null {
     return store.get("Stake", id) as Stake | null;
+  }
+
+  static remove(id: string): void {
+    store.remove("Stake", id);
   }
 
   get id(): string {

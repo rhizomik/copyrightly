@@ -43,9 +43,9 @@ export function handleMintedEvent(event: Minted): void {
     account.staked = BigInt.fromString('0');
   }
   let stake = Stake.load(event.params.buyer.toHexString() + '-' + event.params.stakable.toHexString() + '-' + event.params.item);
+  let item = Manifestation.load(event.params.stakable.toHexString() + '-' + event.params.item);
   if (!stake) {
     stake = new Stake(event.params.buyer.toHexString() + '-' + event.params.stakable.toHexString() + '-' + event.params.item);
-    let item = Manifestation.load(event.params.stakable.toHexString() + '-' + event.params.item);
     if (!item) {
       return;
     }
@@ -55,22 +55,38 @@ export function handleMintedEvent(event: Minted): void {
     stake.staker = account as Account;
     stake.token = getERC20Token(event.address);
   }
+  item.staked = item.staked.plus(event.params.amount);
   stake.staked = stake.staked.plus(event.params.amount);
   account.staked = account.staked.plus(event.params.amount);
+  item.save();
   stake.save();
   account.save();
 }
 
 export function handleBurnedEvent(event: Burned): void {
-  let stake = Stake.load(event.params.seller.toHexString() + '-' + event.params.stakable.toHexString() + '-' + event.params.item);
+  let stakeId = event.params.seller.toHexString() + '-' + event.params.stakable.toHexString() + '-' + event.params.item;
+  let stake = Stake.load(stakeId);
   if (stake) {
     stake.staked = stake.staked.minus(event.params.amount);
-    stake.save();
+    if (stake.staked.isZero()) {
+      Stake.remove(stakeId);
+    } else {
+      stake.save();
+    }
   }
   let account = Account.load(event.params.seller.toHexString());
   if (account) {
     account.staked = account.staked.minus(event.params.amount);
-    account.save();
+    if (account.staked.isZero()) {
+      Account.remove(event.params.seller.toHexString());
+    } else {
+      account.save();
+    }
+  }
+  let item = Manifestation.load(event.params.stakable.toHexString() + '-' + event.params.item);
+  if (item) {
+    item.staked = item.staked.minus(event.params.amount);
+    item.save();
   }
 }
 
