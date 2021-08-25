@@ -42,3 +42,32 @@ dataSources:
         - event: UploadEvidenceEvent(indexed address,indexed bytes32,string,string,indexed address)
           handler: handleUploadEvidenceEvent
       file: ./graphprotocol/src/mapping.ts
+  - kind: ethereum/contract
+    name: CLYToken
+    network: goerli
+    source:
+      address: "0x1231231231231231231231231231231231231231"
+      abi: CLYToken
+      startBlock: 4746276
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Minted
+        - Burned
+        - CurvePurchase
+        - CurveSale
+      abis:
+        - name: CLYToken
+          file: ./src/assets/contracts/CLYToken.json
+      eventHandlers:
+        - event: Minted(address,uint256,uint256,address,string)
+          handler: handleMintedEvent
+        - event: Burned(address,uint256,uint256,address,string)
+          handler: handleBurnedEvent
+        - event: CurvePurchase(uint256,uint256,uint256,uint256)
+          handler: handleCurvePurchaseEvent
+        - event: CurveSale(uint256,uint256,uint256,uint256)
+          handler: handleCurveSaleEvent
+      file: ./graphprotocol/src/mapping.ts

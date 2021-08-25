@@ -95,6 +95,24 @@ export class Manifestation extends Entity {
   set transaction(value: Bytes) {
     this.set("transaction", Value.fromBytes(value));
   }
+
+  get staked(): BigInt {
+    let value = this.get("staked");
+    return value.toBigInt();
+  }
+
+  set staked(value: BigInt) {
+    this.set("staked", Value.fromBigInt(value));
+  }
+
+  get stakes(): Array<string> {
+    let value = this.get("stakes");
+    return value.toStringArray();
+  }
+
+  set stakes(value: Array<string>) {
+    this.set("stakes", Value.fromStringArray(value));
+  }
 }
 
 export class UploadEvidence extends Entity {
@@ -154,6 +172,15 @@ export class UploadEvidence extends Entity {
     this.set("evidencer", Value.fromBytes(value));
   }
 
+  get creationTime(): BigInt {
+    let value = this.get("creationTime");
+    return value.toBigInt();
+  }
+
+  set creationTime(value: BigInt) {
+    this.set("creationTime", Value.fromBigInt(value));
+  }
+
   get transaction(): Bytes {
     let value = this.get("transaction");
     return value.toBytes();
@@ -161,5 +188,121 @@ export class UploadEvidence extends Entity {
 
   set transaction(value: Bytes) {
     this.set("transaction", Value.fromBytes(value));
+  }
+}
+
+export class Account extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Account entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Account entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Account", id.toString(), this);
+  }
+
+  static load(id: string): Account | null {
+    return store.get("Account", id) as Account | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get staked(): BigInt {
+    let value = this.get("staked");
+    return value.toBigInt();
+  }
+
+  set staked(value: BigInt) {
+    this.set("staked", Value.fromBigInt(value));
+  }
+
+  get stakes(): Array<string> {
+    let value = this.get("stakes");
+    return value.toStringArray();
+  }
+
+  set stakes(value: Array<string>) {
+    this.set("stakes", Value.fromStringArray(value));
+  }
+}
+
+export class Stake extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Stake entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Stake entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Stake", id.toString(), this);
+  }
+
+  static load(id: string): Stake | null {
+    return store.get("Stake", id) as Stake | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get staker(): Account {
+    let value = Account.load(this.get("staker").toHexString());
+    return value;
+  }
+
+  set staker(value: Account) {
+    this.set("staker", Value.fromString(value.id));
+  }
+
+  get item(): Manifestation {
+    let value = Manifestation.load(this.get("item").toString());
+    return value;
+  }
+
+  set item(value: Manifestation) {
+    this.set("item", Value.fromString(value.id));
+  }
+
+  get staked(): BigInt {
+    let value = this.get("staked");
+    return value.toBigInt();
+  }
+
+  set staked(value: BigInt) {
+    this.set("staked", Value.fromBigInt(value));
+  }
+
+  get stakable(): Address {
+    let value = Address.fromHexString(this.get("stakable"));
+    return value;
+  }
+
+  set stakable(value: Address) {
+    this.set("stakable", Value.fromAddress(value));
   }
 }

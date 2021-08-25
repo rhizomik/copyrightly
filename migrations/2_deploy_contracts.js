@@ -1,20 +1,24 @@
 const Manifestations = artifacts.require("./Manifestations.sol");
-const SafeMath = artifacts.require("./SafeMath.sol");
 const ExpirableLib = artifacts.require("./ExpirableLib.sol");
 const UploadEvidences = artifacts.require("./UploadEvidence.sol");
+const CLYToken = artifacts.require("./CLYToken.sol");
 
 module.exports = async function(deployer, network, accounts) {
-  const owner = accounts[0];
-  const timeToExpiry = 60 * 60 * 24;  // 24h
+  const OWNER = accounts[0];
+  const EXPIRY_TIME = 60 * 60 * 24;  // 24h
+  const RESERVE_RATIO = 500000; // 1/2 in ppm, corresponds to curve y = m * x
+  const INITIAL_SLOPE = 1;      // Initial curve slope m when pool balance = 0
+  const MAX_GASPRICE = web3.utils.toWei('100', 'gwei');
 
-  await deployer.deploy(SafeMath);
-  await deployer.link(SafeMath, [ExpirableLib, Manifestations]);
-  await deployer.deploy(ExpirableLib);
-  await deployer.link(ExpirableLib, [Manifestations]);
-  await deployer.deploy(Manifestations, timeToExpiry);
-  await deployer.deploy(UploadEvidences);
+  await deployer.deploy(ExpirableLib, {from: OWNER});
+  await deployer.link(ExpirableLib, [Manifestations], {from: OWNER});
+  await deployer.deploy(Manifestations, EXPIRY_TIME, {from: OWNER});
+  await deployer.deploy(UploadEvidences, {from: OWNER});
+  await deployer.deploy(CLYToken, RESERVE_RATIO, INITIAL_SLOPE, MAX_GASPRICE, {from: OWNER})
 
   const manifestations = await Manifestations.deployed();
   const uploadEvidences = await UploadEvidences.deployed();
+  const clytoken = await CLYToken.deployed();
   await manifestations.addEvidenceProvider(uploadEvidences.address);
+  await manifestations.setToken(clytoken.address, {from: OWNER});
 };

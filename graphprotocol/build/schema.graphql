@@ -1,18 +1,34 @@
 type Manifestation @entity {
-  id: ID! # hash
+  id: ID! # stakable - hash
   authors: [Bytes]!
   title: String!
   creationTime: BigInt!
   expiryTime: BigInt!
   evidenceCount: Int!
   transaction: Bytes!
+  staked: BigInt!
+  stakes: [Stake!]! @derivedFrom(field: "item")
 }
 
 type UploadEvidence @entity {
-  id: ID! # hash
+  id: ID! # contract - hash
   registry: Bytes!
   evidenced: String!
   evidencer: Bytes!
   creationTime: BigInt!
   transaction: Bytes!
+}
+
+type Account @entity {
+  id: ID! # address
+  staked: BigInt!
+  stakes: [Stake!]! @derivedFrom(field: "staker")
+}
+
+type Stake @entity {
+  id: ID! # staker - stakable - hash
+  staker: Account!
+  stakable: Bytes! # stakable contract
+  item: Manifestation! # stakable - hash
+  staked: BigInt!
 }

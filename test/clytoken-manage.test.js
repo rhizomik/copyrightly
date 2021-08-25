@@ -52,7 +52,7 @@ contract('CLY Token - Minting', function (accounts) {
     const payed = delta.add(fees).mul(new BN(-1));
 
     expectEvent(res, 'Minted', {buyer: STAKER, amount: amount,
-      payed: payed, manifestation: MANIFESTATION_HASH});
+      payed: payed, item: MANIFESTATION_HASH});
 
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(payed, 'ether').toString());
