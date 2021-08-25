@@ -288,6 +288,15 @@ export class Stake extends Entity {
     this.set("staker", Value.fromString(value.id));
   }
 
+  get stakable(): Address {
+    let value = Address.fromHexString(this.get("stakable"));
+    return value;
+  }
+
+  set stakable(value: Address) {
+    this.set("stakable", Value.fromAddress(value));
+  }
+
   get item(): Manifestation {
     let value = Manifestation.load(this.get("item").toString());
     return value;
@@ -313,15 +322,6 @@ export class Stake extends Entity {
 
   set token(value: ERC20Token) {
     this.set("token", Value.fromString(value.id));
-  }
-
-  get stakable(): Address {
-    let value = Address.fromHexString(this.get("stakable"));
-    return value;
-  }
-
-  set stakable(value: Address) {
-    this.set("stakable", Value.fromAddress(value));
   }
 }
 
@@ -416,13 +416,21 @@ export class ERC20Token extends Entity {
     this.set("balance", Value.fromBigInt(value));
   }
 
-  get holders(): Array<string> {
+  get holders(): Array<string> | null {
     let value = this.get("holders");
-    return value.toStringArray();
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
   }
 
-  set holders(value: Array<string>) {
-    this.set("holders", Value.fromStringArray(value));
+  set holders(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("holders");
+    } else {
+      this.set("holders", Value.fromStringArray(value as Array<string>));
+    }
   }
 
   get price(): BigInt {
@@ -434,13 +442,21 @@ export class ERC20Token extends Entity {
     this.set("price", Value.fromBigInt(value));
   }
 
-  get pricePoints(): Array<string> {
+  get pricePoints(): Array<string> | null {
     let value = this.get("pricePoints");
-    return value.toStringArray();
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
   }
 
-  set pricePoints(value: Array<string>) {
-    this.set("pricePoints", Value.fromStringArray(value));
+  set pricePoints(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("pricePoints");
+    } else {
+      this.set("pricePoints", Value.fromStringArray(value as Array<string>));
+    }
   }
 }
 
@@ -534,6 +550,6 @@ export class PricePoint extends Entity {
   }
 
   set timestamp(value: BigInt) {
-    this.set("type", Value.fromBigInt(value));
+    this.set("timestamp", Value.fromBigInt(value));
   }
 }

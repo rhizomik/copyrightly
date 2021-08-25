@@ -84,6 +84,7 @@ export function handleCurvePurchaseEvent(event: CurvePurchase): void {
   pricePoint.amount = event.params.amount;
   pricePoint.price = event.params.price;
   pricePoint.type = 'Purchase';
+  pricePoint.timestamp = event.block.timestamp;
   pricePoint.save();
   let clytoken = CLYToken.bind(event.address);
   erc20.supply = clytoken.totalSupply();
@@ -102,6 +103,7 @@ export function handleCurveSaleEvent(event: CurveSale): void {
   pricePoint.amount = event.params.amount;
   pricePoint.price = event.params.price;
   pricePoint.type = 'Sale';
+  pricePoint.timestamp = event.block.timestamp;
   pricePoint.save();
   let clytoken = CLYToken.bind(event.address);
   erc20.supply = clytoken.totalSupply();

@@ -55,6 +55,7 @@ type PricePoint @entity {
   amount: BigInt!
   price: BigInt!
   type: TransactionType!
+  timestamp: BigInt!
 }
 
 enum TransactionType {
