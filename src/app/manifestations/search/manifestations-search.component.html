@@ -9,7 +9,7 @@
     <div class="form-group" [class.was-validated]="inputHash.dirty || inputHash.touched">
       <label class="control-label" for="input">Hash*</label>
       <input id="input" name="inputHash" type="text" class="form-control" required
-             [(ngModel)]="manifestation.id" #inputHash="ngModel" placeholder="Content Hash">
+             [(ngModel)]="manifestation.hash" #inputHash="ngModel" placeholder="Content Hash">
       <div class="invalid-feedback">A content hash is required</div>
     </div>
 
@@ -31,23 +31,25 @@
       <h5 class="card-title col-md-12 p-1">{{manifestation?.title}}</h5>
       <div class="col-md-6 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Hash</h6>
-        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.id}}" target="_blank">
-          {{manifestation?.id}}</a>
+        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}" target="_blank">
+          {{manifestation?.hash}}</a>
       </div>
       <div class="col-md-2 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Creator</h6>
-        <p class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}">
+        <a class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}"
+           [routerLink]="['/creators', author]">
           {{author | slice:0:6}}...{{author | slice:-4}}
-        </p>
+        </a>
       </div>
-      <div class="col-md-4 p-1 mb-1">
+      <div class="col-md-3 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Registered</h6>
-        <p class="card-text">{{manifestation?.creationTime | date:'medium'}}</p>
+        <a class="card-text" href="https://goerli.etherscan.io/tx/{{manifestation?.transaction}}" target="_blank">
+          {{manifestation?.creationTime | date:'medium'}}</a>
       </div>
     </div>
     <div class="card-footer">
       <button id="details" type="button" class="btn btn-primary"
-              [routerLink]="['/manifestations', manifestation?.id]">Details</button>
+              [routerLink]="['/manifestations', manifestation?.hash]">Details</button>
       <button id="back" type="button" class="btn btn-secondary ml-2"
               (click)="manifestation.title = ''">Back</button>
     </div>

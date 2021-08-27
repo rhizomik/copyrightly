@@ -51,6 +51,15 @@ export class Manifestation extends Entity {
     this.set("authors", Value.fromBytesArray(value));
   }
 
+  get hash(): string {
+    let value = this.get("hash");
+    return value.toString();
+  }
+
+  set hash(value: string) {
+    this.set("hash", Value.fromString(value));
+  }
+
   get title(): string {
     let value = this.get("title");
     return value.toString();
@@ -94,6 +103,15 @@ export class Manifestation extends Entity {
 
   set transaction(value: Bytes) {
     this.set("transaction", Value.fromBytes(value));
+  }
+
+  get stakable(): Address {
+    let value = Address.fromHexString(this.get("stakable"));
+    return value;
+  }
+
+  set stakable(value: Address) {
+    this.set("stakable", Value.fromAddress(value));
   }
 
   get staked(): BigInt {

@@ -1,5 +1,7 @@
 type Manifestation @entity {
   id: ID! # stakable - hash
+  stakable: Bytes! # stakable contract
+  hash: String
   authors: [Bytes]!
   title: String!
   creationTime: BigInt!

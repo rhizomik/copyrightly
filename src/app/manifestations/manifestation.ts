@@ -1,5 +1,7 @@
 export class Manifestation {
   id = '';
+  contract = '';
+  hash = '';
   title = '';
   authors: string[] = [];
   creationTime = new Date();

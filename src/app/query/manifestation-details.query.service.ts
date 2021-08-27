@@ -2,25 +2,34 @@ import { Injectable } from '@angular/core';
 import { Query, gql } from 'apollo-angular';
 import { Manifestation } from '../manifestations/manifestation';
 
-export interface Response {
-  manifestation: Manifestation;
+export interface ManifestationsListResponse {
+  manifestations: Manifestation[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
-export class ManifestationDetailsQueryService extends Query<Response> {
+export class ManifestationDetailsQueryService extends Query<ManifestationsListResponse> {
   document = gql`
-  query GetManifestation($manifestationId: ID!) {
-    manifestation(id: $manifestationId)
+  query GetManifestation($manifestationHash: String!) {
+    manifestations(where: { hash: $manifestationHash })
     {
       id
+      stakable
+      hash
       authors
       title
       creationTime
       expiryTime
       evidenceCount
       transaction
+      staked
+      stakes {
+        staker {
+          id
+        }
+        staked
+      }
     }
   }`;
 }

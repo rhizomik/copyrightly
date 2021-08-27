@@ -37,10 +37,10 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
   }
 
-  loadManifestation(manifestationId: string | null) {
-    this.manifestationDetailsQuery.fetch({ manifestationId })
+  loadManifestation(manifestationHash: string | null) {
+    this.manifestationDetailsQuery.fetch({ manifestationHash })
       .subscribe(({data}) => {
-        const manifestation = new Manifestation(({...data.manifestation}));
+        const manifestation = new Manifestation(({...data.manifestations[0]}));
         if (manifestation.title) {
           this.manifestation = manifestation;
           this.notFound = false;
@@ -49,7 +49,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
           this.notFound = false;
           this.loadEvidence();
         } else {
-          this.alertsService.error('Manifestation not found: ' + manifestationId, 0);
+          this.alertsService.error('Manifestation not found: ' + manifestationHash, 0);
         }
       }, error => this.alertsService.error(error));
   }
@@ -59,7 +59,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   loadEvidence(): void {
-    this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.id })
+    this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.hash })
     .subscribe(({data}) => {
       this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
     }, error => this.alertsService.error(error));

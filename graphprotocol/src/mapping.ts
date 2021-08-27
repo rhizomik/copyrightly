@@ -9,6 +9,8 @@ export function handleManifestEvent(event: ManifestEvent): void {
   let manifestation = new Manifestation(event.address.toHexString() + '-' + event.params.hash);
   let contract = Manifestations.bind(event.address);
   let authors = new Array<Bytes>();
+  manifestation.hash = event.params.hash;
+  manifestation.stakable = event.address;
   manifestation.title = event.params.title;
   manifestation.evidenceCount = 0;
   authors.push(event.params.manifester);

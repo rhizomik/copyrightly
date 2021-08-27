@@ -5,6 +5,7 @@ import { Manifestation } from '../manifestations/manifestation';
 export interface ManifestationsListResponse {
   manifestations: Manifestation[];
 }
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,12 +15,15 @@ export class ManifestationsListQueryService extends Query<ManifestationsListResp
     manifestations(first: 20, orderBy: creationTime, orderDirection: desc, where: { authors_contains: $authors } )
     {
       id
+      stakable
+      hash
       authors
       title
       creationTime
       expiryTime
       evidenceCount
       transaction
+      staked
     }
   }`;
 }
