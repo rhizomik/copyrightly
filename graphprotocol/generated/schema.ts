@@ -51,6 +51,15 @@ export class Manifestation extends Entity {
     this.set("authors", Value.fromBytesArray(value));
   }
 
+  get contract(): Address {
+    let value = Address.fromHexString(this.get("contract"));
+    return value;
+  }
+
+  set contract(value: Address) {
+    this.set("contract", Value.fromAddress(value));
+  }
+
   get hash(): string {
     let value = this.get("hash");
     return value.toString();
@@ -103,15 +112,6 @@ export class Manifestation extends Entity {
 
   set transaction(value: Bytes) {
     this.set("transaction", Value.fromBytes(value));
-  }
-
-  get stakable(): Address {
-    let value = Address.fromHexString(this.get("stakable"));
-    return value;
-  }
-
-  set stakable(value: Address) {
-    this.set("stakable", Value.fromAddress(value));
   }
 
   get staked(): BigInt {

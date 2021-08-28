@@ -15,7 +15,7 @@ export class ManifestationsListQueryService extends Query<ManifestationsListResp
     manifestations(first: 20, orderBy: creationTime, orderDirection: desc, where: { authors_contains: $authors } )
     {
       id
-      stakable
+      contract
       hash
       authors
       title

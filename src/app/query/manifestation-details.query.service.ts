@@ -15,7 +15,7 @@ export class ManifestationDetailsQueryService extends Query<ManifestationsListRe
     manifestations(where: { hash: $manifestationHash })
     {
       id
-      stakable
+      contract
       hash
       authors
       title

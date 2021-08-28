@@ -1,6 +1,6 @@
 type Manifestation @entity {
   id: ID! # stakable - hash
-  stakable: Bytes! # stakable contract
+  contract: Bytes! # manifestation contract
   hash: String
   authors: [Bytes]!
   title: String!

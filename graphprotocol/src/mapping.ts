@@ -10,7 +10,7 @@ export function handleManifestEvent(event: ManifestEvent): void {
   let contract = Manifestations.bind(event.address);
   let authors = new Array<Bytes>();
   manifestation.hash = event.params.hash;
-  manifestation.stakable = event.address;
+  manifestation.contract = event.address;
   manifestation.title = event.params.title;
   manifestation.evidenceCount = 0;
   authors.push(event.params.manifester);
