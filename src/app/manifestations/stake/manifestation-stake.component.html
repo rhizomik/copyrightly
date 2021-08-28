@@ -1,0 +1,59 @@
+<h5><span class="fa fa-gavel"></span> Add Stake</h5>
+<p class="lead">Mint CLY tokens to be staked for the specified price in Ether</p>
+
+<form id="stake-form" (ngSubmit)="addStake(amount, maxPrice)" #stakeForm="ngForm">
+  <fieldset>
+
+    <!-- Staker input -->
+    <div class="form-group">
+      <label class="control-label" for="inputStaker">Staker*</label>
+      <input id="inputStaker" name="inputStaker" type="text" class="form-control" disabled required
+             [ngModel]="account" #inputStaker="ngModel">
+      <div class="invalid-feedback" [hidden]="inputStaker.value" style="display:block">
+        Connect to your account to be able to mint CLY
+      </div>
+    </div>
+
+    <!-- Stake input -->
+    <div class="form-group" [class.was-validated]="inputStake.dirty || inputStake.touched">
+      <label class="control-label" for="inputStake">Stake*</label>
+      <div class="input-group">
+        <input id="inputStake" name="inputStake" type="number" min="0" step="0.000001" class="form-control" required
+               [(ngModel)]="amount" (change)="getPurchasePrice(amount)" #inputStake="ngModel">
+        <div class="input-group-append">
+            <span class="input-group-text">
+              <span class="fas fa-copyright logo-icon"></span>LY</span>
+        </div>
+        <div class="invalid-feedback">An amount is required</div>
+      </div>
+    </div>
+
+    <!-- Price input -->
+    <div class="form-group">
+      <label class="control-label" for="inputPrice">Maximum Price*</label>
+      <div class="input-group">
+        <input id="inputPrice" name="inputPrice" type="number" step="any" class="form-control" disabled
+               [ngModel]="maxPrice" #inputPrice="ngModel">
+        <div class="input-group-append">
+            <span class="input-group-text">ETH</span>
+        </div>
+        <div class="input-group-append">
+            <span class="input-group-text" (click)="getPurchasePrice(amount)">
+              <span class="fas fa-sync-alt"></span></span>
+        </div>
+      </div>
+      <div class="invalid-feedback" [hidden]="inputPrice.value" style="display:block">
+        Error retrieving the CLY price
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="purchase" type="submit" class="btn btn-success pull-right"
+              [disabled]="!stakeForm.form.valid || !inputStaker.value || !inputPrice.value">Purchase</button>
+      <button id="cancel" type="button" class="btn btn-danger pull-right ml-2"
+              (click)="cancelPurchase()">Cancel</button>
+    </div>
+
+  </fieldset>
+</form>

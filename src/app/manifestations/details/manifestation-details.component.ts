@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
+import { BigNumber } from 'bignumber.js';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -20,8 +21,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   addingYouTubeEvidence = false;
   hidUploadEvidence = false;
   notFound = true;
-
-  staked = 0;
+  staking = false;
+  hidAddStake = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -76,5 +77,15 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.hidUploadEvidence = false;
     this.uploadEvidence.push(evidence);
     this.manifestation.evidenceCount++;
+  }
+
+  addedStake(amount: BigNumber) {
+    if (amount.isZero()) {
+      this.hidAddStake = true;
+    } else {
+      this.manifestation.staked = this.manifestation.staked.plus(amount);
+      this.staking = false;
+      this.hidAddStake = false;
+    }
   }
 }

@@ -14,6 +14,7 @@ import { EvidenceModule } from '../evidence/evidence.module';
 import { AuthenticationService } from '../navbar/authentication.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { QueryModule } from '../query/query.module';
+import { ManifestationStakeComponent } from './stake/manifestation-stake.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { QueryModule } from '../query/query.module';
     ManifestationsSearchComponent,
     ManifestationsListComponent,
     ManifestationDetailsComponent,
-    ManifestEventComponent
+    ManifestEventComponent,
+    ManifestationStakeComponent
   ],
   imports: [
     CommonModule,
