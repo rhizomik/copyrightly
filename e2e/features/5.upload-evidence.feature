@@ -1,5 +1,5 @@
 Feature: Upload Evidence
-  In order to support and authorship claim
+  In order to support an authorship claim
   As a creator
   I want to upload content or data and associate it to the claim
 

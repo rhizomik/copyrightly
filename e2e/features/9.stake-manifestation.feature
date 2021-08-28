@@ -1,9 +1,9 @@
-Feature: Upload Evidence
-  In order to support and authorship claim
-  As a creator
-  I want to upload content or data and associate it to the claim
+Feature: Add Stake to Manifestation
+  In order to benefit from CopyrightLY (CLY) token minting
+  As a user
+  I want to stake some CLY on a trustful on a manifestation to reduce the risk of loosing stake
 
-  Scenario: Upload evidence for a previously registered authorship claim
+  Scenario: Add stake to an existing manifestation for an authorship claim
     Given I'm on the home page
     And I click connect account
     And I click submenu option "Search" in menu "Authorship"
