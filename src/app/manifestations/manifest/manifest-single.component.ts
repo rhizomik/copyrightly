@@ -36,13 +36,13 @@ export class ManifestSingleComponent implements OnInit {
       this.ipfsService.uploadFile(event.files[0], this.uploadToIpfs)
       .subscribe((hash: string) => {
         this.status = 'Register';
-        this.manifestation.id = hash;
+        this.manifestation.hash = hash;
       }, error => {
         this.status = 'Register';
         this.alertsService.error(error);
       });
     } else {
-      this.manifestation.id = '';
+      this.manifestation.hash = '';
     }
   }
 

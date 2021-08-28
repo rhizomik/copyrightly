@@ -42,7 +42,7 @@ contract('CLY Token - Minting', function (accounts) {
       {value: maxPrice, from: STAKER1});
 
     expectEvent(res, 'Minted', {buyer: STAKER1, amount: amount,
-      payed: amount.mul(new BN(INITIAL_SLOPE)), manifestation: MANIFESTATION_HASH1 });
+      payed: amount.mul(new BN(INITIAL_SLOPE)), item: MANIFESTATION_HASH1 });
 
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(amount, 'ether').toString());
@@ -64,7 +64,7 @@ contract('CLY Token - Minting', function (accounts) {
     const payed = delta.add(fees).mul(new BN(-1));
 
     expectEvent(res, 'Minted', {buyer: STAKER1, amount: amount,
-      payed: payed, manifestation: MANIFESTATION_HASH1});
+      payed: payed, item: MANIFESTATION_HASH1});
 
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(payed, 'ether').toString());
@@ -84,7 +84,7 @@ contract('CLY Token - Minting', function (accounts) {
     const payed = delta.add(fees).mul(new BN(-1));
 
     expectEvent(res, 'Minted', {buyer: STAKER2, amount: amount,
-      payed: payed, manifestation: MANIFESTATION_HASH1});
+      payed: payed, item: MANIFESTATION_HASH1});
 
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(payed, 'ether').toString());
@@ -108,7 +108,7 @@ contract('CLY Token - Minting', function (accounts) {
     const payed = delta.add(fees).mul(new BN(-1));
 
     expectEvent(res, 'Minted', {buyer: STAKER2, amount: amount,
-      payed: payed, manifestation: MANIFESTATION_HASH2});
+      payed: payed, item: MANIFESTATION_HASH2});
 
     console.log('Minted', amount.div(CLY).toString(), 'CLY for',
       web3.utils.fromWei(payed, 'ether').toString());
@@ -167,7 +167,7 @@ contract('CLY Token - Minting', function (accounts) {
       const payed = delta.add(fees).mul(new BN(-1));
 
       expectEvent(res, 'Minted', {buyer: STAKER1, amount: amount,
-        payed: payed, stakable: manifestations.address, manifestation: MANIFESTATION_HASH1});
+        payed: payed, stakable: manifestations.address, item: MANIFESTATION_HASH1});
 
       chai.expect(payed).to.be.bignumber.greaterThan(previousPrice);
 

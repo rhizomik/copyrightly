@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
+import { BigNumber } from 'bignumber.js';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -20,8 +21,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   addingYouTubeEvidence = false;
   hidUploadEvidence = false;
   notFound = true;
-
-  staked = 0;
+  staking = false;
+  hidAddStake = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -37,10 +38,10 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
   }
 
-  loadManifestation(manifestationId: string | null) {
-    this.manifestationDetailsQuery.fetch({ manifestationId })
+  loadManifestation(manifestationHash: string | null) {
+    this.manifestationDetailsQuery.fetch({ manifestationHash })
       .subscribe(({data}) => {
-        const manifestation = new Manifestation(({...data.manifestation}));
+        const manifestation = new Manifestation(({...data.manifestations[0]}));
         if (manifestation.title) {
           this.manifestation = manifestation;
           this.notFound = false;
@@ -49,7 +50,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
           this.notFound = false;
           this.loadEvidence();
         } else {
-          this.alertsService.error('Manifestation not found: ' + manifestationId, 0);
+          this.alertsService.error('Manifestation not found: ' + manifestationHash, 0);
         }
       }, error => this.alertsService.error(error));
   }
@@ -59,7 +60,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   loadEvidence(): void {
-    this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.id })
+    this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.hash })
     .subscribe(({data}) => {
       this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
     }, error => this.alertsService.error(error));
@@ -76,5 +77,15 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.hidUploadEvidence = false;
     this.uploadEvidence.push(evidence);
     this.manifestation.evidenceCount++;
+  }
+
+  addedStake(amount: BigNumber) {
+    if (amount.isZero()) {
+      this.hidAddStake = true;
+    } else {
+      this.manifestation.staked = this.manifestation.staked.plus(amount);
+      this.staking = false;
+      this.hidAddStake = false;
+    }
   }
 }

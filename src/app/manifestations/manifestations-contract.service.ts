@@ -64,7 +64,7 @@ export class ManifestationsContractService {
   public manifest(manifestation: Manifestation, account: string): Observable<string | ManifestEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.manifestAuthorship(manifestation.id, manifestation.title)
+        contract.methods.manifestAuthorship(manifestation.hash, manifestation.title)
         .send({from: account, gas: 150000})
         .on('transactionHash', (hash: string) =>
           this.ngZone.run(() => observer.next(hash)))

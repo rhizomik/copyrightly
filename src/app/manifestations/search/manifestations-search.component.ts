@@ -18,9 +18,9 @@ export class ManifestationsSearchComponent implements OnInit, OnDestroy {
   ngOnInit(): void { }
 
   getManifestation() {
-    this.manifestationDetailsQuery.fetch({ manifestationId: this.manifestation.id })
+    this.manifestationDetailsQuery.fetch({ manifestationHash: this.manifestation.hash })
       .subscribe(({data}) => {
-        this.manifestation = new Manifestation(({...data.manifestation}));
+        this.manifestation = new Manifestation(({...data.manifestations[0]}));
         if (!this.manifestation.title) {
           this.alertsService.info('Content hash not found, unregistered');
         }

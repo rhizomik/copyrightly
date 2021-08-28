@@ -18,8 +18,8 @@
     <h4 class="card-title col-md-12 p-1">{{manifestation?.title}}</h4>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Hash</h6>
-      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.id}}"
-         target="_blank">{{manifestation?.id}}</a>
+      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}"
+         target="_blank">{{manifestation?.hash}}</a>
     </div>
     <div class="col-md-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Creator</h6>
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="card-footer">
-    <a [routerLink]="['/manifestations', manifestation?.id]" class="btn btn-info">Details</a>
+    <a [routerLink]="['/manifestations', manifestation?.hash]" class="btn btn-info">Details</a>
   </div>
 </div>
 

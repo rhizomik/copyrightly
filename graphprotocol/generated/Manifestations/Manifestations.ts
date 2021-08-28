@@ -10,24 +10,6 @@ import {
   BigInt
 } from "@graphprotocol/graph-ts";
 
-export class AddedEvidence extends ethereum.Event {
-  get params(): AddedEvidence__Params {
-    return new AddedEvidence__Params(this);
-  }
-}
-
-export class AddedEvidence__Params {
-  _event: AddedEvidence;
-
-  constructor(event: AddedEvidence) {
-    this._event = event;
-  }
-
-  get evidenceCount(): i32 {
-    return this._event.parameters[0].value.toI32();
-  }
-}
-
 export class ManifestEvent extends ethereum.Event {
   get params(): ManifestEvent__Params {
     return new ManifestEvent__Params(this);
@@ -168,6 +150,46 @@ export class Manifestations extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toI32());
   }
 
+  isStaked(hash: string): boolean {
+    let result = super.call("isStaked", "isStaked(string):(bool)", [
+      ethereum.Value.fromString(hash)
+    ]);
+
+    return result[0].toBoolean();
+  }
+
+  try_isStaked(hash: string): ethereum.CallResult<boolean> {
+    let result = super.tryCall("isStaked", "isStaked(string):(bool)", [
+      ethereum.Value.fromString(hash)
+    ]);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  isUnevidenced(hash: string): boolean {
+    let result = super.call("isUnevidenced", "isUnevidenced(string):(bool)", [
+      ethereum.Value.fromString(hash)
+    ]);
+
+    return result[0].toBoolean();
+  }
+
+  try_isUnevidenced(hash: string): ethereum.CallResult<boolean> {
+    let result = super.tryCall(
+      "isUnevidenced",
+      "isUnevidenced(string):(bool)",
+      [ethereum.Value.fromString(hash)]
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
   owner(): Address {
     let result = super.call("owner", "owner():(address)", []);
 
@@ -196,6 +218,25 @@ export class Manifestations extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  staked(param0: string): BigInt {
+    let result = super.call("staked", "staked(string):(uint256)", [
+      ethereum.Value.fromString(param0)
+    ]);
+
+    return result[0].toBigInt();
+  }
+
+  try_staked(param0: string): ethereum.CallResult<BigInt> {
+    let result = super.tryCall("staked", "staked(string):(uint256)", [
+      ethereum.Value.fromString(param0)
+    ]);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
   timeToExpiry(): BigInt {
@@ -311,6 +352,74 @@ export class AddEvidenceProviderCall__Outputs {
   }
 }
 
+export class AddStakeCall extends ethereum.Call {
+  get inputs(): AddStakeCall__Inputs {
+    return new AddStakeCall__Inputs(this);
+  }
+
+  get outputs(): AddStakeCall__Outputs {
+    return new AddStakeCall__Outputs(this);
+  }
+}
+
+export class AddStakeCall__Inputs {
+  _call: AddStakeCall;
+
+  constructor(call: AddStakeCall) {
+    this._call = call;
+  }
+
+  get amount(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get hash(): string {
+    return this._call.inputValues[1].value.toString();
+  }
+}
+
+export class AddStakeCall__Outputs {
+  _call: AddStakeCall;
+
+  constructor(call: AddStakeCall) {
+    this._call = call;
+  }
+}
+
+export class RemoveStakeCall extends ethereum.Call {
+  get inputs(): RemoveStakeCall__Inputs {
+    return new RemoveStakeCall__Inputs(this);
+  }
+
+  get outputs(): RemoveStakeCall__Outputs {
+    return new RemoveStakeCall__Outputs(this);
+  }
+}
+
+export class RemoveStakeCall__Inputs {
+  _call: RemoveStakeCall;
+
+  constructor(call: RemoveStakeCall) {
+    this._call = call;
+  }
+
+  get amount(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get hash(): string {
+    return this._call.inputValues[1].value.toString();
+  }
+}
+
+export class RemoveStakeCall__Outputs {
+  _call: RemoveStakeCall;
+
+  constructor(call: RemoveStakeCall) {
+    this._call = call;
+  }
+}
+
 export class RenounceOwnershipCall extends ethereum.Call {
   get inputs(): RenounceOwnershipCall__Inputs {
     return new RenounceOwnershipCall__Inputs(this);
@@ -333,6 +442,36 @@ export class RenounceOwnershipCall__Outputs {
   _call: RenounceOwnershipCall;
 
   constructor(call: RenounceOwnershipCall) {
+    this._call = call;
+  }
+}
+
+export class SetTokenCall extends ethereum.Call {
+  get inputs(): SetTokenCall__Inputs {
+    return new SetTokenCall__Inputs(this);
+  }
+
+  get outputs(): SetTokenCall__Outputs {
+    return new SetTokenCall__Outputs(this);
+  }
+}
+
+export class SetTokenCall__Inputs {
+  _call: SetTokenCall;
+
+  constructor(call: SetTokenCall) {
+    this._call = call;
+  }
+
+  get token(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+}
+
+export class SetTokenCall__Outputs {
+  _call: SetTokenCall;
+
+  constructor(call: SetTokenCall) {
     this._call = call;
   }
 }

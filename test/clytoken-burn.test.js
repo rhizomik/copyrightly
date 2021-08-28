@@ -53,8 +53,7 @@ contract('CLY Token - Burning', function (accounts) {
     let earned = change.delta.add(change.fees);
 
     expectEvent(res, 'Burned', {
-      seller: STAKER1, amount: amount,
-      earned: earned, manifestation: MANIFESTATION_HASH1
+      seller: STAKER1, amount: amount, earned: earned, item: MANIFESTATION_HASH1
     });
 
     console.log('Burned', amount.div(CLY).toString(), ' CLY for', web3.utils.fromWei(earned, 'ether').toString());
@@ -71,8 +70,7 @@ contract('CLY Token - Burning', function (accounts) {
     let earned = change.delta.add(change.fees);
 
     expectEvent(res, 'Burned', {
-      seller: STAKER1, amount: amount,
-      earned: earned, manifestation: MANIFESTATION_HASH1
+      seller: STAKER1, amount: amount, earned: earned, item: MANIFESTATION_HASH1
     });
 
     console.log('Burned', amount.div(CLY).toString(), ' CLY for', web3.utils.fromWei(earned, 'ether').toString());
@@ -108,8 +106,7 @@ contract('CLY Token - Burning', function (accounts) {
     let earned = change.delta.add(change.fees);
 
     expectEvent(res, 'Burned', {
-      seller: STAKER2, amount: amount,
-      earned: earned, manifestation: MANIFESTATION_HASH1
+      seller: STAKER2, amount: amount, earned: earned, item: MANIFESTATION_HASH1
     });
 
     console.log('Burned', amount.div(CLY).toString(), ' CLY for', web3.utils.fromWei(earned, 'ether').toString());
@@ -138,8 +135,7 @@ contract('CLY Token - Burning', function (accounts) {
     let earned = change.delta.add(change.fees);
 
     expectEvent(res, 'Burned', {
-      seller: STAKER1, amount: amount,
-      earned: earned, manifestation: MANIFESTATION_HASH2
+      seller: STAKER1, amount: amount, earned: earned, item: MANIFESTATION_HASH2
     });
 
     console.log('Burned', amount.div(CLY).toString(), ' CLY for', web3.utils.fromWei(earned, 'ether').toString());

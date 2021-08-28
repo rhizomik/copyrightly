@@ -6,8 +6,8 @@
       <h5 class="card-title col-md-12 p-1">{{manifestation?.title}}</h5>
       <div class="col-md-6 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Hash</h6>
-        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.id}}" target="_blank">
-          {{manifestation?.id}}</a>
+        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}"
+           target="_blank">{{manifestation?.hash}}</a>
       </div>
       <div class="col-md-2 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Creator</h6>
@@ -29,23 +29,28 @@
     <div class="card-footer">
       <div class="form-group row m-1">
         <div class="input-group input-group-sm">
-          <input id="inputStaked" name="inputStaked" type="number" class="form-control" readonly
-                 aria-describedby="cly-units" [ngModel]="staked" #inputStaked="ngModel">
+          <input id="inputStaked" name="inputStaked" type="number" class="form-control" readonly #inputStaked="ngModel"
+                 [ngModel]="manifestation.getStaked()">
           <div class="input-group-append">
-          <span class="input-group-text" id="cly-append">
+          <span class="input-group-text">
             <span class="fas fa-copyright logo-icon"></span>LY Staked</span>
           </div>
-          <button type="button" disabled class="btn btn-sm btn-success ml-2">Add Stake</button>
+          <button type="button" class="btn btn-sm btn-success ml-2" [disabled]="staking || addingEvidence()"
+                  (click)="staking = true">Add Stake</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div *ngIf="staked == 0" class="card mb-4">
+  <app-manifestation-stake *ngIf="staking && !addingEvidence()" [manifestation]="manifestation"
+                           [hidden]="hidAddStake" (cancel)="staking = false" (done)="addedStake($event)">
+  </app-manifestation-stake>
+
+  <div *ngIf="manifestation.getStaked() == '0'" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No stake on this manifestation yet</h5>
-      <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten if no
-        CLY is staked on it before {{manifestation?.expiryTime | date:'medium'}}</p>
+      <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten, if no
+        CLY is staked on it, after {{manifestation?.expiryTime | date:'medium'}}</p>
     </div>
   </div>
 

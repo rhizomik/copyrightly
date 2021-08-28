@@ -43,8 +43,8 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 
   mapping(string => mapping(address => uint256)) public individualStakes;
 
-  event Minted(address buyer, uint256 amount, uint256 payed, address stakable, string manifestation);
-  event Burned(address seller, uint256 amount, uint256 earned, address stakable, string manifestation);
+  event Minted(address buyer, uint256 amount, uint256 payed, address stakable, string item);
+  event Burned(address seller, uint256 amount, uint256 earned, address stakable, string item);
   event CurvePurchase(uint256 supply, uint256 balance, uint256 amount, uint256 price);
   event CurveSale(uint256 supply, uint256 balance, uint256 amount, uint256 price);
 
@@ -59,20 +59,27 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     return 16;
   }
 
-  function mint(uint256 amount, uint256 maxPrice, address stakable, string memory manifestation) public payable
-  validGasPrice() whenNotPaused() returns (uint256) {
-    require(maxPrice != 0 && msg.value == maxPrice, "Incorrect Ether value sent");
+  function getMintPrice(uint256 amount) public view
+  returns (uint256) {
     require(amount > 0, "Must specify a non-zero amount of CLY");
-    Stakable(stakable).isStakable(manifestation);
 
     uint256 price = amount.mul(initialSlope); // Use default curve slope when poolBalance = 0
     if (poolBalance > 0) {
       price = purchaseTargetAmount(totalSupply(), poolBalance, reserveRatio, amount);
     }
+    return price;
+  }
 
-    emit CurvePurchase(totalSupply(), poolBalance, amount, price);
+  function mint(uint256 amount, uint256 maxPrice, address stakable, string memory item) public payable
+  validGasPrice() whenNotPaused() returns (uint256) {
+    require(maxPrice != 0 && msg.value == maxPrice, "Incorrect Ether value sent");
+    Stakable(stakable).isStakable(item);
+
+    uint256 price = getMintPrice(amount);
 
     require(price <= maxPrice, "Current price exceeds maximum provided");
+
+    emit CurvePurchase(totalSupply(), poolBalance, amount, price);
 
     uint256 refund = maxPrice.sub(price);
     if (refund > 0) {
@@ -82,19 +89,25 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     poolBalance = poolBalance.add(price);
     _mint(msg.sender, amount);
 
-    individualStakes[manifestation][msg.sender] += amount;
-    Stakable(stakable).addStake(amount, manifestation);
+    individualStakes[item][msg.sender] += amount;
+    Stakable(stakable).addStake(amount, item);
 
-    emit Minted(msg.sender, amount, price, stakable, manifestation);
+    emit Minted(msg.sender, amount, price, stakable, item);
 
     return price;
   }
 
-  function burn(uint256 amount, address stakable, string memory manifestation) public
-  validGasPrice() validBurn(stakable, manifestation, amount) whenNotPaused() returns (uint256) {
+  function getBurnPrice(uint256 amount) public view
+  returns (uint256) {
     require(amount > 0, "Must specify a non-zero amount of CLY");
 
-    uint256 price = saleTargetAmount(totalSupply(), poolBalance, reserveRatio, amount);
+    return saleTargetAmount(totalSupply(), poolBalance, reserveRatio, amount);
+  }
+
+  function burn(uint256 amount, address stakable, string memory item) public
+  validGasPrice() whenNotPaused() validBurn(stakable, item, amount) returns (uint256) {
+
+    uint256 price = getBurnPrice(amount);
 
     emit CurveSale(totalSupply(), poolBalance, amount, price);
 
@@ -102,16 +115,26 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
 
     poolBalance = poolBalance.sub(price);
     _burn(msg.sender, amount);
-    individualStakes[manifestation][msg.sender] -= amount;
-    Stakable(stakable).removeStake(amount, manifestation);
+    individualStakes[item][msg.sender] -= amount;
+    Stakable(stakable).removeStake(amount, item);
 
-    emit Burned(msg.sender, amount, price, stakable, manifestation);
+    emit Burned(msg.sender, amount, price, stakable, item);
 
     return price;
   }
 
-  function getIndividualStake(string memory manifestation, address staker) public view returns (uint256) {
-    return individualStakes[manifestation][staker];
+  function transfer(address, uint256) public pure override returns (bool) {
+    require(false, "CLY Token is not transferable");
+    return false;
+  }
+
+  function transferFrom(address, address, uint256) public pure override returns (bool) {
+    require(false, "CLY Token is not transferable");
+    return false;
+  }
+
+  function getIndividualStake(string memory item, address staker) public view returns (uint256) {
+    return individualStakes[item][staker];
   }
 
   function setGasPrice(uint256 _gasPrice) public onlyOwner {
@@ -141,9 +164,9 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
     _;
   }
 
-  modifier validBurn(address stakable, string memory manifestation, uint256 amount) {
-    Stakable(stakable).isStakable(manifestation);
-    require(individualStakes[manifestation][msg.sender] >= amount, "Holder hasn't enough CLY to unstake");
+  modifier validBurn(address stakable, string memory item, uint256 amount) {
+    Stakable(stakable).isStakable(item);
+    require(individualStakes[item][msg.sender] >= amount, "Holder hasn't enough CLY to unstake");
     _;
   }
 }
