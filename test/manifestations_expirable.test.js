@@ -66,7 +66,7 @@ contract('Manifestations - Expirable', function (accounts) {
     let res = await clytoken.mint(amount, maxPrice, manifestations.address, HASH2,
       {value: maxPrice, from: STAKER1});
 
-    expectEvent(res, 'Minted', {buyer: STAKER1, amount: amount, manifestation: HASH2 });
+    expectEvent(res, 'Minted', {buyer: STAKER1, amount: amount, item: HASH2 });
 
     await sleep(3*1000);
 
