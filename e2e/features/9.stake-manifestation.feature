@@ -10,8 +10,8 @@ Feature: Add Stake to Manifestation
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
-    When I click the "Add Stake" button
-    And I fill the mint form with amount "0.1"
+    When I click the "Add" button
+    And I fill the stake form with amount "0.1"
     And I click the "Purchase" button
     Then I see alert with text "CLY mint submitted"
     And I see modal with title "CopyrightLY Token Minted"

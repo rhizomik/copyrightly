@@ -11,7 +11,7 @@ export class StakeFormPage {
     this.staker = this.form.element(by.id('inputStaker'));
     this.stake = this.form.element(by.id('inputStake'));
     this.price = this.form.element(by.id('inputPrice'));
-    this.button = this.form.element(by.id('purchase'));
+    this.button = this.form.element(by.id('submit'));
   }
 
   async fillStakeForm(amount: string) {
