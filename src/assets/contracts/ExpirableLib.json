@@ -7,26 +7,26 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "247:1151:2:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;247:1151:2;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "247:1151:2:-:0;;;;;;;;",
+  "sourceMap": "247:1151:3:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;247:1151:3;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "247:1151:3:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-3.0-or-later\n\npragma solidity ^0.8.6;\n\nimport \"openzeppelin-solidity/contracts/utils/math/SafeMath.sol\";\n\n\n/// @title Library to implement expirable items\n/// @author Roberto García (http://rhizomik.net/~roberto/)\nlibrary ExpirableLib {\n    using SafeMath for uint;\n\n    struct TimeAndExpiry {\n        uint256 creationTime;\n        uint256 expiryTime;\n    }\n\n    /// @notice Check if `self` TimeAndExpiry struct expiry time has arrived.\n    /// @dev This method checks if there is a expiry time and if it is expired.\n    /// @param self TimeAndExpiry struct\n    function isExpired(TimeAndExpiry storage self) internal view returns(bool) {\n        return (self.expiryTime > 0 && self.expiryTime < block.timestamp); // solhint-disable-line not-rely-on-time\n    }\n\n    /// @notice Set expiry time for `self` TimeAndExpiry struct to now plus `duration`.\n    /// @dev Call this method to set the creationTime and expiryTime in the TimeAndExpiry struct.\n    /// @param self TimeAndExpiry struct\n    /// @param duration Time from current time till expiry\n    function setExpiry(TimeAndExpiry storage self, uint256 duration) internal {\n        self.creationTime = block.timestamp;                              // solhint-disable-line not-rely-on-time\n        self.expiryTime = block.timestamp.add(duration);                  // solhint-disable-line not-rely-on-time\n    }\n}\n",
   "sourcePath": "/Users/roberto/Proyectos/CopyrightLY/copyrightly/contracts/ExpirableLib.sol",
   "ast": {
     "absolutePath": "/Users/roberto/Proyectos/CopyrightLY/copyrightly/contracts/ExpirableLib.sol",
     "exportedSymbols": {
       "ExpirableLib": [
-        338
+        888
       ],
       "SafeMath": [
-        1312
+        5081
       ]
     },
-    "id": 339,
+    "id": 889,
     "license": "GPL-3.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 278,
+        "id": 828,
         "literals": [
           "solidity",
           "^",
@@ -34,17 +34,17 @@
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "46:23:2"
+        "src": "46:23:3"
       },
       {
         "absolutePath": "openzeppelin-solidity/contracts/utils/math/SafeMath.sol",
         "file": "openzeppelin-solidity/contracts/utils/math/SafeMath.sol",
-        "id": 279,
+        "id": 829,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 339,
-        "sourceUnit": 1313,
-        "src": "71:65:2",
+        "scope": 889,
+        "sourceUnit": 5082,
+        "src": "71:65:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -54,36 +54,36 @@
         "contractDependencies": [],
         "contractKind": "library",
         "documentation": {
-          "id": 280,
+          "id": 830,
           "nodeType": "StructuredDocumentation",
-          "src": "139:108:2",
+          "src": "139:108:3",
           "text": "@title Library to implement expirable items\n @author Roberto García (http://rhizomik.net/~roberto/)"
         },
         "fullyImplemented": true,
-        "id": 338,
+        "id": 888,
         "linearizedBaseContracts": [
-          338
+          888
         ],
         "name": "ExpirableLib",
-        "nameLocation": "255:12:2",
+        "nameLocation": "255:12:3",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 283,
+            "id": 833,
             "libraryName": {
-              "id": 281,
+              "id": 831,
               "name": "SafeMath",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1312,
-              "src": "280:8:2"
+              "referencedDeclaration": 5081,
+              "src": "280:8:3"
             },
             "nodeType": "UsingForDirective",
-            "src": "274:24:2",
+            "src": "274:24:3",
             "typeName": {
-              "id": 282,
+              "id": 832,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "293:4:2",
+              "src": "293:4:3",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -92,17 +92,17 @@
           },
           {
             "canonicalName": "ExpirableLib.TimeAndExpiry",
-            "id": 288,
+            "id": 838,
             "members": [
               {
                 "constant": false,
-                "id": 285,
+                "id": 835,
                 "mutability": "mutable",
                 "name": "creationTime",
-                "nameLocation": "343:12:2",
+                "nameLocation": "343:12:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 288,
-                "src": "335:20:2",
+                "scope": 838,
+                "src": "335:20:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -110,10 +110,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 284,
+                  "id": 834,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "335:7:2",
+                  "src": "335:7:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -123,13 +123,13 @@
               },
               {
                 "constant": false,
-                "id": 287,
+                "id": 837,
                 "mutability": "mutable",
                 "name": "expiryTime",
-                "nameLocation": "373:10:2",
+                "nameLocation": "373:10:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 288,
-                "src": "365:18:2",
+                "scope": 838,
+                "src": "365:18:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -137,10 +137,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 286,
+                  "id": 836,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "365:7:2",
+                  "src": "365:7:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -150,17 +150,17 @@
               }
             ],
             "name": "TimeAndExpiry",
-            "nameLocation": "311:13:2",
+            "nameLocation": "311:13:3",
             "nodeType": "StructDefinition",
-            "scope": 338,
-            "src": "304:86:2",
+            "scope": 888,
+            "src": "304:86:3",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 309,
+              "id": 859,
               "nodeType": "Block",
-              "src": "670:123:2",
+              "src": "670:123:3",
               "statements": [
                 {
                   "expression": {
@@ -170,7 +170,7 @@
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         },
-                        "id": 306,
+                        "id": 856,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -180,33 +180,33 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 300,
+                          "id": 850,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "expression": {
-                              "id": 297,
+                              "id": 847,
                               "name": "self",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 292,
-                              "src": "688:4:2",
+                              "referencedDeclaration": 842,
+                              "src": "688:4:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                                "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                                 "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                               }
                             },
-                            "id": 298,
+                            "id": 848,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "expiryTime",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 287,
-                            "src": "688:15:2",
+                            "referencedDeclaration": 837,
+                            "src": "688:15:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -216,21 +216,21 @@
                           "operator": ">",
                           "rightExpression": {
                             "hexValue": "30",
-                            "id": 299,
+                            "id": 849,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "kind": "number",
                             "lValueRequested": false,
                             "nodeType": "Literal",
-                            "src": "706:1:2",
+                            "src": "706:1:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_rational_0_by_1",
                               "typeString": "int_const 0"
                             },
                             "value": "0"
                           },
-                          "src": "688:19:2",
+                          "src": "688:19:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -243,33 +243,33 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 305,
+                          "id": 855,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "expression": {
-                              "id": 301,
+                              "id": 851,
                               "name": "self",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 292,
-                              "src": "711:4:2",
+                              "referencedDeclaration": 842,
+                              "src": "711:4:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                                "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                                 "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                               }
                             },
-                            "id": 302,
+                            "id": 852,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "expiryTime",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 287,
-                            "src": "711:15:2",
+                            "referencedDeclaration": 837,
+                            "src": "711:15:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -279,130 +279,130 @@
                           "operator": "<",
                           "rightExpression": {
                             "expression": {
-                              "id": 303,
+                              "id": 853,
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 4294967292,
-                              "src": "729:5:2",
+                              "src": "729:5:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
                                 "typeString": "block"
                               }
                             },
-                            "id": 304,
+                            "id": 854,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "timestamp",
                             "nodeType": "MemberAccess",
-                            "src": "729:15:2",
+                            "src": "729:15:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
-                          "src": "711:33:2",
+                          "src": "711:33:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           }
                         },
-                        "src": "688:56:2",
+                        "src": "688:56:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         }
                       }
                     ],
-                    "id": 307,
+                    "id": 857,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "687:58:2",
+                    "src": "687:58:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 296,
-                  "id": 308,
+                  "functionReturnParameters": 846,
+                  "id": 858,
                   "nodeType": "Return",
-                  "src": "680:65:2"
+                  "src": "680:65:3"
                 }
               ]
             },
             "documentation": {
-              "id": 289,
+              "id": 839,
               "nodeType": "StructuredDocumentation",
-              "src": "396:194:2",
+              "src": "396:194:3",
               "text": "@notice Check if `self` TimeAndExpiry struct expiry time has arrived.\n @dev This method checks if there is a expiry time and if it is expired.\n @param self TimeAndExpiry struct"
             },
-            "id": 310,
+            "id": 860,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "isExpired",
-            "nameLocation": "604:9:2",
+            "nameLocation": "604:9:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 293,
+              "id": 843,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 292,
+                  "id": 842,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "636:4:2",
+                  "nameLocation": "636:4:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 310,
-                  "src": "614:26:2",
+                  "scope": 860,
+                  "src": "614:26:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                    "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                     "typeString": "struct ExpirableLib.TimeAndExpiry"
                   },
                   "typeName": {
-                    "id": 291,
+                    "id": 841,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 290,
+                      "id": 840,
                       "name": "TimeAndExpiry",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 288,
-                      "src": "614:13:2"
+                      "referencedDeclaration": 838,
+                      "src": "614:13:3"
                     },
-                    "referencedDeclaration": 288,
-                    "src": "614:13:2",
+                    "referencedDeclaration": 838,
+                    "src": "614:13:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                      "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                       "typeString": "struct ExpirableLib.TimeAndExpiry"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "613:28:2"
+              "src": "613:28:3"
             },
             "returnParameters": {
-              "id": 296,
+              "id": 846,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 295,
+                  "id": 845,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 310,
-                  "src": "664:4:2",
+                  "scope": 860,
+                  "src": "664:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -410,10 +410,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 294,
+                    "id": 844,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "664:4:2",
+                    "src": "664:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -422,49 +422,49 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "663:6:2"
+              "src": "663:6:3"
             },
-            "scope": 338,
-            "src": "595:198:2",
+            "scope": 888,
+            "src": "595:198:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 336,
+              "id": 886,
               "nodeType": "Block",
-              "src": "1159:237:2",
+              "src": "1159:237:3",
               "statements": [
                 {
                   "expression": {
-                    "id": 324,
+                    "id": 874,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 319,
+                        "id": 869,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 314,
-                        "src": "1169:4:2",
+                        "referencedDeclaration": 864,
+                        "src": "1169:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                          "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                           "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                         }
                       },
-                      "id": 321,
+                      "id": 871,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "creationTime",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 285,
-                      "src": "1169:17:2",
+                      "referencedDeclaration": 835,
+                      "src": "1169:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -474,69 +474,69 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 322,
+                        "id": 872,
                         "name": "block",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 4294967292,
-                        "src": "1189:5:2",
+                        "src": "1189:5:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_block",
                           "typeString": "block"
                         }
                       },
-                      "id": 323,
+                      "id": 873,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "timestamp",
                       "nodeType": "MemberAccess",
-                      "src": "1189:15:2",
+                      "src": "1189:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1169:35:2",
+                    "src": "1169:35:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 325,
+                  "id": 875,
                   "nodeType": "ExpressionStatement",
-                  "src": "1169:35:2"
+                  "src": "1169:35:3"
                 },
                 {
                   "expression": {
-                    "id": 334,
+                    "id": 884,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 326,
+                        "id": 876,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 314,
-                        "src": "1284:4:2",
+                        "referencedDeclaration": 864,
+                        "src": "1284:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                          "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                           "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                         }
                       },
-                      "id": 328,
+                      "id": 878,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "expiryTime",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 287,
-                      "src": "1284:15:2",
+                      "referencedDeclaration": 837,
+                      "src": "1284:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -547,12 +547,12 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 332,
+                          "id": 882,
                           "name": "duration",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 316,
-                          "src": "1322:8:2",
+                          "referencedDeclaration": 866,
+                          "src": "1322:8:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -568,45 +568,45 @@
                         ],
                         "expression": {
                           "expression": {
-                            "id": 329,
+                            "id": 879,
                             "name": "block",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 4294967292,
-                            "src": "1302:5:2",
+                            "src": "1302:5:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_block",
                               "typeString": "block"
                             }
                           },
-                          "id": 330,
+                          "id": 880,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "timestamp",
                           "nodeType": "MemberAccess",
-                          "src": "1302:15:2",
+                          "src": "1302:15:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 331,
+                        "id": 881,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "add",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1176,
-                        "src": "1302:19:2",
+                        "referencedDeclaration": 4945,
+                        "src": "1302:19:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                           "typeString": "function (uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 333,
+                      "id": 883,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -614,71 +614,71 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1302:29:2",
+                      "src": "1302:29:3",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1284:47:2",
+                    "src": "1284:47:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 335,
+                  "id": 885,
                   "nodeType": "ExpressionStatement",
-                  "src": "1284:47:2"
+                  "src": "1284:47:3"
                 }
               ]
             },
             "documentation": {
-              "id": 311,
+              "id": 861,
               "nodeType": "StructuredDocumentation",
-              "src": "799:281:2",
+              "src": "799:281:3",
               "text": "@notice Set expiry time for `self` TimeAndExpiry struct to now plus `duration`.\n @dev Call this method to set the creationTime and expiryTime in the TimeAndExpiry struct.\n @param self TimeAndExpiry struct\n @param duration Time from current time till expiry"
             },
-            "id": 337,
+            "id": 887,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setExpiry",
-            "nameLocation": "1094:9:2",
+            "nameLocation": "1094:9:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 317,
+              "id": 867,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 314,
+                  "id": 864,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "1126:4:2",
+                  "nameLocation": "1126:4:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 337,
-                  "src": "1104:26:2",
+                  "scope": 887,
+                  "src": "1104:26:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                    "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                     "typeString": "struct ExpirableLib.TimeAndExpiry"
                   },
                   "typeName": {
-                    "id": 313,
+                    "id": 863,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 312,
+                      "id": 862,
                       "name": "TimeAndExpiry",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 288,
-                      "src": "1104:13:2"
+                      "referencedDeclaration": 838,
+                      "src": "1104:13:3"
                     },
-                    "referencedDeclaration": 288,
-                    "src": "1104:13:2",
+                    "referencedDeclaration": 838,
+                    "src": "1104:13:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                      "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                       "typeString": "struct ExpirableLib.TimeAndExpiry"
                     }
                   },
@@ -686,13 +686,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 316,
+                  "id": 866,
                   "mutability": "mutable",
                   "name": "duration",
-                  "nameLocation": "1140:8:2",
+                  "nameLocation": "1140:8:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 337,
-                  "src": "1132:16:2",
+                  "scope": 887,
+                  "src": "1132:16:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -700,10 +700,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 315,
+                    "id": 865,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1132:7:2",
+                    "src": "1132:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -712,44 +712,44 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1103:46:2"
+              "src": "1103:46:3"
             },
             "returnParameters": {
-              "id": 318,
+              "id": 868,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1159:0:2"
+              "src": "1159:0:3"
             },
-            "scope": 338,
-            "src": "1085:311:2",
+            "scope": 888,
+            "src": "1085:311:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 339,
-        "src": "247:1151:2",
+        "scope": 889,
+        "src": "247:1151:3",
         "usedErrors": []
       }
     ],
-    "src": "46:1353:2"
+    "src": "46:1353:3"
   },
   "legacyAST": {
     "absolutePath": "/Users/roberto/Proyectos/CopyrightLY/copyrightly/contracts/ExpirableLib.sol",
     "exportedSymbols": {
       "ExpirableLib": [
-        338
+        888
       ],
       "SafeMath": [
-        1312
+        5081
       ]
     },
-    "id": 339,
+    "id": 889,
     "license": "GPL-3.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 278,
+        "id": 828,
         "literals": [
           "solidity",
           "^",
@@ -757,17 +757,17 @@
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "46:23:2"
+        "src": "46:23:3"
       },
       {
         "absolutePath": "openzeppelin-solidity/contracts/utils/math/SafeMath.sol",
         "file": "openzeppelin-solidity/contracts/utils/math/SafeMath.sol",
-        "id": 279,
+        "id": 829,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 339,
-        "sourceUnit": 1313,
-        "src": "71:65:2",
+        "scope": 889,
+        "sourceUnit": 5082,
+        "src": "71:65:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -777,36 +777,36 @@
         "contractDependencies": [],
         "contractKind": "library",
         "documentation": {
-          "id": 280,
+          "id": 830,
           "nodeType": "StructuredDocumentation",
-          "src": "139:108:2",
+          "src": "139:108:3",
           "text": "@title Library to implement expirable items\n @author Roberto García (http://rhizomik.net/~roberto/)"
         },
         "fullyImplemented": true,
-        "id": 338,
+        "id": 888,
         "linearizedBaseContracts": [
-          338
+          888
         ],
         "name": "ExpirableLib",
-        "nameLocation": "255:12:2",
+        "nameLocation": "255:12:3",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 283,
+            "id": 833,
             "libraryName": {
-              "id": 281,
+              "id": 831,
               "name": "SafeMath",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1312,
-              "src": "280:8:2"
+              "referencedDeclaration": 5081,
+              "src": "280:8:3"
             },
             "nodeType": "UsingForDirective",
-            "src": "274:24:2",
+            "src": "274:24:3",
             "typeName": {
-              "id": 282,
+              "id": 832,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "293:4:2",
+              "src": "293:4:3",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -815,17 +815,17 @@
           },
           {
             "canonicalName": "ExpirableLib.TimeAndExpiry",
-            "id": 288,
+            "id": 838,
             "members": [
               {
                 "constant": false,
-                "id": 285,
+                "id": 835,
                 "mutability": "mutable",
                 "name": "creationTime",
-                "nameLocation": "343:12:2",
+                "nameLocation": "343:12:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 288,
-                "src": "335:20:2",
+                "scope": 838,
+                "src": "335:20:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -833,10 +833,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 284,
+                  "id": 834,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "335:7:2",
+                  "src": "335:7:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -846,13 +846,13 @@
               },
               {
                 "constant": false,
-                "id": 287,
+                "id": 837,
                 "mutability": "mutable",
                 "name": "expiryTime",
-                "nameLocation": "373:10:2",
+                "nameLocation": "373:10:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 288,
-                "src": "365:18:2",
+                "scope": 838,
+                "src": "365:18:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -860,10 +860,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 286,
+                  "id": 836,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "365:7:2",
+                  "src": "365:7:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -873,17 +873,17 @@
               }
             ],
             "name": "TimeAndExpiry",
-            "nameLocation": "311:13:2",
+            "nameLocation": "311:13:3",
             "nodeType": "StructDefinition",
-            "scope": 338,
-            "src": "304:86:2",
+            "scope": 888,
+            "src": "304:86:3",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 309,
+              "id": 859,
               "nodeType": "Block",
-              "src": "670:123:2",
+              "src": "670:123:3",
               "statements": [
                 {
                   "expression": {
@@ -893,7 +893,7 @@
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         },
-                        "id": 306,
+                        "id": 856,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -903,33 +903,33 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 300,
+                          "id": 850,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "expression": {
-                              "id": 297,
+                              "id": 847,
                               "name": "self",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 292,
-                              "src": "688:4:2",
+                              "referencedDeclaration": 842,
+                              "src": "688:4:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                                "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                                 "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                               }
                             },
-                            "id": 298,
+                            "id": 848,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "expiryTime",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 287,
-                            "src": "688:15:2",
+                            "referencedDeclaration": 837,
+                            "src": "688:15:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -939,21 +939,21 @@
                           "operator": ">",
                           "rightExpression": {
                             "hexValue": "30",
-                            "id": 299,
+                            "id": 849,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "kind": "number",
                             "lValueRequested": false,
                             "nodeType": "Literal",
-                            "src": "706:1:2",
+                            "src": "706:1:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_rational_0_by_1",
                               "typeString": "int_const 0"
                             },
                             "value": "0"
                           },
-                          "src": "688:19:2",
+                          "src": "688:19:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -966,33 +966,33 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 305,
+                          "id": 855,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "expression": {
-                              "id": 301,
+                              "id": 851,
                               "name": "self",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 292,
-                              "src": "711:4:2",
+                              "referencedDeclaration": 842,
+                              "src": "711:4:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                                "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                                 "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                               }
                             },
-                            "id": 302,
+                            "id": 852,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "expiryTime",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 287,
-                            "src": "711:15:2",
+                            "referencedDeclaration": 837,
+                            "src": "711:15:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1002,130 +1002,130 @@
                           "operator": "<",
                           "rightExpression": {
                             "expression": {
-                              "id": 303,
+                              "id": 853,
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 4294967292,
-                              "src": "729:5:2",
+                              "src": "729:5:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
                                 "typeString": "block"
                               }
                             },
-                            "id": 304,
+                            "id": 854,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "timestamp",
                             "nodeType": "MemberAccess",
-                            "src": "729:15:2",
+                            "src": "729:15:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
-                          "src": "711:33:2",
+                          "src": "711:33:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           }
                         },
-                        "src": "688:56:2",
+                        "src": "688:56:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         }
                       }
                     ],
-                    "id": 307,
+                    "id": 857,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "687:58:2",
+                    "src": "687:58:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 296,
-                  "id": 308,
+                  "functionReturnParameters": 846,
+                  "id": 858,
                   "nodeType": "Return",
-                  "src": "680:65:2"
+                  "src": "680:65:3"
                 }
               ]
             },
             "documentation": {
-              "id": 289,
+              "id": 839,
               "nodeType": "StructuredDocumentation",
-              "src": "396:194:2",
+              "src": "396:194:3",
               "text": "@notice Check if `self` TimeAndExpiry struct expiry time has arrived.\n @dev This method checks if there is a expiry time and if it is expired.\n @param self TimeAndExpiry struct"
             },
-            "id": 310,
+            "id": 860,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "isExpired",
-            "nameLocation": "604:9:2",
+            "nameLocation": "604:9:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 293,
+              "id": 843,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 292,
+                  "id": 842,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "636:4:2",
+                  "nameLocation": "636:4:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 310,
-                  "src": "614:26:2",
+                  "scope": 860,
+                  "src": "614:26:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                    "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                     "typeString": "struct ExpirableLib.TimeAndExpiry"
                   },
                   "typeName": {
-                    "id": 291,
+                    "id": 841,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 290,
+                      "id": 840,
                       "name": "TimeAndExpiry",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 288,
-                      "src": "614:13:2"
+                      "referencedDeclaration": 838,
+                      "src": "614:13:3"
                     },
-                    "referencedDeclaration": 288,
-                    "src": "614:13:2",
+                    "referencedDeclaration": 838,
+                    "src": "614:13:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                      "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                       "typeString": "struct ExpirableLib.TimeAndExpiry"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "613:28:2"
+              "src": "613:28:3"
             },
             "returnParameters": {
-              "id": 296,
+              "id": 846,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 295,
+                  "id": 845,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 310,
-                  "src": "664:4:2",
+                  "scope": 860,
+                  "src": "664:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1133,10 +1133,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 294,
+                    "id": 844,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "664:4:2",
+                    "src": "664:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1145,49 +1145,49 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "663:6:2"
+              "src": "663:6:3"
             },
-            "scope": 338,
-            "src": "595:198:2",
+            "scope": 888,
+            "src": "595:198:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 336,
+              "id": 886,
               "nodeType": "Block",
-              "src": "1159:237:2",
+              "src": "1159:237:3",
               "statements": [
                 {
                   "expression": {
-                    "id": 324,
+                    "id": 874,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 319,
+                        "id": 869,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 314,
-                        "src": "1169:4:2",
+                        "referencedDeclaration": 864,
+                        "src": "1169:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                          "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                           "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                         }
                       },
-                      "id": 321,
+                      "id": 871,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "creationTime",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 285,
-                      "src": "1169:17:2",
+                      "referencedDeclaration": 835,
+                      "src": "1169:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1197,69 +1197,69 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 322,
+                        "id": 872,
                         "name": "block",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 4294967292,
-                        "src": "1189:5:2",
+                        "src": "1189:5:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_block",
                           "typeString": "block"
                         }
                       },
-                      "id": 323,
+                      "id": 873,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "timestamp",
                       "nodeType": "MemberAccess",
-                      "src": "1189:15:2",
+                      "src": "1189:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1169:35:2",
+                    "src": "1169:35:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 325,
+                  "id": 875,
                   "nodeType": "ExpressionStatement",
-                  "src": "1169:35:2"
+                  "src": "1169:35:3"
                 },
                 {
                   "expression": {
-                    "id": 334,
+                    "id": 884,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 326,
+                        "id": 876,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 314,
-                        "src": "1284:4:2",
+                        "referencedDeclaration": 864,
+                        "src": "1284:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                          "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                           "typeString": "struct ExpirableLib.TimeAndExpiry storage pointer"
                         }
                       },
-                      "id": 328,
+                      "id": 878,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "expiryTime",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 287,
-                      "src": "1284:15:2",
+                      "referencedDeclaration": 837,
+                      "src": "1284:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1270,12 +1270,12 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 332,
+                          "id": 882,
                           "name": "duration",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 316,
-                          "src": "1322:8:2",
+                          "referencedDeclaration": 866,
+                          "src": "1322:8:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1291,45 +1291,45 @@
                         ],
                         "expression": {
                           "expression": {
-                            "id": 329,
+                            "id": 879,
                             "name": "block",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 4294967292,
-                            "src": "1302:5:2",
+                            "src": "1302:5:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_block",
                               "typeString": "block"
                             }
                           },
-                          "id": 330,
+                          "id": 880,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "timestamp",
                           "nodeType": "MemberAccess",
-                          "src": "1302:15:2",
+                          "src": "1302:15:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 331,
+                        "id": 881,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "add",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1176,
-                        "src": "1302:19:2",
+                        "referencedDeclaration": 4945,
+                        "src": "1302:19:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                           "typeString": "function (uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 333,
+                      "id": 883,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1337,71 +1337,71 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1302:29:2",
+                      "src": "1302:29:3",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1284:47:2",
+                    "src": "1284:47:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 335,
+                  "id": 885,
                   "nodeType": "ExpressionStatement",
-                  "src": "1284:47:2"
+                  "src": "1284:47:3"
                 }
               ]
             },
             "documentation": {
-              "id": 311,
+              "id": 861,
               "nodeType": "StructuredDocumentation",
-              "src": "799:281:2",
+              "src": "799:281:3",
               "text": "@notice Set expiry time for `self` TimeAndExpiry struct to now plus `duration`.\n @dev Call this method to set the creationTime and expiryTime in the TimeAndExpiry struct.\n @param self TimeAndExpiry struct\n @param duration Time from current time till expiry"
             },
-            "id": 337,
+            "id": 887,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setExpiry",
-            "nameLocation": "1094:9:2",
+            "nameLocation": "1094:9:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 317,
+              "id": 867,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 314,
+                  "id": 864,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "1126:4:2",
+                  "nameLocation": "1126:4:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 337,
-                  "src": "1104:26:2",
+                  "scope": 887,
+                  "src": "1104:26:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                    "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                     "typeString": "struct ExpirableLib.TimeAndExpiry"
                   },
                   "typeName": {
-                    "id": 313,
+                    "id": 863,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 312,
+                      "id": 862,
                       "name": "TimeAndExpiry",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 288,
-                      "src": "1104:13:2"
+                      "referencedDeclaration": 838,
+                      "src": "1104:13:3"
                     },
-                    "referencedDeclaration": 288,
-                    "src": "1104:13:2",
+                    "referencedDeclaration": 838,
+                    "src": "1104:13:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TimeAndExpiry_$288_storage_ptr",
+                      "typeIdentifier": "t_struct$_TimeAndExpiry_$838_storage_ptr",
                       "typeString": "struct ExpirableLib.TimeAndExpiry"
                     }
                   },
@@ -1409,13 +1409,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 316,
+                  "id": 866,
                   "mutability": "mutable",
                   "name": "duration",
-                  "nameLocation": "1140:8:2",
+                  "nameLocation": "1140:8:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 337,
-                  "src": "1132:16:2",
+                  "scope": 887,
+                  "src": "1132:16:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1423,10 +1423,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 315,
+                    "id": 865,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1132:7:2",
+                    "src": "1132:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1435,27 +1435,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1103:46:2"
+              "src": "1103:46:3"
             },
             "returnParameters": {
-              "id": 318,
+              "id": 868,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1159:0:2"
+              "src": "1159:0:3"
             },
-            "scope": 338,
-            "src": "1085:311:2",
+            "scope": 888,
+            "src": "1085:311:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 339,
-        "src": "247:1151:2",
+        "scope": 889,
+        "src": "247:1151:3",
         "usedErrors": []
       }
     ],
-    "src": "46:1353:2"
+    "src": "46:1353:3"
   },
   "compiler": {
     "name": "solc",
@@ -1465,12 +1465,12 @@
     "5": {
       "events": {},
       "links": {},
-      "address": "0x796012Af52f66d37eaf1FC8272c3F1fED954a0EC",
-      "transactionHash": "0x2faaa22c26f8d980e6a4bf9771bd7d071a2db2c12ef4efed97ce5726b29f2914"
+      "address": "0xFFf8ACBc1706e9F5A944a4B6E9768ad0aaC8F1De",
+      "transactionHash": "0xd8a7215ae52a12c94f7e00c76a848a4b66e1809254b49a165e57f05f433d27b4"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-06-30T19:44:43.379Z",
+  "updatedAt": "2021-08-29T10:24:06.893Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Roberto García (http://rhizomik.net/~roberto/)",

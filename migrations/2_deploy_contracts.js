@@ -19,6 +19,6 @@ module.exports = async function(deployer, network, accounts) {
   const manifestations = await Manifestations.deployed();
   const uploadEvidences = await UploadEvidences.deployed();
   const clytoken = await CLYToken.deployed();
-  await manifestations.addEvidenceProvider(uploadEvidences.address);
+  await manifestations.addEvidenceProvider(uploadEvidences.address, {from: OWNER});
   await manifestations.setToken(clytoken.address, {from: OWNER});
 };

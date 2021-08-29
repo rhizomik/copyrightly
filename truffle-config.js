@@ -54,8 +54,8 @@ module.exports = {
         numberOfAddresses: 2,
       }),
       network_id: 5,
-      gas: 3000000,
-      gasPrice: 5000000000,  // 5 Gwei
+      gas: 5000000,
+      gasPrice: 8000000000,  // 8 Gwei
       websocket: true        // Enable EventEmitter interface for web3 (default: false)
     },
     // Useful for deploying to a public network.
