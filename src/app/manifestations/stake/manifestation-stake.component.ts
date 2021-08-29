@@ -6,7 +6,8 @@ import { Manifestation } from '../manifestation';
 import { CLYTokenContractService } from '../../clytoken/clytoken-contract.service';
 import { MintEventComponent } from '../../clytoken/mint-event.component';
 import { BigNumber } from 'bignumber.js';
-import { CLYToken } from '../../clytoken/clytoken';
+import { CLYToken, TransactionType } from '../../clytoken/clytoken';
+import { BurnEventComponent } from '../../clytoken/burn-event.component';
 
 @Component({
   selector: 'app-manifestation-stake',
@@ -14,6 +15,7 @@ import { CLYToken } from '../../clytoken/clytoken';
   styleUrls: ['./manifestation-stake.component.css']
 })
 export class ManifestationStakeComponent implements OnInit {
+  @Input() type = TransactionType.purchase;
   @Input() manifestation = new Manifestation();
   @Output() cancel: EventEmitter<void> = new EventEmitter();
   @Output() done: EventEmitter<BigNumber> = new EventEmitter();
@@ -22,6 +24,7 @@ export class ManifestationStakeComponent implements OnInit {
   stakable = '';
   item = '';
   amount = 1.000;
+  staked = 0;
   maxPrice = '';
 
   constructor(private web3Service: Web3Service,
@@ -31,12 +34,34 @@ export class ManifestationStakeComponent implements OnInit {
 
   ngOnInit(): void {
     this.authenticationService.getSelectedAccount()
-      .subscribe(account => this.account = account );
-    this.getPurchasePrice(this.amount);
+      .subscribe(account => {
+        this.account = account;
+        if (this.type === TransactionType.purchase) {
+          this.getPurchasePrice(this.amount);
+        } else {
+          this.clyTokenContractService.getIndividualStake(this.manifestation.hash, this.account)
+            .subscribe((result: string) => {
+              this.staked = Number.parseFloat(result);
+              this.amount = this.staked;
+              this.getSellPrice(this.amount);
+            });
+        }
+      } );
   }
 
   getPurchasePrice(amount: number) {
-    this.clyTokenContractService.getMintPrice(amount)
+    if (amount > 0) {
+      this.clyTokenContractService.getMintPrice(amount)
+        .subscribe((result: string) => {
+          this.maxPrice = result;
+        });
+    } else {
+      this.maxPrice = '0';
+    }
+  }
+
+  getSellPrice(amount: number) {
+    this.clyTokenContractService.getBurnPrice(amount)
       .subscribe((result: string) => {
         this.maxPrice = result;
       });
@@ -61,7 +86,26 @@ export class ManifestationStakeComponent implements OnInit {
       });
   }
 
-  cancelPurchase() {
+  removeStake(amount: number) {
+    this.clyTokenContractService.burn(amount, this.manifestation.contract, this.manifestation.hash, this.account)
+      .subscribe(result => {
+        if (typeof result === 'string') {
+          console.log('Transaction hash: ' + result);
+          this.alertsService.info('CLY burn submitted, you will be alerted when confirmed.<br>' +
+            'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
+          this.done.emit(new BigNumber(0));
+        } else {
+          console.log(result);
+          this.alertsService.modal(BurnEventComponent, result);
+          this.done.emit(CLYToken.toBigNumber(amount));
+        }
+      }, error => {
+        this.alertsService.error(error);
+        this.cancel.emit();
+      });
+  }
+
+  cancelTransaction() {
     this.cancel.emit();
   }
 }
