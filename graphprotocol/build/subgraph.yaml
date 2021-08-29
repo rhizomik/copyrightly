@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Manifestations
-    network: mainnet
+    network: goerli
     source:
-      address: "0xf25186B5081Ff5cE73482AD761DB0eB0d25abfBF"
+      address: "0x57EDc3b81c837c2A9678653bfBE1fD70033899b8"
       abi: Manifestations
-      startBlock: 0
+      startBlock: 4746275
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -24,11 +24,11 @@ dataSources:
       file: Manifestations/Manifestations.wasm
   - kind: ethereum/contract
     name: UploadEvidence
-    network: mainnet
+    network: goerli
     source:
-      address: "0x8f0483125FCb9aaAEFA9209D8E9d7b9C8B9Fb90F"
+      address: "0xA5252a8bb102AA2712b14dF534D5f0bAfAC13FF6"
       abi: UploadEvidence
-      startBlock: 0
+      startBlock: 4746276
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -44,11 +44,11 @@ dataSources:
       file: Manifestations/Manifestations.wasm
   - kind: ethereum/contract
     name: CLYToken
-    network: mainnet
+    network: goerli
     source:
-      address: "0x9FBDa871d559710256a2502A2517b794B482Db40"
+      address: "0xf7EDc5816241c2579648B6437C98739Cb0606CBd"
       abi: CLYToken
-      startBlock: 0
+      startBlock: 4746276
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

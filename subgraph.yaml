@@ -6,7 +6,7 @@ dataSources:
     name: Manifestations
     network: goerli
     source:
-      address: "0xac1c43fCffD39748FC2E7Bee1785c25bD71F7931"
+      address: "0x57EDc3b81c837c2A9678653bfBE1fD70033899b8"
       abi: Manifestations
       startBlock: 4746275
     mapping:
@@ -26,7 +26,7 @@ dataSources:
     name: UploadEvidence
     network: goerli
     source:
-      address: "0xab3f62ea71735b557c79877a343e7f1689868e23"
+      address: "0xA5252a8bb102AA2712b14dF534D5f0bAfAC13FF6"
       abi: UploadEvidence
       startBlock: 4746276
     mapping:
@@ -46,7 +46,7 @@ dataSources:
     name: CLYToken
     network: goerli
     source:
-      address: "0x1231231231231231231231231231231231231231"
+      address: "0xf7EDc5816241c2579648B6437C98739Cb0606CBd"
       abi: CLYToken
       startBlock: 4746276
     mapping:
