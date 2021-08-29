@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { UtilModule } from '../util/util.module';
 import { CLYTokenContractService } from './clytoken-contract.service';
 import { MintEventComponent } from './mint-event.component';
+import { BurnEventComponent } from './burn-event.component';
 
 @NgModule({
   declarations: [
-    MintEventComponent
+    MintEventComponent,
+    BurnEventComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { MintEventComponent } from './mint-event.component';
     CLYTokenContractService
   ],
   bootstrap: [
-    MintEventComponent
+    MintEventComponent,
+    BurnEventComponent
   ]
 })
 export class ManifestationsModule { }
