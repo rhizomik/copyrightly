@@ -3,8 +3,10 @@ spectaql:
 
 info:
   title: CopyrightLY's GraphQL API Reference
-  description: Documentation for [CopyrightLY](https://copyrightly.rhizomik.net)'s GraphQL API
+  description: "Documentation for [CopyrightLY](https://copyrightly.rhizomik.net)'s GraphQL API:
+  https://api.studio.thegraph.com/query/1303/copyrightly/0.0.5,
+  which can be explored using https://graphiql-online.com/graphiql"
 
 introspection:
-  url: https://api.studio.thegraph.com/query/1303/copyrightly/0.0.4
+  url: https://api.studio.thegraph.com/query/1303/copyrightly/0.0.5
 
