@@ -18,7 +18,7 @@ export class ManifestationStakeComponent implements OnInit {
   @Input() type = TransactionType.purchase;
   @Input() manifestation = new Manifestation();
   @Output() cancel: EventEmitter<void> = new EventEmitter();
-  @Output() done: EventEmitter<BigNumber> = new EventEmitter();
+  @Output() done: EventEmitter<string> = new EventEmitter();
 
   account = '';
   stakable = '';
@@ -68,7 +68,7 @@ export class ManifestationStakeComponent implements OnInit {
           console.log('Transaction hash: ' + result);
           this.alertsService.info('CLY mint submitted, you will be alerted when confirmed.<br>' +
             'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
-          this.done.emit(new BigNumber(0));
+          this.done.emit('0');
         } else {
           console.log(result);
           this.alertsService.modal(MintEventComponent, result);
@@ -87,7 +87,7 @@ export class ManifestationStakeComponent implements OnInit {
           console.log('Transaction hash: ' + result);
           this.alertsService.info('CLY burn submitted, you will be alerted when confirmed.<br>' +
             'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
-          this.done.emit(new BigNumber(0));
+          this.done.emit('0');
         } else {
           console.log(result);
           this.alertsService.modal(BurnEventComponent, result);

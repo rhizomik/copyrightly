@@ -81,8 +81,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.manifestation.evidenceCount++;
   }
 
-  addedStake(amount: BigNumber) {
-    if (amount.isZero()) {
+  addedStake(amount: string) {
+    if (amount === '0') {
       this.hidAddStake = true;
     } else {
       this.manifestation.staked = this.manifestation.staked.plus(amount);

@@ -26,8 +26,8 @@ export class CLYToken {
     return new BigNumber(amount).div(10**18).toString();
   }
 
-  static toBigNumber(amount: number): BigNumber {
-    return new BigNumber(amount).multipliedBy(10**this.decimals);
+  static toBigNumber(amount: number): string {
+    return new BigNumber(amount).multipliedBy(new BigNumber(10).pow(this.decimals)).toString();
   }
 
   static toWei(amount: string): BigNumber {
