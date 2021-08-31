@@ -7,7 +7,6 @@ import { ManifestationDetailsQueryService } from '../../query/manifestation-deta
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
 import { TransactionType } from '../../clytoken/clytoken';
-import { BigNumber } from 'bignumber.js';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -85,7 +84,11 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     if (amount === '0') {
       this.hidAddStake = true;
     } else {
-      this.manifestation.staked = this.manifestation.staked.plus(amount);
+      if (this.type === TransactionType.purchase) {
+        this.manifestation.staked = this.manifestation.staked.plus(amount);
+      } else {
+        this.manifestation.staked = this.manifestation.staked.minus(amount);
+      }
       this.staking = false;
       this.hidAddStake = false;
     }
