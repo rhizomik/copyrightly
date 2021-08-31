@@ -27,7 +27,7 @@
       <div class="input-group">
         <input id="inputStake" name="inputStake" type="number" class="form-control" required
                min="0.000001" [max]="type == 1 ? staked :''" step="0.000001"
-               [(ngModel)]="amount" (change)="getPurchasePrice(amount)" #inputStake="ngModel">
+               [(ngModel)]="amount" (change)="getPrice(amount)" #inputStake="ngModel">
         <div class="input-group-append">
             <span class="input-group-text">
               <span class="fas fa-copyright logo-icon"></span>LY</span>
@@ -49,7 +49,7 @@
         </div>
         <div class="input-group-append">
             <button id="refresh-price" class="btn btn-secondary" type="button" #refresh_price
-                  (focus)="refresh_price.blur()"  (click)="getPurchasePrice(amount)">
+                  (focus)="refresh_price.blur()"  (click)="getPrice(amount)">
               <span class="fas fa-sync-alt"></span>
             </button>
         </div>

@@ -49,22 +49,16 @@ export class ManifestationStakeComponent implements OnInit {
       } );
   }
 
-  getPurchasePrice(amount: number) {
+  getPrice(amount: number) {
     if (amount > 0) {
-      this.clyTokenContractService.getMintPrice(amount)
-        .subscribe((result: string) => {
-          this.maxPrice = result;
-        });
+      if (this.type === TransactionType.purchase) {
+        this.getPurchasePrice(amount);
+      } else {
+        this.getSellPrice(amount);
+      }
     } else {
       this.maxPrice = '0';
     }
-  }
-
-  getSellPrice(amount: number) {
-    this.clyTokenContractService.getBurnPrice(amount)
-      .subscribe((result: string) => {
-        this.maxPrice = result;
-      });
   }
 
   addStake(amount: number, maxPrice: string) {
@@ -107,5 +101,19 @@ export class ManifestationStakeComponent implements OnInit {
 
   cancelTransaction() {
     this.cancel.emit();
+  }
+
+  private getPurchasePrice(amount: number) {
+    this.clyTokenContractService.getMintPrice(amount)
+      .subscribe((result: string) => {
+        this.maxPrice = result;
+      });
+  }
+
+  private getSellPrice(amount: number) {
+    this.clyTokenContractService.getBurnPrice(amount)
+      .subscribe((result: string) => {
+        this.maxPrice = result;
+      });
   }
 }
