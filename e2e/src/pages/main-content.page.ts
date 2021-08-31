@@ -16,7 +16,7 @@ export class MainContentPage {
 
   async clickButtonWithText(text: string) {
     const button = this.mainContainer.element(by.buttonText(text));
-    browser.wait(ExpectedConditions.elementToBeClickable(button));
+    browser.wait(ExpectedConditions.elementToBeClickable(button), 5 * 1000, 'The button is not clickable: ' + text);
     await button.click();
     browser.waitForAngular();
   }
