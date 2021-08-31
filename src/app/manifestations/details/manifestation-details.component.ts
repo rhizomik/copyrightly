@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
+import { TransactionType } from '../../clytoken/clytoken';
 import { BigNumber } from 'bignumber.js';
 
 @Component({
@@ -23,6 +24,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   notFound = true;
   staking = false;
   hidAddStake = false;
+  type = TransactionType.purchase;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

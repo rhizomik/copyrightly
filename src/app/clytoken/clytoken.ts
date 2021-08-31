@@ -1,5 +1,10 @@
 import { BigNumber } from 'bignumber.js';
 
+export enum TransactionType {
+  purchase,
+  sell
+}
+
 export class CLYToken {
   static decimals = 16;
   static description = 'CopyrightLY Token';
@@ -14,11 +19,11 @@ export class CLYToken {
   }
 
   static toNumber(amount: string): string {
-    return new BigNumber(amount).div(10**this.decimals).toFixed(16);
+    return new BigNumber(amount).div(10**this.decimals).toString();
   }
 
   static toEther(amount: string): string {
-    return new BigNumber(amount).div(10**18).toFixed(18);
+    return new BigNumber(amount).div(10**18).toString();
   }
 
   static toBigNumber(amount: number): BigNumber {

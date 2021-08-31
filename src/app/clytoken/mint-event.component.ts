@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
       <div class="modal-body">
           <div class="card mb-4">
             <div class="card-block row m-1">
+              <h5 class="card-title col-md-12 p-1">CopyrightLY Token</h5>
               <div class="col-md-12 p-1 mb-1">
                 <h6 class="card-subtitle text-muted">Staked On</h6>
                 <p class="card-text">{{data?.where}}</p>
@@ -30,7 +31,7 @@ import { Router } from '@angular/router';
                 <p class="card-text">{{data?.what?.amount}} <span class="fas fa-copyright logo-icon"></span>LY</p>
               </div>
               <div class="col-md-6 p-1 mb-1">
-                <h6 class="card-subtitle text-muted">Price</h6>
+                <h6 class="card-subtitle text-muted">Payed</h6>
                 <p class="card-text">{{data?.what?.price}} <span class="fab fa-ethereum"></span></p>
               </div>
             </div>

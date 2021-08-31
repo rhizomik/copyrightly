@@ -36,13 +36,15 @@
             <span class="fas fa-copyright logo-icon"></span>LY Staked</span>
           </div>
           <button type="button" class="btn btn-sm btn-success ml-2" [disabled]="staking || addingEvidence()"
-                  (click)="staking = true">Add Stake</button>
+                  (click)="staking = true; type = 0">Add</button>
+          <button type="button" class="btn btn-sm btn-danger ml-2" [disabled]="staking || addingEvidence()"
+                  (click)="staking = true; type = 1">Remove</button>
         </div>
       </div>
     </div>
   </div>
 
-  <app-manifestation-stake *ngIf="staking && !addingEvidence()" [manifestation]="manifestation"
+  <app-manifestation-stake *ngIf="staking && !addingEvidence()" [type]="type" [manifestation]="manifestation"
                            [hidden]="hidAddStake" (cancel)="staking = false" (done)="addedStake($event)">
   </app-manifestation-stake>
 

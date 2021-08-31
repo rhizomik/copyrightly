@@ -1,7 +1,13 @@
-<h5><span class="fa fa-gavel"></span> Add Stake</h5>
-<p class="lead">Mint CLY tokens to be staked for the specified price in Ether</p>
+<div *ngIf="type == 0">
+  <h5><span class="fas fa-coins"></span> Add Stake</h5>
+  <p class="lead">Mint CLY tokens to be staked for the specified price in Ether</p>
+</div>
+<div *ngIf="type == 1">
+  <h5><span class="fas fa-coins"></span> Remove Stake</h5>
+  <p class="lead">Burn CLY tokens from your stake for the specified price in Ether</p>
+</div>
 
-<form id="stake-form" (ngSubmit)="addStake(amount, maxPrice)" #stakeForm="ngForm">
+<form id="stake-form" (ngSubmit)="type == 0 ? addStake(amount, maxPrice) : removeStake(amount)" #stakeForm="ngForm">
   <fieldset>
 
     <!-- Staker input -->
@@ -16,15 +22,19 @@
 
     <!-- Stake input -->
     <div class="form-group" [class.was-validated]="inputStake.dirty || inputStake.touched">
-      <label class="control-label" for="inputStake">Stake*</label>
+      <label *ngIf="type == 0" class="control-label" for="inputStake">Stake*</label>
+      <label *ngIf="type == 1" class="control-label" for="inputStake">From your Stake*</label>
       <div class="input-group">
-        <input id="inputStake" name="inputStake" type="number" min="0" step="0.000001" class="form-control" required
-               [(ngModel)]="amount" (change)="getPurchasePrice(amount)" #inputStake="ngModel">
+        <input id="inputStake" name="inputStake" type="number" class="form-control" required
+               min="0.000001" [max]="type == 1 ? staked :''" step="0.000001"
+               [(ngModel)]="amount" (change)="getPrice(amount)" #inputStake="ngModel">
         <div class="input-group-append">
             <span class="input-group-text">
               <span class="fas fa-copyright logo-icon"></span>LY</span>
         </div>
-        <div class="invalid-feedback">An amount is required</div>
+        <div *ngIf="amount <= 0" class="invalid-feedback">An amount bigger than 0 is required</div>
+        <div *ngIf="amount > staked" class="invalid-feedback">You cannot sell more than your stake,
+          {{staked}} <span class="fas fa-copyright logo-icon"></span>LY</div>
       </div>
     </div>
 
@@ -38,8 +48,10 @@
             <span class="input-group-text">ETH</span>
         </div>
         <div class="input-group-append">
-            <span class="input-group-text" (click)="getPurchasePrice(amount)">
-              <span class="fas fa-sync-alt"></span></span>
+            <button id="refresh-price" class="btn btn-secondary" type="button" #refresh_price
+                  (focus)="refresh_price.blur()"  (click)="getPrice(amount)">
+              <span class="fas fa-sync-alt"></span>
+            </button>
         </div>
       </div>
       <div class="invalid-feedback" [hidden]="inputPrice.value" style="display:block">
@@ -49,10 +61,14 @@
 
     <!-- Button -->
     <div class="form-group">
-      <button id="purchase" type="submit" class="btn btn-success pull-right"
-              [disabled]="!stakeForm.form.valid || !inputStaker.value || !inputPrice.value">Purchase</button>
+      <button id="submit" type="submit" class="btn btn-success pull-right"
+              [disabled]="!stakeForm.form.valid || !inputStaker.value || !inputPrice.value ||
+                          amount <= 0 || (type == 1 && amount > staked)">
+        <span *ngIf="type == 0">Purchase</span>
+        <span *ngIf="type == 1">Sell</span>
+      </button>
       <button id="cancel" type="button" class="btn btn-danger pull-right ml-2"
-              (click)="cancelPurchase()">Cancel</button>
+              (click)="cancelTransaction()">Cancel</button>
     </div>
 
   </fieldset>

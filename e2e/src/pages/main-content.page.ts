@@ -15,14 +15,14 @@ export class MainContentPage {
   }
 
   async clickButtonWithText(text: string) {
-    const button = this.mainContainer.element(by.partialButtonText(text));
-    browser.wait(ExpectedConditions.elementToBeClickable(button));
+    const button = this.mainContainer.element(by.buttonText(text));
+    browser.wait(ExpectedConditions.elementToBeClickable(button), 5 * 1000, 'The button is not clickable: ' + text);
     await button.click();
     browser.waitForAngular();
   }
 
   getButtonWithText(text: string): ElementFinder {
-    return this.mainContainer.element(by.partialButtonText(text));
+    return this.mainContainer.element(by.buttonText(text));
   }
 
   isEnabledButtonWithText(text: string): promise.Promise<boolean> {
@@ -30,6 +30,6 @@ export class MainContentPage {
   }
 
   existsButtonWithText(text: string): promise.Promise<boolean> {
-    return this.mainContainer.element(by.partialButtonText(text)).isPresent();
+    return this.mainContainer.element(by.buttonText(text)).isPresent();
   }
 }
