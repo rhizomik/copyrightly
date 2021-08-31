@@ -9,6 +9,8 @@ export class CLYToken {
   static decimals = 16;
   static description = 'CopyrightLY Token';
   static symbol = 'CLY';
+  static clyDecimals = new BigNumber(10).pow(CLYToken.decimals);
+  static etherDecimals = new BigNumber(10).pow(18);
   amount = 0;
   balance = 0;
   supply = 0;
@@ -19,18 +21,18 @@ export class CLYToken {
   }
 
   static toNumber(amount: string): string {
-    return new BigNumber(amount).div(10**this.decimals).toString();
+    return new BigNumber(amount).div(this.clyDecimals).toString();
   }
 
   static toEther(amount: string): string {
-    return new BigNumber(amount).div(10**18).toString();
+    return new BigNumber(amount).div(this.etherDecimals).toString();
   }
 
   static toBigNumber(amount: number): string {
-    return new BigNumber(amount).multipliedBy(new BigNumber(10).pow(this.decimals)).toString();
+    return new BigNumber(amount).multipliedBy(this.clyDecimals).toString();
   }
 
-  static toWei(amount: string): BigNumber {
-    return new BigNumber(amount).multipliedBy(10**18);
+  static toWei(amount: string): string {
+    return new BigNumber(amount).multipliedBy(this.etherDecimals).toString();
   }
 }
