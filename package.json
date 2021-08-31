@@ -32,7 +32,8 @@
     "remove-local": "graph remove -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
     "config-local": "node subgraph-local.js",
     "deploy-local": "graph deploy -l test -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly subgraph-local.yaml",
-    "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml"
+    "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml",
+    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken --network goerli"
   },
   "private": true,
   "dependencies": {
@@ -109,7 +110,7 @@
     "solidity-coverage": "^0.7.16",
     "spectaql": "^0.5.0",
     "truffle": "~5.3.12",
-    "truffle-flattener": "^1.5.0",
+    "truffle-plugin-verify": "^0.5.12",
     "ts-node": "~8.3.0",
     "typescript": "~4.1.5",
     "webpack-bundle-analyzer": "^4.4.1",
