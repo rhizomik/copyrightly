@@ -1,0 +1,68 @@
+<h3><span class="fas fa-copyright logo-icon"></span>LY: CopyrightLY Token</h3>
+
+<div class="card mb-1">
+  <div class="card-block row m-1">
+    <h5 class="card-title col-md-12 p-1">Details</h5>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Contract Address</h6>
+      <p class="card-text"><a href="https://goerli.etherscan.io/address/{{clytoken.id}}" target="_blank">
+        {{clytoken.id | slice:0:6}}...{{clytoken.id | slice:-4}}
+      </a></p>
+    </div>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Price</h6>
+      <p class="card-text">{{clytoken.price}} <b>ETH</b></p>
+    </div>
+  </div>
+  <div class="card-block row m-1">
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Supply</h6>
+      <p class="card-text">{{clytoken.supply}} <b><span class="fas fa-copyright logo-icon"></span>LY</b></p>
+    </div>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Balance</h6>
+      <p class="card-text">{{clytoken.balance}} <b>ETH</b></p>
+    </div>
+  </div>
+</div>
+
+<h4 class="mt-3">Token Holders</h4>
+<p class="text-muted">Top 10 holding more <span class="fas fa-copyright logo-icon"></span>LY</p>
+<div class="card mb-1" *ngFor="let holder of clytoken.holders">
+  <div class="card-block row m-1">
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Account</h6>
+      <a class="card-text" title="{{holder.id}}" [routerLink]="['/creators', holder.id]" target="_blank">
+        {{holder.id | slice:0:6}}...{{holder.id | slice:-4}}
+      </a>
+    </div>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Staked</h6>
+      <p class="card-text">{{holder.staked}} <b><span class="fas fa-copyright logo-icon"></span>LY</b></p>
+    </div>
+  </div>
+</div>
+
+<h4 class="mt-3">Price History</h4>
+<p class="text-muted">Last 25 transactions</p>
+<div class="card mb-1" *ngFor="let pricePoint of clytoken.pricePoints">
+  <div class="card-block row m-1">
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Date</h6>
+      <p class="card-text">{{pricePoint.timestamp | date:'medium'}}</p>
+    </div>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Type</h6>
+      <p class="card-text">{{pricePoint.type}}</p>
+    </div>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Amount</h6>
+      <p class="card-text">{{pricePoint.amount}} <b><span class="fas fa-copyright logo-icon"></span>LY</b></p>
+    </div>
+    <div class="col-md p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Price</h6>
+      <p class="card-text">{{pricePoint.price}} <b>ETH</b></p>
+    </div>
+  </div>
+</div>
+

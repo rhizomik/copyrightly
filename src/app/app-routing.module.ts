@@ -7,6 +7,7 @@ import { ManifestationsListComponent } from './manifestations/list/manifestation
 import { ManifestationDetailsComponent } from './manifestations/details/manifestation-details.component';
 import { CreatorDetailsComponent } from './creators/details/creator-details.component';
 import { CreatorsSearchComponent } from './creators/search/creators-search.component';
+import { CLYTokenDetailsComponent } from './clytoken/details/clytoken-details.component';
 
 const routes: Routes = [
   { path: 'manifestations/:id', component: ManifestationDetailsComponent, runGuardsAndResolvers: 'always' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: ManifestSingleComponent },
   { path: 'search', component: ManifestationsSearchComponent },
   { path: 'list', component: ManifestationsListComponent },
+  { path: 'token', component: CLYTokenDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: '**', redirectTo: '/about', pathMatch: 'full' },

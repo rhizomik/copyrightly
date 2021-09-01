@@ -8,8 +8,8 @@ export class BurnEvent extends Event {
     super({ type: event.event, who: event.returnValues?.seller, where: event.returnValues?.item });
     if (event.returnValues && event.returnValues.amount && event.returnValues.earned) {
       this.what = new CLYToken({
-        amount: CLYToken.toNumber(event.returnValues.amount),
-        price: CLYToken.toEther(event.returnValues.earned)
+        amount: event.returnValues.amount,
+        price: event.returnValues.earned
       });
     }
   }

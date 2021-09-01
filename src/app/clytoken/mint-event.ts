@@ -8,8 +8,8 @@ export class MintEvent extends Event {
     super({ type: event.event, who: event.returnValues?.buyer, where: event.returnValues?.item });
     if (event.returnValues && event.returnValues.amount && event.returnValues.payed) {
       this.what = new CLYToken({
-        amount: CLYToken.toNumber(event.returnValues.amount),
-        price: CLYToken.toEther(event.returnValues.payed)
+        amount: event.returnValues.amount,
+        price: event.returnValues.payed
       });
     }
   }
