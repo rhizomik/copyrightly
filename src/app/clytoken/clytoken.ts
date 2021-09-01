@@ -85,13 +85,6 @@ export class PricePoint {
     if (values.hasOwnProperty('amount')) {
       values.amount = CLYToken.toNumber(values.amount as string);
     }
-    if (values.hasOwnProperty('type')) {
-      if (values.type === TransactionType.purchase) {
-        values.type = 'Purchase';
-      } else {
-        values.type = 'Sell';
-      }
-    }
     if (values.hasOwnProperty('supply')) {
       values.supply = CLYToken.toNumber(values.supply as string);
     }
