@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { UtilModule } from '../util/util.module';
 import { CLYTokenContractService } from './clytoken-contract.service';
 import { MintEventComponent } from './mint-event.component';
 import { BurnEventComponent } from './burn-event.component';
+import { CLYTokenDetailsComponent } from './details/clytoken-details.component';
+import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
     MintEventComponent,
-    BurnEventComponent
+    BurnEventComponent,
+    CLYTokenDetailsComponent
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     UtilModule
   ],
-  exports: [],
+  exports: [
+    CLYTokenDetailsComponent
+  ],
   providers: [
     CLYTokenContractService
   ],
@@ -23,4 +29,4 @@ import { BurnEventComponent } from './burn-event.component';
     BurnEventComponent
   ]
 })
-export class ManifestationsModule { }
+export class CLYTokenModule { }

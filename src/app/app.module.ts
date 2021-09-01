@@ -12,9 +12,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { AuthenticationNavbarLoggedOutComponent } from './navbar/authentication-navbar-loggedout.component';
 import { AuthenticationNavbarLoggedInComponent } from './navbar/authentication-navbar-loggedin.component';
-import { ManifestationsModule } from './manifestations/manifestations.module';
 import { AlertsModule } from './alerts/alerts.module';
+import { ManifestationsModule } from './manifestations/manifestations.module';
+import { EvidenceModule } from './evidence/evidence.module';
 import { CreatorsModule } from './creators/creators.module';
+import { CLYTokenModule } from './clytoken/clytoken.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { CreatorsModule } from './creators/creators.module';
     AppRoutingModule,
     AlertsModule,
     ManifestationsModule,
-    CreatorsModule
+    EvidenceModule,
+    CreatorsModule,
+    CLYTokenModule
   ],
   providers: [],
   bootstrap: [AppComponent]
