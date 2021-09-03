@@ -51,7 +51,7 @@
   <div *ngIf="manifestation.getStaked() == '0'" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No stake on this manifestation yet</h5>
-      <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be overwritten, if no
+      <p class="card-text col-md-12 p-1 alert-danger">Warning! This manifestation can be <b>overwritten</b>, if no
         CLY is staked on it, after {{manifestation?.expiryTime | date:'medium'}}</p>
     </div>
   </div>
@@ -82,6 +82,19 @@
       [evidence]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
   </div>
+
+  <h3>Reuse Offers</h3>
+
+  <div class="card mb-4">
+    <div class="card-block row m-1">
+      <p *ngIf="manifestation?.getStaked() == '0' || uploadEvidence.length == 0"
+         class="card-text col-md-12 p-1 alert-warning">Not possible to make <b>reuse offers</b> for this manifestation,
+        there is not CLY staked on it and at least one piece of evidence supporting authorship.</p>
+      <button *ngIf="manifestation?.getStaked() != '0' && uploadEvidence.length > 0"
+              type="button" class="btn btn-info m-2" (click)="defaultReuseOffer()">Default Reuse Offer</button>
+    </div>
+  </div>
+
 </div>
 
 <div *ngIf="notFound" class="text-center">

@@ -15,6 +15,7 @@ import { AuthenticationService } from '../navbar/authentication.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { QueryModule } from '../query/query.module';
 import { ManifestationStakeComponent } from './stake/manifestation-stake.component';
+import { ReuseTermsComponent } from './details/reuse-terms.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ManifestationStakeComponent } from './stake/manifestation-stake.compone
     ManifestationsListComponent,
     ManifestationDetailsComponent,
     ManifestEventComponent,
-    ManifestationStakeComponent
+    ManifestationStakeComponent,
+    ReuseTermsComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,6 @@ import { ManifestationStakeComponent } from './stake/manifestation-stake.compone
   providers: [
     ManifestationsContractService, AuthenticationService
   ],
-  bootstrap: [ ManifestEventComponent ]
+  bootstrap: [ ManifestEventComponent, ReuseTermsComponent ]
 })
 export class ManifestationsModule { }

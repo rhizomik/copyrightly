@@ -7,6 +7,8 @@ import { ManifestationDetailsQueryService } from '../../query/manifestation-deta
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
 import { TransactionType } from '../../clytoken/clytoken';
+import { ManifestEventComponent } from '../manifest-event.component';
+import { ReuseTermsComponent } from './reuse-terms.component';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -92,5 +94,9 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
       this.staking = false;
       this.hidAddStake = false;
     }
+  }
+
+  defaultReuseOffer() {
+    this.alertsService.modal(ReuseTermsComponent, this.manifestation);
   }
 }
