@@ -5,7 +5,6 @@ import { Web3Service } from '../../util/web3.service';
 import { Manifestation } from '../manifestation';
 import { CLYTokenContractService } from '../../clytoken/clytoken-contract.service';
 import { MintEventComponent } from '../../clytoken/mint-event.component';
-import { BigNumber } from 'bignumber.js';
 import { CLYToken, TransactionType } from '../../clytoken/clytoken';
 import { BurnEventComponent } from '../../clytoken/burn-event.component';
 
@@ -25,7 +24,7 @@ export class ManifestationStakeComponent implements OnInit {
   item = '';
   amount = 1.000;
   staked = 0;
-  maxPrice = '';
+  maxPrice = '0';
 
   constructor(private web3Service: Web3Service,
               private clyTokenContractService: CLYTokenContractService,
@@ -43,7 +42,9 @@ export class ManifestationStakeComponent implements OnInit {
             .subscribe((result: string) => {
               this.staked = Number.parseFloat(result);
               this.amount = this.staked;
-              this.getSellPrice(this.amount);
+              if (this.amount > 0) {
+                this.getSellPrice(this.amount);
+              }
             });
         }
       } );
