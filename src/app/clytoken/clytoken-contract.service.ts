@@ -61,22 +61,26 @@ export class CLYTokenContractService {
   public mint(amount: number, maxPrice: string, stakable: string, item: string, account: string): Observable<string | MintEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.mint(CLYToken.toBigNumber(amount), CLYToken.toWei(maxPrice), stakable, item)
-        .send({value: CLYToken.toWei(maxPrice), from: account, gas: 180000})
-        .on('transactionHash', (hash: string) =>
-          this.ngZone.run(() => observer.next(hash)))
-        .on('receipt', (receipt: any) => {
-          const mintEvent = new MintEvent(receipt.events.Minted);
-          if (!this.watching) { observer.next(mintEvent); } // If not watching, show event
-          observer.complete();
-        })
-        .on('error', (error: string) => {
-          this.ngZone.run(() => {
-            observer.error(new Error('Error minting CLY, see log for details'));
-            console.log(error);
+        const method = contract.methods.mint(CLYToken.toBigNumber(amount), CLYToken.toWei(maxPrice), stakable, item);
+        const options = { value: CLYToken.toWei(maxPrice), from: account };
+        this.web3Service.estimateGas(method,options).then(optionsWithGas => method.send(optionsWithGas)
+          .on('transactionHash', (hash: string) =>
+            this.ngZone.run(() => observer.next(hash)))
+          .on('receipt', (receipt: any) => {
+            const mintEvent = new MintEvent(receipt.events.Minted);
+            if (!this.watching) {
+              observer.next(mintEvent);
+            } // If not watching, show event
             observer.complete();
-          });
-        });
+          })
+          .on('error', (error: string) => {
+            this.ngZone.run(() => {
+              observer.error(new Error('Error minting CLY, see log for details'));
+              console.log(error);
+              observer.complete();
+            });
+          })
+        );
       }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
       return { unsubscribe: () => {} };
     });
@@ -111,8 +115,9 @@ export class CLYTokenContractService {
   public burn(amount: number, stakable: string, item: string, account: string): Observable<string | BurnEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.burn(CLYToken.toBigNumber(amount), stakable, item)
-          .send({from: account, gas: 180000})
+        const method = contract.methods.burn(CLYToken.toBigNumber(amount), stakable, item);
+        const options = { from: account };
+        this.web3Service.estimateGas(method,options).then(optionsWithGas => method.send(optionsWithGas)
           .on('transactionHash', (hash: string) =>
             this.ngZone.run(() => observer.next(hash)))
           .on('receipt', (receipt: any) => {
@@ -126,7 +131,8 @@ export class CLYTokenContractService {
               console.log(error);
               observer.complete();
             });
-          });
+          })
+        );
       }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
       return { unsubscribe: () => {} };
     });
