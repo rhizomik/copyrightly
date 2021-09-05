@@ -59,29 +59,31 @@ export class UploadEvidenceContractService {
   public addEvidence(evidence: UploadEvidence, account: string): Observable<string | UploadEvidenceEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.addEvidence(this.manifestationsAddress, evidence.evidenced, evidence.id)
-        .send({from: account, gas: 150000})
-        .on('transactionHash', (hash: string) =>
-          this.ngZone.run(() => observer.next(hash) ))
-        .on('receipt', (receipt: any) => {
-          const evidenceEvent = new UploadEvidenceEvent(receipt.events.UploadEvidenceEvent);
-          this.web3Service.getBlockDate(receipt.events.UploadEvidenceEvent.blockNumber)
-          .subscribe(date => {
+        const method = contract.methods.addEvidence(this.manifestationsAddress, evidence.evidenced, evidence.id);
+        const options = { from: account };
+        this.web3Service.estimateGas(method,options).then(optionsWithGas => method.send(optionsWithGas)
+          .on('transactionHash', (hash: string) =>
+            this.ngZone.run(() => observer.next(hash) ))
+          .on('receipt', (receipt: any) => {
+            const evidenceEvent = new UploadEvidenceEvent(receipt.events.UploadEvidenceEvent);
+            this.web3Service.getBlockDate(receipt.events.UploadEvidenceEvent.blockNumber)
+            .subscribe(date => {
+              this.ngZone.run(() => {
+                evidenceEvent.when = date;
+                evidenceEvent.what.creationTime = date;
+                if (!this.watching) { observer.next(evidenceEvent); } // If not watching, show event
+                observer.complete();
+              });
+            });
+          })
+          .on('error', (error: string) => {
+            console.error(error);
             this.ngZone.run(() => {
-              evidenceEvent.when = date;
-              evidenceEvent.what.creationTime = date;
-              if (!this.watching) { observer.next(evidenceEvent); } // If not watching, show event
+              observer.error(new Error('Error registering evidence, see log for details'));
               observer.complete();
             });
-          });
-        })
-        .on('error', (error: string) => {
-          console.error(error);
-          this.ngZone.run(() => {
-            observer.error(new Error('Error registering evidence, see log for details'));
-            observer.complete();
-          });
-        });
+          })
+        );
       }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
       return { unsubscribe: () => {} };
     });
