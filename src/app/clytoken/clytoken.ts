@@ -5,18 +5,6 @@ export enum TransactionType {
   sell
 }
 
-export class Account {
-  id = '';
-  staked = 0;
-
-  constructor(values: Record<string, unknown> = {}) {
-    if (values.hasOwnProperty('staked')) {
-      values.staked = CLYToken.toNumber(values.staked as string);
-    }
-    Object.assign(this, values);
-  }
-}
-
 export class CLYToken {
   static decimals = 16;
   static description = 'CopyrightLY Token';
@@ -67,6 +55,36 @@ export class CLYToken {
 
   static toWei(amount: string): string {
     return new BigNumber(amount).multipliedBy(this.etherDecimals).toString();
+  }
+}
+
+export class Account {
+  id = '';
+  staked = 0;
+  stakes: IndividualStake[] = [];
+
+  constructor(values: Record<string, unknown> = {}) {
+    if (values.hasOwnProperty('staked')) {
+      values.staked = CLYToken.toNumber(values.staked as string);
+    }
+    if (values.hasOwnProperty('stakes')) {
+      values.stakes = (values.stakes as any[]).map(stake => new IndividualStake({...stake, ...stake.item}));
+    }
+    Object.assign(this, values);
+  }
+}
+
+export class IndividualStake {
+  stakable = '';
+  hash = '';
+  title = '';
+  staked = 0;
+
+  constructor(values: Record<string, unknown> = {}) {
+    if (values.hasOwnProperty('staked')) {
+      values.staked = CLYToken.toNumber(values.staked as string);
+    }
+    Object.assign(this, values);
   }
 }
 

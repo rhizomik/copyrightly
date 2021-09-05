@@ -58,13 +58,13 @@ export class Web3Service {
             window.ethereum.enable().then((enabledAccounts: []) =>
               this.ngZone.run(() => {
                 if (!enabledAccounts) { enabledAccounts = []; }
-                observer.next(enabledAccounts);
+                observer.next(enabledAccounts.map((account: string) => account.toLowerCase()));
                 observer.complete();
               })
             ).catch((error: string) => console.log('Error: ' + error));
           } else {
             this.ngZone.run(() => {
-              observer.next(accounts);
+              observer.next(accounts.map((account: string) => account.toLowerCase()));
               observer.complete();
             });
           }

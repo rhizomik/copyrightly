@@ -1,13 +1,33 @@
-<div *ngIf="creatorAccount">
+<div *ngIf="accountId">
   <h3>Creator Identity</h3>
 
-  <p>Account: <a href="https://goerli.etherscan.io/address/{{creatorAccount}}" target="_blank">{{creatorAccount}}</a></p>
+  <p>Account: <a href="https://goerli.etherscan.io/address/{{accountId}}" target="_blank">{{accountId}}</a></p>
 
   <h4>Creator's Authorship Claims</h4>
 
-  <app-manifestations-list [manifester]="creatorAccount"></app-manifestations-list>
+  <app-manifestations-list [manifester]="accountId"></app-manifestations-list>
+
+  <h4><span class="fas fa-copyright logo-icon"></span>LY Stakes</h4>
+
+  <p>Total stake: {{account.staked}} <b><span class="fas fa-copyright logo-icon"></span>LY</b></p>
+
+  <div class="card mb-1" *ngFor="let stake of account.stakes">
+    <div class="card-block row m-1">
+      <div class="col-md-8 p-1 mb-1">
+        <h6 class="card-subtitle text-muted">Manifestation</h6>
+        <a class="card-text" [routerLink]="['/manifestations', stake.hash]">
+          {{stake.title}}
+        </a>
+      </div>
+      <div class="col-md p-1 mb-1">
+        <h6 class="card-subtitle text-muted">Staked</h6>
+        <p class="card-text">{{stake.staked}} <b><span class="fas fa-copyright logo-icon"></span>LY</b></p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div *ngIf="!creatorAccount" class="text-center">
+<div *ngIf="!accountId" class="text-center">
   <button class="btn btn-info" (click)="back()">Back</button>
 </div>
