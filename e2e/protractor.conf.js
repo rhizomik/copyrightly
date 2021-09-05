@@ -23,7 +23,7 @@ exports.config = {
       './**/*.steps.ts',
       './src/steps/hooks.js'
     ],
-    format: 'json:./protractor-cucumber-report.json',
+    format: ['@cucumber/pretty-formatter', 'json:./protractor-cucumber-report.json'],
     tags: '~@disabled'
   },
   onPrepare() {
