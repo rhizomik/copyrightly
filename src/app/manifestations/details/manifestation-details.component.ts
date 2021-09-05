@@ -7,7 +7,6 @@ import { ManifestationDetailsQueryService } from '../../query/manifestation-deta
 import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
 import { TransactionType } from '../../clytoken/clytoken';
-import { ManifestEventComponent } from '../manifest-event.component';
 import { ReuseTermsComponent } from './reuse-terms.component';
 
 @Component({

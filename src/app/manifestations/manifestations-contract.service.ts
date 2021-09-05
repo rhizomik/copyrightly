@@ -5,6 +5,7 @@ import { Event } from '../util/event';
 import { ManifestEvent } from './manifest-event';
 import { Manifestation } from './manifestation';
 import { ReplaySubject } from 'rxjs';
+import { CLYToken } from '../clytoken/clytoken';
 
 declare const require: any;
 const manifestations = require('../../assets/contracts/Manifestations.json');
@@ -64,28 +65,30 @@ export class ManifestationsContractService {
   public manifest(manifestation: Manifestation, account: string): Observable<string | ManifestEvent> {
     return new Observable((observer) => {
       this.deployedContract.subscribe(contract => {
-        contract.methods.manifestAuthorship(manifestation.hash, manifestation.title)
-        .send({from: account, gas: 150000})
-        .on('transactionHash', (hash: string) =>
-          this.ngZone.run(() => observer.next(hash)))
-        .on('receipt', (receipt: any) => {
-          const manifestEvent = new ManifestEvent(receipt.events.ManifestEvent);
-          this.web3Service.getBlockDate(receipt.events.ManifestEvent.blockNumber)
-          .subscribe(date => {
+        const method = contract.methods.manifestAuthorship(manifestation.hash, manifestation.title);
+        const options = { from: account };
+        this.web3Service.estimateGas(method,options).then(optionsWithGas => method.send(optionsWithGas)
+          .on('transactionHash', (hash: string) =>
+            this.ngZone.run(() => observer.next(hash)))
+          .on('receipt', (receipt: any) => {
+            const manifestEvent = new ManifestEvent(receipt.events.ManifestEvent);
+            this.web3Service.getBlockDate(receipt.events.ManifestEvent.blockNumber)
+            .subscribe(date => {
+              this.ngZone.run(() => {
+                manifestEvent.when = date;
+                manifestEvent.what.creationTime = date;
+                if (!this.watching) { observer.next(manifestEvent); } // If not watching, show event
+                observer.complete();
+              });
+            });
+          })
+          .on('error', (error: string) => {
             this.ngZone.run(() => {
-              manifestEvent.when = date;
-              manifestEvent.what.creationTime = date;
-              if (!this.watching) { observer.next(manifestEvent); } // If not watching, show event
+              observer.error(new Error('Error registering creation, see log for details'));
               observer.complete();
             });
-          });
-        })
-        .on('error', (error: string) => {
-          this.ngZone.run(() => {
-            observer.error(new Error('Error registering creation, see log for details'));
-            observer.complete();
-          });
-        });
+          })
+        );
       }, error => this.ngZone.run(() => { observer.error(error); observer.complete(); }));
       return { unsubscribe: () => {} };
     });

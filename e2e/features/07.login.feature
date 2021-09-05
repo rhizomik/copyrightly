@@ -7,7 +7,7 @@ Feature: Login
     Given I'm on the home page
     When I click connect account
     Then I'm connected
-    And The logged in account is "0x627306090abaB3A6e1400e9345bC60c78a8BEf57"
+    And The logged in account is "0x627306090abab3a6e1400e9345bc60c78a8bef57"
     And The submenu option "Register" in menu "Authorship" is enabled "true"
 
   Scenario: The "Register" feature is disabled if not logged in

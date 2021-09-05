@@ -2,9 +2,10 @@ import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import Web3 from 'web3';
 import { environment } from '../../environments/environment';
+import Web3 from 'web3';
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import { PromiEvent } from 'web3-core';
 
 declare let require: any;
 declare let window: any;
@@ -58,13 +59,13 @@ export class Web3Service {
             window.ethereum.enable().then((enabledAccounts: []) =>
               this.ngZone.run(() => {
                 if (!enabledAccounts) { enabledAccounts = []; }
-                observer.next(enabledAccounts);
+                observer.next(enabledAccounts.map((account: string) => account.toLowerCase()));
                 observer.complete();
               })
             ).catch((error: string) => console.log('Error: ' + error));
           } else {
             this.ngZone.run(() => {
-              observer.next(accounts);
+              observer.next(accounts.map((account: string) => account.toLowerCase()));
               observer.complete();
             });
           }
@@ -120,6 +121,11 @@ export class Web3Service {
     if (this.web3.currentProvider && this.web3.currentProvider.disconnect) {
       this.web3.currentProvider.disconnect();
     }
+  }
+
+  public async estimateGas(method: any, options: any): Promise<any> {
+    const gasEstimate = await method.estimateGas(options);
+    return {...options, gas: Math.trunc(gasEstimate * 1.2)};
   }
 
   private isLocalNetworkAvailable(): Observable<boolean> {
