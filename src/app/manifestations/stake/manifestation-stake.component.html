@@ -26,15 +26,16 @@
       <label *ngIf="type == 1" class="control-label" for="inputStake">From your Stake*</label>
       <div class="input-group">
         <input id="inputStake" name="inputStake" type="number" class="form-control" required
-               min="0.000001" [max]="type == 1 ? staked :''" step="0.000001"
+               min="0.000001" [max]="type == 1 ? staked : maxAmount" step="0.000001"
                [(ngModel)]="amount" (change)="getPrice(amount)" #inputStake="ngModel">
         <div class="input-group-append">
             <span class="input-group-text">
               <span class="fas fa-copyright logo-icon"></span>LY</span>
         </div>
-        <div *ngIf="amount <= 0" class="invalid-feedback">An amount bigger than 0 is required</div>
-        <div *ngIf="amount > staked" class="invalid-feedback">You cannot sell more than your stake,
-          {{staked}} <span class="fas fa-copyright logo-icon"></span>LY</div>
+        <div *ngIf="amount <= 0 || amount > maxAmount" class="invalid-feedback">
+          An amount bigger than 0 and smaller than {{maxAmount}} is required</div>
+        <div *ngIf="amount > staked && type == 1" class="invalid-feedback">
+          You cannot sell more than your stake, {{staked}} <span class="fas fa-copyright logo-icon"></span>LY</div>
       </div>
     </div>
 
@@ -62,8 +63,8 @@
     <!-- Button -->
     <div class="form-group">
       <button id="submit" type="submit" class="btn btn-success pull-right"
-              [disabled]="!stakeForm.form.valid || !inputStaker.value || !inputPrice.value ||
-                          amount <= 0 || (type == 1 && amount > staked)">
+              [disabled]="!stakeForm.valid || !inputStaker.value || !inputPrice.value ||
+                          amount <= 0 || amount > maxAmount || (type == 1 && amount > staked)">
         <span *ngIf="type == 0">Purchase</span>
         <span *ngIf="type == 1">Sell</span>
       </button>

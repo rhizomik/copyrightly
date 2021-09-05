@@ -25,6 +25,7 @@ export class ManifestationStakeComponent implements OnInit {
   amount = 1.000;
   staked = 0;
   maxPrice = '0';
+  maxAmount = 99999;
 
   constructor(private web3Service: Web3Service,
               private clyTokenContractService: CLYTokenContractService,
@@ -51,7 +52,7 @@ export class ManifestationStakeComponent implements OnInit {
   }
 
   getPrice(amount: number) {
-    if (amount > 0) {
+    if (amount > 0 && amount <= this.maxAmount) {
       if (this.type === TransactionType.purchase) {
         this.getPurchasePrice(amount);
       } else {
