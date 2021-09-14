@@ -34,8 +34,6 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
       .subscribe(({data}) => {
         if (data.account) {
           this.account = new Account(({...data.account}));
-        } else {
-          this.alertsService.error('Error retrieving information for Ethereum account', 0);
         }
       }, error => this.alertsService.error(error));
   }
