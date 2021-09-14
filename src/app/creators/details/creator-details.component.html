@@ -1,9 +1,9 @@
 <div *ngIf="accountId">
-  <h3>Creator Identity</h3>
+  <h3>User Identity</h3>
 
   <p>Account: <a href="https://goerli.etherscan.io/address/{{accountId}}" target="_blank">{{accountId}}</a></p>
 
-  <h4>Creator's Authorship Claims</h4>
+  <h4>Authorship Claims</h4>
 
   <app-manifestations-list [manifester]="accountId"></app-manifestations-list>
 
