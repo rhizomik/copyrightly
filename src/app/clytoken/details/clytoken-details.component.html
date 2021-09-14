@@ -47,19 +47,19 @@
 <p class="text-muted">Last 25 transactions</p>
 <div class="card mb-1" *ngFor="let pricePoint of clytoken.pricePoints">
   <div class="card-block row m-1">
-    <div class="col-md p-1 mb-1">
+    <div class="col-md-3 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Date</h6>
       <p class="card-text">{{pricePoint.timestamp | date:'medium'}}</p>
     </div>
-    <div class="col-md p-1 mb-1">
+    <div class="col-md-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Type</h6>
       <p class="card-text">{{pricePoint.type}}</p>
     </div>
-    <div class="col-md p-1 mb-1">
+    <div class="col-md-3 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Amount</h6>
       <p class="card-text">{{pricePoint.amount}} <b><span class="fas fa-copyright logo-icon"></span>LY</b></p>
     </div>
-    <div class="col-md p-1 mb-1">
+    <div class="col-md-4 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Price</h6>
       <p class="card-text">{{pricePoint.price}} <b>ETH</b></p>
     </div>
