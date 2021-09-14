@@ -27624,10 +27624,16 @@
       "links": {},
       "address": "0xf7EDc5816241c2579648B6437C98739Cb0606CBd",
       "transactionHash": "0xb329d1a0cb5aa9f75be81c00f3eca5f6459de3c71ce8c755b1bf78694baf89b7"
+    },
+    "133": {
+      "events": {},
+      "links": {},
+      "address": "0x8370c56344ab90b070e39055ce177Be874205666",
+      "transactionHash": "0x58639556c1da94395f623c23bf89f22ba17f6f4b78c6f5442396f710d8cee07c"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-29T10:24:06.902Z",
+  "updatedAt": "2021-09-13T16:32:56.060Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Token with bonding curve contract based on Bancor formula inspired by Commons Stack: https://github.com/commons-stack/genesis-contracts/tree/master/contracts/bondingcurve",
