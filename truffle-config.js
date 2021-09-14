@@ -58,6 +58,16 @@ module.exports = {
       gasPrice: 8000000000,  // 8 Gwei
       websocket: true        // Enable EventEmitter interface for web3 (default: false)
     },
+    viviani: {
+      provider: () => new HDWalletProvider({
+        privateKeys: [process.env.PRIVATEKEY],
+        providerOrUrl: "https://viviani.iex.ec",
+        numberOfAddresses: 2,
+      }),
+      network_id: 133,
+      gas: 5000000,
+      gasPrice: 0,  // 0 Gwei
+    },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
