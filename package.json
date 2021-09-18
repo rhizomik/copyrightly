@@ -70,6 +70,7 @@
     "@angular-eslint/template-parser": "2.0.2",
     "@angular/cli": "~11.2.3",
     "@angular/compiler-cli": "~11.2.4",
+    "@chainlink/contracts": "^0.2.1",
     "@cucumber/cucumber": "^7.2.1",
     "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
     "@ensdomains/ens": "^0.6.0",
