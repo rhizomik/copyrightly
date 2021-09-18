@@ -27619,6 +27619,12 @@
     "version": "0.8.6+commit.11564f7e.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x2f198B9B4d15584FE2ba20b0496f585151b1C023",
+      "transactionHash": "0xfff18fa2498ffaf0fedcb8846bb55135e8e9f0543fe2c9dcdc9af8119e1ea579"
+    },
     "5": {
       "events": {},
       "links": {},
@@ -27627,7 +27633,7 @@
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-29T10:24:06.902Z",
+  "updatedAt": "2021-09-20T11:52:05.587Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Token with bonding curve contract based on Bancor formula inspired by Commons Stack: https://github.com/commons-stack/genesis-contracts/tree/master/contracts/bondingcurve",

@@ -5263,6 +5263,12 @@
     "version": "0.8.6+commit.11564f7e.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x78dE42F5De81c14663D91492530Da1673b24dbed",
+      "transactionHash": "0x4eeb7bf924c64dab22462b66531b2775815ba006129e2e00964002e14d3aaed6"
+    },
     "5": {
       "events": {},
       "links": {},
@@ -5271,7 +5277,7 @@
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-29T10:24:06.895Z",
+  "updatedAt": "2021-09-20T11:52:05.580Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Roberto García (http://rhizomik.net/~roberto/)",

@@ -58,6 +58,15 @@ module.exports = {
       gasPrice: 8000000000,  // 8 Gwei
       websocket: true        // Enable EventEmitter interface for web3 (default: false)
     },
+    rinkeby: {
+      provider: () => new HDWalletProvider({
+        mnemonic: process.env.MNEMONIC,
+        providerOrUrl: "wss://rinkeby.infura.io/ws/v3/" + process.env.INFURA_TOKEN,
+        numberOfAddresses: 2,
+      }),
+      network_id: 4,
+      websocket: true        // Enable EventEmitter interface for web3 (default: false)
+    },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
