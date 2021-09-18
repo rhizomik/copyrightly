@@ -60,7 +60,7 @@ export class UploadEvidenceComponent implements OnInit {
         if (typeof result === 'string') {
           console.log('Transaction hash: ' + result);
           this.alertsService.info('Evidence submitted, you will be alerted when confirmed.<br>' +
-            'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
+            'Receipt: <a target="_blank" href="https://rinkeby.etherscan.io/tx/' + result + '">' + result + '</a>');
           this.done.emit();
         } else {
           console.log(result);
