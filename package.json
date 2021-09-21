@@ -23,7 +23,7 @@
     "webdriver-update": "webdriver-manager update --gecko false --standalone false",
     "debug:migrate": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle migrate",
     "debug:soltest": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle test",
-    "sol2uml": "sol2uml ./contracts -i Migrations.sol -o docs/images/smartcontracts.svg",
+    "sol2uml": "sol2uml ./contracts -i Migrations.sol,YouTubeEvidenceMock.sol -o docs/images/smartcontracts.svg",
     "graph-codegen": "graph codegen -o ./graphprotocol/generated/",
     "graph-build": "graph build -o ./graphprotocol/build/",
     "graph-deploy": "graph deploy -o ./graphprotocol/build/ --studio copyrightly",
@@ -33,7 +33,7 @@
     "config-local": "node subgraph-local.js",
     "deploy-local": "graph deploy -l test -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly subgraph-local.yaml",
     "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml",
-    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken --network goerli"
+    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken YouTubeEvidence --network rinkeby"
   },
   "private": true,
   "dependencies": {
@@ -70,6 +70,7 @@
     "@angular-eslint/template-parser": "2.0.2",
     "@angular/cli": "~11.2.3",
     "@angular/compiler-cli": "~11.2.4",
+    "@chainlink/contracts": "^0.2.1",
     "@cucumber/cucumber": "^7.2.1",
     "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
     "@ensdomains/ens": "^0.6.0",

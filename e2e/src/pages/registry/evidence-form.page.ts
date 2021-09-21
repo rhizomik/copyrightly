@@ -4,19 +4,25 @@ const path = require('path');
 
 export class EvidenceFormPage {
 
-  public form; evidencer; evidenced; file; button: ElementFinder;
+  public form; evidencer; evidenced; file; videoId; button: ElementFinder;
 
   constructor() {
     this.form = element(by.id('evidence-form'));
     this.evidencer = this.form.element(by.id('inputEvidencer'));
     this.evidenced = this.form.element(by.id('inputEvidenced'));
     this.file = this.form.element(by.id('inputFile'));
+    this.videoId = this.form.element(by.id('inputVideoId'));
     this.button = this.form.element(by.id('register'));
   }
 
   async fillFileEvidenceForm(relativePath: string) {
     const absolutePath = path.resolve(__dirname, relativePath);
     await this.file.sendKeys(absolutePath);
+    await browser.waitForAngular();
+  }
+
+  async fillVideoIdEvidenceForm(videoId: string) {
+    await this.videoId.sendKeys(videoId);
     await browser.waitForAngular();
   }
 
