@@ -9,6 +9,11 @@ import { UploadEvidenceEventComponent } from './upload-evidence-event.component'
 import { UploadEvidenceComponent } from './create/upload-evidence.component';
 import { UploadEvidenceDetailsComponent } from './details/upload-evidence-details.component';
 import { UploadExistenceDirective } from './create/upload-existence.directive';
+import { YouTubeEvidenceComponent } from './create/youtube-evidence.component';
+import { YouTubeEvidenceEventComponent } from './youtube-evidence-event.component';
+import { YouTubeEvidenceDetailsComponent } from './details/youtube-evidence-details.component';
+import { YouTubeEvidenceContractService } from './youtube-evidence-contract.service';
+import { VerificationRequestComponent } from './verification-request.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +21,10 @@ import { UploadExistenceDirective } from './create/upload-existence.directive';
     UploadEvidenceEventComponent,
     UploadEvidenceDetailsComponent,
     UploadExistenceDirective,
+    YouTubeEvidenceComponent,
+    VerificationRequestComponent,
+    YouTubeEvidenceEventComponent,
+    YouTubeEvidenceDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -27,10 +36,12 @@ import { UploadExistenceDirective } from './create/upload-existence.directive';
   exports: [
     UploadEvidenceComponent,
     UploadEvidenceDetailsComponent,
+    YouTubeEvidenceComponent,
+    YouTubeEvidenceDetailsComponent
   ],
   providers: [
-    UploadEvidenceContractService,
+    UploadEvidenceContractService, YouTubeEvidenceContractService
   ],
-  bootstrap: [ UploadEvidenceEventComponent, ]
+  bootstrap: [ UploadEvidenceEventComponent, VerificationRequestComponent, YouTubeEvidenceEventComponent ]
 })
 export class EvidenceModule { }

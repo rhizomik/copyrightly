@@ -25,7 +25,6 @@ export class UploadEvidenceComponent implements OnInit {
   uploadEvidence = new UploadEvidence();
   status = 'Register';
   uploadToIpfs = true;
-  stake = 1.5;
 
   constructor(private web3Service: Web3Service,
               private ipfsService: IpfsService,
