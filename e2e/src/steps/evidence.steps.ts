@@ -9,6 +9,10 @@ When(/^I fill the evidence form with file "([^"]*)"$/, async (path: string) => {
   await evidenceForm.fillFileEvidenceForm(path);
 });
 
+When(/^I fill the evidence form with video identifier "([^"]*)"$/, async (videoId: string) => {
+  await evidenceForm.fillVideoIdEvidenceForm(videoId);
+});
+
 When(/^I uncheck the "([^"]*)" evidence option$/, async (id: string) => {
   await evidenceForm.uncheck(id);
 });

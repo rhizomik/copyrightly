@@ -8,7 +8,7 @@ export class ModalPage {
   private closeBtn: ElementFinder;
 
   constructor() {
-    this.modal = element(by.css('div.modal-content'));
+    this.modal = element.all(by.css('div.modal-content')).last();
     this.header = this.modal.element(by.css('.modal-header'));
     this.body = this.modal.element(by.css('.modal-body'));
     this.closeBtn = this.modal.element(by.css('button.close'));
