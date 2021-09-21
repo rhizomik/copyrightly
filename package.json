@@ -33,7 +33,7 @@
     "config-local": "node subgraph-local.js",
     "deploy-local": "graph deploy -l test -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly subgraph-local.yaml",
     "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml",
-    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken --network goerli"
+    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken YouTubeEvidence --network rinkeby"
   },
   "private": true,
   "dependencies": {
