@@ -63,7 +63,7 @@
   <button *ngIf="!addingEvidence()" type="button" class="btn btn-success mb-4"
           (click)="addingUploadableEvidence = true">Add Uploadable Evidence</button>
 
-  <button *ngIf="!addingEvidence()" type="button" disabled class="btn btn-success mb-4 ml-2"
+  <button *ngIf="!addingEvidence()" type="button" class="btn btn-success mb-4 ml-2"
           (click)="addingYouTubeEvidence = true">Add YouTube Evidence</button>
 
   <app-upload-evidence *ngIf="addingUploadableEvidence" [manifestation]="manifestation" [hidden]="hidUploadEvidence"
@@ -71,7 +71,12 @@
                        (evidence)="addedUploadEvidence($event.what)">
   </app-upload-evidence>
 
-  <div *ngIf="uploadEvidence?.length == 0 && !addingEvidence()" class="card mb-4">
+  <app-youtube-evidence *ngIf="addingYouTubeEvidence" [manifestation]="manifestation" [hidden]="hidYouTubeEvidence"
+                       (cancel)="addingYouTubeEvidence = false" (done)="hidYouTubeEvidence = true"
+                       (evidence)="addedYouTubeEvidence($event)">
+  </app-youtube-evidence>
+
+  <div *ngIf="(uploadEvidence?.length == 0) && (youTubeEvidence?.length == 0) && !addingEvidence()" class="card mb-4">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">No evidence yet</h5>
     </div>
@@ -79,18 +84,21 @@
 
   <div id="list" *ngIf="!addingEvidence()">
     <app-uploadevidence-details *ngFor="let evidence of uploadEvidence; let i = index"
-      [evidence]="evidence" [evidenceIndex]="i+1">
+                                [evidence]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
+    <app-youtubeevidence-details *ngFor="let evidence of youTubeEvidence; let i = index"
+                                [evidence]="evidence" [evidenceIndex]="i+1">
+    </app-youtubeevidence-details>
   </div>
 
   <h3>Reuse Offers</h3>
 
   <div class="card mb-4">
     <div class="card-block row m-1">
-      <p *ngIf="manifestation?.getStaked() == '0' || uploadEvidence.length == 0"
+      <p *ngIf="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0"
          class="card-text col-md-12 p-1 alert-warning">Not possible to make <b>reuse offers</b> for this manifestation,
-        there is not CLY staked on it and at least one piece of evidence supporting authorship.</p>
-      <button *ngIf="manifestation?.getStaked() != '0' && uploadEvidence.length > 0"
+        there is not CLY staked on it or at least one piece of evidence supporting authorship.</p>
+      <button *ngIf="manifestation?.getStaked() != '0' && uploadEvidence.length + youTubeEvidence.length > 0"
               type="button" class="btn btn-info m-2" (click)="defaultReuseOffer()">Default Reuse Offer</button>
     </div>
   </div>

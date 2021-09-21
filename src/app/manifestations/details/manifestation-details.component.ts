@@ -8,6 +8,9 @@ import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list
 import { UploadEvidence } from '../../evidence/uploadEvidence';
 import { TransactionType } from '../../clytoken/clytoken';
 import { ReuseTermsComponent } from './reuse-terms.component';
+import { YouTubeEvidence } from '../../evidence/youtubeEvidence';
+import { YouTubeEvidenceListQueryService } from '../../query/youtube-evidence-list.query.service';
+import { VerificationRequest } from '../../evidence/verification-request';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -18,9 +21,11 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
 
   manifestation: Manifestation = new Manifestation();
   uploadEvidence: UploadEvidence[] = [];
+  youTubeEvidence: YouTubeEvidence[] = [];
   addingUploadableEvidence = false;
   addingYouTubeEvidence = false;
   hidUploadEvidence = false;
+  hidYouTubeEvidence = false;
   notFound = true;
   staking = false;
   hidAddStake = false;
@@ -31,7 +36,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private location: Location,
               private alertsService: AlertsService,
               private manifestationDetailsQuery: ManifestationDetailsQueryService,
-              private uploadEvidenceListQuery: UploadEvidenceListQueryService) {
+              private uploadEvidenceListQuery: UploadEvidenceListQueryService,
+              private youTubeEvidenceListQueryService: YouTubeEvidenceListQueryService) {
     // Use received Manifestation if available, otherwise, fetch it
     this.manifestation = this.router.getCurrentNavigation()?.extras.state as Manifestation;
   }
@@ -63,9 +69,13 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
 
   loadEvidence(): void {
     this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.hash })
-    .subscribe(({data}) => {
-      this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
-    }, error => this.alertsService.error(error));
+      .subscribe(({data}) => {
+        this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
+      }, error => this.alertsService.error(error));
+    this.youTubeEvidenceListQueryService.fetch({ evidenced: this.manifestation.hash })
+      .subscribe(({data}) => {
+        this.youTubeEvidence = data.youTubeEvidences.map((event) => new YouTubeEvidence({...event}));
+      }, error => this.alertsService.error(error));
   }
 
   back() {
@@ -79,6 +89,11 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.hidUploadEvidence = false;
     this.uploadEvidence.push(evidence);
     this.manifestation.evidenceCount++;
+  }
+
+  addedYouTubeEvidence(request: VerificationRequest) {
+    this.addingYouTubeEvidence = false;
+    this.hidYouTubeEvidence = false;
   }
 
   addedStake(amount: string) {
