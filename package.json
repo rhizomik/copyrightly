@@ -23,7 +23,7 @@
     "webdriver-update": "webdriver-manager update --gecko false --standalone false",
     "debug:migrate": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle migrate",
     "debug:soltest": "node $NODE_DEBUG_OPTION ./node_modules/.bin/truffle test",
-    "sol2uml": "sol2uml ./contracts -i Migrations.sol -o docs/images/smartcontracts.svg",
+    "sol2uml": "sol2uml ./contracts -i Migrations.sol,YouTubeEvidenceMock.sol -o docs/images/smartcontracts.svg",
     "graph-codegen": "graph codegen -o ./graphprotocol/generated/",
     "graph-build": "graph build -o ./graphprotocol/build/",
     "graph-deploy": "graph deploy -o ./graphprotocol/build/ --studio copyrightly",
