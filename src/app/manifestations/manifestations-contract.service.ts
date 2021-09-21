@@ -16,7 +16,7 @@ const manifestations = require('../../assets/contracts/Manifestations.json');
 export class ManifestationsContractService {
 
   private deployedContract = new ReplaySubject<any>(1);
-  private watching = false; // Default try to watch events
+  private watching = true; // Default try to watch events
 
   constructor(private web3Service: Web3Service,
               private ngZone: NgZone) {
