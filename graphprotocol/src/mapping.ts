@@ -1,7 +1,8 @@
 import { Manifestations, ManifestEvent } from '../generated/Manifestations/Manifestations';
 import { UploadEvidenceEvent } from '../generated/UploadEvidence/UploadEvidence';
+import { YouTubeEvidenceEvent } from '../generated/YouTubeEvidence/YouTubeEvidence';
 import { CLYToken, Minted, Burned, CurvePurchase, CurveSale } from '../generated/CLYToken/CLYToken';
-import { Manifestation, UploadEvidence, Stake, Account, ERC20Token, PricePoint } from '../generated/schema';
+import { Manifestation, UploadEvidence, YouTubeEvidence, Stake, Account, ERC20Token, PricePoint } from '../generated/schema';
 import { Bytes, Value, BigInt, Address } from '@graphprotocol/graph-ts';
 
 
@@ -34,6 +35,24 @@ export function handleUploadEvidenceEvent(event: UploadEvidenceEvent): void {
   if (manifestation) {
     manifestation.evidenceCount = manifestation.evidenceCount + 1;
     manifestation.save();
+  }
+}
+
+export function handleYouTubeEvidenceEvent(event: YouTubeEvidenceEvent): void {
+  if (event.params.isVerified) {
+    let ytEvidence = new YouTubeEvidence(event.params.requestId.toHexString());
+    ytEvidence.registry = event.params.registry;
+    ytEvidence.evidenced = event.params.evidencedHash;
+    ytEvidence.evidencer = event.params.evidencer;
+    ytEvidence.videoId = event.params.videoId;
+    ytEvidence.set('creationTime', Value.fromBigInt(event.block.timestamp));
+    ytEvidence.set('transaction', Value.fromBytes(event.transaction.hash));
+    ytEvidence.save();
+    let manifestation = Manifestation.load(event.params.registry.toHexString() + '-' + event.params.evidencedHash);
+    if (manifestation) {
+      manifestation.evidenceCount = manifestation.evidenceCount + 1;
+      manifestation.save();
+    }
   }
 }
 

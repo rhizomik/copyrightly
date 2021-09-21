@@ -21,6 +21,16 @@ type UploadEvidence @entity {
   transaction: Bytes!
 }
 
+type YouTubeEvidence @entity {
+  id: ID! # requestId
+  registry: Bytes!
+  evidenced: String!
+  evidencer: Bytes!
+  videoId: String!
+  creationTime: BigInt!
+  transaction: Bytes!
+}
+
 type Account @entity {
   id: ID! # address
   staked: BigInt!

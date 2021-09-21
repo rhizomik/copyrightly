@@ -42,15 +42,6 @@ export class Manifestation extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get authors(): Array<Bytes | null> {
-    let value = this.get("authors");
-    return value.toBytesArray();
-  }
-
-  set authors(value: Array<Bytes>) {
-    this.set("authors", Value.fromBytesArray(value));
-  }
-
   get contract(): Address {
     let value = Address.fromHexString(this.get("contract"));
     return value;
@@ -67,6 +58,15 @@ export class Manifestation extends Entity {
 
   set hash(value: string) {
     this.set("hash", Value.fromString(value));
+  }
+
+  get authors(): Array<Bytes | null> {
+    let value = this.get("authors");
+    return value.toBytesArray();
+  }
+
+  set authors(value: Array<Bytes>) {
+    this.set("authors", Value.fromBytesArray(value));
   }
 
   get title(): string {
@@ -179,6 +179,91 @@ export class UploadEvidence extends Entity {
 
   set evidenced(value: string) {
     this.set("evidenced", Value.fromString(value));
+  }
+
+  get evidencer(): Bytes {
+    let value = this.get("evidencer");
+    return value.toBytes();
+  }
+
+  set evidencer(value: Bytes) {
+    this.set("evidencer", Value.fromBytes(value));
+  }
+
+  get creationTime(): BigInt {
+    let value = this.get("creationTime");
+    return value.toBigInt();
+  }
+
+  set creationTime(value: BigInt) {
+    this.set("creationTime", Value.fromBigInt(value));
+  }
+
+  get transaction(): Bytes {
+    let value = this.get("transaction");
+    return value.toBytes();
+  }
+
+  set transaction(value: Bytes) {
+    this.set("transaction", Value.fromBytes(value));
+  }
+}
+
+export class YouTubeEvidence extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save YouTubeEvidence entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save YouTubeEvidence entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("YouTubeEvidence", id.toString(), this);
+  }
+
+  static load(id: string): YouTubeEvidence | null {
+    return store.get("YouTubeEvidence", id) as YouTubeEvidence | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get registry(): Bytes {
+    let value = this.get("registry");
+    return value.toBytes();
+  }
+
+  set registry(value: Bytes) {
+    this.set("registry", Value.fromBytes(value));
+  }
+
+  get evidenced(): string {
+    let value = this.get("evidenced");
+    return value.toString();
+  }
+
+  set evidenced(value: string) {
+    this.set("evidenced", Value.fromString(value));
+  }
+
+  get videoId(): string {
+    let value = this.get("videoId");
+    return value.toString();
+  }
+
+  set videoId(value: string) {
+    this.set("videoId", Value.fromString(value));
   }
 
   get evidencer(): Bytes {
