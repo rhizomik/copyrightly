@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Stakable.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> Stakable.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>6/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>7/7</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: GPL-3.0-or-later
+&nbsp;
+pragma solidity ^0.8.6;
+&nbsp;
+import "openzeppelin-solidity/contracts/utils/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
+&nbsp;
+/// @title Library to implement items that can accumulate stake
+/// @author Roberto García (http://rhizomik.net/~roberto/)
+contract Stakable is Ownable {
+  using SafeMath for uint256;
+&nbsp;
+  address authorisedToken;
+  mapping(string =&gt; uint256) public staked;
+&nbsp;
+  /// @dev Modifier controlling that only the registered token can add stake
+  modifier onlyAllowedToken() {
+    <span class="missing-if-branch" title="else path not taken" >E</span>require(authorisedToken == msg.sender, "Only registered token can add stake");
+    _;
+  }
+&nbsp;
+  /// @notice Sets the `token` address authorised to add and remove stake.
+  /// @param token The address of the authorised token contract
+  function setToken(address token) public onlyOwner {
+    authorisedToken = token;
+  }
+&nbsp;
+  /// @notice Checks if the item with `hash` can have stake, depending on implementation.
+  /// For instance, the item is already registered.
+  /// @param hash Hash identifying the item, for instance IPFS Base58 Hash
+<span class="fstat-no" title="function not covered" >  function isStakable(string memory hash) virtual public {}</span>
+&nbsp;
+  /// @notice Check if the stakable `hash` has some stake.
+  /// @dev Used to check if the corresponding item has a current stake bigger than 0.
+  /// @param hash Hash identifying the item to get stake, for instance IPFS Base58 Hash
+  function isStaked(string memory hash) public view returns(bool) {
+    return (staked[hash] &gt; 0);
+  }
+&nbsp;
+  /// @notice Adds `amount` stake on the registered token to the item with `hash`.
+  /// @param amount Amount of stake on the registered token to add
+  /// @param hash Hash identifying the item to get stake, for instance IPFS Base58 Hash
+  function addStake(uint256 amount, string memory hash) public onlyAllowedToken {
+    staked[hash] += amount;
+  }
+&nbsp;
+  /// @notice Removes `amount` of stake on the registered token from the item with `hash`.
+  /// @param amount Amount of stake on the registered token to remove
+  /// @param hash Hash identifying the item to loose stake, for instance IPFS Base58 Hash
+  function removeStake(uint256 amount, string memory hash) public onlyAllowedToken {
+    <span class="missing-if-branch" title="else path not taken" >E</span>require(amount &lt;= staked[hash], 'No more than the amount currently staked can be removed');
+    staked[hash] -= amount;
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Sep 21 2021 10:12:46 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -418,9 +418,6 @@
         <clipPath id="clip_path_5">
           <use xl:href="#path_5"/>
         </clipPath>
-        <g clip-path="url(#clip_path_5)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image7.png" width="96" height="32.64" transform="matrix(1.4727488 0 0 1.4705882 35.376574 691.7436)"/>
-        </g>
       </g>
       <g id="Graphic_127">
         <rect x="792.5629" y="21" width="70" height="39.375" id="path_6"/>
