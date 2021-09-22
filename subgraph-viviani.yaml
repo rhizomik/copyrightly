@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: schema.graphql
+  file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Manifestations
@@ -17,11 +17,11 @@ dataSources:
         - ManifestEvent
       abis:
         - name: Manifestations
-          file: Manifestations/src/assets/contracts/Manifestations.json
+          file: ./src/assets/contracts/Manifestations.json
       eventHandlers:
         - event: ManifestEvent(string,string,indexed address)
           handler: handleManifestEvent
-      file: Manifestations/Manifestations.wasm
+      file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: UploadEvidence
     network: viviani
@@ -37,11 +37,12 @@ dataSources:
         - UploadEvidenceEvent
       abis:
         - name: UploadEvidence
-          file: UploadEvidence/src/assets/contracts/UploadEvidence.json
+          file: ./src/assets/contracts/UploadEvidence.json
       eventHandlers:
-        - event: UploadEvidenceEvent(indexed address,indexed bytes32,string,string,indexed address)
+        - event: UploadEvidenceEvent(indexed address,indexed bytes32,string,string,indexed
+            address)
           handler: handleUploadEvidenceEvent
-      file: Manifestations/Manifestations.wasm
+      file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: CLYToken
     network: viviani
@@ -60,7 +61,7 @@ dataSources:
         - CurveSale
       abis:
         - name: CLYToken
-          file: CLYToken/src/assets/contracts/CLYToken.json
+          file: ./src/assets/contracts/CLYToken.json
       eventHandlers:
         - event: Minted(address,uint256,uint256,address,string)
           handler: handleMintedEvent
@@ -70,4 +71,4 @@ dataSources:
           handler: handleCurvePurchaseEvent
         - event: CurveSale(uint256,uint256,uint256,uint256)
           handler: handleCurveSaleEvent
-      file: Manifestations/Manifestations.wasm
+      file: ./graphprotocol/src/mapping.ts

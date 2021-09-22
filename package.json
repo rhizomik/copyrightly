@@ -28,10 +28,12 @@
     "graph-build": "graph build -o ./graphprotocol/build/",
     "graph-deploy": "graph deploy -o ./graphprotocol/build/ --studio copyrightly",
     "graph-local": "docker-compose -f test/docker-compose.yml up",
+    "graph-viviani": "docker-compose -f test/docker-compose.viviani.yml up",
     "create-local": "graph create -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
     "remove-local": "graph remove -o ./graphprotocol/build/ --node http://localhost:8020/ copyrightly",
     "config-local": "node subgraph-local.js",
     "deploy-local": "graph deploy -l test -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly subgraph-local.yaml",
+    "deploy-viviani": "graph deploy -l test -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly subgraph-viviani.yaml",
     "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml",
     "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken --network goerli"
   },
