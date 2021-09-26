@@ -91,4 +91,16 @@ contract('CLY Token - Minting', function (accounts) {
     await expectRevert(clytoken.setReserveRatio(1000001, {from: OWNER}),
       'Value must be in PPM');
   });
+
+  it("shouldn't allow CLY token transfers", async () => {
+    const amount = new BN(1).mul(CLY);
+    await expectRevert(clytoken.transfer(STAKER, amount, {from: OWNER}),
+      'CLY Token is not transferable');
+  });
+
+  it("shouldn't allow CLY token transfers from address", async () => {
+    const amount = new BN(1).mul(CLY);
+    await expectRevert(clytoken.transferFrom(OWNER, STAKER, amount, {from: OWNER}),
+      'CLY Token is not transferable');
+  });
 });
