@@ -16,7 +16,7 @@ contract('YouTube Evidence', function (accounts) {
   const MANIFESTER = accounts[1];
   const EVIDENCER = accounts[2];
 
-  let youtubeevidence, manifestations;
+  let youtubeevidence, manifestations, requestId;
 
   before('setup contract for all tests', async () => {
     youtubeevidence = await YouTubeEvidence.deployed();
@@ -32,7 +32,7 @@ contract('YouTube Evidence', function (accounts) {
 
     expectEvent(res, 'VerificationRequest',
       {evidencedHash: MANIFESTATION_HASH1, videoId: VALID_VIDEO});
-    const requestId = res.logs[0].args.requestId;
+    requestId = res.logs[0].args.requestId;
     expectEvent(res, 'YouTubeEvidenceEvent', {requestId: requestId, registry: manifestations.address,
       evidencedHash: MANIFESTATION_HASH1, videoId: VALID_VIDEO, evidencer: EVIDENCER, isVerified: true});
 
@@ -51,7 +51,7 @@ contract('YouTube Evidence', function (accounts) {
 
     expectEvent(res, 'VerificationRequest',
       {evidencedHash: MANIFESTATION_HASH2, videoId: INVALID_VIDEO});
-    const requestId = res.logs[0].args.requestId;
+    requestId = res.logs[0].args.requestId;
     expectEvent(res, 'YouTubeEvidenceEvent', {requestId: requestId, registry: manifestations.address,
       evidencedHash: MANIFESTATION_HASH2, videoId: INVALID_VIDEO, evidencer: EVIDENCER, isVerified: false});
 
@@ -59,5 +59,14 @@ contract('YouTube Evidence', function (accounts) {
     chai.expect(evidence.isVerified).to.be.false;
     chai.expect(await manifestations.isUnevidenced(MANIFESTATION_HASH2)).to.be.true;
     chai.expect(await manifestations.getEvidenceCount(MANIFESTATION_HASH2)).to.be.bignumber.equal(new BN(0));
+  });
+
+  it("shouldn't allow processing an already processed request", async () => {
+    await expectRevert.unspecified(youtubeevidence.processVerification(requestId, true));
+  });
+
+  it("shouldn't allow processing an non-existing request", async () => {
+    const UNEXISTING_REQUEST_ID = '0x1';
+    await expectRevert.unspecified(youtubeevidence.processVerification(UNEXISTING_REQUEST_ID, true));
   });
 });
