@@ -95,9 +95,9 @@ dataSources:
     name: CopyrightLYNFT
     network: rinkeby
     source:
-      address: "0x1da6970388e18896F0A9Ae6dAC8aa3a109070a09"
+      address: "0x8E8BFc29440Cb8322AC8b50b4C4db6D363e23a97"
       abi: CopyrightLYNFT
-      startBlock: 9370960
+      startBlock: 9371519
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
