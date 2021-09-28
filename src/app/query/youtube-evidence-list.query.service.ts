@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Query, gql } from 'apollo-angular';
 import { YouTubeEvidence } from '../evidence/youtubeEvidence';
 
-export interface UploadEvidenceListResponse {
+export interface YTEvidenceListResponse {
   youTubeEvidences: YouTubeEvidence[];
 }
 @Injectable({
   providedIn: 'root',
 })
-export class YouTubeEvidenceListQueryService extends Query<UploadEvidenceListResponse> {
+export class YouTubeEvidenceListQueryService extends Query<YTEvidenceListResponse> {
   document = gql`
   query ListYouTubeEvidence($evidenced: String!) {
     youTubeEvidences(where: { evidenced: $evidenced } )
