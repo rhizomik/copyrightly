@@ -29,10 +29,9 @@ contract CopyrightLYNFT is Ownable, Pausable, ERC721URIStorage {
   {
     uint256 tokenId = uint256(keccak256(abi.encodePacked(msg.sender, amountMinted[msg.sender])));
     _mint(msg.sender, tokenId);
-    string memory tokenUri = string(abi.encodePacked(_baseURI(), metadataHash));
-    _setTokenURI(tokenId, tokenUri);
+    _setTokenURI(tokenId, metadataHash);
     amountMinted[msg.sender]++;
-    emit NFTMinted(msg.sender, tokenId, tokenUri, manifestations, manifestationHash);
+    emit NFTMinted(msg.sender, tokenId, ERC721URIStorage.tokenURI(tokenId), manifestations, manifestationHash);
     return tokenId;
   }
 

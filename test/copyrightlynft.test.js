@@ -45,13 +45,14 @@ contract('CopyrightLY NFT Evidence', function (accounts) {
     const amountMinted = await clynft.amountMinted(MANIFESTER);
     const expectedTokenId = web3.utils.toBN(web3.utils.keccak256(
       web3.utils.encodePacked(MANIFESTER, amountMinted.toString())));
-    console.log("TokenID:", expectedTokenId.toString());
 
     const res = await clynft.mint(MANIFESTATION_HASH1, METADATA_HASH1, {from: MANIFESTER});
 
     expectEvent(res, 'NFTMinted', {minter: MANIFESTER, tokenId: expectedTokenId,
         tokenUri: 'ipfs://' + METADATA_HASH1, manifestations: manifestations.address,
         manifestationHash: MANIFESTATION_HASH1});
+
+    chai.expect(await clynft.tokenURI(expectedTokenId)).to.be.equal('ipfs://' + METADATA_HASH1);
   });
 
   it("shouldn't allow minting if not an author", async () => {
