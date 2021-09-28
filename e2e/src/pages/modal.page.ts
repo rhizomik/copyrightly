@@ -33,5 +33,6 @@ export class ModalPage {
     const button = this.modal.element(by.buttonText(text));
     browser.wait(ExpectedConditions.elementToBeClickable(button), 5 * 1000, 'The button is not clickable: ' + text);
     await button.click();
+    await browser.sleep(3000);
   }
 }
