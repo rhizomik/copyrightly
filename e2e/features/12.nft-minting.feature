@@ -13,6 +13,5 @@ Feature: Mint License NFT
     When I click the "Mint NFT" button
     And I see modal with title "Mint CopyrightLY NFT"
     And I click the modal's "Mint NFT" button
-    Then I see alert with text "Mint request submitted"
-    And I see modal with title "NFT Minted"
+    Then I see modal with title "NFT Minted"
     And I see modal with text "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
