@@ -110,7 +110,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  defaultReuseOffer() {
+  mintNFT() {
     this.alertsService.modal(ReuseTermsComponent, this.manifestation);
   }
 }

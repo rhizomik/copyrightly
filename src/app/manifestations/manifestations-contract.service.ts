@@ -5,7 +5,6 @@ import { Event } from '../util/event';
 import { ManifestEvent } from './manifest-event';
 import { Manifestation } from './manifestation';
 import { ReplaySubject } from 'rxjs';
-import { CLYToken } from '../clytoken/clytoken';
 
 declare const require: any;
 const manifestations = require('../../assets/contracts/Manifestations.json');

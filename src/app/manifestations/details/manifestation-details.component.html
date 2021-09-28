@@ -91,15 +91,16 @@
     </app-youtubeevidence-details>
   </div>
 
-  <h3>Reuse Offers</h3>
+  <h3>Reuse Licenses NFTs</h3>
 
-  <div class="card mb-4">
+  <button [disabled]="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0"
+          type="button" class="btn btn-info m-2" (click)="mintNFT()">Mint NFT</button>
+
+  <div class="card mb-4"
+       *ngIf="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0">
     <div class="card-block row m-1">
-      <p *ngIf="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0"
-         class="card-text col-md-12 p-1 alert-warning">Not possible to make <b>reuse offers</b> for this manifestation,
-        there is not CLY staked on it or at least one piece of evidence supporting authorship.</p>
-      <button *ngIf="manifestation?.getStaked() != '0' && uploadEvidence.length + youTubeEvidence.length > 0"
-              type="button" class="btn btn-info m-2" (click)="defaultReuseOffer()">Default Reuse Offer</button>
+      <p class="card-text col-md-12 p-1 alert-warning">Not possible to mint <b>reuse license NFTs</b> for this
+        manifestation, there is not CLY staked on it or at least one piece of evidence supporting authorship.</p>
     </div>
   </div>
 

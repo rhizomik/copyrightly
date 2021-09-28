@@ -21,7 +21,7 @@ export class IpfsService {
         const reader = new FileReader();
         reader.onprogress = (progress) => console.log(`Loaded: ${progress.loaded}/${progress.total}`);
         reader.onloadend = () => {
-          this.saveToIpfs(reader, uploadToIpfs).subscribe((hash: string) => {
+          this.saveToIpfs(reader.result, uploadToIpfs).subscribe((hash: string) => {
             this.ngZone.run(() => {
               observer.next(hash);
               observer.complete();
@@ -34,10 +34,10 @@ export class IpfsService {
     });
   }
 
-  private saveToIpfs(reader: any, uploadToIpfs: any): Observable<string> {
+  public saveToIpfs(data: any, uploadToIpfs: any): Observable<string> {
     return new Observable((observer) => {
       this.ngZone.runOutsideAngular(() => {
-        const buffer = Buffer.from(reader.result);
+        const buffer = Buffer.from(data);
         this.ipfsApi.add(buffer, {onlyHash: !uploadToIpfs, progress: (progress: string) => console.log(`Saved: ${progress}`)})
         .then((response: any) => {
           console.log(`IPFS_ID: ${response.path}`);
@@ -46,7 +46,7 @@ export class IpfsService {
         })
         .catch((error: string) => {
           console.error(error);
-          observer.error(new Error('Error uploading file, see logs for details'));
+          observer.error(new Error('Error uploading, see logs for details'));
         });
       });
       return { unsubscribe: () => {} };

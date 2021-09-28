@@ -17,6 +17,7 @@ import { ManifestationsModule } from './manifestations/manifestations.module';
 import { EvidenceModule } from './evidence/evidence.module';
 import { CreatorsModule } from './creators/creators.module';
 import { CLYTokenModule } from './clytoken/clytoken.module';
+import { CLYNFTModule } from './clynft/clynft.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CLYTokenModule } from './clytoken/clytoken.module';
     ManifestationsModule,
     EvidenceModule,
     CreatorsModule,
-    CLYTokenModule
+    CLYTokenModule,
+    CLYNFTModule
   ],
   providers: [],
   bootstrap: [AppComponent]
