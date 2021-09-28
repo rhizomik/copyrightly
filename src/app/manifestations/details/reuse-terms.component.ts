@@ -66,8 +66,8 @@ import Web3 from 'web3';
           </div>
         </div>
         <div class="modal-footer">
-          <small class="card-text col-md-12 p-1 alert-warning"><b>Minting disabled</b><br/>
-            Just the authors of the manifestation can mint NFTs licensing it.</small>
+          <small class="card-text col-md-12 p-1 alert-warning" *ngIf="!data.authors.includes(account)">
+            <b>Minting disabled</b><br/>Just the authors of the manifestation can mint NFTs licensing it.</small>
           <button id="mint" type="submit" class="btn btn-success pull-right" ngbAutofocus
             [disabled]="!data.authors.includes(account)">Mint NFT</button>
           <button type="button" class="btn btn-danger pull-right ml-2" (click)="close()">Cancel</button>
