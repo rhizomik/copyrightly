@@ -142,7 +142,7 @@ export class ReuseTermsComponent implements OnInit {
     "animation_url": "https://opensea.io/metadata/animation_url",
     "youtube_url": "https://opensea.io/metadata/youtube_url"
   },
-  "@id": "https://rinkeby.etherscan.io/token/0x6171b103d7f368dc947e82d5099614748d62009a?a=${this.tokenId}",
+  "@id": "https://rinkeby.etherscan.io/token/${this.clynftContractService.address}?a=${this.tokenId}",
   "@type": "cro:Agree",
   "name": "Reuse license for '${this.data.title}'",
   "description": "Grants the owner permission to make the content available under the specified conditions",
@@ -158,7 +158,7 @@ export class ReuseTermsComponent implements OnInit {
     "startTime": "${this.when.toISOString()}",
     "endTime": "${this.until.toISOString()}",
     "cro:who": {
-      "owns": "https://rinkeby.etherscan.io/token/0x6171b103d7f368dc947e82d5099614748d62009a?a=${this.tokenId}" },
+      "owns": "https://rinkeby.etherscan.io/token/${this.clynftContractService.address}?a=${this.tokenId}" },
     "cro:what": {
       "@id": "ipfs://${this.data.hash}",
       "@type": "cro:Manifestation",

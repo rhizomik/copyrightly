@@ -13,6 +13,7 @@ const clynft = require('../../assets/contracts/CopyrightLYNFT.json');
 })
 export class CLYNFTContractService {
 
+  public address = '';
   private deployedContract = new ReplaySubject<any>(1);
   private watching = true; // Default try to watch events
 
@@ -20,9 +21,9 @@ export class CLYNFTContractService {
               private ngZone: NgZone) {
     this.web3Service.networkId.subscribe((networkId: number) => {
       if (clynft.networks[networkId]) {
-        const deployedAddress = clynft.networks[networkId].address;
+        this.address = clynft.networks[networkId].address;
         this.deployedContract.next(
-          new this.web3Service.web3.eth.Contract(clynft.abi, deployedAddress));
+          new this.web3Service.web3.eth.Contract(clynft.abi, this.address));
       } else {
         this.deployedContract.error(new Error('CopyrightLY NFT contract ' +
           'not found in current network with id ' + networkId));
