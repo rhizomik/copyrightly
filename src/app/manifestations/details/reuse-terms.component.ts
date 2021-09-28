@@ -145,7 +145,7 @@ export class ReuseTermsComponent implements OnInit {
   "@id": "https://rinkeby.etherscan.io/token/${this.clynftContractService.address}?a=${this.tokenId}",
   "@type": "cro:Agree",
   "name": "Reuse license for '${this.data.title}'",
-  "description": "Grants the owner permission to make the content available under the specified conditions",
+  "description": "Grants the owner permission to use the associated content under the specified conditions",
   "external_link": "https://copyrightly.rhizomik.net/manifestations/${this.data.hash}",
   "image": "ipfs://${this.data.hash}",
   "animation_url": "ipfs://${this.data.hash}",
@@ -163,7 +163,7 @@ export class ReuseTermsComponent implements OnInit {
       "@id": "ipfs://${this.data.hash}",
       "@type": "cro:Manifestation",
       "name": "${this.data.title}",
-      "@id": "https://copyrightly.rhizomik.net/manifestations/${this.data.hash}",
+      "url": "https://copyrightly.rhizomik.net/manifestations/${this.data.hash}"
     }
   }
 }`;
