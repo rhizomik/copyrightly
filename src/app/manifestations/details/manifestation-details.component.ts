@@ -11,6 +11,8 @@ import { ReuseTermsComponent } from './reuse-terms.component';
 import { YouTubeEvidence } from '../../evidence/youtubeEvidence';
 import { YouTubeEvidenceListQueryService } from '../../query/youtube-evidence-list.query.service';
 import { VerificationRequest } from '../../evidence/verification-request';
+import { ManifestationNFTsQueryService } from '../../query/manifestation-nfts.query.service';
+import { NFT } from '../../clynft/nft';
 
 @Component({
   selector: 'app-manifestation-details',
@@ -30,6 +32,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   staking = false;
   hidAddStake = false;
   type = TransactionType.purchase;
+  nfts: NFT[] = [];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -37,7 +40,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private alertsService: AlertsService,
               private manifestationDetailsQuery: ManifestationDetailsQueryService,
               private uploadEvidenceListQuery: UploadEvidenceListQueryService,
-              private youTubeEvidenceListQueryService: YouTubeEvidenceListQueryService) {
+              private youTubeEvidenceListQueryService: YouTubeEvidenceListQueryService,
+              private manifestationNftsQueryService: ManifestationNFTsQueryService) {
     // Use received Manifestation if available, otherwise, fetch it
     this.manifestation = this.router.getCurrentNavigation()?.extras.state as Manifestation;
   }
@@ -54,9 +58,11 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
           this.manifestation = manifestation;
           this.notFound = false;
           this.loadEvidence();
+          this.loadNFTs();
         } else if (this.manifestation?.title) {
           this.notFound = false;
           this.loadEvidence();
+          this.loadNFTs();
         } else {
           this.alertsService.error('Manifestation not found: ' + manifestationHash, 0);
         }
@@ -75,6 +81,13 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.youTubeEvidenceListQueryService.fetch({ evidenced: this.manifestation.hash })
       .subscribe(({data}) => {
         this.youTubeEvidence = data.youTubeEvidences.map((event) => new YouTubeEvidence({...event}));
+      }, error => this.alertsService.error(error));
+  }
+
+  loadNFTs(): void {
+    this.manifestationNftsQueryService.fetch({ hash: this.manifestation.hash })
+      .subscribe(({data}) => {
+        this.nfts = data.copyrightLYNFTs.map((event) => new NFT({...event}));
       }, error => this.alertsService.error(error));
   }
 

@@ -104,6 +104,25 @@
     </div>
   </div>
 
+  <div *ngIf="!addingEvidence()">
+    <div class="card mb-1" *ngFor="let nft of nfts">
+      <div class="card-block row m-1">
+        <h5 class="card-title col-md-12 p-1 text-truncate">NFT
+          <small title="{{nft?.tokenId}}">{{nft?.tokenId}}</small></h5>
+        <div class="col-md-9 p-1 mb-1">
+          <h6 class="card-subtitle text-muted">Metadata</h6>
+          <a class="card-text" href="https://ipfs.infura.io/{{nft?.tokenUri?.replace('://', '/')}}" target="_blank">
+            {{nft?.tokenUri}}</a>
+        </div>
+        <div class="col-md-3 p-1 mb-1">
+          <h6 class="card-subtitle text-muted">Registered</h6>
+          <a class="card-text" href="https://rinkeby.etherscan.io/tx/{{nft?.transaction}}" target="_blank">
+            {{nft?.creationTime | date:'medium'}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div *ngIf="notFound" class="text-center">
