@@ -1,5 +1,12 @@
 <div *ngIf="!notFound">
-  <h3>Manifestation</h3>
+  <div class="row">
+    <h3 class="col">Manifestation</h3>
+    <div class="col-1">
+      <button id="refresh-manifestations" class="btn-sm btn-outline-dark fa-pull-right" (click)="refresh()">
+        <span class="fas fa-sync-alt"></span>
+      </button>
+    </div>
+  </div>
 
   <div class="card mb-1">
     <div class="card-block row m-1">

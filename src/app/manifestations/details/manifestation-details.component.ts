@@ -126,4 +126,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   mintNFT() {
     this.alertsService.modal(ReuseTermsComponent, this.manifestation);
   }
+
+  refresh() {
+    this.loadManifestation(this.manifestation.hash);
+  }
 }
