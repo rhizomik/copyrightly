@@ -115,7 +115,7 @@ export class ReuseTermsComponent implements OnInit {
         .subscribe(result => {
           if (typeof result === 'string') {
             console.log('Transaction hash: ' + result);
-            this.alertsService.info('Evidence request submitted, you will be alerted when confirmed.<br>' +
+            this.alertsService.info('Mint request submitted, you will be alerted when confirmed.<br>' +
               'Receipt: <a target="_blank" href="https://rinkeby.etherscan.io/tx/' + result + '">' + result + '</a>');
           } else {
             console.log(result);
