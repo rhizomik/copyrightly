@@ -664,3 +664,88 @@ export class PricePoint extends Entity {
     this.set("timestamp", Value.fromBigInt(value));
   }
 }
+
+export class CopyrightLYNFT extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save CopyrightLYNFT entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save CopyrightLYNFT entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("CopyrightLYNFT", id.toString(), this);
+  }
+
+  static load(id: string): CopyrightLYNFT | null {
+    return store.get("CopyrightLYNFT", id) as CopyrightLYNFT | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get tokenId(): BigInt {
+    let value = this.get("tokenId");
+    return value.toBigInt();
+  }
+
+  set tokenId(value: BigInt) {
+    this.set("tokenId", Value.fromBigInt(value));
+  }
+
+  get tokenUri(): string {
+    let value = this.get("tokenUri");
+    return value.toString();
+  }
+
+  set tokenUri(value: string) {
+    this.set("tokenUri", Value.fromString(value));
+  }
+
+  get manifestation(): Manifestation {
+    let value = Manifestation.load(this.get("manifestation").toString());
+    return value;
+  }
+
+  set manifestation(value: Manifestation) {
+    this.set("manifestation", Value.fromString(value.id));
+  }
+
+  get minter(): Account {
+    let value = Account.load(this.get("minter").toHexString());
+    return value;
+  }
+
+  set minter(value: Account) {
+    this.set("minter", Value.fromString(value.id));
+  }
+
+  get transaction(): Bytes {
+    let value = this.get("transaction");
+    return value.toBytes();
+  }
+
+  set transaction(value: Bytes) {
+    this.set("transaction", Value.fromBytes(value));
+  }
+
+  get creationTime(): BigInt {
+    let value = this.get("creationTime");
+    return value.toBigInt();
+  }
+
+  set creationTime(value: BigInt) {
+    this.set("creationTime", Value.fromBigInt(value));
+  }
+}

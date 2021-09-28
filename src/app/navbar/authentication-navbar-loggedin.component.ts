@@ -14,6 +14,9 @@ import { YouTubeEvidenceEvent } from '../evidence/youtube-evidence-event';
 import { YouTubeEvidenceEventComponent } from '../evidence/youtube-evidence-event.component';
 import { UploadEvidenceEvent } from '../evidence/upload-evidence-event';
 import { UploadEvidenceEventComponent } from '../evidence/upload-evidence-event.component';
+import { CLYNFTContractService } from '../clynft/clynft-contract.service';
+import { NFTMintEvent } from '../clynft/nftmint-event';
+import { NFTMintEventComponent } from '../clynft/nftmint-event.component';
 
 @Component({
   selector: 'app-authentication-navbar-loggedin',
@@ -37,6 +40,7 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
               private manifestationsContractService: ManifestationsContractService,
               private youTubeEvidencesContractService: YouTubeEvidenceContractService,
               private uploadEvidencesContractService: UploadEvidenceContractService,
+              private clynftContractService: CLYNFTContractService,
               private alertsService: AlertsService) {}
 
   ngOnInit() {
@@ -54,6 +58,7 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
         this.watchManifestEvents(account);
         // this.watchUploadEvidenceEvents(account);
         this.watchYouTubeEvidenceEvents(account);
+        this.watchNFTMintEvents(account);
       });
     this.authenticationService.getAccountsNames()
       .pipe(takeUntil(this.ngUnsubscribe))
@@ -121,6 +126,18 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
       .subscribe( (event: UploadEvidenceEvent) => {
         console.log(event);
         this.alertsService.modal(UploadEvidenceEventComponent, event);
+      }, error => {
+        console.log(error.toString());
+      });
+  }
+
+  private watchNFTMintEvents(account: string) {
+    this.clynftContractService.watchMintEvents(account)
+      .pipe(takeUntil(this.ngUnsubscribe), distinctUntilChanged( // Avoid repeated event firing with Metamask
+        (prev, curr) => prev?.when?.valueOf() === curr?.when?.valueOf()))
+      .subscribe( (event: NFTMintEvent) => {
+        console.log(event);
+        this.alertsService.modal(NFTMintEventComponent, event);
       }, error => {
         console.log(error.toString());
       });

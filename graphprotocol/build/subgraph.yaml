@@ -92,3 +92,23 @@ dataSources:
             address,bool)
           handler: handleYouTubeEvidenceEvent
       file: Manifestations/Manifestations.wasm
+  - kind: ethereum/contract
+    name: CopyrightLYNFT
+    network: rinkeby
+    source:
+      address: "0x8E8BFc29440Cb8322AC8b50b4C4db6D363e23a97"
+      abi: CopyrightLYNFT
+      startBlock: 9371519
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - NFTMinted
+      abis:
+        - name: CopyrightLYNFT
+          file: CopyrightLYNFT/src/assets/contracts/CopyrightLYNFT.json
+      eventHandlers:
+        - event: NFTMinted(indexed address,uint256,string,address,string)
+          handler: handleNFTMintedEvent
+      file: Manifestations/Manifestations.wasm

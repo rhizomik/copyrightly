@@ -74,3 +74,13 @@ enum TransactionType {
   Purchase
   Sale
 }
+
+type CopyrightLYNFT @entity {
+  id: ID!
+  tokenId: BigInt!
+  tokenUri: String!
+  manifestation: Manifestation!
+  minter: Account!
+  creationTime: BigInt!
+  transaction: Bytes!
+}

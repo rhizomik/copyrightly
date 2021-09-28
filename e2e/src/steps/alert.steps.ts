@@ -7,6 +7,11 @@ import { browser } from 'protractor';
 const alert = new AlertPage();
 const modal = new ModalPage();
 
+When(/^I click the modal's "([^"]*)" button$/, async (text: string) => {
+  await modal.clickButtonWithText(text);
+  browser.waitForAngular();
+});
+
 Then(/^I see alert with text "([^"]*)"$/, async (fragment: string) => {
   expect(await alert.getLastAlertMessage()).to.contain(fragment);
 });

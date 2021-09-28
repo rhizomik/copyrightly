@@ -50,10 +50,9 @@ export class ManifestationsListComponent implements OnInit, OnDestroy, OnChanges
     }
     this.watchQuery = this.manifestationsListQuery.watch({ authors: filterAuthors });
     return this.watchQuery.valueChanges
-      .pipe( map(response => this.manifestations = response.data.manifestations.map(
-        (manifestation: Manifestation ) => new Manifestation({...manifestation}))))
-      .subscribe((manifestations: Manifestation[]) => {
-        this.manifestations = manifestations;
-      }, error => this.alertsService.error(error));
+      .pipe( map(response =>
+        response.data.manifestations.map((manifestation: Manifestation ) => new Manifestation({...manifestation}))))
+      .subscribe((manifestations: Manifestation[]) => this.manifestations = manifestations,
+          error => this.alertsService.error(error));
   }
 }
