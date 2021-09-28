@@ -2,7 +2,9 @@ import { Manifestations, ManifestEvent } from '../generated/Manifestations/Manif
 import { UploadEvidenceEvent } from '../generated/UploadEvidence/UploadEvidence';
 import { YouTubeEvidenceEvent } from '../generated/YouTubeEvidence/YouTubeEvidence';
 import { CLYToken, Minted, Burned, CurvePurchase, CurveSale } from '../generated/CLYToken/CLYToken';
-import { Manifestation, UploadEvidence, YouTubeEvidence, Stake, Account, ERC20Token, PricePoint } from '../generated/schema';
+import { NFTMinted } from '../generated/CopyrightLYNFT/CopyrightLYNFT';
+import { Manifestation, UploadEvidence, YouTubeEvidence, Stake, Account, ERC20Token,
+  PricePoint, CopyrightLYNFT } from '../generated/schema';
 import { Bytes, Value, BigInt, Address } from '@graphprotocol/graph-ts';
 
 
@@ -161,4 +163,23 @@ function getERC20Token(address: Address): ERC20Token {
     erc20.balance = clytoken.poolBalance();
   }
   return erc20 as ERC20Token;
+}
+
+export function handleNFTMintedEvent(event: NFTMinted): void {
+  let account = Account.load(event.params.minter.toHexString());
+  if (!account) {
+    return;
+  }
+  let manifestation = Manifestation.load(event.params.manifestations.toHexString() + '-' + event.params.manifestationHash);
+  if (!manifestation) {
+    return;
+  }
+  let clynft = new CopyrightLYNFT(event.params.tokenId.toString());
+  clynft.tokenId = event.params.tokenId;
+  clynft.tokenUri = event.params.tokenUri;
+  clynft.manifestation = manifestation as Manifestation;
+  clynft.minter = account as Account;
+  clynft.creationTime = event.block.timestamp;
+  clynft.transaction = event.transaction.hash;
+  clynft.save();
 }

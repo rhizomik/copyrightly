@@ -8,6 +8,7 @@ const manifestations = require('./src/assets/contracts/Manifestations.json');
 const uploadEvidence = require('./src/assets/contracts/UploadEvidence.json');
 const clytoken = require('./src/assets/contracts/CLYToken.json');
 const youTubeEvidence = require('./src/assets/contracts/YouTubeEvidenceMock.json');
+const clynft = require('./src/assets/contracts/CopyrightLYNFT.json');
 this.web3 = new Web3(new Web3.providers.WebsocketProvider(localNode));
 
 const file = fs.readFileSync('./subgraph.yaml', { encoding: 'utf8' })
@@ -23,6 +24,8 @@ this.web3.eth.net.getId()
     console.log('CLYToken at:', clytokenAddress);
     let youTubeEvidenceAddress = youTubeEvidence.networks[networkId].address;
     console.log('YouTubeEvidenceMock at:', youTubeEvidenceAddress);
+    let clynftAddress = clynft.networks[networkId].address;
+    console.log('CopyrightLYNFT at:', clynftAddress);
     let subgraph = YAML.parse(file);
     subgraph.dataSources = subgraph.dataSources.map(datasource => {
       datasource.network = 'mainnet';
@@ -39,6 +42,8 @@ this.web3.eth.net.getId()
         datasource.source.abi = 'YouTubeEvidenceMock';
         datasource.mapping.abis[0].name = 'YouTubeEvidenceMock'
         datasource.mapping.abis[0].file = './src/assets/contracts/YouTubeEvidenceMock.json'
+      } else if (datasource.name === 'CopyrightLYNFT') {
+        datasource.source.address = clynftAddress;
       }
       return datasource;
     });
