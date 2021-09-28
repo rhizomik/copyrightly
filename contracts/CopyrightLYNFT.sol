@@ -15,31 +15,38 @@ import "./Stakable.sol";
 contract CopyrightLYNFT is Ownable, Pausable, ERC721URIStorage {
 
   address public manifestations;
+  mapping(address => uint256) public amountMinted;
+
+  event NFTMinted(address indexed minter, uint256 tokenId, string tokenUri,
+    address manifestations, string manifestationHash);
 
   constructor(address _manifestations) ERC721("CopyrightLY NFT", "CLYNFT") {
     manifestations = _manifestations;
   }
 
-  function mint(string memory manifestation, string memory metadataHash) public
-  whenNotPaused() isAuthor(manifestation) isMintable(manifestation) returns (uint256)
+  function mint(string memory manifestationHash, string memory metadataHash) public
+  whenNotPaused() isAuthor(manifestationHash) isMintable(manifestationHash) returns (uint256)
   {
-    uint256 itemId = uint256(keccak256(abi.encodePacked(metadataHash)));
-    _mint(msg.sender, itemId);
-    _setTokenURI(itemId, string(abi.encodePacked(_baseURI(), metadataHash)));
-    return itemId;
+    uint256 tokenId = uint256(keccak256(abi.encodePacked(msg.sender, amountMinted[msg.sender])));
+    _mint(msg.sender, tokenId);
+    string memory tokenUri = string(abi.encodePacked(_baseURI(), metadataHash));
+    _setTokenURI(tokenId, tokenUri);
+    amountMinted[msg.sender]++;
+    emit NFTMinted(msg.sender, tokenId, tokenUri, manifestations, manifestationHash);
+    return tokenId;
   }
 
-  modifier isAuthor(string memory manifestation) {
-    ( , address[] memory authors, , )  = Manifestations(manifestations).getManifestation(manifestation);
+  modifier isAuthor(string memory manifestationHash) {
+    ( , address[] memory authors, , )  = Manifestations(manifestations).getManifestation(manifestationHash);
     require(_contains(authors, msg.sender),
       "Only authors can mint NFTs for a manifestation");
     _;
   }
 
-  modifier isMintable(string memory manifestation) {
-    require(Stakable(manifestations).isStaked(manifestation),
+  modifier isMintable(string memory manifestationHash) {
+    require(Stakable(manifestations).isStaked(manifestationHash),
       "NFT cannot be minted if manifestation without stake");
-    require(!Evidencable(manifestations).isUnevidenced(manifestation),
+    require(!Evidencable(manifestations).isUnevidenced(manifestationHash),
       "NFT cannot be minted if manifestation without evidence");
     _;
   }

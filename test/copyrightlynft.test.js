@@ -17,7 +17,7 @@ const METADATA_HASH4 = "QmWc8X2rWc2uanbnKpxfzEAAuHPuThQRtxpoY8CYVnuHz0";
 const VALID_VIDEO = "ZwVNLDIJKVA";
 const TITLE = "A nice video";
 
-contract('YouTube Evidence', function (accounts) {
+contract('CopyrightLY NFT Evidence', function (accounts) {
   const OWNER = accounts[0];
   const MANIFESTER = accounts[1];
   const EVIDENCER = accounts[2];
@@ -42,24 +42,16 @@ contract('YouTube Evidence', function (accounts) {
     chai.expect(await manifestations.isUnevidenced(MANIFESTATION_HASH1)).to.be.false;
     chai.expect(await manifestations.isStaked(MANIFESTATION_HASH1)).to.be.true;
 
+    const amountMinted = await clynft.amountMinted(MANIFESTER);
+    const expectedTokenId = web3.utils.toBN(web3.utils.keccak256(
+      web3.utils.encodePacked(MANIFESTER, amountMinted.toString())));
+    console.log("TokenID:", expectedTokenId.toString());
+
     const res = await clynft.mint(MANIFESTATION_HASH1, METADATA_HASH1, {from: MANIFESTER});
 
-    const expectedTokenId = web3.utils.toBN(web3.utils.keccak256(METADATA_HASH1));
-    expectEvent(res, 'Transfer',
-      {from: constants.ZERO_ADDRESS, to: MANIFESTER, tokenId: expectedTokenId});
-  });
-
-  it("shouldn't allow minting if the same reuse terms", async () => {
-    await expectRevert(clynft.mint(MANIFESTATION_HASH1, METADATA_HASH1, {from: MANIFESTER}),
-      "ERC721: token already minted");
-  });
-
-  it("should allow repeated mints for different reuse terms", async () => {
-    const res = await clynft.mint(MANIFESTATION_HASH1, METADATA_HASH2, {from: MANIFESTER});
-
-    const expectedTokenId = web3.utils.toBN(web3.utils.keccak256(METADATA_HASH2));
-    expectEvent(res, 'Transfer',
-      {from: constants.ZERO_ADDRESS, to: MANIFESTER, tokenId: expectedTokenId});
+    expectEvent(res, 'NFTMinted', {minter: MANIFESTER, tokenId: expectedTokenId,
+        tokenUri: 'ipfs://' + METADATA_HASH1, manifestations: manifestations.address,
+        manifestationHash: MANIFESTATION_HASH1});
   });
 
   it("shouldn't allow minting if not an author", async () => {
