@@ -25,6 +25,8 @@
           <a href="#operation-_meta-Queries"> _meta </a>
           <a href="#operation-account-Queries"> account </a>
           <a href="#operation-accounts-Queries"> accounts </a>
+          <a href="#operation-copyrightlynft-Queries"> copyrightLYNFT </a>
+          <a href="#operation-copyrightlynfts-Queries"> copyrightLYNFTs </a>
           <a href="#operation-erc20token-Queries"> erc20Token </a>
           <a href="#operation-erc20tokens-Queries"> erc20Tokens </a>
           <a href="#operation-manifestation-Queries"> manifestation </a>
@@ -46,6 +48,9 @@
           <a href="#definition-Block_height"> Block_height </a>
           <a href="#definition-Boolean"> Boolean </a>
           <a href="#definition-Bytes"> Bytes </a>
+          <a href="#definition-CopyrightLYNFT"> CopyrightLYNFT </a>
+          <a href="#definition-CopyrightLYNFT_filter"> CopyrightLYNFT_filter </a>
+          <a href="#definition-CopyrightLYNFT_orderBy"> CopyrightLYNFT_orderBy </a>
           <a href="#definition-ERC20Token"> ERC20Token </a>
           <a href="#definition-ERC20Token_filter"> ERC20Token_filter </a>
           <a href="#definition-ERC20Token_orderBy"> ERC20Token_orderBy </a>
@@ -87,7 +92,7 @@
               <div class="doc-copy">
                 <p>Documentation for
                   <a href="https://copyrightly.rhizomik.net">CopyrightLY</a>&#39;s GraphQL API:
-                  <a href="https://api.studio.thegraph.com/query/1303/copyrightly/0.0.7">https://api.studio.thegraph.com/query/1303/copyrightly/0.0.7</a>, which can be explored using
+                  <a href="https://api.studio.thegraph.com/query/1303/copyrightly/0.0.8">https://api.studio.thegraph.com/query/1303/copyrightly/0.0.8</a>, which can be explored using
                   <a href="https://graphiql-online.com/graphiql">https://graphiql-online.com/graphiql</a>
                 </p>
               </div>
@@ -164,8 +169,8 @@
   <span class="hljs-attr">"data"</span>: {
     <span class="hljs-attr">"_meta"</span>: {
       <span class="hljs-attr">"block"</span>: _Block_,
-      <span class="hljs-attr">"deployment"</span>: <span class="hljs-string">"abc123"</span>,
-      <span class="hljs-attr">"hasIndexingErrors"</span>: <span class="hljs-literal">true</span>
+      <span class="hljs-attr">"deployment"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"hasIndexingErrors"</span>: <span class="hljs-literal">false</span>
     }
   }
 }
@@ -374,6 +379,217 @@
               </div>
             </div>
           </div>
+          <span id="path-copyrightlynft"></span>
+          <div id="operation-copyrightlynft-Queries" class="operation panel" data-traverse-target="operation-copyrightlynft-Queries">
+            <h2 class="operation-name "> <code>copyrightLYNFT</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns an
+                  <a href="#definition-CopyrightLYNFT"><code>CopyrightLYNFT</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>id</code> -
+                        <a href="#definition-ID"><code>ID!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> copyrightLYNFT<span class="hljs-tag">(<span class="hljs-code">$id</span>: ID!, <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  copyrightLYNFT(id: <span class="hljs-code">$id</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">tokenId</span>
+    <span class="hljs-symbol">tokenUri</span>
+    <span class="hljs-symbol">manifestation <span class="hljs-tag">{
+      <span class="hljs-type">...ManifestationFragment</span>
+    }</span></span>
+    <span class="hljs-symbol">minter <span class="hljs-tag">{
+      <span class="hljs-type">...AccountFragment</span>
+    }</span></span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{<span class="hljs-attr">"id"</span>: ID, <span class="hljs-attr">"block"</span>: Block_height}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"copyrightLYNFT"</span>: {
+      <span class="hljs-attr">"id"</span>: ID,
+      <span class="hljs-attr">"tokenId"</span>: BigInt,
+      <span class="hljs-attr">"tokenUri"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"manifestation"</span>: Manifestation,
+      <span class="hljs-attr">"minter"</span>: Account,
+      <span class="hljs-attr">"creationTime"</span>: BigInt,
+      <span class="hljs-attr">"transaction"</span>: Bytes
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-copyrightlynfts"></span>
+          <div id="operation-copyrightlynfts-Queries" class="operation panel" data-traverse-target="operation-copyrightlynfts-Queries">
+            <h2 class="operation-name "> <code>copyrightLYNFTs</code> </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-responses"> Returns
+                  <a href="#definition-CopyrightLYNFT"><code>[CopyrightLYNFT!]!</code></a>
+                </section>
+                <br>
+                <section class="swagger-request-params">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>skip</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>0</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>first</code> -
+                        <a href="#definition-Int"><code>Int</code></a>
+                      </td>
+                      <td> Default = <code>100</code> </td>
+                    </tr>
+                    <tr>
+                      <td><code>orderBy</code> -
+                        <a href="#definition-CopyrightLYNFT_orderBy"><code>CopyrightLYNFT_orderBy</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>orderDirection</code> -
+                        <a href="#definition-OrderDirection"><code>OrderDirection</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>where</code> -
+                        <a href="#definition-CopyrightLYNFT_filter"><code>CopyrightLYNFT_filter</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>block</code> -
+                        <a href="#definition-Block_height"><code>Block_height</code></a>
+                      </td>
+                      <td> The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Query</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> copyrightLYNFTs<span class="hljs-tag">(<span class="hljs-code">$skip</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$first</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$orderBy</span>:<span class="hljs-type"> CopyrightLYNFT_orderBy,</span> <span class="hljs-code">$orderDirection</span>:<span class="hljs-type"> OrderDirection,</span> <span class="hljs-code">$where</span>:<span class="hljs-type"> CopyrightLYNFT_filter,</span> <span class="hljs-code">$block</span>:<span class="hljs-type"> Block_height)</span> {
+  copyrightLYNFTs(skip: <span class="hljs-code">$skip</span>, first: <span class="hljs-code">$first</span>, orderBy: <span class="hljs-code">$orderBy</span>, orderDirection: <span class="hljs-code">$orderDirection</span>, where: <span class="hljs-code">$where</span>, block: <span class="hljs-code">$block</span>)</span> <span class="hljs-tag">{
+    <span class="hljs-symbol">id</span>
+    <span class="hljs-symbol">tokenId</span>
+    <span class="hljs-symbol">tokenUri</span>
+    <span class="hljs-symbol">manifestation <span class="hljs-tag">{
+      <span class="hljs-type">...ManifestationFragment</span>
+    }</span></span>
+    <span class="hljs-symbol">minter <span class="hljs-tag">{
+      <span class="hljs-type">...AccountFragment</span>
+    }</span></span>
+    <span class="hljs-symbol">creationTime</span>
+    <span class="hljs-symbol">transaction</span>
+  }</span></span>
+}
+</code></pre> </body>
+                    </html>
+                    <h5>Variables</h5>
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"skip"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"first"</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">"orderBy"</span>: CopyrightLYNFT_orderBy,
+  <span class="hljs-attr">"orderDirection"</span>: OrderDirection,
+  <span class="hljs-attr">"where"</span>: CopyrightLYNFT_filter,
+  <span class="hljs-attr">"block"</span>: Block_height
+}
+</code></pre> </body>
+                    </html>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response </h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"copyrightLYNFTs"</span>: [
+      {
+        <span class="hljs-attr">"id"</span>: ID,
+        <span class="hljs-attr">"tokenId"</span>: BigInt,
+        <span class="hljs-attr">"tokenUri"</span>: <span class="hljs-string">"xyz789"</span>,
+        <span class="hljs-attr">"manifestation"</span>: Manifestation,
+        <span class="hljs-attr">"minter"</span>: Account,
+        <span class="hljs-attr">"creationTime"</span>: BigInt,
+        <span class="hljs-attr">"transaction"</span>: Bytes
+      }
+    ]
+  }
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
           <span id="path-erc20token"></span>
           <div id="operation-erc20token-Queries" class="operation panel" data-traverse-target="operation-erc20token-Queries">
             <h2 class="operation-name "> <code>erc20Token</code> </h2>
@@ -450,8 +666,8 @@
   <span class="hljs-attr">"data"</span>: {
     <span class="hljs-attr">"erc20Token"</span>: {
       <span class="hljs-attr">"id"</span>: ID,
-      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"abc123"</span>,
-      <span class="hljs-attr">"symbol"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"symbol"</span>: <span class="hljs-string">"abc123"</span>,
       <span class="hljs-attr">"decimals"</span>: <span class="hljs-number">987</span>,
       <span class="hljs-attr">"supply"</span>: BigInt,
       <span class="hljs-attr">"balance"</span>: BigInt,
@@ -576,7 +792,7 @@
       {
         <span class="hljs-attr">"id"</span>: ID,
         <span class="hljs-attr">"name"</span>: <span class="hljs-string">"xyz789"</span>,
-        <span class="hljs-attr">"symbol"</span>: <span class="hljs-string">"abc123"</span>,
+        <span class="hljs-attr">"symbol"</span>: <span class="hljs-string">"xyz789"</span>,
         <span class="hljs-attr">"decimals"</span>: <span class="hljs-number">123</span>,
         <span class="hljs-attr">"supply"</span>: BigInt,
         <span class="hljs-attr">"balance"</span>: BigInt,
@@ -670,12 +886,12 @@
     <span class="hljs-attr">"manifestation"</span>: {
       <span class="hljs-attr">"id"</span>: ID,
       <span class="hljs-attr">"contract"</span>: Bytes,
-      <span class="hljs-attr">"hash"</span>: <span class="hljs-string">"xyz789"</span>,
+      <span class="hljs-attr">"hash"</span>: <span class="hljs-string">"abc123"</span>,
       <span class="hljs-attr">"authors"</span>: [Bytes],
-      <span class="hljs-attr">"title"</span>: <span class="hljs-string">"abc123"</span>,
+      <span class="hljs-attr">"title"</span>: <span class="hljs-string">"xyz789"</span>,
       <span class="hljs-attr">"creationTime"</span>: BigInt,
       <span class="hljs-attr">"expiryTime"</span>: BigInt,
-      <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">123</span>,
+      <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">987</span>,
       <span class="hljs-attr">"transaction"</span>: Bytes,
       <span class="hljs-attr">"staked"</span>: BigInt,
       <span class="hljs-attr">"stakes"</span>: [Stake]
@@ -797,12 +1013,12 @@
       {
         <span class="hljs-attr">"id"</span>: ID,
         <span class="hljs-attr">"contract"</span>: Bytes,
-        <span class="hljs-attr">"hash"</span>: <span class="hljs-string">"abc123"</span>,
+        <span class="hljs-attr">"hash"</span>: <span class="hljs-string">"xyz789"</span>,
         <span class="hljs-attr">"authors"</span>: [Bytes],
-        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"abc123"</span>,
+        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"xyz789"</span>,
         <span class="hljs-attr">"creationTime"</span>: BigInt,
         <span class="hljs-attr">"expiryTime"</span>: BigInt,
-        <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">123</span>,
+        <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">987</span>,
         <span class="hljs-attr">"transaction"</span>: Bytes,
         <span class="hljs-attr">"staked"</span>: BigInt,
         <span class="hljs-attr">"stakes"</span>: [Stake]
@@ -1308,7 +1524,7 @@
     <span class="hljs-attr">"uploadEvidence"</span>: {
       <span class="hljs-attr">"id"</span>: ID,
       <span class="hljs-attr">"registry"</span>: Bytes,
-      <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
+      <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
       <span class="hljs-attr">"evidencer"</span>: Bytes,
       <span class="hljs-attr">"creationTime"</span>: BigInt,
       <span class="hljs-attr">"transaction"</span>: Bytes
@@ -1423,7 +1639,7 @@
       {
         <span class="hljs-attr">"id"</span>: ID,
         <span class="hljs-attr">"registry"</span>: Bytes,
-        <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
+        <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
         <span class="hljs-attr">"evidencer"</span>: Bytes,
         <span class="hljs-attr">"creationTime"</span>: BigInt,
         <span class="hljs-attr">"transaction"</span>: Bytes
@@ -1625,9 +1841,9 @@
       {
         <span class="hljs-attr">"id"</span>: ID,
         <span class="hljs-attr">"registry"</span>: Bytes,
-        <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
+        <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
         <span class="hljs-attr">"evidencer"</span>: Bytes,
-        <span class="hljs-attr">"videoId"</span>: <span class="hljs-string">"abc123"</span>,
+        <span class="hljs-attr">"videoId"</span>: <span class="hljs-string">"xyz789"</span>,
         <span class="hljs-attr">"creationTime"</span>: BigInt,
         <span class="hljs-attr">"transaction"</span>: Bytes
       }
@@ -1953,17 +2169,17 @@
   <span class="hljs-attr">"token"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_not"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_gt"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_lt"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_lt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_gte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_lte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"token_in"</span>: [<span class="hljs-string">"xyz789"</span>],
   <span class="hljs-attr">"token_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
-  <span class="hljs-attr">"token_contains"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"token_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>
 }
 </code></pre> </body>
                   </html>
@@ -2147,6 +2363,686 @@
               </div>
             </div>
           </div>
+          <div id="definition-CopyrightLYNFT" class="definition panel" data-traverse-target="definition-CopyrightLYNFT">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/CopyrightLYNFT"></a>
+              <p><code>CopyrightLYNFT</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Field Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td data-property-name="id"> <code>id</code> -
+                        <a href="#definition-ID"><code>ID!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="tokenId"> <code>tokenId</code> -
+                        <a href="#definition-BigInt"><code>BigInt!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="tokenUri"> <code>tokenUri</code> -
+                        <a href="#definition-String"><code>String!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="manifestation"> <code>manifestation</code> -
+                        <a href="#definition-Manifestation"><code>Manifestation!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="minter"> <code>minter</code> -
+                        <a href="#definition-Account"><code>Account!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="creationTime"> <code>creationTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="transaction"> <code>transaction</code> -
+                        <a href="#definition-Bytes"><code>Bytes!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"id"</span>: ID,
+  <span class="hljs-attr">"tokenId"</span>: BigInt,
+  <span class="hljs-attr">"tokenUri"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation"</span>: Manifestation,
+  <span class="hljs-attr">"minter"</span>: Account,
+  <span class="hljs-attr">"creationTime"</span>: BigInt,
+  <span class="hljs-attr">"transaction"</span>: Bytes
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-CopyrightLYNFT_filter" class="definition panel" data-traverse-target="definition-CopyrightLYNFT_filter">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/CopyrightLYNFT_filter"></a>
+              <p><code>CopyrightLYNFT_filter</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Input Field</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td><code>id</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_not</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_gt</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_lt</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_gte</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_lte</code> -
+                        <a href="#definition-ID"><code>ID</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_in</code> -
+                        <a href="#definition-ID"><code>[ID!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>id_not_in</code> -
+                        <a href="#definition-ID"><code>[ID!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_not</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_gt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_lt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_gte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_lte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenId_not_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_not</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_gt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_lt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_gte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_lte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_not_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_not_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_not_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>tokenUri_not_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_not</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_gt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_lt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_gte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_lte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_not_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_not_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_not_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>manifestation_not_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_not</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_gt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_lt</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_gte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_lte</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_not_in</code> -
+                        <a href="#definition-String"><code>[String!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_not_contains</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_not_starts_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>minter_not_ends_with</code> -
+                        <a href="#definition-String"><code>String</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_not</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_gt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_lt</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_gte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_lte</code> -
+                        <a href="#definition-BigInt"><code>BigInt</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>creationTime_not_in</code> -
+                        <a href="#definition-BigInt"><code>[BigInt!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not_in</code> -
+                        <a href="#definition-Bytes"><code>[Bytes!]</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td><code>transaction_not_contains</code> -
+                        <a href="#definition-Bytes"><code>Bytes</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"id"</span>: ID,
+  <span class="hljs-attr">"id_not"</span>: ID,
+  <span class="hljs-attr">"id_gt"</span>: ID,
+  <span class="hljs-attr">"id_lt"</span>: ID,
+  <span class="hljs-attr">"id_gte"</span>: ID,
+  <span class="hljs-attr">"id_lte"</span>: ID,
+  <span class="hljs-attr">"id_in"</span>: [ID],
+  <span class="hljs-attr">"id_not_in"</span>: [ID],
+  <span class="hljs-attr">"tokenId"</span>: BigInt,
+  <span class="hljs-attr">"tokenId_not"</span>: BigInt,
+  <span class="hljs-attr">"tokenId_gt"</span>: BigInt,
+  <span class="hljs-attr">"tokenId_lt"</span>: BigInt,
+  <span class="hljs-attr">"tokenId_gte"</span>: BigInt,
+  <span class="hljs-attr">"tokenId_lte"</span>: BigInt,
+  <span class="hljs-attr">"tokenId_in"</span>: [BigInt],
+  <span class="hljs-attr">"tokenId_not_in"</span>: [BigInt],
+  <span class="hljs-attr">"tokenUri"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"tokenUri_not"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"tokenUri_gt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"tokenUri_lt"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"tokenUri_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"tokenUri_lte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"tokenUri_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"tokenUri_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"tokenUri_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"tokenUri_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"tokenUri_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"tokenUri_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"tokenUri_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"tokenUri_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation_not"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"manifestation_gt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"manifestation_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"manifestation_gte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"manifestation_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"manifestation_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"manifestation_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"manifestation_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"manifestation_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"manifestation_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter_not"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"minter_gt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"minter_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"minter_gte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter_lte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"minter_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"minter_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"minter_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"minter_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"minter_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"creationTime"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_not"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_gt"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_lt"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_gte"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_lte"</span>: BigInt,
+  <span class="hljs-attr">"creationTime_in"</span>: [BigInt],
+  <span class="hljs-attr">"creationTime_not_in"</span>: [BigInt],
+  <span class="hljs-attr">"transaction"</span>: Bytes,
+  <span class="hljs-attr">"transaction_not"</span>: Bytes,
+  <span class="hljs-attr">"transaction_in"</span>: [Bytes],
+  <span class="hljs-attr">"transaction_not_in"</span>: [Bytes],
+  <span class="hljs-attr">"transaction_contains"</span>: Bytes,
+  <span class="hljs-attr">"transaction_not_contains"</span>: Bytes
+}
+</code></pre> </body>
+                  </html>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-CopyrightLYNFT_orderBy" class="definition panel" data-traverse-target="definition-CopyrightLYNFT_orderBy">
+            <div class="definition-tags">
+              <a class="label" href="#tag-types">Types</a>
+            </div>
+            <h2 class="panel-title">
+              <a name="/definitions/CopyrightLYNFT_orderBy"></a>
+              <p><code>CopyrightLYNFT_orderBy</code></p>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties-blank">
+                  <table>
+                    <tr>
+                      <th>Enum Value</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>id</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>tokenId</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>tokenUri</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>manifestation</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>minter</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>creationTime</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code>transaction</code></p>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
           <div id="definition-ERC20Token" class="definition panel" data-traverse-target="definition-ERC20Token">
             <div class="definition-tags">
               <a class="label" href="#tag-types">Types</a>
@@ -2287,9 +3183,9 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">"id"</span>: ID,
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"decimals"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-attr">"decimals"</span>: <span class="hljs-number">987</span>,
   <span class="hljs-attr">"supply"</span>: BigInt,
   <span class="hljs-attr">"balance"</span>: BigInt,
   <span class="hljs-attr">"holders"</span>: [Account],
@@ -2743,42 +3639,42 @@
   <span class="hljs-attr">"id_lte"</span>: ID,
   <span class="hljs-attr">"id_in"</span>: [ID],
   <span class="hljs-attr">"id_not_in"</span>: [ID],
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"name_not"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"name_gt"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"name_lt"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"name_gte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"name_lte"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"name_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"name_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
-  <span class="hljs-attr">"name_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"name_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"name_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"name_lte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"name_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"name_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"name_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"name_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"name_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"name_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"name_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"name_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"name_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"name_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"name_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"symbol_not"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol_gt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol_lt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"symbol_gte"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"symbol_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"symbol_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol_in"</span>: [<span class="hljs-string">"xyz789"</span>],
-  <span class="hljs-attr">"symbol_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
-  <span class="hljs-attr">"symbol_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"symbol_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"symbol_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"symbol_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"symbol_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"symbol_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"symbol_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"decimals"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"decimals"</span>: <span class="hljs-number">123</span>,
   <span class="hljs-attr">"decimals_not"</span>: <span class="hljs-number">987</span>,
-  <span class="hljs-attr">"decimals_gt"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"decimals_gt"</span>: <span class="hljs-number">123</span>,
   <span class="hljs-attr">"decimals_lt"</span>: <span class="hljs-number">987</span>,
   <span class="hljs-attr">"decimals_gte"</span>: <span class="hljs-number">123</span>,
-  <span class="hljs-attr">"decimals_lte"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"decimals_lte"</span>: <span class="hljs-number">123</span>,
   <span class="hljs-attr">"decimals_in"</span>: [<span class="hljs-number">123</span>],
-  <span class="hljs-attr">"decimals_not_in"</span>: [<span class="hljs-number">123</span>],
+  <span class="hljs-attr">"decimals_not_in"</span>: [<span class="hljs-number">987</span>],
   <span class="hljs-attr">"supply"</span>: BigInt,
   <span class="hljs-attr">"supply_not"</span>: BigInt,
   <span class="hljs-attr">"supply_gt"</span>: BigInt,
@@ -2922,7 +3818,7 @@
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">987</span>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">123</span>
 </code></pre> </body>
                   </html>
                 </section>
@@ -3611,38 +4507,38 @@
   <span class="hljs-attr">"contract_not_in"</span>: [Bytes],
   <span class="hljs-attr">"contract_contains"</span>: Bytes,
   <span class="hljs-attr">"contract_not_contains"</span>: Bytes,
-  <span class="hljs-attr">"hash"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"hash"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"hash_not"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"hash_gt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"hash_lt"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"hash_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"hash_gte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"hash_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"hash_in"</span>: [<span class="hljs-string">"xyz789"</span>],
-  <span class="hljs-attr">"hash_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"hash_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
   <span class="hljs-attr">"hash_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"hash_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"hash_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"hash_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"hash_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"hash_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"hash_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"hash_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"hash_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"authors"</span>: [Bytes],
   <span class="hljs-attr">"authors_not"</span>: [Bytes],
   <span class="hljs-attr">"authors_contains"</span>: [Bytes],
   <span class="hljs-attr">"authors_not_contains"</span>: [Bytes],
-  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"title_not"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"title_gt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_not"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"title_gt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"title_lt"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"title_gte"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"title_lte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_gte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_lte"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"title_in"</span>: [<span class="hljs-string">"xyz789"</span>],
   <span class="hljs-attr">"title_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
   <span class="hljs-attr">"title_contains"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"title_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"title_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"title_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"title_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"title_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"title_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"creationTime"</span>: BigInt,
   <span class="hljs-attr">"creationTime_not"</span>: BigInt,
   <span class="hljs-attr">"creationTime_gt"</span>: BigInt,
@@ -3659,14 +4555,14 @@
   <span class="hljs-attr">"expiryTime_lte"</span>: BigInt,
   <span class="hljs-attr">"expiryTime_in"</span>: [BigInt],
   <span class="hljs-attr">"expiryTime_not_in"</span>: [BigInt],
-  <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"evidenceCount"</span>: <span class="hljs-number">123</span>,
   <span class="hljs-attr">"evidenceCount_not"</span>: <span class="hljs-number">987</span>,
   <span class="hljs-attr">"evidenceCount_gt"</span>: <span class="hljs-number">123</span>,
   <span class="hljs-attr">"evidenceCount_lt"</span>: <span class="hljs-number">123</span>,
-  <span class="hljs-attr">"evidenceCount_gte"</span>: <span class="hljs-number">123</span>,
-  <span class="hljs-attr">"evidenceCount_lte"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"evidenceCount_gte"</span>: <span class="hljs-number">987</span>,
+  <span class="hljs-attr">"evidenceCount_lte"</span>: <span class="hljs-number">123</span>,
   <span class="hljs-attr">"evidenceCount_in"</span>: [<span class="hljs-number">987</span>],
-  <span class="hljs-attr">"evidenceCount_not_in"</span>: [<span class="hljs-number">987</span>],
+  <span class="hljs-attr">"evidenceCount_not_in"</span>: [<span class="hljs-number">123</span>],
   <span class="hljs-attr">"transaction"</span>: Bytes,
   <span class="hljs-attr">"transaction_not"</span>: Bytes,
   <span class="hljs-attr">"transaction_in"</span>: [Bytes],
@@ -4310,17 +5206,17 @@
   <span class="hljs-attr">"id_not_in"</span>: [ID],
   <span class="hljs-attr">"token"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_not"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_gt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_gt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_lt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_gte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"token_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"token_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"token_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"supply"</span>: BigInt,
   <span class="hljs-attr">"supply_not"</span>: BigInt,
@@ -4935,36 +5831,36 @@
   <span class="hljs-attr">"staker_not"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"staker_gt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"staker_lt"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"staker_gte"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"staker_lte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"staker_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"staker_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"staker_gte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"staker_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"staker_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"staker_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
   <span class="hljs-attr">"staker_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"staker_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"staker_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"staker_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"staker_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"staker_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"staker_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"staker_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"staker_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"staker_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"stakable"</span>: Bytes,
   <span class="hljs-attr">"stakable_not"</span>: Bytes,
   <span class="hljs-attr">"stakable_in"</span>: [Bytes],
   <span class="hljs-attr">"stakable_not_in"</span>: [Bytes],
   <span class="hljs-attr">"stakable_contains"</span>: Bytes,
   <span class="hljs-attr">"stakable_not_contains"</span>: Bytes,
-  <span class="hljs-attr">"item"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"item"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"item_not"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"item_gt"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"item_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"item_lt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"item_gte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"item_lte"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"item_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"item_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
+  <span class="hljs-attr">"item_lte"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"item_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"item_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
   <span class="hljs-attr">"item_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"item_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"item_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"item_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"item_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"item_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"item_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"item_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"item_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"item_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"staked"</span>: BigInt,
   <span class="hljs-attr">"staked_not"</span>: BigInt,
   <span class="hljs-attr">"staked_gt"</span>: BigInt,
@@ -4973,19 +5869,19 @@
   <span class="hljs-attr">"staked_lte"</span>: BigInt,
   <span class="hljs-attr">"staked_in"</span>: [BigInt],
   <span class="hljs-attr">"staked_not_in"</span>: [BigInt],
-  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_not"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_gt"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_lt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_not"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_gt"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_lt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_gte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"token_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"token_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"token_contains"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"token_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"token_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"token_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"token_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"token_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"token_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>
 }
 </code></pre> </body>
@@ -5570,6 +6466,76 @@
                       </td>
                     </tr>
                     <tr>
+                      <td data-property-name="copyrightLYNFT"> <code>copyrightLYNFT</code> -
+                        <a href="#definition-CopyrightLYNFT"><code>CopyrightLYNFT</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>id</code> -
+                              <a href="#definition-ID"><code>ID!</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                            <p>
+                              <p>The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted.</p>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-property-name="copyrightLYNFTs"> <code>copyrightLYNFTs</code> -
+                        <a href="#definition-CopyrightLYNFT"><code>[CopyrightLYNFT!]!</code></a>
+                      </td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="no-top-border">
+                        <div class="field-arguments">
+                          <p class="field-arguments-header"> Arguments </p>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>skip</code> -
+                              <a href="#definition-Int"><code>Int</code></a> default = <code>0</code></p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>first</code> -
+                              <a href="#definition-Int"><code>Int</code></a> default = <code>100</code></p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>orderBy</code> -
+                              <a href="#definition-CopyrightLYNFT_orderBy"><code>CopyrightLYNFT_orderBy</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>orderDirection</code> -
+                              <a href="#definition-OrderDirection"><code>OrderDirection</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>where</code> -
+                              <a href="#definition-CopyrightLYNFT_filter"><code>CopyrightLYNFT_filter</code></a>
+                            </p>
+                          </div>
+                          <div class="field-argument">
+                            <p class="field-argument-name"><code>block</code> -
+                              <a href="#definition-Block_height"><code>Block_height</code></a>
+                            </p>
+                            <p>
+                              <p>The block at which the query should be executed. Can either be an <code>{ number: Int }</code> containing the block number or a <code>{ hash: Bytes }</code> value containing a block hash. Defaults to the latest block when omitted.</p>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
                       <td data-property-name="_meta"> <code>_meta</code> -
                         <a href="#definition-_Meta_"><code>_Meta_</code></a>
                       </td>
@@ -5610,6 +6576,8 @@
   <span class="hljs-attr">"erc20Tokens"</span>: [ERC20Token],
   <span class="hljs-attr">"pricePoint"</span>: PricePoint,
   <span class="hljs-attr">"pricePoints"</span>: [PricePoint],
+  <span class="hljs-attr">"copyrightLYNFT"</span>: CopyrightLYNFT,
+  <span class="hljs-attr">"copyrightLYNFTs"</span>: [CopyrightLYNFT],
   <span class="hljs-attr">"_meta"</span>: _Meta_
 }
 </code></pre> </body>
@@ -6053,19 +7021,19 @@
   <span class="hljs-attr">"registry_contains"</span>: Bytes,
   <span class="hljs-attr">"registry_not_contains"</span>: Bytes,
   <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_not"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_gt"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_not"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_gt"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_lt"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_gte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"evidenced_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"evidenced_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"evidenced_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
   <span class="hljs-attr">"evidenced_contains"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"evidenced_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"evidenced_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"evidencer"</span>: Bytes,
   <span class="hljs-attr">"evidencer_not"</span>: Bytes,
   <span class="hljs-attr">"evidencer_in"</span>: [Bytes],
@@ -6219,9 +7187,9 @@
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">"id"</span>: ID,
   <span class="hljs-attr">"registry"</span>: Bytes,
-  <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidencer"</span>: Bytes,
-  <span class="hljs-attr">"videoId"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"videoId"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"creationTime"</span>: BigInt,
   <span class="hljs-attr">"transaction"</span>: Bytes
 }
@@ -6642,20 +7610,20 @@
   <span class="hljs-attr">"registry_not_in"</span>: [Bytes],
   <span class="hljs-attr">"registry_contains"</span>: Bytes,
   <span class="hljs-attr">"registry_not_contains"</span>: Bytes,
-  <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_not"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_gt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"evidenced_lt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"evidenced_gte"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"evidenced_lte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_in"</span>: [<span class="hljs-string">"xyz789"</span>],
-  <span class="hljs-attr">"evidenced_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"evidenced_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_not_in"</span>: [<span class="hljs-string">"xyz789"</span>],
+  <span class="hljs-attr">"evidenced_contains"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_not_contains"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidenced_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"evidenced_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"evidenced_not_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"evidenced_not_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"evidenced_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"evidencer"</span>: Bytes,
   <span class="hljs-attr">"evidencer_not"</span>: Bytes,
   <span class="hljs-attr">"evidencer_in"</span>: [Bytes],
@@ -6666,15 +7634,15 @@
   <span class="hljs-attr">"videoId_not"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"videoId_gt"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"videoId_lt"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"videoId_gte"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"videoId_gte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"videoId_lte"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"videoId_in"</span>: [<span class="hljs-string">"xyz789"</span>],
   <span class="hljs-attr">"videoId_not_in"</span>: [<span class="hljs-string">"abc123"</span>],
-  <span class="hljs-attr">"videoId_contains"</span>: <span class="hljs-string">"xyz789"</span>,
+  <span class="hljs-attr">"videoId_contains"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"videoId_not_contains"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"videoId_starts_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"videoId_not_starts_with"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"videoId_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
+  <span class="hljs-attr">"videoId_ends_with"</span>: <span class="hljs-string">"xyz789"</span>,
   <span class="hljs-attr">"videoId_not_ends_with"</span>: <span class="hljs-string">"abc123"</span>,
   <span class="hljs-attr">"creationTime"</span>: BigInt,
   <span class="hljs-attr">"creationTime_not"</span>: BigInt,
