@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Manifestation } from '../manifestation';
 import { Location } from '@angular/common';
+import { NavbarService } from '../../navbar/navbar.service';
 import { ManifestationDetailsQueryService, ManifestationsListResponse } from '../../query/manifestation-details.query.service';
 import { UploadEvidenceListQueryService, UploadEvidenceListResponse } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
@@ -50,6 +51,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
               private router: Router,
               private location: Location,
               private alertsService: AlertsService,
+              private navbarService: NavbarService,
               private manifestationDetailsQuery: ManifestationDetailsQueryService,
               private uploadEvidenceListQuery: UploadEvidenceListQueryService,
               private youTubeEvidenceListQueryService: YouTubeEvidenceListQueryService,
@@ -139,6 +141,10 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   mintNFT() {
+    if (!this.navbarService.isLoggedIn()) {
+      this.alertsService.warning('Connect your account to be able to mint NFTs');
+      return;
+    }
     this.alertsService.modal(ReuseTermsComponent, this.manifestation);
   }
 
@@ -163,5 +169,39 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     this.watchUploadEvidenceSubscription.unsubscribe();
     this.watchYTEvidenceSubscription.unsubscribe();
     this.watchNFTsSubscription.unsubscribe();
+  }
+
+  addUploadableEvidence() {
+    if (!this.navbarService.isLoggedIn()) {
+      this.alertsService.warning('Connect your account to be able to add uploadable evidence');
+      return;
+    }
+    this.addingUploadableEvidence = true;
+  }
+
+  addYouTubeEvidence() {
+    if (!this.navbarService.isLoggedIn()) {
+      this.alertsService.warning('Connect your account to be able to add YouTube evidence');
+      return;
+    }
+    this.addingYouTubeEvidence = true;
+  }
+
+  addStake() {
+    if (!this.navbarService.isLoggedIn()) {
+      this.alertsService.warning('Connect your account to be able to add stake');
+      return;
+    }
+    this.staking = true;
+    this.type = 0;
+  }
+
+  removeStake() {
+    if (!this.navbarService.isLoggedIn()) {
+      this.alertsService.warning('Connect your account to be able to remove your stake');
+      return;
+    }
+    this.staking = true;
+    this.type = 1;
   }
 }

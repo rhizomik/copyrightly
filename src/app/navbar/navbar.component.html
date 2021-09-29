@@ -20,7 +20,8 @@
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/list']"><span class="fas fa-list"></span> List All</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/register']" [class.disabled]="!isLoggedIn"><span class="fas fa-gavel"></span> Register</a>
+             [routerLink]="['/register']" [class.disabled]="!isLoggedIn()">
+            <span class="fas fa-gavel"></span> Register</a>
         </div>
       </li>
       <li class="nav-item dropdown" ngbDropdown>
@@ -37,9 +38,9 @@
         <a class="nav-link" [routerLink]="['/token']">CLY Token</a>
       </li>
     </ul>
-    <app-authentication-navbar-loggedout *ngIf="!isLoggedIn" (login)="isLoggedIn = true">
+    <app-authentication-navbar-loggedout *ngIf="!isLoggedIn()" (login)="login()">
     </app-authentication-navbar-loggedout>
-    <app-authentication-navbar-loggedin *ngIf="isLoggedIn" (logout)="isLoggedIn = false">
+    <app-authentication-navbar-loggedin *ngIf="isLoggedIn()" (logout)="logout()">
     </app-authentication-navbar-loggedin>
   </div>
 </nav>

@@ -43,9 +43,9 @@
             <span class="fas fa-copyright logo-icon"></span>LY Staked</span>
           </div>
           <button type="button" class="btn btn-sm btn-success ml-2" [disabled]="staking || addingEvidence()"
-                  (click)="staking = true; type = 0">Add</button>
+                  (click)="addStake()">Add</button>
           <button type="button" class="btn btn-sm btn-danger ml-2" [disabled]="staking || addingEvidence()"
-                  (click)="staking = true; type = 1">Remove</button>
+                  (click)="removeStake()">Remove</button>
         </div>
       </div>
     </div>
@@ -68,10 +68,10 @@
   <h3>Authorship Evidence</h3>
 
   <button *ngIf="!addingEvidence()" type="button" class="btn btn-success mb-4"
-          (click)="addingUploadableEvidence = true">Add Uploadable Evidence</button>
+          (click)="addUploadableEvidence()">Add Uploadable Evidence</button>
 
   <button *ngIf="!addingEvidence()" type="button" class="btn btn-success mb-4 ml-2"
-          (click)="addingYouTubeEvidence = true">Add YouTube Evidence</button>
+          (click)="addYouTubeEvidence()">Add YouTube Evidence</button>
 
   <app-upload-evidence *ngIf="addingUploadableEvidence" [manifestation]="manifestation" [hidden]="hidUploadEvidence"
                        (cancel)="addingUploadableEvidence = false" (done)="hidUploadEvidence = true"
@@ -101,7 +101,7 @@
   <h3>Reuse Licenses NFTs</h3>
 
   <button [disabled]="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0"
-          type="button" class="btn btn-info m-2" (click)="mintNFT()">Mint NFT</button>
+          type="button" class="btn btn-info mb-4" (click)="mintNFT()">Mint NFT</button>
 
   <div class="card mb-4"
        *ngIf="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0">

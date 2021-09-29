@@ -21,7 +21,11 @@ import { CLYNFTModule } from './clynft/clynft.module';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, AboutComponent, AuthenticationNavbarLoggedOutComponent, AuthenticationNavbarLoggedInComponent
+    AppComponent,
+    NavbarComponent,
+    AboutComponent,
+    AuthenticationNavbarLoggedOutComponent,
+    AuthenticationNavbarLoggedInComponent
   ],
   imports: [
     BrowserModule,
