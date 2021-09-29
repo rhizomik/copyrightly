@@ -1,8 +1,14 @@
 <div class="row mb-3">
-  <div class="col">
+  <div class="col" *ngIf="manifestations && manifestations.length < 20">
     There { manifestations?.length, plural,
-    =1 { is 1 manifestation }
-    other { are {{manifestations?.length}} manifestations} } registered
+    =1 { is 1 authorship claim }
+    other { are {{manifestations?.length}} authorship claims} } registered
+  </div>
+  <div class="col" *ngIf="manifestations && manifestations.length >= 20">
+    Last 20 authorship claims
+  </div>
+  <div class="col" *ngIf="!manifestations">
+    Loading...
   </div>
   <div class="col-1 fa-pull-right">
     <button id="refresh-manifestations" class="btn-sm btn-outline-dark fa-pull-right" (click)="refreshList()">
@@ -15,7 +21,7 @@
 
 <div class="card mb-4" *ngFor="let manifestation of manifestations">
   <div class="card-block row m-1">
-    <h4 class="card-title col-md-12 p-1">{{manifestation?.title}}</h4>
+    <h4 class="card-title col-md-12 p-1"><span class="fas fa-gavel"></span> {{manifestation?.title}}</h4>
     <div class="col-md-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">Hash</h6>
       <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}"
