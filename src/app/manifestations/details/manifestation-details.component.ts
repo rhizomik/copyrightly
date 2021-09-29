@@ -3,8 +3,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AlertsService } from '../../alerts/alerts.service';
 import { Manifestation } from '../manifestation';
 import { Location } from '@angular/common';
-import { ManifestationDetailsQueryService } from '../../query/manifestation-details.query.service';
-import { UploadEvidenceListQueryService } from '../../query/upload-evidence-list.query.service';
+import { ManifestationDetailsQueryService, ManifestationsListResponse } from '../../query/manifestation-details.query.service';
+import { UploadEvidenceListQueryService, UploadEvidenceListResponse } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
 import { TransactionType } from '../../clytoken/clytoken';
 import { ReuseTermsComponent } from './reuse-terms.component';
@@ -36,8 +36,13 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   hidAddStake = false;
   type = TransactionType.purchase;
   nfts: NFT[] = [];
+
+  private watchManifestationQuery: QueryRef<ManifestationsListResponse> | undefined;
+  private watchManifestationSubscription: Subscription = new Subscription();
   private watchNFTsQuery: QueryRef<ManifestationNFTsResponse> | undefined;
   private watchNFTsSubscription: Subscription = new Subscription();
+  private watchUploadEvidenceQuery: QueryRef<UploadEvidenceListResponse> | undefined;
+  private watchUploadEvidenceSubscription: Subscription = new Subscription();
   private watchYTEvidenceQuery: QueryRef<YTEvidenceListResponse> | undefined;
   private watchYTEvidenceSubscription: Subscription = new Subscription();
 
@@ -54,26 +59,29 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => this.loadManifestation(params.get('id')));
+    this.route.paramMap.subscribe((params: ParamMap) =>
+      this.watchManifestationSubscription = this.loadManifestation(params.get('id')));
   }
 
-  loadManifestation(manifestationHash: string | null) {
-    this.manifestationDetailsQuery.fetch({ manifestationHash })
-      .subscribe(({data}) => {
-        const manifestation = new Manifestation(({...data.manifestations[0]}));
-        if (manifestation.title) {
-          this.manifestation = manifestation;
-          this.notFound = false;
-          this.loadUploadableEvidence();
-          this.watchYTEvidenceSubscription = this.loadYouTubeEvidence();
-          this.watchNFTsSubscription = this.loadNFTs();
-        } else if (this.manifestation?.title) {
-          this.notFound = false;
-          this.loadUploadableEvidence();
-          this.watchYTEvidenceSubscription = this.loadYouTubeEvidence();
-          this.watchNFTsSubscription = this.loadNFTs();
-        } else {
+  loadManifestation(manifestationHash: string | null): Subscription {
+    this.watchManifestationQuery = this.manifestationDetailsQuery.watch({ manifestationHash });
+    return this.watchManifestationQuery.valueChanges
+      .pipe( map(response => new Manifestation(({...response.data.manifestations[0]}))))
+      .subscribe((manifestation: Manifestation) => {
+        if (!manifestation.title && !this.manifestation?.title) {
+          this.notFound = true;
           this.alertsService.error('Manifestation not found: ' + manifestationHash, 0);
+          return;
+        } else {
+          if (manifestation.title) {
+            this.manifestation = manifestation;
+          }
+          this.notFound = false;
+          if (!this. watchUploadEvidenceQuery && !this.watchYTEvidenceQuery && !this.watchNFTsQuery) {
+            this.watchUploadEvidenceSubscription = this.loadUploadableEvidence();
+            this.watchYTEvidenceSubscription = this.loadYouTubeEvidence();
+            this.watchNFTsSubscription = this.loadNFTs();
+          }
         }
       }, error => this.alertsService.error(error));
   }
@@ -82,11 +90,13 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
     return this.addingUploadableEvidence || this.addingYouTubeEvidence;
   }
 
-  loadUploadableEvidence(): void {
-    this.uploadEvidenceListQuery.fetch({ evidenced: this.manifestation.hash })
-      .subscribe(({data}) => {
-        this.uploadEvidence = data.uploadEvidences.map((event) => new UploadEvidence({...event}));
-      }, error => this.alertsService.error(error));
+  loadUploadableEvidence(): Subscription {
+    this.watchUploadEvidenceQuery = this.uploadEvidenceListQuery.watch({ evidenced: this.manifestation.hash });
+    return this.watchUploadEvidenceQuery.valueChanges
+      .pipe( map(response =>
+        response.data.uploadEvidences.map((event) => new UploadEvidence({...event}))))
+      .subscribe((uploadEvidence: UploadEvidence[]) => this.uploadEvidence = uploadEvidence,
+          error => this.alertsService.error(error));
   }
 
   loadYouTubeEvidence(): Subscription {
@@ -133,6 +143,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   refresh() {
+    this.watchManifestationQuery?.refetch();
+    this.watchUploadEvidenceQuery?.refetch();
     this.watchYTEvidenceQuery?.refetch();
     this.watchNFTsQuery?.refetch();
   }
@@ -147,6 +159,8 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.watchManifestationSubscription.unsubscribe();
+    this.watchUploadEvidenceSubscription.unsubscribe();
     this.watchYTEvidenceSubscription.unsubscribe();
     this.watchNFTsSubscription.unsubscribe();
   }
