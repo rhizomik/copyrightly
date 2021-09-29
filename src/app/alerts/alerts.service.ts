@@ -13,18 +13,22 @@ export class AlertsService {
 
   error(message: string, timeout?: number): void {
     this.alertsSource.next(new Alert(AlertType.danger, message, timeout));
+    window.scrollTo(0, 0);
   }
 
   info(message: string, timeout?: number): void {
     this.alertsSource.next(new Alert(AlertType.info, message, timeout));
+    window.scrollTo(0, 0);
   }
 
   success(message: string, timeout?: number): void {
     this.alertsSource.next(new Alert(AlertType.success, message, timeout));
+    window.scrollTo(0, 0);
   }
 
   warning(message: string, timeout?: number): void {
     this.alertsSource.next(new Alert(AlertType.warning, message, timeout));
+    window.scrollTo(0, 0);
   }
 
   modal(content: any, data: any): void {
