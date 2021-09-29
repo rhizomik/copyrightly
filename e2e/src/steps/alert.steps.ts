@@ -31,6 +31,7 @@ Then(/^I see modal with text "([^"]*)" and close it$/, async (fragment: string) 
 });
 
 Then(/^I see modal with title "([^"]*)"$/, async (fragment: string) => {
+  browser.sleep(3000);
   expect(await modal.getModalHeader()).to.contain(fragment);
 });
 

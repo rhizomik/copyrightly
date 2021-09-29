@@ -5,7 +5,8 @@ Feature: Upload Evidence
 
   Scenario: Upload evidence for a previously registered authorship claim
     Given I'm on the home page
-    And I click submenu option "Search" in menu "Authorship"
+    And I click connect account
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
@@ -21,7 +22,8 @@ Feature: Upload Evidence
 
   Scenario: Try to upload previously registered evidence
     Given I'm on the home page
-    And I click submenu option "Search" in menu "Authorship"
+    And I click connect account
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button

@@ -6,7 +6,7 @@ Feature: YouTube Evidence
   Scenario: YouTube evidence for an existing video with the manifestation hash in its description
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
@@ -22,7 +22,7 @@ Feature: YouTube Evidence
   Scenario: YouTube evidence for a video without the manifestation hash in its description
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button

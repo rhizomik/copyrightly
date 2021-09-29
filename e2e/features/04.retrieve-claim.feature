@@ -5,7 +5,7 @@ Feature: Retrieve Claim
 
   Scenario: Retrieve details about a claim found using the search feature
     Given I'm on the home page
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     When I click the "Details" button

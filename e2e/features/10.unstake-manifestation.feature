@@ -6,7 +6,7 @@ Feature: Remove Stake from Manifestation
   Scenario: Remove stake from an existing manifestation for an authorship claim
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
@@ -21,7 +21,7 @@ Feature: Remove Stake from Manifestation
   Scenario: Removing 0 stake is not allowed
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
@@ -33,7 +33,7 @@ Feature: Remove Stake from Manifestation
   Scenario: Selling more than the staked amount is not allowed
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button

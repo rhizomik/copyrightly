@@ -6,7 +6,7 @@ Feature: Mint License NFT
   Scenario: Mint an NFT for an authored manifestation with stake and evidence using default terms
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button

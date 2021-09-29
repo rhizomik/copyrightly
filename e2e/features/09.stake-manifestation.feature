@@ -6,7 +6,7 @@ Feature: Add Stake to Manifestation
   Scenario: Add stake to an existing manifestation for an authorship claim
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
@@ -21,7 +21,7 @@ Feature: Add Stake to Manifestation
   Scenario: Adding 0 stake is not allowed
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
@@ -33,7 +33,7 @@ Feature: Add Stake to Manifestation
   Scenario: Purchasing more than the maximum amount of 99999 is not allowed
     Given I'm on the home page
     And I click connect account
-    And I click submenu option "Search" in menu "Authorship"
+    When I click submenu option "Authorship Claim" in menu "Search"
     And I fill the search form with content "QmaY5GUhbc4UTFi5rzgodUhK3ARHmSkw7vGgULniYERyzv"
     And I click the "Search" button
     And I click the "Details" button
