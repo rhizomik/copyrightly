@@ -11,24 +11,24 @@
   <div class="card mb-1">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1">{{manifestation?.title}}</h5>
-      <div class="col-md-6 p-1 mb-1">
+      <div class="col-lg-6 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Hash</h6>
         <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}"
            target="_blank">{{manifestation?.hash}}</a>
       </div>
-      <div class="col-md-2 p-1 mb-1">
+      <div class="col-lg-2 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Creator</h6>
         <a class="card-text" *ngFor="let author of manifestation?.authors" title="{{author}}"
            [routerLink]="['/creators', author]">
           {{author | slice:0:6}}...{{author | slice:-4}}
         </a>
       </div>
-      <div class="col-md-3 p-1 mb-1">
+      <div class="col-lg-3 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Registered</h6>
         <a class="card-text" href="https://rinkeby.etherscan.io/tx/{{manifestation?.transaction}}" target="_blank">
           {{manifestation?.creationTime | date:'medium'}}</a>
       </div>
-      <div class="col-md-1 p-1 mb-1">
+      <div class="col-lg-1 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Evidence</h6>
         <p class="card-text">{{manifestation?.evidenceCount}}</p>
       </div>
@@ -116,15 +116,24 @@
       <div class="card-block row m-1">
         <h5 class="card-title col-md-12 p-1 text-truncate">NFT
           <small title="{{nft?.tokenId}}">{{nft?.tokenId}}</small></h5>
-        <div class="col-md-9 p-1 mb-1">
+        <div class="col-lg-8 p-1 mb-1">
           <h6 class="card-subtitle text-muted">Metadata</h6>
           <a class="card-text" href="https://ipfs.infura.io/{{nft?.tokenUri?.replace('://', '/')}}" target="_blank">
             {{nft?.tokenUri}}</a>
         </div>
-        <div class="col-md-3 p-1 mb-1">
+        <div class="col-lg-3 p-1 mb-1">
           <h6 class="card-subtitle text-muted">Registered</h6>
           <a class="card-text" href="https://rinkeby.etherscan.io/tx/{{nft?.transaction}}" target="_blank">
             {{nft?.creationTime | date:'medium'}}</a>
+        </div>
+        <div class="col-lg-1 p-1 mb-1">
+          <h6 class="card-subtitle text-muted">Trade</h6>
+          <a class="card-text mr-2" target="_blank"
+             href="https://testnets.opensea.io/assets/0x8E8BFc29440Cb8322AC8b50b4C4db6D363e23a97/{{nft?.tokenId}}">
+            <img title="OpenSea" width="20px" src="https://testnets.opensea.io/static/images/logos/opensea.svg"/></a>
+          <a class="card-text mr-2" target="_blank"
+             href="https://rinkeby.rarible.com/token/0x8e8bfc29440cb8322ac8b50b4c4db6d363e23a97:{{nft?.tokenId}}">
+            <img title="Rarible" width="20px" src="https://miro.medium.com/max/218/1*P1W2MjnYUR329IiuFzTcGg.png"/></a>
         </div>
       </div>
     </div>

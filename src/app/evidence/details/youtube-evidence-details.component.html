@@ -2,23 +2,23 @@
 <div class="card mb-4">
   <div class="card-block row m-1">
     <h5 class="card-title col-md-12 p-1">YouTube Evidence {{evidenceIndex}}</h5>
-    <div class="col-md-6 p-1 mb-1">
+    <div class="col-lg-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">YouTube Video</h6>
       <a class="card-text" href="https://www.youtube.com/watch?v={{evidence?.videoId}}" target="_blank">
         {{evidence?.videoId}}</a>
     </div>
-    <div class="col-md-2 p-1 mb-1">
+    <div class="col-lg-2 p-1 mb-1">
       <h6 class="card-subtitle text-muted">By</h6>
       <a class="card-text" title="{{evidence?.evidencer}}" [routerLink]="['/creators', evidence?.evidencer]">
         {{evidence?.evidencer | slice:0:6}}...{{evidence?.evidencer | slice:-4}}
       </a>
     </div>
-    <div class="col-md-4 p-1 mb-1">
-      <h6 class="card-subtitle text-muted">When</h6>
+    <div class="col-lg-4 p-1 mb-1">
+      <h6 class="card-subtitle text-muted">Registered</h6>
       <a class="card-text" href="https://rinkeby.etherscan.io/tx/{{evidence?.transaction}}" target="_blank">
         {{evidence?.creationTime | date:'medium'}}</a>
     </div>
-    <div class="col-md-6 p-1 mb-1">
+    <div class="col-lg-6 p-1 mb-1">
       <h6 class="card-subtitle text-muted">For Manifestation</h6>
       <a class="card-text" [routerLink]="['/manifestations', evidence?.evidenced]">
         {{evidence?.evidenced}}</a>
