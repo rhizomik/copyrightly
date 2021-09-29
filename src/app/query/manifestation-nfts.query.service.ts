@@ -21,6 +21,8 @@ export class ManifestationNFTsQueryService extends Query<ManifestationNFTsRespon
       minter {
         id
       }
+      transaction
+      creationTime
     }
   }`;
 }
