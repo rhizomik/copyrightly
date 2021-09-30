@@ -12,9 +12,6 @@ export class YouTubeEvidence {
     if (values.hasOwnProperty('creationTime')) {
       values.creationTime = new Date(values.creationTime as number * 1000);
     }
-    if (values.hasOwnProperty('creationTime')) {
-      values.creationTime = new Date(values.creationTime as number * 1000);
-    }
     Object.assign(this, values);
   }
 }
