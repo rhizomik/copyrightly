@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-205 -12 1095 696" width="1095" height="696">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-205 -12 1099 696" width="1099" height="696">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="20" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
       <font-face-src>
@@ -22,11 +22,6 @@
         <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
       </g>
     </marker>
-    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
-      <font-face-src>
-        <font-face-name name="HelveticaNeue"/>
-      </font-face-src>
-    </font-face>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_3" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="#a5a5a5">
       <g>
         <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
@@ -52,6 +47,11 @@
         <font-face-name name="HelveticaNeue-Bold"/>
       </font-face-src>
     </font-face>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
     <font-face font-family="Helvetica Neue" font-size="18" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
         <font-face-name name="HelveticaNeue"/>
@@ -67,20 +67,12 @@
         <font-face-name name="HelveticaNeue-Bold"/>
       </font-face-src>
     </font-face>
-    <font-face font-family="Helvetica Neue" font-size="17" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+    <font-face font-family="Helvetica Neue" font-size="10" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
         <font-face-name name="HelveticaNeue"/>
       </font-face-src>
     </font-face>
-    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_4" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="#a5a5a5">
-      <g>
-        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
-      </g>
-    </marker>
   </defs>
-  <metadata> Produced by OmniGraffle 7.8.1
-    <dc:date>2021-09-26 14:49:50 +0000</dc:date>
-  </metadata>
   <g id="Lienzo_1" fill-opacity="1" stroke-dasharray="none" stroke="none" stroke-opacity="1" fill="none">
     <title>Lienzo 1</title>
     <g id="Lienzo_1: Capa 1">
@@ -104,10 +96,6 @@
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="1.424" y="33.448">Identity</tspan>
         </text>
       </g>
-      <g id="Graphic_11">
-        <title>Actor</title>
-        <path d="M 803.9078 158.08639 C 801.126 155.30454 796.61575 155.30454 793.8339 158.08639 C 791.0521 160.86822 791.0521 165.37846 793.8339 168.16029 C 796.61575 170.94214 801.126 170.94214 803.9078 168.16029 C 806.6897 165.37846 806.6897 160.86822 803.9078 158.08639 M 805.9946 180.21934 C 805.9868 179.90569 806.1026 179.58953 806.3419 179.35016 C 806.8056 178.88652 807.5573 178.88652 808.0209 179.35016 C 808.2603 179.58953 808.3761 179.90569 808.3683 180.21934 L 808.3784 180.21934 L 808.3784 193.8724 C 808.3784 196.54364 808.0828 199.2149 810.7431 199.2149 C 813.4033 199.2149 813.1078 196.54364 813.1078 193.8724 L 813.1078 177.8449 L 813.1175 177.8449 C 813.1175 173.91078 809.2905 170.72156 804.5695 170.72156 L 798.8709 170.72156 L 793.1722 170.72156 C 788.4513 170.72156 784.6242 173.91078 784.6242 177.8449 L 784.634 177.8449 L 784.634 193.8724 C 784.634 196.54364 784.3384 199.2149 786.9986 199.2149 C 789.6589 199.2149 789.3633 196.54364 789.3633 193.8724 L 789.3633 180.21934 L 789.3735 180.21934 C 789.3808 179.92547 789.49655 179.6338 789.7208 179.40953 C 790.1845 178.94588 790.9362 178.94588 791.3998 179.40953 C 791.6241 179.6338 791.7399 179.92547 791.7472 180.21934 L 791.7475 180.21934 L 791.7475 180.24783 C 791.7475 180.24862 791.7475 180.24941 791.7475 180.2502 L 791.7475 201.58934 L 791.7602 201.58934 L 791.7602 220.5849 C 791.7602 224.14656 791.376 227.70823 794.8343 227.70823 C 798.2926 227.70823 797.9084 224.14656 797.9084 220.5849 L 797.9084 201.58934 L 797.92155 201.58934 C 797.9137 201.33647 798.0063 201.08107 798.1993 200.88806 C 798.5702 200.51715 799.17155 200.51715 799.5425 200.88806 C 799.7355 201.08107 799.828 201.33647 799.8202 201.58934 L 799.83335 201.58934 L 799.83335 220.5849 C 799.83335 224.14656 799.4491 227.70823 802.9074 227.70823 C 806.3658 227.70823 805.9815 224.14656 805.9815 220.5849 L 805.9815 201.58934 L 805.9942 201.58934 L 805.9942 180.21934 Z" fill="#a5a5a5"/>
-      </g>
       <g id="Line_32">
         <line x1="238.70107" y1="208.24889" x2="164.4894" y2="221.2364" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
@@ -119,15 +107,6 @@
       </g>
       <g id="Line_46">
         <line x1="609.74605" y1="255.13345" x2="609.6904" y2="212.06527" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      </g>
-      <g id="Line_50">
-        <path d="M 456 487.33333 C 456 487.33333 481.4761 535.2686 525 569.04064 C 538.1338 579.2317 551.0473 586.68695 562.6776 592.12955" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
-      </g>
-      <g id="Graphic_55">
-        <rect x="485.3756" y="537.86945" width="37" height="25" fill="white"/>
-        <text transform="translate(485.3756 543.20145)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x=".386" y="11">Events</tspan>
-        </text>
       </g>
       <g id="Line_63">
         <line x1="776.68325" y1="181.92308" x2="688.745" y2="133.52422" marker-end="url(#FilledArrow_Marker_3)" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -356,34 +335,17 @@
         </text>
       </g>
       <g id="Line_106">
-        <line x1="728.0494" y1="554.3575" x2="638.8758" y2="554.3575" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="732.0494" y1="554.3575" x2="638.8758" y2="554.3575" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_107">
         <line x1="464.5936" y1="81.71012" x2="566.26535" y2="139.86274" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_108">
-        <path d="M 746.9494 514.0921 L 850.7923 514.0921 C 855.7629 514.0921 859.7923 518.12155 859.7923 523.0921 L 859.7923 585.6229 C 859.7923 590.5935 855.7629 594.6229 850.7923 594.6229 L 746.9494 594.6229 C 741.9789 594.6229 737.9494 590.5935 737.9494 585.6229 L 737.9494 523.0921 C 737.9494 518.12155 741.9789 514.0921 746.9494 514.0921 Z" fill="white"/>
-        <path d="M 746.9494 514.0921 L 850.7923 514.0921 C 855.7629 514.0921 859.7923 518.12155 859.7923 523.0921 L 859.7923 585.6229 C 859.7923 590.5935 855.7629 594.6229 850.7923 594.6229 L 746.9494 594.6229 C 741.9789 594.6229 737.9494 590.5935 737.9494 585.6229 L 737.9494 523.0921 C 737.9494 518.12155 741.9789 514.0921 746.9494 514.0921 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(742.9494 519.0921)" fill="#666">
+        <path d="M 750.9494 514.0921 L 854.7923 514.0921 C 859.7629 514.0921 863.7923 518.12155 863.7923 523.0921 L 863.7923 585.6229 C 863.7923 590.5935 859.7629 594.6229 854.7923 594.6229 L 750.9494 594.6229 C 745.9789 594.6229 741.9494 590.5935 741.9494 585.6229 L 741.9494 523.0921 C 741.9494 518.12155 745.9789 514.0921 750.9494 514.0921 Z" fill="white"/>
+        <path d="M 750.9494 514.0921 L 854.7923 514.0921 C 859.7629 514.0921 863.7923 518.12155 863.7923 523.0921 L 863.7923 585.6229 C 863.7923 590.5935 859.7629 594.6229 854.7923 594.6229 L 750.9494 594.6229 C 745.9789 594.6229 741.9494 590.5935 741.9494 585.6229 L 741.9494 523.0921 C 741.9494 518.12155 745.9789 514.0921 750.9494 514.0921 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(746.9494 519.0921)" fill="#666">
           <tspan font-family="Helvetica Neue" font-size="14" font-weight="700" fill="#666" x="36.13089" y="14">Other Apps</tspan>
         </text>
-      </g>
-      <g id="Group_115">
-        <g id="Graphic_109">
-          <path d="M 718 265.03344 L 879.7417 265.03344 C 884.7123 265.03344 888.7417 269.06288 888.7417 274.03344 L 888.7417 435.7752 C 888.7417 440.74574 884.7123 444.7752 879.7417 444.7752 L 718 444.7752 C 713.0294 444.7752 709 440.74574 709 435.7752 L 709 274.03344 C 709 269.06288 713.0294 265.03344 718 265.03344 Z" fill="white"/>
-          <path d="M 718 265.03344 L 879.7417 265.03344 C 884.7123 265.03344 888.7417 269.06288 888.7417 274.03344 L 888.7417 435.7752 C 888.7417 440.74574 884.7123 444.7752 879.7417 444.7752 L 718 444.7752 C 713.0294 444.7752 709 440.74574 709 435.7752 L 709 274.03344 C 709 269.06288 713.0294 265.03344 718 265.03344 Z" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(714 270.03344)" fill="#a5a5a5">
-            <tspan font-family="Helvetica Neue" font-size="20" font-weight="700" fill="#a5a5a5" x="42.001736" y="20">SemanticApp</tspan>
-          </text>
-        </g>
-        <g id="Graphic_110">
-          <path d="M 843.8709 348.31935 L 843.8709 411.31935 C 843.8709 418.77135 823.7109 424.81935 798.8709 424.81935 C 774.0309 424.81935 753.8709 418.77135 753.8709 411.31935 L 753.8709 348.31935 C 753.8709 340.86735 774.0309 334.81935 798.8709 334.81935 C 823.7109 334.81935 843.8709 340.86735 843.8709 348.31935 Z" fill="white"/>
-          <path d="M 843.8709 348.31935 L 843.8709 411.31935 C 843.8709 418.77135 823.7109 424.81935 798.8709 424.81935 C 774.0309 424.81935 753.8709 418.77135 753.8709 411.31935 L 753.8709 348.31935 C 753.8709 340.86735 774.0309 334.81935 798.8709 334.81935 C 823.7109 334.81935 843.8709 340.86735 843.8709 348.31935 Z" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(762.8709 359.34335)" fill="#a5a5a5">
-            <tspan font-family="Helvetica Neue" font-size="17" font-weight="400" fill="#a5a5a5" x=".2575" y="16">Semantic </tspan>
-            <tspan font-family="Helvetica Neue" font-size="17" font-weight="400" fill="#a5a5a5" x="18.2095" y="36.476">Data</tspan>
-          </text>
-        </g>
       </g>
       <g id="Graphic_111">
         <ellipse cx="337.37087" cy="349.32703" rx="100.371031901401" ry="35.6250597377596" fill="white"/>
@@ -391,33 +353,14 @@
         <text transform="translate(262.07417 331.39898)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="400" fill="black" x="34.400697" y="13">Smart Contract</tspan>
           <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" y="13"> </tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="10.840697" y="32.392">CopyrightLY NFT</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="27.888697" y="32.392">License NFT</tspan>
         </text>
       </g>
       <g id="Line_112">
         <line x1="270.86195" y1="315.69603" x2="163.57234" y2="261.4438" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
-      <g id="Line_114">
-        <path d="M 456 487.33333 C 456 487.33333 571.863 517.7926 669 487.33333 C 712.7487 473.61506 743.43365 450.4452 763.94805 429.12005" marker-end="url(#FilledArrow_Marker_3)" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
-      </g>
       <g id="Line_116">
         <line x1="447.4743" y1="351.5805" x2="510.1062" y2="352.86237" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      </g>
-      <g id="Graphic_117">
-        <ellipse cx="830.099" cy="437.77906" rx="29.2467133999709" ry="26.7500427438757" fill="white"/>
-        <ellipse cx="830.099" cy="437.77906" rx="29.2467133999709" ry="26.7500427438757" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(806.7016 430.09706)" fill="#a5a5a5">
-          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="#a5a5a5" x="13.289833" y="12">API</tspan>
-        </text>
-      </g>
-      <g id="Line_118">
-        <line x1="830.099" y1="502.3901" x2="830.099" y2="474.4291" marker-end="url(#FilledArrow_Marker_3)" marker-start="url(#FilledArrow_Marker_4)" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      </g>
-      <g id="Graphic_119">
-        <rect x="500.0204" y="487.2901" width="78" height="25" fill="white"/>
-        <text transform="translate(500.0204 492.6221)" fill="#a5a5a5">
-          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#a5a5a5" x=".216" y="11">Events &amp; NFTs</tspan>
-        </text>
       </g>
       <g id="Graphic_127">
         <rect x="792.5629" y="21" width="70" height="39.375" id="path_5"/>
@@ -446,15 +389,6 @@
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image5.png" width="96" height="54.24" opacity=".2491987" transform="matrix(.6898128 0 0 .6867605 794.4518 60.42582)"/>
         </g>
       </g>
-      <g id="Graphic_130">
-        <ellipse cx="337.37087" cy="269.75" rx="100.371031901401" ry="35.6250597377596" fill="white"/>
-        <ellipse cx="337.37087" cy="269.75" rx="100.371031901401" ry="35.6250597377596" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(262.07417 251.82195)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="400" fill="black" x="34.400697" y="13">Smart Contract</tspan>
-          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" y="13"> </tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="31.768697" y="32.392">Complaints</tspan>
-        </text>
-      </g>
       <g id="Line_128">
         <line x1="422.15713" y1="296.2447" x2="510.55475" y2="323.8679" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
@@ -473,44 +407,147 @@
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image8.png" width="96" height="96.48" opacity=".2489488" transform="matrix(.5729167 0 0 .57196656 731 24.31519)"/>
         </g>
       </g>
-      <g id="Graphic_140">
-        <rect x="715.91134" y="381" width="48" height="48" id="path_9"/>
+      <g id="Graphic_141">
+        <rect x="-195.5" y="449.79603" width="107.75" height="60.609375" id="path_9"/>
         <clipPath id="clip_path_9">
           <use xl:href="#path_9"/>
         </clipPath>
         <g clip-path="url(#clip_path_9)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image4.png" width="96" height="96" opacity=".6537139" transform="translate(715.91134 381) scale(.5)"/>
-        </g>
-      </g>
-      <g id="Graphic_141">
-        <rect x="-195.5" y="449.79603" width="107.75" height="60.609375" id="path_10"/>
-        <clipPath id="clip_path_10">
-          <use xl:href="#path_10"/>
-        </clipPath>
-        <g clip-path="url(#clip_path_10)">
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image2.png" width="96" height="54.24" opacity="1" transform="matrix(1.1223958 0 0 1.1174295 -195.5 449.79603)"/>
         </g>
       </g>
       <g id="Graphic_142">
-        <rect x="571.75034" y="569.04064" width="75.75758" height="75" id="path_11"/>
-        <clipPath id="clip_path_11">
-          <use xl:href="#path_11"/>
+        <rect x="571.75034" y="569.04064" width="75.75758" height="75" id="path_10"/>
+        <clipPath id="clip_path_10">
+          <use xl:href="#path_10"/>
         </clipPath>
-        <g clip-path="url(#clip_path_11)">
+        <g clip-path="url(#clip_path_10)">
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image13.png" width="96" height="95" transform="matrix(.7891414 0 0 .7894737 571.75034 569.04064)"/>
         </g>
       </g>
       <g id="Graphic_149">
-        <rect x="744.9843" y="542.3573" width="107.7732" height="43.40981" id="path_12"/>
-        <clipPath id="clip_path_12">
-          <use xl:href="#path_12"/>
+        <rect x="747.6509" y="542.3573" width="107.7732" height="43.40981" id="path_11"/>
+        <clipPath id="clip_path_11">
+          <use xl:href="#path_11"/>
         </clipPath>
-        <g clip-path="url(#clip_path_12)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image16.png" width="96" height="38.88" transform="matrix(1.1226375 0 0 1.1165075 744.9843 542.3573)"/>
+        <g clip-path="url(#clip_path_11)">
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image16.png" width="96" height="38.88" transform="matrix(1.1226375 0 0 1.1165075 747.6509 542.3573)"/>
         </g>
       </g>
       <g id="Line_150">
         <line x1="610.1967" y1="434.3999" x2="609.7557" y2="527.60775" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_157">
+        <path d="M 786.5629 155.15844 L 868.5629 155.15844 C 873.5334 155.15844 877.5629 159.18788 877.5629 164.15844 L 877.5629 201.34177 C 877.5629 206.31234 873.5334 210.34177 868.5629 210.34177 L 786.5629 210.34177 C 781.5923 210.34177 777.5629 206.31234 777.5629 201.34177 L 777.5629 164.15844 C 777.5629 159.18788 781.5923 155.15844 786.5629 155.15844 Z" fill="white"/>
+        <path d="M 786.5629 155.15844 L 868.5629 155.15844 C 873.5334 155.15844 877.5629 159.18788 877.5629 164.15844 L 877.5629 201.34177 C 877.5629 206.31234 873.5334 210.34177 868.5629 210.34177 L 786.5629 210.34177 C 781.5923 210.34177 777.5629 206.31234 777.5629 201.34177 L 777.5629 164.15844 C 777.5629 159.18788 781.5923 155.15844 786.5629 155.15844 Z" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_156">
+        <title>Actor</title>
+        <path d="M 801.0111 165.66958 C 799.3129 163.9714 796.5596 163.9714 794.86145 165.66958 C 793.1633 167.36775 793.1633 170.12104 794.86145 171.81921 C 796.5596 173.5174 799.3129 173.5174 801.0111 171.81921 C 802.7093 170.12104 802.7093 167.36775 801.0111 165.66958 M 802.2849 179.18068 C 802.2802 178.98921 802.3509 178.79622 802.497 178.6501 C 802.78 178.36707 803.2389 178.36707 803.5219 178.6501 C 803.6681 178.79622 803.7387 178.98921 803.734 179.18068 L 803.7402 179.18068 L 803.7402 187.51522 C 803.7402 189.1459 803.5597 190.77656 805.1837 190.77656 C 806.80765 190.77656 806.6272 189.1459 806.6272 187.51522 L 806.6272 177.7312 L 806.6332 177.7312 C 806.6332 175.32962 804.2969 173.38275 801.415 173.38275 L 797.9363 173.38275 L 794.4575 173.38275 C 791.5756 173.38275 789.2394 175.32962 789.2394 177.7312 L 789.2453 177.7312 L 789.2453 187.51522 C 789.2453 189.1459 789.0649 190.77656 790.6888 190.77656 C 792.3128 190.77656 792.1324 189.1459 792.1324 187.51522 L 792.1324 179.18068 L 792.1386 179.18068 C 792.143 179.0013 792.2137 178.82324 792.3506 178.68633 C 792.6336 178.4033 793.0925 178.4033 793.3755 178.68633 C 793.51245 178.82324 793.5831 179.0013 793.5876 179.18068 L 793.5878 179.18068 L 793.5878 179.19808 C 793.5878 179.19856 793.5878 179.19904 793.5878 179.19953 L 793.5878 192.22604 L 793.5956 192.22604 L 793.5956 203.82192 C 793.5956 205.99615 793.361 208.17037 795.4721 208.17037 C 797.5833 208.17037 797.3487 205.99615 797.3487 203.82192 L 797.3487 192.22604 L 797.3568 192.22604 C 797.352 192.07168 797.4085 191.91577 797.5263 191.79795 C 797.7527 191.57153 798.1198 191.57153 798.3462 191.79795 C 798.4641 191.91577 798.5206 192.07168 798.5158 192.22604 L 798.5238 192.22604 L 798.5238 203.82192 C 798.5238 205.99615 798.2892 208.17037 800.4004 208.17037 C 802.5115 208.17037 802.277 205.99615 802.277 203.82192 L 802.277 192.22604 L 802.2847 192.22604 L 802.2847 179.18068 Z" fill="#a5a5a5"/>
+      </g>
+      <g id="Graphic_155">
+        <rect x="786.6622" y="163.0626" width="22.548157" height="25" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_154">
+        <rect x="785.3289" y="188.25479" width="87.52014" height="21" fill="white"/>
+        <text transform="translate(785.3289 192.61479)" fill="#a5a5a5">
+          <tspan font-family="Helvetica Neue" font-size="10" font-weight="400" fill="#a5a5a5" x="0" y="10">John Doe</tspan>
+        </text>
+      </g>
+      <g id="Line_153">
+        <line x1="817.6596" y1="170.15844" x2="865.6596" y2="170.15844" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,9.0,1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Line_152">
+        <line x1="817.9096" y1="179.74177" x2="865.9096" y2="179.74177" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,9.0,1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Line_151">
+        <line x1="818.1596" y1="189.3251" x2="866.1596" y2="189.3251" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,9.0,1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_160">
+        <path d="M 722.18325 265.03344 L 883.925 265.03344 C 888.8956 265.03344 892.925 269.06288 892.925 274.03344 L 892.925 435.7752 C 892.925 440.74574 888.8956 444.7752 883.925 444.7752 L 722.18325 444.7752 C 717.2127 444.7752 713.18325 440.74574 713.18325 435.7752 L 713.18325 274.03344 C 713.18325 269.06288 717.2127 265.03344 722.18325 265.03344 Z" fill="white"/>
+        <path d="M 722.18325 265.03344 L 883.925 265.03344 C 888.8956 265.03344 892.925 269.06288 892.925 274.03344 L 892.925 435.7752 C 892.925 440.74574 888.8956 444.7752 883.925 444.7752 L 722.18325 444.7752 C 717.2127 444.7752 713.18325 440.74574 713.18325 435.7752 L 713.18325 274.03344 C 713.18325 269.06288 717.2127 265.03344 722.18325 265.03344 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(718.18325 270.03344)" fill="#a5a5a5">
+          <tspan font-family="Helvetica Neue" font-size="20" font-weight="700" fill="#a5a5a5" x="40.881736" y="20">Existing NFTs </tspan>
+          <tspan font-family="Helvetica Neue" font-size="20" font-weight="700" fill="#a5a5a5" x="39.781736" y="44.58014">Marketplaces</tspan>
+        </text>
+      </g>
+      <g id="Graphic_159">
+        <rect x="737.18325" y="344.15572" width="87.52014" height="55.183333" fill="white"/>
+        <rect x="737.18325" y="344.15572" width="87.52014" height="55.183333" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_158">
+        <rect x="784.5166" y="352.5537" width="35" height="35" id="path_12"/>
+        <clipPath id="clip_path_12">
+          <use xl:href="#path_12"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_12)">
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image4.png" width="96" height="96" opacity="1" transform="translate(784.5166 352.5537) scale(.36458333)"/>
+        </g>
+      </g>
+      <g id="Line_118">
+        <line x1="802.6383" y1="504.1922" x2="802.0977" y2="387.5537" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_161">
+        <path d="M 456 500.7612 C 472.27786 519.76576 488.9246 537.9114 505 553.41934 C 528.79023 576.3698 547.87075 590.207 562.87985 598.3722" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_162">
+        <path d="M 423.66667 371.33333 C 423.66667 371.33333 509.11507 483.21603 610.3333 483.33333 C 673.7621 483.40684 724.6927 439.5691 753.8811 406.82546" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_163">
+        <rect x="485.00736" y="544.71224" width="49" height="26" fill="white"/>
+        <text transform="translate(490.00736 550.03024)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".3575" y="12">events</tspan>
+        </text>
+      </g>
+      <g id="Graphic_164">
+        <rect x="176.392" y="270.87743" width="69" height="26" fill="white"/>
+        <text transform="translate(181.392 276.19543)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".1915" y="12">JSON+LD</tspan>
+        </text>
+      </g>
+      <g id="Graphic_130">
+        <ellipse cx="337.37087" cy="269.75" rx="100.371031901401" ry="35.6250597377596" fill="white"/>
+        <ellipse cx="337.37087" cy="269.75" rx="100.371031901401" ry="35.6250597377596" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(262.07417 251.82195)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-style="italic" font-weight="400" fill="black" x="34.400697" y="13">Smart Contract</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" y="13"> </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="31.768697" y="32.392">Complaints</tspan>
+        </text>
+      </g>
+      <g id="Graphic_170">
+        <rect x="758.902" y="458.278" width="69" height="26" fill="white"/>
+        <text transform="translate(763.902 463.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".1915" y="12">JSON+LD</tspan>
+        </text>
+      </g>
+      <g id="Line_171">
+        <path d="M 834.2735 350.7613 C 841.4424 349.2086 847.9638 348.69263 852.7575 350 C 873.1028 355.5488 873.1028 385.1722 852.7575 391.33333 C 845.8922 393.41234 835.483 391.85813 824.7034 388.88595" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_172">
+        <rect x="847.4938" y="356.41255" width="41" height="26" fill="white"/>
+        <text transform="translate(852.4938 361.73056)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".4525" y="12">trade</tspan>
+        </text>
+      </g>
+      <g id="Group_173">
+        <g id="Graphic_177">
+          <path d="M 760.7877 352.42988 C 759.4903 353.18523 758.36015 353.84256 758.2794 353.8887 C 758.0315 354.01554 757.3684 354.40187 754.4162 356.1144 C 752.8478 357.02543 750.2704 358.51307 748.6905 359.4241 L 745.8247 361.08474 L 745.8363 371.1523 L 745.8536 381.2256 L 746.5455 381.6177 C 746.92605 381.8368 747.4046 382.11357 747.6122 382.23465 C 747.8198 382.35574 749.2209 383.163 750.7259 384.03366 C 754.9005 386.4439 759.7382 389.2404 761.5488 390.28984 C 762.4656 390.8203 763.2382 391.2297 763.319 391.2297 C 763.3939 391.2297 763.5842 391.15475 763.7399 391.0625 C 763.8898 390.97024 765.4063 390.0938 767.1015 389.11357 C 772.0661 386.24207 776.7251 383.5493 778.8527 382.32114 L 780.8247 381.17946 L 780.8132 371.1119 L 780.7959 361.05014 L 780.4788 360.8714 C 780.3058 360.77337 778.9046 359.96035 777.3651 359.0724 C 775.82555 358.1844 774.4763 357.40022 774.3667 357.34256 C 773.8017 357.02543 771.7951 355.8607 771.7432 355.8261 C 771.6855 355.77996 768.4335 353.906 767.9664 353.6465 C 767.8223 353.5658 766.7555 352.94882 765.585 352.26843 C 764.1723 351.44965 763.417 351.04025 763.3074 351.046 C 763.2152 351.046 762.2465 351.5765 760.7877 352.42988 Z M 765.2852 354.47106 C 770.169 357.29067 773.4557 359.1877 775.9697 360.64075 L 778.7489 362.2437 L 778.7489 371.1292 L 778.7489 380.0147 L 777.6938 380.6144 C 777.11715 380.9488 774.361 382.54025 771.5702 384.15475 C 763.09985 389.06167 763.44005 388.8714 763.2959 388.8195 C 763.2498 388.80796 762.7539 388.52543 762.20035 388.20253 C 760.632 387.27996 755.7135 384.4373 752.6287 382.6671 C 751.0891 381.7849 749.5842 380.92 749.2844 380.747 C 748.9845 380.56826 748.6213 380.36645 748.48865 380.2915 C 748.3503 380.21653 748.20035 380.1185 748.1542 380.0724 C 748.085 380.0032 748.0735 378.6943 748.085 371.1004 L 748.1023 362.2091 L 748.5348 361.96694 C 749.2325 361.5806 752.7036 359.58556 756.0307 357.6597 C 757.7259 356.6737 759.97465 355.37633 761.0183 354.7709 C 762.0677 354.16546 763.0249 353.6119 763.15175 353.53696 C 763.2786 353.46777 763.42275 353.42164 763.4689 353.43894 C 763.515 353.45623 764.3338 353.9175 765.2852 354.47106 Z" fill="black"/>
+        </g>
+        <g id="Graphic_176">
+          <path d="M 762.8519 355.90105 C 762.5117 356.0971 761.3527 356.7775 760.286 357.41175 L 758.3371 358.5592 L 758.3371 371.1638 L 758.3371 383.76266 L 759.3173 384.39116 C 759.8593 384.73712 760.3206 385.00236 760.3437 384.9793 C 760.3667 384.95623 760.3898 382.1078 760.4013 378.65393 L 760.4244 372.3747 L 764.2819 372.3747 L 768.1394 372.3747 L 768.1394 371.10615 L 768.1394 369.8376 L 764.2761 369.8376 L 760.4129 369.8376 L 760.4244 364.8096 L 760.4417 359.78737 L 761.9524 358.95706 L 763.45735 358.12675 L 764.8354 358.94553 C 767.8626 360.74454 768.5315 361.13086 768.5891 361.13086 C 768.6641 361.13086 769.8519 359.30302 769.8058 359.26266 C 769.7654 359.22806 765.32555 356.61604 764.3799 356.06826 L 763.47465 355.54355 Z" fill="black"/>
+        </g>
+        <g id="Graphic_175">
+          <path d="M 755.2984 360.6523 L 754.2432 361.26925 L 754.2432 366.3434 C 754.2432 369.2956 754.2201 371.39446 754.1913 371.35986 C 754.1509 371.31373 751.9137 363.70253 751.833 363.3335 C 751.8214 363.2643 751.7811 363.20665 751.7465 363.20665 C 751.7119 363.20665 751.2852 363.43152 750.8008 363.7083 L 749.9186 364.20994 L 749.9186 370.0971 C 749.9186 373.3376 749.9013 376.64734 749.884 377.4546 L 749.8437 378.91917 L 750.7201 379.4266 C 751.2045 379.7091 751.6196 379.92246 751.6369 379.8994 C 751.66 379.87633 751.6888 377.59297 751.7061 374.81373 L 751.7349 369.76843 L 752.7382 373.56826 C 754.8486 381.55426 754.912 381.7849 755.0504 381.8887 C 755.3618 382.1251 756.3882 382.70747 756.42275 382.6671 C 756.4458 382.64404 756.4689 378.7462 756.4804 374.0007 C 756.4977 365.6803 756.45735 360.0353 756.3824 360.0353 C 756.3651 360.0353 755.875 360.31785 755.2984 360.6523 Z" fill="black"/>
+        </g>
+        <g id="Graphic_174">
+          <path d="M 770.7226 360.13334 C 770.5323 360.3467 769.702 361.7363 769.7481 361.76513 C 769.7712 361.78243 770.3939 362.1803 771.1262 362.6531 L 772.4639 363.51225 L 772.4639 371.1004 C 772.4639 375.275 772.4812 379.4093 772.5043 380.2915 C 772.5389 381.72147 772.5504 381.8887 772.6312 381.85986 C 772.68305 381.84256 773.1559 381.57156 773.6863 381.26595 L 774.655 380.70665 L 774.6608 379.49577 C 774.6666 378.8269 774.6896 375.2577 774.7069 371.5559 L 774.7415 364.82114 L 776.14845 365.77254 C 776.9269 366.29726 777.5784 366.72394 777.6073 366.72394 C 777.6303 366.72394 777.6534 366.1704 777.6534 365.49577 L 777.6534 364.27337 L 777.4919 364.1811 C 777.4055 364.1292 775.889 363.1778 774.1246 362.06497 C 772.36015 360.94635 770.8898 360.0353 770.861 360.0353 C 770.8321 360.0353 770.7687 360.08144 770.7226 360.13334 Z" fill="black"/>
+        </g>
+      </g>
+      <g id="Graphic_179">
+        <rect x="533.6287" y="458.278" width="35" height="26" fill="white"/>
+        <text transform="translate(538.6287 463.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".345" y="12">NFT</tspan>
+        </text>
       </g>
     </g>
   </g>
