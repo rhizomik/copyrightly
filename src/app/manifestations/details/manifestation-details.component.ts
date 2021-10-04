@@ -8,11 +8,11 @@ import { ManifestationDetailsQueryService, ManifestationsListResponse } from '..
 import { UploadEvidenceListQueryService, UploadEvidenceListResponse } from '../../query/upload-evidence-list.query.service';
 import { UploadEvidence } from '../../evidence/uploadEvidence';
 import { TransactionType } from '../../clytoken/clytoken';
-import { ReuseTermsComponent } from './reuse-terms.component';
 import { YouTubeEvidence } from '../../evidence/youtubeEvidence';
 import { YouTubeEvidenceListQueryService, YTEvidenceListResponse } from '../../query/youtube-evidence-list.query.service';
 import { VerificationRequest } from '../../evidence/verification-request';
 import { ManifestationNFTsQueryService, ManifestationNFTsResponse } from '../../query/manifestation-nfts.query.service';
+import { LicenseTermsComponent } from '../../clynft/license-terms.component';
 import { NFT } from '../../clynft/nft';
 import { map } from 'rxjs/operators';
 import { QueryRef } from 'apollo-angular';
@@ -145,7 +145,7 @@ export class ManifestationDetailsComponent implements OnInit, OnDestroy {
       this.alertsService.warning('Connect your account to be able to mint NFTs');
       return;
     }
-    this.alertsService.modal(ReuseTermsComponent, this.manifestation);
+    this.alertsService.modal(LicenseTermsComponent, this.manifestation);
   }
 
   refresh() {

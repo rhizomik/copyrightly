@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Manifestation } from '../manifestation';
-import { Web3Service } from '../../util/web3.service';
-import { IpfsService } from '../../util/ipfs.service';
-import { AlertsService } from '../../alerts/alerts.service';
-import { AuthenticationService } from '../../navbar/authentication.service';
-import { CLYNFTContractService } from '../../clynft/clynft-contract.service';
-import { NFTMintEventComponent } from '../../clynft/nftmint-event.component';
+import { formatDate } from '@angular/common';
 import Web3 from 'web3';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Manifestation } from '../manifestations/manifestation';
+import { Web3Service } from '../util/web3.service';
+import { IpfsService } from '../util/ipfs.service';
+import { AlertsService } from '../alerts/alerts.service';
+import { AuthenticationService } from '../navbar/authentication.service';
+import { CLYNFTContractService } from './clynft-contract.service';
+import { NFTMintEventComponent } from './nftmint-event.component';
 
 @Component({
   selector: 'app-reuse-terms-modal-content',
@@ -77,10 +78,11 @@ import Web3 from 'web3';
   `,
   styles: ['.modal-body { font-size: smaller; }']
 })
-export class ReuseTermsComponent implements OnInit {
+export class LicenseTermsComponent implements OnInit {
   @Input() data: Manifestation = new Manifestation({});
   account = '';
   tokenId = '';
+  networkId = 4;
   who = 'NFT owner';
   action = 'Make Available';
   with = 'World Wide Web';
@@ -97,13 +99,14 @@ export class ReuseTermsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.web3Service.networkId.subscribe((networkId: number) => this.networkId = networkId);
     this.authenticationService.getSelectedAccount().subscribe((account: string) => {
         this.account = account;
         this.clynftContractService.getAmountMinted(account).subscribe((amountMinted: string) => {
           const packaged = Web3.utils.encodePacked(account, amountMinted);
           if (packaged) {
             this.tokenId = Web3.utils.toBN(Web3.utils.keccak256(packaged)).toString();
-            console.log('TokenId:', this.tokenId);
+            console.log(this.metadata());
           }
         });
       } );
@@ -133,6 +136,8 @@ export class ReuseTermsComponent implements OnInit {
   }
 
   private metadata(): string {
+    const tokenIID = `did:eip155:${this.networkId}:erc721:${this.clynftContractService.address}:${this.tokenId}`;
+    const accountDID = `did:ethr:0x${this.networkId}:${this.data.authors[0]}`;
     return `
 {
   "@context": {
@@ -142,29 +147,31 @@ export class ReuseTermsComponent implements OnInit {
     "animation_url": "https://opensea.io/metadata/animation_url",
     "youtube_url": "https://opensea.io/metadata/youtube_url"
   },
-  "@id": "https://rinkeby.etherscan.io/token/${this.clynftContractService.address}?a=${this.tokenId}",
+  "@id": "${tokenIID}",
   "@type": "cro:Agree",
   "name": "Reuse license for '${this.data.title}'",
-  "description": "Grants the owner permission to use the associated content under the specified conditions",
+  "description": "Grants the owner permission to make ${this.data.hash} available on the World Wide Web from ${
+      formatDate(this.when, 'medium', 'en')} to ${formatDate(this.until, 'medium', 'en')}",
   "external_link": "https://copyrightly.rhizomik.net/manifestations/${this.data.hash}",
   "image": "ipfs://${this.data.hash}",
   "animation_url": "ipfs://${this.data.hash}",
   "cro:when": "${this.when.toISOString()}",
   "cro:who": {
-    "@id": "did:ethr:${this.data.authors[0]}",
+    "@id": "${accountDID}",
     "url": "https://copyrightly.rhizomik.net/creators/${this.data.authors[0]}" },
   "cro:what": {
     "@type": "cro:MakeAvailable",
     "startTime": "${this.when.toISOString()}",
     "endTime": "${this.until.toISOString()}",
     "cro:who": {
-      "owns": "https://rinkeby.etherscan.io/token/${this.clynftContractService.address}?a=${this.tokenId}" },
+      "owns": "${tokenIID}" },
     "cro:what": {
       "@id": "ipfs://${this.data.hash}",
       "@type": "cro:Manifestation",
       "name": "${this.data.title}",
       "url": "https://copyrightly.rhizomik.net/manifestations/${this.data.hash}"
-    }
+    },
+    "cro:with": { "@id": "https://dbpedia.org/resource/World_Wide_Web" }
   }
 }`;
   }

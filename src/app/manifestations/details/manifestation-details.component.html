@@ -73,8 +73,8 @@
   <h3>Authorship Evidence</h3>
 
   <div class="row">
-    <p class="col">Evidence supporting the authorship claim. Any content uploaded to decentralised storage or
-      existing YouTube video.</p>
+    <p class="col">Evidence supporting the authorship claim. Any content <b>uploaded</b> to decentralised storage or
+      existing <b>YouTube</b> video.</p>
   </div>
 
   <button *ngIf="!addingEvidence()" type="button" class="btn btn-success mb-4"
@@ -111,7 +111,7 @@
   <h3>Reuse License NFTs</h3>
 
   <div class="row">
-    <p class="col">License your claimed rights as tradeable NFTs pointing to the reuse terms.</p>
+    <p class="col">License your claimed rights as <b>tradeable</b> NFTs pointing to the <b>reuse terms</b>.</p>
   </div>
 
   <button [disabled]="manifestation?.getStaked() == '0' || uploadEvidence.length + youTubeEvidence.length == 0"
