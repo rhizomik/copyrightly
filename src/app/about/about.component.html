@@ -2,7 +2,7 @@
   <h2>Rhizomik Copyright<b>LY</b></h2>
   <p>Decentralized Application (ÐApp) for Copyright Management</p>
   <ngb-alert [dismissible]="false" [type]="'info'">
-    <strong>Announcement:</strong> Many CopyrightLY's features already available from the top menu!
+    <strong>Announcement:</strong> CopyrightLY is already available, explore it from the top menu!
     <div class="small">Smart contracts are deployed on <b>Rinkeby</b> testnet. A browser providing an
       <b>Ethereum wallet</b>, or an iOS or Android wallet application, is required. You can try
       <a href="https://metamask.io/download" target="_blank">MetaMask</a>.
@@ -11,27 +11,45 @@
   <h3>Features</h3>
   <p>
     CopyrightLY is a decentralised application that leverages <b>blockchain</b> and <b>semantic web</b> technologies
-    to facilitate copyright management, for instance:</p>
+    to facilitate copyright management:</p>
   <ul>
-    <li>Integrated into existing <b>social media</b> platforms, it allows content creators to explore ways to
-      <b>monetize</b> their media beyond those made possible by those platforms.</li>
-    <li>Provides potential reusers ways of checking the <b>authorship</b> of content they are willing to <b>reuse</b>,
-      and the <b>conditions</b> under which it is available.
-    <li>Settles a <b>consensus-based</b> layer of <b>authorship</b> claims to <b>anchor</b> copyright transactions
-      like decentralised content markets or Non-Fungible Tokens (<b>NFTs</b>)</li>
+    <li>Claim <b>content authorship</b> and provide supporting <b>evidence</b>, including existing social media like YouTube videos.</li>
+    <li>Token <b>curated copyright claims</b> based on CLY token staking, which is minted using a bonding curve.</li>
+    <li><b>License</b> content using <b>NFTs</b>, with semantic metadata stating the <b>reuse terms</b> being transferred.</li>
+    <li><b>Trade NFTs</b> on existing marketplaces (OpenSea, Rarible...), purchasers can <b>trace copyright</b> to authorship claims.</li>
   </ul>
+  <h3>Scenario</h3>
+  <ol>
+    <li>A YouTube video creator willing to explore alternative ways to monetize content.</li>
+    <li>Uploads video file and registers content hash on-chain making an authorship claim.</li>
+    <li>Links authorship claim to YouTube video proofing ownership of the social media platform version.</li>
+    <li>Stakes CLY token on authorship claim to show commitment on its authenticity.</li>
+    <li>Mints NFT transferring the reuse terms defined in its metadata to future owners.</li>
+    <li>Trades NFT on existing marketplace, where potential purchasers can trace it back to the copyright claim.</li>
+  </ol>
   <h3>Implementation</h3>
   <p>
-    To do so, creators link content on social media platforms to <b>on-chain authorship claims</b>
-    tied to their identities. They can also provide additional <b>evidence</b> combining off-chain data and on-chain
-    transactions to sustain those claims. These can be used in case of a copyright <b>complaint</b>, even as evidence
-    in court. This approach also discourages false claims, which cannot be retracted once on-chain.
+    Creators upload their content to decentralised storage and use the resulting content hash to register
+    <b>on-chain authorship claims</b>, which tie content to their identities and a timestamp.
+  </p>
+  <p>Creators also provide <b>evidence</b> to support their claim, by uploading content or linking videos to an existing
+    version they have published on YouTube. They proof ownership of the social media platform version of the video
+    using an <b>oracle</b>.
   </p>
   <p>
-    Authorship claims are accompanied by default <b>reuse terms</b> modelled using semantic technologies and based on
-    the <a href="https://rhizomik.net/ontologies/copyrightonto" target="_blank">Copyright Ontology</a>, which provides
-    the necessary building blocks to make the terms <b>machine-actionable</b>. Reusers can <b>negotiate</b>
-    these terms and, if accepted, on-chain transactions are generated to keep track of the <b>agreements</b>.
+    Creators and other stakeholders <b>curate</b> the authorship claims by <b>staking</b> the CLY token on them.
+    CLY is minted using a <b>bonding curve</b>. CLY cannot be held, it is minted to be staked on an authorship claim
+    and burned when un-staked.
+  </p>
+  <p>
+    Claims and evidence can be used in case of a copyright <b>complaint</b>, even in court. This approach also
+    discourages false claims, which cannot be retracted once on-chain.
+  </p>
+  <p>
+    Content can be monetized using <b>NFTs</b> that state the <b>reuse terms</b> being transferred with the token. Terms are
+    modelled using <b>semantic technologies</b> and based on the <a href="https://rhizomik.net/ontologies/copyrightonto"
+    target="_blank">Copyright Ontology</a>, which provides the necessary building blocks to make these terms
+    <b>machine-actionable</b>.
   </p>
   <p>
     <a href="https://github.com/rhizomik/copyrightly/wiki" target="_blank">More details...</a>
