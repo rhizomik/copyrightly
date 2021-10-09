@@ -37,7 +37,11 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "allowedCommonJsDependencies": [
+              "@walletconnect/window-metadata", "@walletconnect/socket-transport", "@walletconnect/environment",
+              "@walletconnect/encoding", "query-string", "hash.js"
+            ]
           },
           "configurations": {
             "production": {
