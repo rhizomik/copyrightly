@@ -80,6 +80,13 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
+  editable() {
+    if (this.navbarService.isLoggedIn() && this.navbarService.account === this.accountId) {
+      return true;
+    }
+    return false;
+  }
+
   ngOnDestroy(): void {
     this.watchStakesSubscription.unsubscribe();
   }
