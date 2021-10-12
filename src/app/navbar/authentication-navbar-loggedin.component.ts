@@ -17,6 +17,7 @@ import { UploadEvidenceEventComponent } from '../evidence/upload-evidence-event.
 import { CLYNFTContractService } from '../clynft/clynft-contract.service';
 import { NFTMintEvent } from '../clynft/nftmint-event';
 import { NFTMintEventComponent } from '../clynft/nftmint-event.component';
+import { EthereumAuthProvider, SelfID } from '@self.id/web';
 
 @Component({
   selector: 'app-authentication-navbar-loggedin',
@@ -61,6 +62,7 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
         // this.watchUploadEvidenceEvents(account);
         this.watchYouTubeEvidenceEvents(account);
         this.watchNFTMintEvents(account);
+        this.selfidProfile(account);
       });
     this.authenticationService.getAccountsNames()
       .pipe(takeUntil(this.ngUnsubscribe))
@@ -143,5 +145,17 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
       }, error => {
         console.log(error.toString());
       });
+  }
+
+  private async selfidProfile(account: string) {
+    const self = await SelfID.authenticate({
+      authProvider: new EthereumAuthProvider(this.web3Service.web3.currentProvider, account),
+      ceramic: 'testnet-clay',
+    });
+    const profile = await self.get('basicProfile');
+    if (profile && profile.name) {
+      this.accountName = profile.name;
+    }
+    console.log('basicProfile', profile);
   }
 }
