@@ -20,7 +20,7 @@
       <div *ngIf="social" class="row mt-3">
         <p class="card-text text-muted col-lg-2 mb-1">Social accounts:</p>
         <span *ngFor="let account of social.accounts">
-          <a class="card-text col-lg-2" *ngIf="account.host == 'twitter.com'"
+          <a class="card-text col-lg-2" *ngIf="account.host === 'twitter.com'"
              href="https://twitter.com/{{account.id}}"><span class="fab fa-twitter"></span> {{account.id}}</a>
         </span>
       </div>

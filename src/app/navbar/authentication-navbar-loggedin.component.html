@@ -6,7 +6,7 @@
           <span class="input-group-text" id="network-name">
             <span class="fab fa-ethereum"></span>{{currentNetwork}}</span>
         </div>
-        <input *ngIf="accounts.length == 0"  id="connecting" name="connecting" type="text" readonly
+        <input *ngIf="accounts.length === 0"  id="connecting" name="connecting" type="text" readonly
                class="form-control" value="Connecting...">
         <input *ngIf="accounts.length >= 1"  id="account" name="account" type="text" class="form-control"
                readonly #account (focus)="account.blur()"
