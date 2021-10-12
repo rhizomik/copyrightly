@@ -40,7 +40,7 @@
     </ul>
     <app-authentication-navbar-loggedout *ngIf="!isLoggedIn()" (login)="login()">
     </app-authentication-navbar-loggedout>
-    <app-authentication-navbar-loggedin *ngIf="isLoggedIn()" (logout)="logout()">
+    <app-authentication-navbar-loggedin *ngIf="isLoggedIn()" (logout)="logout()" (currentUser)="setCurrentUser($event)">
     </app-authentication-navbar-loggedin>
   </div>
 </nav>

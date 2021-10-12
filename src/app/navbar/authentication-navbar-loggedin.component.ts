@@ -26,9 +26,10 @@ import { NFTMintEventComponent } from '../clynft/nftmint-event.component';
 export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy {
 
   @Output() logout: EventEmitter<void> = new EventEmitter();
+  @Output() currentUser: EventEmitter<string> = new EventEmitter();
 
   public accountId = '';
-  public accountName = '';
+  public accountName: string | null = '';
   public accountsNames: string[] = [];
   public accounts: string[] = [];
   public currentNetwork = '';
@@ -54,6 +55,7 @@ export class AuthenticationNavbarLoggedInComponent implements OnInit, OnDestroy 
       .pipe(filter(account => account !== ''))
       .subscribe(account =>  {
         this.accountId = account;
+        this.currentUser.emit(account);
         this.accountName = this.accountsNames[this.accounts.indexOf(this.accountId)];
         this.watchManifestEvents(account);
         // this.watchUploadEvidenceEvents(account);
