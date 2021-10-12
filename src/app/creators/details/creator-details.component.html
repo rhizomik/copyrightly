@@ -1,9 +1,33 @@
 <div *ngIf="accountId">
-  <h3>User Identity</h3>
 
-  <p>Account: <a href="https://rinkeby.etherscan.io/address/{{accountId}}" target="_blank">{{accountId}}</a></p>
+  <div class="card">
+    <img class="card-img-top" height="50px" [src]="getBackgroundURL(profile?.background)"/>
+    <div class="avatar">
+      <img class="avatar-image" [style.backgroundImage]="'url('+ avatarUrl +')'"/>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{profile?.name}}</h5>
+      <h6 class="card-subtitle mb-4 text-muted">Account:
+        <a href="https://rinkeby.etherscan.io/address/{{accountId}}" target="_blank">{{accountId}}</a>
+      </h6>
+      <div *ngIf="accounts?.length" class="row mt-3">
+        <p class="card-text text-muted col-lg-2 mb-1">Linked accounts:</p>
+        <a class="card-text col-lg-2" *ngFor="let account of accounts" title="{{account}}"
+           [routerLink]="['/creators', account]">
+          {{account | slice:0:6}}...{{account | slice:-4}}
+        </a>
+      </div>
+      <div *ngIf="social" class="row mt-3">
+        <p class="card-text text-muted col-lg-2 mb-1">Social accounts:</p>
+        <span *ngFor="let account of social.accounts">
+          <a class="card-text col-lg-2" *ngIf="account.host == 'twitter.com'"
+             href="https://twitter.com/{{account.id}}"><span class="fab fa-twitter"></span> {{account.id}}</a>
+        </span>
+      </div>
+    </div>
+  </div>
 
-  <h4>Authorship Claims</h4>
+  <h4 class="mt-3">Authorship Claims</h4>
 
   <app-manifestations-list [manifester]="accountId"></app-manifestations-list>
 

@@ -54,6 +54,7 @@
     "angulartics2": "^10.0.0",
     "apollo-angular": "^2.6.0",
     "bootstrap-css-only": "^4.4.1",
+    "ethereum-blockies": "^0.1.1",
     "ethereum-ens": "0.7.8",
     "graphql": "^15.5.1",
     "ipfs-http-client": "^49.0.4",
