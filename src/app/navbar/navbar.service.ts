@@ -6,12 +6,17 @@ import { AlertsService } from '../alerts/alerts.service';
 })
 export class NavbarService {
 
+  public account: string;
   private loggedIn = false;
 
   constructor(private alertsService: AlertsService) {}
 
   public isLoggedIn(): boolean {
     return this.loggedIn;
+  }
+
+  public setCurrentUser(account: string): void {
+    this.account = account;
   }
 
   public login(): void {

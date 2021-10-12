@@ -1,13 +1,13 @@
-<div *ngIf="type == 0">
+<div *ngIf="type === 0">
   <h5><span class="fas fa-coins"></span> Add Stake</h5>
   <p class="lead">Mint CLY tokens to be staked for the specified price in Ether</p>
 </div>
-<div *ngIf="type == 1">
+<div *ngIf="type === 1">
   <h5><span class="fas fa-coins"></span> Remove Stake</h5>
   <p class="lead">Burn CLY tokens from your stake for the specified price in Ether</p>
 </div>
 
-<form id="stake-form" (ngSubmit)="type == 0 ? addStake(amount, maxPrice) : removeStake(amount)" #stakeForm="ngForm">
+<form id="stake-form" (ngSubmit)="type === 0 ? addStake(amount, maxPrice) : removeStake(amount)" #stakeForm="ngForm">
   <fieldset>
 
     <!-- Staker input -->
@@ -22,11 +22,11 @@
 
     <!-- Stake input -->
     <div class="form-group" [class.was-validated]="inputStake.dirty || inputStake.touched">
-      <label *ngIf="type == 0" class="control-label" for="inputStake">Stake*</label>
-      <label *ngIf="type == 1" class="control-label" for="inputStake">From your Stake*</label>
+      <label *ngIf="type === 0" class="control-label" for="inputStake">Stake*</label>
+      <label *ngIf="type === 1" class="control-label" for="inputStake">From your Stake*</label>
       <div class="input-group">
         <input id="inputStake" name="inputStake" type="number" class="form-control" required
-               min="0.000001" [max]="type == 1 ? staked : maxAmount" step="0.000001"
+               min="0.000001" [max]="type === 1 ? staked : maxAmount" step="0.000001"
                [(ngModel)]="amount" (change)="getPrice(amount)" #inputStake="ngModel">
         <div class="input-group-append">
             <span class="input-group-text">
@@ -34,7 +34,7 @@
         </div>
         <div *ngIf="amount <= 0 || amount > maxAmount" class="invalid-feedback">
           An amount bigger than 0 and smaller than {{maxAmount}} is required</div>
-        <div *ngIf="amount > staked && type == 1" class="invalid-feedback">
+        <div *ngIf="amount > staked && type === 1" class="invalid-feedback">
           You cannot sell more than your stake, {{staked}} <span class="fas fa-copyright logo-icon"></span>LY</div>
       </div>
     </div>
@@ -64,9 +64,9 @@
     <div class="form-group">
       <button id="submit" type="submit" class="btn btn-success pull-right"
               [disabled]="!stakeForm.valid || !inputStaker.value || !inputPrice.value ||
-                          amount <= 0 || amount > maxAmount || (type == 1 && amount > staked)">
-        <span *ngIf="type == 0">Purchase</span>
-        <span *ngIf="type == 1">Sell</span>
+                          amount <= 0 || amount > maxAmount || (type === 1 && amount > staked)">
+        <span *ngIf="type === 0">Purchase</span>
+        <span *ngIf="type === 1">Sell</span>
       </button>
       <button id="cancel" type="button" class="btn btn-danger pull-right ml-2"
               (click)="cancelTransaction()">Cancel</button>

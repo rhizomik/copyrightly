@@ -31,4 +31,8 @@ export class NavbarComponent implements OnInit {
   warningLoggedOut() {
     console.log('Logged out');
   }
+
+  setCurrentUser(accountId: string) {
+    this.navbarService.setCurrentUser(accountId);
+  }
 }
