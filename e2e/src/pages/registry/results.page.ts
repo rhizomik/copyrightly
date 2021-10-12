@@ -7,7 +7,7 @@ export class ResultsPage {
 
   constructor() {
     this.resultsList = element(by.css('div#list'));
-    this.results = element.all(by.css('.card'));
+    this.results = this.resultsList.all(by.css('.card'));
   }
 
   async getResultTitleValue(num: number): Promise<string> {

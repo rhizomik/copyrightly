@@ -13,6 +13,7 @@
       and its content <b>hash</b> registered on-chain by the claimer.</p>
   </div>
 
+  <div id="list">
   <div class="card mb-1">
     <div class="card-block row m-1">
       <h5 class="card-title col-md-12 p-1"><span class="fas fa-gavel"></span> {{manifestation?.title}}</h5>
@@ -54,6 +55,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <app-manifestation-stake *ngIf="staking && !addingEvidence()" [type]="type" [manifestation]="manifestation"
@@ -99,7 +101,7 @@
     </div>
   </div>
 
-  <div id="list" *ngIf="!addingEvidence()">
+  <div *ngIf="!addingEvidence()">
     <app-uploadevidence-details *ngFor="let evidence of uploadEvidence; let i = index"
                                 [evidence]="evidence" [evidenceIndex]="i+1">
     </app-uploadevidence-details>
