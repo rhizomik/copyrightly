@@ -25,7 +25,6 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
   profile: BasicProfile = undefined;
   accounts: string[];
   social: AlsoKnownAs;
-  avatarUrl = '';
   private ethChainId = '@eip155:4'; // Rinkeby
   private ipfsUrl = 'https://ipfs.infura.io/ipfs/';
   private watchStakesQuery: QueryRef<AccountStakesResponse>;
@@ -42,7 +41,6 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
       const id = params.get('id');
       if (id && id.match('0x[a-fA-F0-9]{40}')) {
         this.accountId = id;
-        this.avatarUrl = this.getAvatarURL(undefined);
         if (!this.watchStakesQuery) {
           this.watchStakesSubscription = this.loadStakes();
         } else {
@@ -65,7 +63,7 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
       const image = sources?.original;
       return image?.src.replace('ipfs://', this.ipfsUrl);
     } else {
-      return `https://picsum.photos/seed/${this.accountId}/1000/300`;
+      return 'assets/default-background.svg'; // Background by SVGBackgrounds.com
     }
   }
 
@@ -81,10 +79,7 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
   }
 
   editable() {
-    if (this.navbarService.isLoggedIn() && this.navbarService.account === this.accountId) {
-      return true;
-    }
-    return false;
+    return this.navbarService.isLoggedIn() && this.navbarService.account === this.accountId;
   }
 
   ngOnDestroy(): void {
@@ -101,9 +96,6 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
         publicID.get('basicProfile'), publicID.get('cryptoAccounts'), publicID.get('alsoKnownAs'),
       ]);
       this.accounts = Object.keys(cryptoAccounts).map(caip20 => caip20.substring(0, caip20.indexOf('@')));
-      if (this.profile) {
-        this.avatarUrl = this.getAvatarURL(this.profile.image);
-      }
     } catch (e) { console.log('No DID for account', accountId); }
   }
 

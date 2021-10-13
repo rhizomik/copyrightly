@@ -3,7 +3,7 @@
   <div class="card">
     <img class="card-img-top" height="50px" [src]="getBackgroundURL(profile?.background)"/>
     <div class="avatar">
-      <img class="avatar-image" [style.backgroundImage]="'url('+ avatarUrl +')'"/>
+      <img class="avatar-image" [style.backgroundImage]="'url('+ getAvatarURL(profile?.image) +')'"/>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{profile?.name}}</h5>
