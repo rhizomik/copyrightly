@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbAlertModule, NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule, NgbCollapseModule, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -41,7 +41,8 @@ import { CLYNFTModule } from './clynft/clynft.module';
     EvidenceModule,
     CreatorsModule,
     CLYTokenModule,
-    CLYNFTModule
+    CLYNFTModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
