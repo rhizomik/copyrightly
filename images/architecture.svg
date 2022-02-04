@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-205 -12 1099 696" width="1099" height="696">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-196 -12 1091 696" width="1091" height="696">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="20" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
       <font-face-src>
@@ -62,12 +62,12 @@
         <font-face-name name="HelveticaNeue"/>
       </font-face-src>
     </font-face>
-    <font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+    <font-face font-family="Helvetica Neue" font-size="10" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
-        <font-face-name name="HelveticaNeue-Bold"/>
+        <font-face-name name="HelveticaNeue"/>
       </font-face-src>
     </font-face>
-    <font-face font-family="Helvetica Neue" font-size="10" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+    <font-face font-family="Helvetica Neue" font-size="17" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
         <font-face-name name="HelveticaNeue"/>
       </font-face-src>
@@ -100,7 +100,7 @@
         <line x1="238.70107" y1="208.24889" x2="164.4894" y2="221.2364" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_43">
-        <line x1="-87.75" y1="480.106" x2="6.702753" y2="480.11526" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="-87.75" y1="480.1313" x2="6.70275" y2="480.1282" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_44">
         <line x1="397.78683" y1="226.63865" x2="511.53285" y2="295.42942" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -166,15 +166,15 @@
         </g>
       </g>
       <g id="Line_79">
-        <line x1="-103.97986" y1="529.8991" x2="6.453081" y2="530.018" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="-122.6" y1="529.87986" x2="6.453079" y2="530.01834" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_80">
-        <rect x="-205" y="542.3909" width="127.48129" height="71.70823" id="path_3"/>
+        <rect x="-195.5" y="561.5" width="107.75" height="34.90001" fill="white" id="path_3"/>
         <clipPath id="clip_path_3">
           <use xl:href="#path_3"/>
         </clipPath>
         <g clip-path="url(#clip_path_3)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image6.png" width="96" height="54.24" opacity=".24724634" transform="matrix(1.3279301 0 0 1.3220543 -205 542.3909)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image6.png" width="96" height="54.24" opacity=".25" transform="matrix(1.3279301 0 0 1.3220543 -205 542.3909)"/>
         </g>
       </g>
       <g id="Graphic_82">
@@ -197,7 +197,7 @@
         </g>
       </g>
       <g id="Line_86">
-        <line x1="-77.51871" y1="578.28486" x2="6.4528714" y2="578.3374" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="-87.75" y1="578.8302" x2="6.454286" y2="578.62064" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_88">
         <ellipse cx="337.37087" cy="428.90406" rx="100.371031901401" ry="35.6250597377595" fill="white"/>
@@ -257,12 +257,12 @@
         </text>
       </g>
       <g id="Graphic_78">
-        <rect x="-191.5" y="505.2369" width="87.52014" height="49.23008" id="path_4"/>
+        <rect x="-174.6" y="505.2369" width="52" height="49.23008" id="path_4"/>
         <clipPath id="clip_path_4">
           <use xl:href="#path_4"/>
         </clipPath>
         <g clip-path="url(#clip_path_4)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image5.png" width="96" height="54.24" opacity=".24724634" transform="matrix(.9116682 0 0 .9076342 -191.5 505.2369)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image5.png" width="96" height="54.24" opacity="0.25" transform="matrix(.845954 0 0 .8513701 -188.6675 506.94475)"/>
         </g>
       </g>
       <g id="Graphic_102">
@@ -320,7 +320,6 @@
         </text>
       </g>
       <g id="Graphic_105">
-        <rect x="541.05924" y="635.6075" width="138.94076" height="47.963855" fill="white"/>
         <text transform="translate(546.05924 651.39345)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="3.157379" y="13">The Graph Network</tspan>
         </text>
@@ -334,18 +333,8 @@
           <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="13.289833" y="27.364">API</tspan>
         </text>
       </g>
-      <g id="Line_106">
-        <line x1="732.0494" y1="554.3575" x2="638.8758" y2="554.3575" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      </g>
       <g id="Line_107">
         <line x1="464.5936" y1="81.71012" x2="566.26535" y2="139.86274" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      </g>
-      <g id="Graphic_108">
-        <path d="M 750.9494 514.0921 L 854.7923 514.0921 C 859.7629 514.0921 863.7923 518.12155 863.7923 523.0921 L 863.7923 585.6229 C 863.7923 590.5935 859.7629 594.6229 854.7923 594.6229 L 750.9494 594.6229 C 745.9789 594.6229 741.9494 590.5935 741.9494 585.6229 L 741.9494 523.0921 C 741.9494 518.12155 745.9789 514.0921 750.9494 514.0921 Z" fill="white"/>
-        <path d="M 750.9494 514.0921 L 854.7923 514.0921 C 859.7629 514.0921 863.7923 518.12155 863.7923 523.0921 L 863.7923 585.6229 C 863.7923 590.5935 859.7629 594.6229 854.7923 594.6229 L 750.9494 594.6229 C 745.9789 594.6229 741.9494 590.5935 741.9494 585.6229 L 741.9494 523.0921 C 741.9494 518.12155 745.9789 514.0921 750.9494 514.0921 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(746.9494 519.0921)" fill="#666">
-          <tspan font-family="Helvetica Neue" font-size="14" font-weight="700" fill="#666" x="36.13089" y="14">Other Apps</tspan>
-        </text>
       </g>
       <g id="Graphic_111">
         <ellipse cx="337.37087" cy="349.32703" rx="100.371031901401" ry="35.6250597377596" fill="white"/>
@@ -368,16 +357,16 @@
           <use xl:href="#path_5"/>
         </clipPath>
         <g clip-path="url(#clip_path_5)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image2.png" width="96" height="54.24" opacity=".2491987" transform="matrix(.7291667 0 0 .7259403 792.5629 21)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image2.png" width="96" height="54.24" opacity="1" transform="matrix(.7291667 0 0 .7259403 792.5629 21)"/>
         </g>
       </g>
       <g id="Graphic_126">
-        <rect x="785.3525" y="94.00594" width="84.42069" height="47.48664" id="path_6"/>
+        <rect x="792.5629" y="106.49258" width="70" height="21" id="path_6"/>
         <clipPath id="clip_path_6">
           <use xl:href="#path_6"/>
         </clipPath>
         <g clip-path="url(#clip_path_6)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image6.png" width="96" height="54.24" opacity=".2491987" transform="matrix(.8793822 0 0 .8754912 785.3525 94.00594)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image6.png" width="96" height="54.24" opacity="1" transform="matrix(.8793822 0 0 .8754912 785.3525 94.00594)"/>
         </g>
       </g>
       <g id="Graphic_125">
@@ -386,7 +375,7 @@
           <use xl:href="#path_7"/>
         </clipPath>
         <g clip-path="url(#clip_path_7)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image5.png" width="96" height="54.24" opacity=".2491987" transform="matrix(.6898128 0 0 .6867605 794.4518 60.42582)"/>
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image5.png" width="96" height="54.24" opacity="1" transform="matrix(.6898128 0 0 .6867605 794.4518 60.42582)"/>
         </g>
       </g>
       <g id="Line_128">
@@ -398,40 +387,22 @@
       <g id="Line_132">
         <line x1="272.2457" y1="146.45556" x2="163.56096" y2="201.76063" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
-      <g id="Graphic_133">
-        <rect x="731" y="24.31519" width="55" height="55.183333" id="path_8"/>
+      <g id="Graphic_141">
+        <rect x="-195.5" y="466.6" width="107.75" height="27.066023" id="path_8"/>
         <clipPath id="clip_path_8">
           <use xl:href="#path_8"/>
         </clipPath>
         <g clip-path="url(#clip_path_8)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image8.png" width="96" height="96.48" opacity=".2489488" transform="matrix(.5729167 0 0 .57196656 731 24.31519)"/>
-        </g>
-      </g>
-      <g id="Graphic_141">
-        <rect x="-195.5" y="449.79603" width="107.75" height="60.609375" id="path_9"/>
-        <clipPath id="clip_path_9">
-          <use xl:href="#path_9"/>
-        </clipPath>
-        <g clip-path="url(#clip_path_9)">
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image2.png" width="96" height="54.24" opacity="1" transform="matrix(1.1223958 0 0 1.1174295 -195.5 449.79603)"/>
         </g>
       </g>
       <g id="Graphic_142">
-        <rect x="571.75034" y="569.04064" width="75.75758" height="75" id="path_10"/>
-        <clipPath id="clip_path_10">
-          <use xl:href="#path_10"/>
+        <rect x="571.75034" y="569.04064" width="75.75758" height="75" id="path_9"/>
+        <clipPath id="clip_path_9">
+          <use xl:href="#path_9"/>
         </clipPath>
-        <g clip-path="url(#clip_path_10)">
+        <g clip-path="url(#clip_path_9)">
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image13.png" width="96" height="95" transform="matrix(.7891414 0 0 .7894737 571.75034 569.04064)"/>
-        </g>
-      </g>
-      <g id="Graphic_149">
-        <rect x="747.6509" y="542.3573" width="107.7732" height="43.40981" id="path_11"/>
-        <clipPath id="clip_path_11">
-          <use xl:href="#path_11"/>
-        </clipPath>
-        <g clip-path="url(#clip_path_11)">
-          <image xl:href="https://rhizomik.github.io/copyrightly/images/image16.png" width="96" height="38.88" transform="matrix(1.1226375 0 0 1.1165075 747.6509 542.3573)"/>
         </g>
       </g>
       <g id="Line_150">
@@ -444,6 +415,7 @@
       <g id="Graphic_156">
         <title>Actor</title>
         <path d="M 801.0111 165.66958 C 799.3129 163.9714 796.5596 163.9714 794.86145 165.66958 C 793.1633 167.36775 793.1633 170.12104 794.86145 171.81921 C 796.5596 173.5174 799.3129 173.5174 801.0111 171.81921 C 802.7093 170.12104 802.7093 167.36775 801.0111 165.66958 M 802.2849 179.18068 C 802.2802 178.98921 802.3509 178.79622 802.497 178.6501 C 802.78 178.36707 803.2389 178.36707 803.5219 178.6501 C 803.6681 178.79622 803.7387 178.98921 803.734 179.18068 L 803.7402 179.18068 L 803.7402 187.51522 C 803.7402 189.1459 803.5597 190.77656 805.1837 190.77656 C 806.80765 190.77656 806.6272 189.1459 806.6272 187.51522 L 806.6272 177.7312 L 806.6332 177.7312 C 806.6332 175.32962 804.2969 173.38275 801.415 173.38275 L 797.9363 173.38275 L 794.4575 173.38275 C 791.5756 173.38275 789.2394 175.32962 789.2394 177.7312 L 789.2453 177.7312 L 789.2453 187.51522 C 789.2453 189.1459 789.0649 190.77656 790.6888 190.77656 C 792.3128 190.77656 792.1324 189.1459 792.1324 187.51522 L 792.1324 179.18068 L 792.1386 179.18068 C 792.143 179.0013 792.2137 178.82324 792.3506 178.68633 C 792.6336 178.4033 793.0925 178.4033 793.3755 178.68633 C 793.51245 178.82324 793.5831 179.0013 793.5876 179.18068 L 793.5878 179.18068 L 793.5878 179.19808 C 793.5878 179.19856 793.5878 179.19904 793.5878 179.19953 L 793.5878 192.22604 L 793.5956 192.22604 L 793.5956 203.82192 C 793.5956 205.99615 793.361 208.17037 795.4721 208.17037 C 797.5833 208.17037 797.3487 205.99615 797.3487 203.82192 L 797.3487 192.22604 L 797.3568 192.22604 C 797.352 192.07168 797.4085 191.91577 797.5263 191.79795 C 797.7527 191.57153 798.1198 191.57153 798.3462 191.79795 C 798.4641 191.91577 798.5206 192.07168 798.5158 192.22604 L 798.5238 192.22604 L 798.5238 203.82192 C 798.5238 205.99615 798.2892 208.17037 800.4004 208.17037 C 802.5115 208.17037 802.277 205.99615 802.277 203.82192 L 802.277 192.22604 L 802.2847 192.22604 L 802.2847 179.18068 Z" fill="#a5a5a5"/>
+        <path d="M 801.0111 165.66958 C 799.3129 163.9714 796.5596 163.9714 794.86145 165.66958 C 793.1633 167.36775 793.1633 170.12104 794.86145 171.81921 C 796.5596 173.5174 799.3129 173.5174 801.0111 171.81921 C 802.7093 170.12104 802.7093 167.36775 801.0111 165.66958 M 802.2849 179.18068 C 802.2802 178.98921 802.3509 178.79622 802.497 178.6501 C 802.78 178.36707 803.2389 178.36707 803.5219 178.6501 C 803.6681 178.79622 803.7387 178.98921 803.734 179.18068 L 803.7402 179.18068 L 803.7402 187.51522 C 803.7402 189.1459 803.5597 190.77656 805.1837 190.77656 C 806.80765 190.77656 806.6272 189.1459 806.6272 187.51522 L 806.6272 177.7312 L 806.6332 177.7312 C 806.6332 175.32962 804.2969 173.38275 801.415 173.38275 L 797.9363 173.38275 L 794.4575 173.38275 C 791.5756 173.38275 789.2394 175.32962 789.2394 177.7312 L 789.2453 177.7312 L 789.2453 187.51522 C 789.2453 189.1459 789.0649 190.77656 790.6888 190.77656 C 792.3128 190.77656 792.1324 189.1459 792.1324 187.51522 L 792.1324 179.18068 L 792.1386 179.18068 C 792.143 179.0013 792.2137 178.82324 792.3506 178.68633 C 792.6336 178.4033 793.0925 178.4033 793.3755 178.68633 C 793.51245 178.82324 793.5831 179.0013 793.5876 179.18068 L 793.5878 179.18068 L 793.5878 179.19808 C 793.5878 179.19856 793.5878 179.19904 793.5878 179.19953 L 793.5878 192.22604 L 793.5956 192.22604 L 793.5956 203.82192 C 793.5956 205.99615 793.361 208.17037 795.4721 208.17037 C 797.5833 208.17037 797.3487 205.99615 797.3487 203.82192 L 797.3487 192.22604 L 797.3568 192.22604 C 797.352 192.07168 797.4085 191.91577 797.5263 191.79795 C 797.7527 191.57153 798.1198 191.57153 798.3462 191.79795 C 798.4641 191.91577 798.5206 192.07168 798.5158 192.22604 L 798.5238 192.22604 L 798.5238 203.82192 C 798.5238 205.99615 798.2892 208.17037 800.4004 208.17037 C 802.5115 208.17037 802.277 205.99615 802.277 203.82192 L 802.277 192.22604 L 802.2847 192.22604 L 802.2847 179.18068 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_155">
         <rect x="786.6622" y="163.0626" width="22.548157" height="25" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -476,16 +448,13 @@
         <rect x="737.18325" y="344.15572" width="87.52014" height="55.183333" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_158">
-        <rect x="784.5166" y="352.5537" width="35" height="35" id="path_12"/>
-        <clipPath id="clip_path_12">
-          <use xl:href="#path_12"/>
+        <rect x="784.5166" y="352.5537" width="35" height="35" id="path_10"/>
+        <clipPath id="clip_path_10">
+          <use xl:href="#path_10"/>
         </clipPath>
-        <g clip-path="url(#clip_path_12)">
+        <g clip-path="url(#clip_path_10)">
           <image xl:href="https://rhizomik.github.io/copyrightly/images/image4.png" width="96" height="96" opacity="1" transform="translate(784.5166 352.5537) scale(.36458333)"/>
         </g>
-      </g>
-      <g id="Line_118">
-        <line x1="802.6383" y1="504.1922" x2="802.0977" y2="387.5537" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_161">
         <path d="M 456 500.7612 C 472.27786 519.76576 488.9246 537.9114 505 553.41934 C 528.79023 576.3698 547.87075 590.207 562.87985 598.3722" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
@@ -494,13 +463,13 @@
         <path d="M 423.66667 371.33333 C 423.66667 371.33333 509.11507 483.21603 610.3333 483.33333 C 673.7621 483.40684 724.6927 439.5691 753.8811 406.82546" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
       </g>
       <g id="Graphic_163">
-        <rect x="485.00736" y="544.71224" width="49" height="26" fill="white"/>
+        <rect x="490.00736" y="549.71224" width="39" height="16" fill="white"/>
         <text transform="translate(490.00736 550.03024)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".3575" y="12">events</tspan>
         </text>
       </g>
       <g id="Graphic_164">
-        <rect x="176.392" y="270.87743" width="69" height="26" fill="white"/>
+        <rect x="181.392" y="275.87743" width="59" height="16" fill="white"/>
         <text transform="translate(181.392 276.19543)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".1915" y="12">JSON+LD</tspan>
         </text>
@@ -514,18 +483,12 @@
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="31.768697" y="32.392">Complaints</tspan>
         </text>
       </g>
-      <g id="Graphic_170">
-        <rect x="758.902" y="458.278" width="69" height="26" fill="white"/>
-        <text transform="translate(763.902 463.596)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".1915" y="12">JSON+LD</tspan>
-        </text>
-      </g>
       <g id="Line_171">
         <path d="M 834.2735 350.7613 C 841.4424 349.2086 847.9638 348.69263 852.7575 350 C 873.1028 355.5488 873.1028 385.1722 852.7575 391.33333 C 845.8922 393.41234 835.483 391.85813 824.7034 388.88595" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_172">
-        <rect x="847.4938" y="356.41255" width="41" height="26" fill="white"/>
-        <text transform="translate(852.4938 361.73056)" fill="black">
+        <rect x="852.4914" y="361.36077" width="31" height="16" fill="white"/>
+        <text transform="translate(852.4914 361.67877)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".4525" y="12">trade</tspan>
         </text>
       </g>
@@ -544,10 +507,68 @@
         </g>
       </g>
       <g id="Graphic_179">
-        <rect x="533.6287" y="458.278" width="35" height="26" fill="white"/>
+        <rect x="538.6287" y="463.278" width="25" height="16" fill="white"/>
         <text transform="translate(538.6287 463.596)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".345" y="12">NFT</tspan>
         </text>
+      </g>
+      <g id="Graphic_182">
+        <path d="M 744.22125 510.1475 L 861.887 510.1475 C 866.8576 510.1475 870.887 514.1769 870.887 519.1475 L 870.887 587.4 C 870.887 592.3706 866.8576 596.4 861.887 596.4 L 744.22125 596.4 C 739.2507 596.4 735.22125 592.3706 735.22125 587.4 L 735.22125 519.1475 C 735.22125 514.1769 739.2507 510.1475 744.22125 510.1475 Z" fill="white"/>
+        <path d="M 744.22125 510.1475 L 861.887 510.1475 C 866.8576 510.1475 870.887 514.1769 870.887 519.1475 L 870.887 587.4 C 870.887 592.3706 866.8576 596.4 861.887 596.4 L 744.22125 596.4 C 739.2507 596.4 735.22125 592.3706 735.22125 587.4 L 735.22125 519.1475 C 735.22125 514.1769 739.2507 510.1475 744.22125 510.1475 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(740.22125 515.1475)" fill="#a5a5a5">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="#a5a5a5" x="39.137747" y="16">Other Apps</tspan>
+        </text>
+      </g>
+      <g id="Line_106">
+        <line x1="725.3214" y1="553.7093" x2="638.8753" y2="554.19365" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_118">
+        <line x1="802.7538" y1="500.24764" x2="802.1157" y2="387.5537" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_184">
+        <circle cx="37.246667" cy="415.5285" r="29.246671926229" fill="#375bd2"/>
+      </g>
+      <g id="Graphic_183">
+        <path d="M 37.246667 393.5935 L 18.250226 404.561 L 18.250226 426.496 L 37.246667 437.4635 L 56.24311 426.496 L 56.24311 404.561 Z M 48.19296 421.8487 L 37.246667 428.1682 L 26.30037 421.8487 L 26.30037 409.2083 L 37.246667 402.88883 L 48.19296 409.2083 Z" fill="white"/>
+      </g>
+      <g id="Graphic_185">
+        <text transform="translate(249 6.822073)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="34.51038" y="13">Ethereum</tspan>
+        </text>
+      </g>
+      <g id="Graphic_186">
+        <text transform="translate(39.828997 404.78035)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="35.68638" y="13">Chainlink</tspan>
+        </text>
+      </g>
+      <g id="Graphic_187">
+        <rect x="716.0592" y="27" width="46" height="46.184" id="path_11"/>
+        <clipPath id="clip_path_11">
+          <use xl:href="#path_11"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_11)">
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image18.png" width="500" height="502" transform="translate(716.0592 27) scale(.092)"/>
+        </g>
+      </g>
+      <g id="Graphic_188">
+        <text transform="translate(672.9021 7.454889)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="38.28338" y="13">Ceramic</tspan>
+        </text>
+      </g>
+      <g id="Graphic_170">
+        <rect x="764.5305" y="458.278" width="59" height="16" fill="white"/>
+        <text transform="translate(764.5305 458.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x=".1915" y="12">JSON+LD</tspan>
+        </text>
+      </g>
+      <g id="Graphic_189">
+        <rect x="744.6189" y="533.21696" width="116.87041" height="47.332515" id="path_12"/>
+        <clipPath id="clip_path_12">
+          <use xl:href="#path_12"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_12)">
+          <image xl:href="https://rhizomik.github.io/copyrightly/images/image16.png" width="96" height="38.88" transform="translate(744.6189 533.21696) scale(1.2174001)"/>
+        </g>
       </g>
     </g>
   </g>
