@@ -1,6 +1,6 @@
 {
   "name": "copyrightly",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "postinstall-old": "node patch.js",
     "ng": "ng",
@@ -33,7 +33,7 @@
     "config-local": "node subgraph-local.js",
     "deploy-local": "graph deploy -l test -o ./graphprotocol/build/ --node http://localhost:8020/ --ipfs http://localhost:5001 copyrightly subgraph-local.yaml",
     "graphql-doc": "spectaql -t ./docs/graphql spectaql.yml",
-    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken YouTubeEvidence CopyrightLYNFT --network rinkeby"
+    "etherscan-verify": "truffle run verify Manifestations UploadEvidence CLYToken YouTubeEvidence CopyrightLYNFT --network goerli"
   },
   "private": true,
   "dependencies": {
