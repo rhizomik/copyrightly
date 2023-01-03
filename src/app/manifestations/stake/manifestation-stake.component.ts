@@ -69,7 +69,7 @@ export class ManifestationStakeComponent implements OnInit {
         if (typeof result === 'string') {
           console.log('Transaction hash: ' + result);
           this.alertsService.info('CLY mint submitted, you will be alerted when confirmed.<br>' +
-            'Receipt: <a target="_blank" href="https://rinkeby.etherscan.io/tx/' + result + '">' + result + '</a>');
+            'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
           this.done.emit('0');
         } else {
           console.log(result);
@@ -88,7 +88,7 @@ export class ManifestationStakeComponent implements OnInit {
         if (typeof result === 'string') {
           console.log('Transaction hash: ' + result);
           this.alertsService.info('CLY burn submitted, you will be alerted when confirmed.<br>' +
-            'Receipt: <a target="_blank" href="https://rinkeby.etherscan.io/tx/' + result + '">' + result + '</a>');
+            'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
           this.done.emit('0');
         } else {
           console.log(result);

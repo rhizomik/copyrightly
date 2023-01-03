@@ -119,7 +119,7 @@ export class LicenseTermsComponent implements OnInit {
           if (typeof result === 'string') {
             console.log('Transaction hash: ' + result);
             this.alertsService.info('Mint request submitted, you will be alerted when confirmed.<br>' +
-              'Receipt: <a target="_blank" href="https://rinkeby.etherscan.io/tx/' + result + '">' + result + '</a>');
+              'Receipt: <a target="_blank" href="https://goerli.etherscan.io/tx/' + result + '">' + result + '</a>');
           } else {
             console.log(result);
             this.alertsService.modal(NFTMintEventComponent, result);
