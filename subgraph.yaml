@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Manifestations
-    network: rinkeby
+    network: goerli
     source:
-      address: "0x85bEf30E15F1e935c98047A63F16383d899C8742"
+      address: "0xb622E4Fb152DC8256131E56a16028cd99274708E"
       abi: Manifestations
-      startBlock: 9325554
+      startBlock: 8249738
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -24,11 +24,11 @@ dataSources:
       file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: UploadEvidence
-    network: rinkeby
+    network: goerli
     source:
-      address: "0x78dE42F5De81c14663D91492530Da1673b24dbed"
+      address: "0xc9291b05FC8106e2034492E514c176423CC283a3"
       abi: UploadEvidence
-      startBlock: 9325554
+      startBlock: 8249738
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -44,11 +44,11 @@ dataSources:
       file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: CLYToken
-    network: rinkeby
+    network: goerli
     source:
-      address: "0x2f198B9B4d15584FE2ba20b0496f585151b1C023"
+      address: "0x8D399078a4ffB97362169Ae4F4EB06e42b26A918"
       abi: CLYToken
-      startBlock: 9325554
+      startBlock: 8249738
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -73,11 +73,11 @@ dataSources:
       file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: YouTubeEvidence
-    network: rinkeby
+    network: goerli
     source:
-      address: "0x8894c5A0b30912cfCC50D05b90b031dA32Fb5335"
+      address: "0xDe7A21f9266A23F57718DE1086bAB6cc08395181"
       abi: YouTubeEvidence
-      startBlock: 9325554
+      startBlock: 8249738
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -93,11 +93,11 @@ dataSources:
       file: ./graphprotocol/src/mapping.ts
   - kind: ethereum/contract
     name: CopyrightLYNFT
-    network: rinkeby
+    network: goerli
     source:
-      address: "0x8E8BFc29440Cb8322AC8b50b4C4db6D363e23a97"
+      address: "0x1F9d65519a4A212aE51F525776372BCa5A948293"
       abi: CopyrightLYNFT
-      startBlock: 9371519
+      startBlock: 8249738
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
