@@ -29,8 +29,8 @@ contract YouTubeEvidence is ChainlinkClient {
     string evidencedHash, string videoId, address indexed evidencer, bool isVerified);
 
   constructor() {
-    setPublicChainlinkToken();
-    oracle = 0x81946354bA92C4Ef22506e9de975df674DeC8a92; // oracle address
+    setChainlinkToken(0x326C977E6efc84E512bB9C30f76E30c160eD06FB); // goerli
+    oracle = 0xeecA89a3895F7df577dd5e7C4E816e2fe2da92f1; // oracle address
     jobId = "43702de4d9474a2289fe87a95176cb60"; //job id
     fee = 1 * 10 ** 16; // 0.01 LINK
   }
