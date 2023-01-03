@@ -18210,14 +18210,85 @@
       "transactionHash": "0xfd74bf1d2d7faacf04184abe213cf354388c4ce4ad57607b5ee31567e0f2b796"
     },
     "5": {
-      "events": {},
+      "events": {
+        "0x9221287e8a14b313bd740c10367708dd71a6bd842aaf2848fbee7d4fb4ca329c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "hash",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "manifester",
+              "type": "address"
+            }
+          ],
+          "name": "ManifestEvent",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "Paused",
+          "type": "event"
+        },
+        "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "Unpaused",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0x57EDc3b81c837c2A9678653bfBE1fD70033899b8",
-      "transactionHash": "0x313d6abea57989e584c571d07df1bb64b4fa4f25fd2dbf49aa1b866d5b6c80a2"
+      "address": "0xb622E4Fb152DC8256131E56a16028cd99274708E",
+      "transactionHash": "0xbd1d24dfa58374db979d408ac21d6c0799de3837f1c52e8c02fc22046d1273a5"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-09-20T11:53:35.259Z",
+  "updatedAt": "2023-01-03T12:08:39.112Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Roberto García (http://rhizomik.net/~roberto/)",
