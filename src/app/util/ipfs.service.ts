@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 declare const require: any;
 
@@ -12,7 +13,12 @@ export class IpfsService {
   private ipfsApi: any;
 
   constructor(private ngZone: NgZone) {
-    this.ipfsApi = iPFSClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' });
+    this.ipfsApi = iPFSClient({
+      protocol: 'https', host: 'ipfs.infura.io', port: '5001',
+      headers: {
+        authorization: 'Basic ' + Buffer.from(environment.infuraIPFSId + ':' + environment.infuraIPFSSecret).toString('base64')
+      }
+    });
   }
 
   public uploadFile(file: any, uploadToIpfs: any): Observable<string> {

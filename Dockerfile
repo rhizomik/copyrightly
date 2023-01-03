@@ -4,7 +4,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 
 RUN echo "for f in \$(find /usr/share/nginx/html -name 'main*.js'); do \
-          envsubst '\$INFURA_TOKEN' < \$f > main.tmp ; \
+          envsubst '\$INFURA_TOKEN,\$INFURA_IPFS_ID,\$INFURA_IPFS_SECRET' < \$f > main.tmp ; \
           mv main.tmp \$f ; done && \
           envsubst '\$GA_MEASUREMENT_ID' < /usr/share/nginx/html/index.html > index.tmp && \
           mv index.tmp /usr/share/nginx/html/index.html && \
