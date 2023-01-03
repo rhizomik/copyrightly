@@ -20,7 +20,7 @@ import { NFTMintEvent } from './nftmint-event';
           </div>
           <div class="col-md-12 p-1 mb-1">
             <h6 class="card-subtitle text-muted">Metadata</h6>
-            <a class="card-text" href="https://ipfs.infura.io/{{data?.what?.tokenUri?.replace('://', '/')}}" target="_blank">
+            <a class="card-text" href="https://gateway.ipfs.io/{{data?.what?.tokenUri?.replace('://', '/')}}" target="_blank">
               {{data?.what?.tokenUri}}</a>
           </div>
           <div class="col-md-12 p-1 mb-1">

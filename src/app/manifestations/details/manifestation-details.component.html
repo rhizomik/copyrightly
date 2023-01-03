@@ -19,7 +19,7 @@
       <h5 class="card-title col-md-12 p-1"><span class="fas fa-gavel"></span> {{manifestation?.title}}</h5>
       <div class="col-lg-6 p-1 mb-1">
         <h6 class="card-subtitle text-muted">Hash</h6>
-        <a class="card-text" href="https://ipfs.infura.io/ipfs/{{manifestation?.hash}}"
+        <a class="card-text" href="https://gateway.ipfs.io/ipfs/{{manifestation?.hash}}"
            target="_blank">{{manifestation?.hash}}</a>
       </div>
       <div class="col-lg-2 p-1 mb-1">
@@ -134,7 +134,7 @@
           <small title="{{nft?.tokenId}}">{{nft?.tokenId}}</small></h5>
         <div class="col-lg-8 p-1 mb-1">
           <h6 class="card-subtitle text-muted">Metadata</h6>
-          <a class="card-text" href="https://ipfs.infura.io/{{nft?.tokenUri?.replace('://', '/')}}" target="_blank">
+          <a class="card-text" href="https://gateway.ipfs.io/{{nft?.tokenUri?.replace('://', '/')}}" target="_blank">
             {{nft?.tokenUri}}</a>
         </div>
         <div class="col-lg-3 p-1 mb-1">

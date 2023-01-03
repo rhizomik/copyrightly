@@ -20,7 +20,7 @@ import { Manifestation } from './manifestation';
                   <h5 class="card-title col-md-12 p-1">{{data?.what?.title}}</h5>
                   <div class="col-md-12 p-1 mb-1">
                       <h6 class="card-subtitle text-muted">Hash</h6>
-                      <a class="card-text" href="https://ipfs.infura.io/ipfs/{{data?.what?.id}}" target="_blank">
+                      <a class="card-text" href="https://gateway.ipfs.io/ipfs/{{data?.what?.id}}" target="_blank">
                           {{data?.what?.id}}</a>
                   </div>
                   <div class="col-md-6 p-1 mb-1">

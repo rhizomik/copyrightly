@@ -25,8 +25,8 @@ export class CreatorDetailsComponent implements OnInit, OnDestroy {
   profile: BasicProfile = undefined;
   accounts: string[];
   social: AlsoKnownAs;
-  private ethChainId = '@eip155:4'; // Rinkeby
-  private ipfsUrl = 'https://ipfs.infura.io/ipfs/';
+  private ethChainId = '@eip155:5'; // Goerli
+  private ipfsUrl = 'https://gateway.ipfs.io/ipfs/';
   private watchStakesQuery: QueryRef<AccountStakesResponse>;
   private watchStakesSubscription: Subscription = new Subscription();
 
