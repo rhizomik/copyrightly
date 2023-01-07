@@ -23,14 +23,13 @@ contract CLYToken is ERC20, BancorFormula, Pausable, Ownable {
   uint256 public poolBalance;
 
   /*
-    reserve ratio, represented in ppm, 1-1000000
-    1/3 corresponds to y= multiple * x^2
-    1/2 corresponds to y= multiple * x
-    2/3 corresponds to y= multiple * x^1/2
-    multiple will depends on contract initialization,
-    specifically totalAmount and poolBalance parameters
-    we might want to add an 'initialize' function that will allow
-    the owner to send ether to the contract and mint a given amount of tokens
+    CLYToken price follows a curve y = m * x^n - c
+    m and c correspond to CLY totalSupply and x = 1 + amount/poolBalance
+    n = reserveRatio, where the reserveRatio is represented in ppm, 1-1000000
+    100000 means 1/10 and corresponds to curve y = m * x^1/10 - c
+    500000 means 1/2 and corresponds to curve y = m * x^1/2 - c
+    900000 means 9/10 and corresponds to curve y = m * x^9/10 - c
+    CLY price = totalSupply * (1 + amount/poolBalance)^(reserveRatio/DENOMINATOR_PPM) - totalSupply
   */
   uint32 public reserveRatio;
   uint32 public initialSlope;

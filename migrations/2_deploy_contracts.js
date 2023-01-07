@@ -6,7 +6,7 @@ const CLYToken = artifacts.require("./CLYToken.sol");
 module.exports = async function(deployer, network, accounts) {
   const OWNER = accounts[0];
   const EXPIRY_TIME = 60 * 60 * 24;  // 24h
-  const RESERVE_RATIO = 500000; // 1/2 in ppm, corresponds to curve y = m * x
+  const RESERVE_RATIO = 500000; // 1/2 in ppm, CLY price = totalSupply * (1 + amount/poolBalance)^1/2 - totalSupply
   const INITIAL_SLOPE = 1;      // Initial curve slope m when pool balance = 0
   const MAX_GASPRICE = web3.utils.toWei('100', 'gwei');
 
